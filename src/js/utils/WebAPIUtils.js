@@ -1,6 +1,6 @@
 var calendarActions = require('../actions/calendarActions');
 var request = require('superagent');
-var appConstants = require('../constants/appConstants');
+var appConstants = require('../constants/actionConstants');
 
 var WebAPIUtils = {
 	login: function(email, password) {

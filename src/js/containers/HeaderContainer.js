@@ -4,6 +4,7 @@
 
 import { connect } from 'react-redux'
 import Header from './../components/Header'
+import { selectToday, viewChangedEvent} from './../actions/calendarActions';
 
 function mapStateToProps(state) {
     return {

@@ -2,7 +2,7 @@ import React from 'react';
 var DaysOfMonth = require('./DaysOfMonth');
 var DisplayHeader = require('./DisplayHeader');
 
-var Month = ({displayed, today, month, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
+var Month = ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
 	<div>
 		<div className="month-view">
 			<DisplayHeader caption={displayed.month + ' ' + displayed.year} increment={incrementMonth} decrement={decrementMonth} />
@@ -17,7 +17,7 @@ var Month = ({displayed, today, month, selectedDay, incrementMonth, decrementMon
 					<li>Saturday</li>
 				</ul>
 			</div>
-			<DaysOfMonth today={today} displayed={displayed} days={month} selectedDay={selectedDay} selectDay={selectDay}/>
+			<DaysOfMonth today={today} displayed={displayed} days={days} selectedDay={selectedDay} selectDay={selectDay}/>
 		</div>
 	</div>
 );
