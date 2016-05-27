@@ -15,11 +15,31 @@ var dateToMoment = function(date){
         weekIndex: mom.week(),
         dayIndex: mom.date(),
         // holiday: moment(date).holiday(),
-        time: mom.format('h:mm a')
+        time: mom.format('h:mm a'),
+        display: mom.format('MMMM') + ' ' + mom.year()
     }
 };
 
+var formatDisplay = function(mom, viewType){
+    if(viewType == 'month'){
+        return {...mom, display:mom.date.format('MMMM') + ' ' + mom.date.year()};
+    }else if(viewType == 'day'){
+        return {...mom, display:mom.date.format('dddd')};
+    }
+    return {...mom, display:mom.date[viewType]()};
+};
+
+var increment = function(mom, viewType){
+    return formatDisplay(dateToMoment(mom.date.add(1,viewType)),viewType);
+};
+
+var decrement = function(mom, viewType){
+    return formatDisplay(dateToMoment(mom.date.subtract(1, viewType)),viewType);
+};
 
 export {
-   dateToMoment 
+   dateToMoment,
+    increment,
+    decrement,
+    formatDisplay
 }

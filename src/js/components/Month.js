@@ -1,10 +1,8 @@
 import React from 'react';
 import DaysOfMonth from './DaysOfMonth';
-import DisplayHeader from './DisplayHeader';
 
 export default  ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
 		<div className="month-view">
-			<DisplayHeader caption={displayed.month + ' ' + displayed.year} increment={incrementMonth} decrement={decrementMonth} />
 			<div className="days-header mdl-layout__header-row mdl-shadow--1dp">
 				<ul>
 					<li>Sunday</li>

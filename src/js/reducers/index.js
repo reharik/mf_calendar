@@ -4,7 +4,7 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import {viewChanged, daySelected, recievedEvents} from './viewReducer'
+import {viewChanged, daySelected, recievedEvents, displayed} from './viewReducer'
 
 const reducers = combineReducers({
     routing,
@@ -12,7 +12,7 @@ const reducers = combineReducers({
     selectedDay: daySelected,
     events: recievedEvents,
     today: (state = {}) => state ,
-    displayed: (state = {}) => state
+    displayed: displayed
 
 });
 

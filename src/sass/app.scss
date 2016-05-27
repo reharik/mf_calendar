@@ -153,23 +153,24 @@ $task-scheduled: #70C3FC;
         border-bottom: 1px solid #c4c4c4;
 
         button {
-            margin-top: 1.25rem;
+            //margin-top: 1.25rem;
 
             &.lt-p-btn-md {
                 margin-top: 1rem;
             }
 
             &.lt-sub-btn-md {
-              -webkit-appearance: none;
-              text-transform: none;
-              letter-spacing: 1px;
-              line-height: 1.2;
-              border: 1px solid #aaaaaa;
-              color: #555555;
-              padding: 8px 20px;
-              background-image: linear-gradient(#ffffff, #eeeeee);
-              font-family: "Proxima Nova Regular";
-              font-size: 16px;
+                -webkit-appearance: none;
+                text-transform: none;
+                letter-spacing: 1px;
+                line-height: 1.2;
+                border: 1px solid #aaaaaa;
+                color: #555555;
+                padding: 8px 20px;
+                background-image: linear-gradient(#ffffff, #eeeeee);
+                font-family: "Proxima Nova Regular";
+                font-size: 16px;
+
                 border-radius: 0;
                 border-right: 0px;
 
@@ -190,9 +191,6 @@ $task-scheduled: #70C3FC;
                 }
 
             }
-
-
-
         }
 
            h6 {
@@ -217,11 +215,10 @@ $task-scheduled: #70C3FC;
     }
 
     .display-header {
-        background-color: white;
         color: #545454;
         max-height: 80px;
         padding: 1.5rem 0.5rem;
-
+        margin-left: 20rem;
         .left {
             float: left;
             margin: 2rem 0;
@@ -231,6 +228,8 @@ $task-scheduled: #70C3FC;
         h2 {
             float: left;
             margin: 2.5rem 2rem;
+          font-weight: bolder;
+          font-size: 1.5rem;
         }
     }
 
@@ -518,12 +517,12 @@ $task-scheduled: #70C3FC;
 	    	display: inline-block;
 	    	width: 1.6rem;
 	    	height: 1.3rem;
-	    	padding-top: 0.3rem;
+	    	padding: 0.3rem;
 	    	text-align: center;
 	    	color: #7C7C7D;
 	    	background-color: #F4F4F4;
 	    	border-radius: 50%;
-	    	font-size: 0.75rem;
+	    	font-size: 1.3rem;
 	    	position: absolute;
 	    	top: 0.5rem;
 	    	right: 0.5rem;

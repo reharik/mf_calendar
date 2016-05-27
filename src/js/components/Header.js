@@ -3,13 +3,14 @@
  */
 
 import React from 'react'
+import DisplayHeader from './DisplayHeader';
 
-export default ({calendarButtonState, selectToday, viewChangedEvent}) => {
+export default ({calendarButtonState, selectToday, displayed, viewChangedEvent, incrementDate, decrementDate}) => {
     var classes = ' mdl-button mdl-js-button lt-sub-btn-md mdl-js-ripple-effect';
-    var dayClasses = (calendarButtonState.dayActive ? 'active' : '') + classes;
-    var weekClasses = (calendarButtonState.weekActive ? 'active' : '') + classes;
-    var monthClasses = (calendarButtonState.monthActive ? 'active' : '') + classes;
-    var yearClasses = (calendarButtonState.yearActive ? 'active' : '') + classes;
+    var dayClasses = (calendarButtonState === 'day' ? 'active' : '') + classes;
+    var weekClasses = (calendarButtonState === 'week' ? 'active' : '') + classes;
+    var monthClasses = (calendarButtonState === 'month' ? 'active' : '') + classes;
+    var yearClasses = (calendarButtonState === 'year' ? 'active' : '') + classes;
 
     return (
         <header className="mdl-layout__header cal-top">
@@ -19,6 +20,7 @@ export default ({calendarButtonState, selectToday, viewChangedEvent}) => {
                 <button onClick={() => viewChangedEvent("month")} className={monthClasses}>Month</button>
                 <button onClick={() => viewChangedEvent("year")} className={yearClasses}>Year</button>
                 <h6 onClick={() => selectToday()}>Today</h6>
+                <DisplayHeader caption={displayed.display} viewType={calendarButtonState} increment={incrementDate} decrement={decrementDate} />
                 <div className="mdl-layout-spacer"></div>
             </div>
         </header>

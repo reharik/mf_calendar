@@ -5,16 +5,17 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Header from './../components/Header'
-import { selectToday, viewChangedEvent} from './../actions/calendarActions';
+import { selectToday, viewChangedEvent, incrementDate, decrementDate} from './../actions/calendarActions';
 
 function mapStateToProps(state) {
     return {
-        calendarButtonState: state.calendarButtonState
+        calendarButtonState: state.calendarButtonState,
+        displayed: state.displayed
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ selectToday, viewChangedEvent }, dispatch)
+    return bindActionCreators({ selectToday, viewChangedEvent, incrementDate, decrementDate }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,14 +1,16 @@
-import {INCREMENT_MONTH, DECREMENT_MONTH, SELECT_TODAY, SELECT_DAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
+import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, SELECT_DAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
 
-const incrementMonth = () => {
+const incrementDate = (viewType) => {
 	return {
-		type: INCREMENT_MONTH
+		type: INCREMENT_DATE,
+		viewType
 	}
 };
 
-const decrementMonth = () => {
+const decrementDate = (viewType) => {
 	return {
-		type: DECREMENT_MONTH
+		type: DECREMENT_DATE,
+		viewType
 	}
 };
 
@@ -33,8 +35,8 @@ const 	viewChangedEvent = (view) => {
 };
 
 export  {
-	incrementMonth,
-	decrementMonth,
+	incrementDate,
+	decrementDate,
 	selectDay,
 	selectToday, 
 	viewChangedEvent

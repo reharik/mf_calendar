@@ -12,7 +12,9 @@ import Day from './js/components/Day';
 import Year from './js/components/Year';
 
 import './sass/app.scss'
-import './sass/app.css'
+// import './sass/app.css'
+// import './sass/external-app.css'
+import './sass/material.min.css'
 
 const initialState = {
 	// today is set when app loads and does not change
@@ -23,12 +25,7 @@ const initialState = {
 	// selected is the current user selected day. On initial state it is set to today. Selected day is the day displayed in the task card.
 	selectedDay: dateToMoment(),
 	// Button bar is the navigation bar on the top of the calendar. Each property controls whether a specific button has an "active" style applied.
-	calendarButtonState: {
-		dayActive: false,
-		weekActive: false,
-		monthActive: true,
-		yearActive: false
-	},
+	calendarButtonState: 'month',
 	events: []
 };
 
