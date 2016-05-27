@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Navigation from 'react-router/lib/Navigation';
-var calendarStore = require('../stores/calendarStore');
+var calendarStore = require('./calendarStore');
 var calendarActions = require('../actions/calendarActions');
 
 

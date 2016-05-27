@@ -1,6 +1,6 @@
 import React from 'react';
 var moment = require('moment-holidays');
-var calendarStore = require('../stores/calendarStore');
+var calendarStore = require('./calendarStore');
 var calendarActions = require('../actions/calendarActions');
 
 var TaskCard = React.createClass({

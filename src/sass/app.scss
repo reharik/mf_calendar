@@ -160,7 +160,16 @@ $task-scheduled: #70C3FC;
             }
 
             &.lt-sub-btn-md {
-
+              -webkit-appearance: none;
+              text-transform: none;
+              letter-spacing: 1px;
+              line-height: 1.2;
+              border: 1px solid #aaaaaa;
+              color: #555555;
+              padding: 8px 20px;
+              background-image: linear-gradient(#ffffff, #eeeeee);
+              font-family: "Proxima Nova Regular";
+              font-size: 16px;
                 border-radius: 0;
                 border-right: 0px;
 
@@ -192,7 +201,11 @@ $task-scheduled: #70C3FC;
                 margin-left: 1rem;
                 margin-top: 0.5rem;
                 cursor: pointer;
-            }
+               font-size: 0.875rem;
+               text-transform: none;
+               letter-spacing: 1px;
+             font-weight: 400;
+           }
 
         .lt-sub-btn-md:hover {
             background-image: linear-gradient(#555, #555);
@@ -562,303 +575,6 @@ $task-scheduled: #70C3FC;
             text-align: center;
         }
 
-    }
-
-    /* Sidebar (search, date range, task card) */
-
-    /*.mdl-cell--3-col {
-
-        .mdl-card {
-            width: 100%;
-        }
-    }*/
-
-    .sidebar {
-        
-        
-        margin-bottom: 2rem;
-        min-height: 5rem;
-
-        display: flex;
-        flex-direction: column;
-
-        .hidden {
-            display: none;
-        }
-
-        small.error {
-            background-color: transparent;
-            color: #F08045;
-            font-style: normal;
-            font-size: 0.875rem;
-            font-family: "Muli";
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .sidebar-bottom {
-            width: 100%;
-            margin-top: 1rem;
-
-            flex-grow: 2;
-            background-color: #eee;
-
-            input {
-                border-radius: 2px;
-            }
-
-            padding: 1rem;
-
-             h5 {
-                
-                 margin-left: 1rem;
-                
-            }
-
-            h5, h4 {
-                color: #525252;
-                font-family: "Muli";
-                font-weight: 400;
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-                font-weight: 400;
-             
-
-                &.false {
-                    display: none;
-                }
-
-
-            }
-
-            ul {
-                
-                list-style: none;
-                padding: 0 1rem 0.5rem 1rem;
-                color: #525252;
-                font-size: 0.875rem;
-
-                li {
-                    text-decoration: underline;
-                    color: #767Ec2;
-                    cursor: pointer;
-                    margin-bottom: 0.5rem;
-
-                    &.false {
-                        display: none;
-                    }
-                    &.true {
-                        display: list-item;
-                    }
-                }
-            }
-
-            h6 {
-                display: inline;
-                cursor: pointer;
-                margin-top: 0.5rem;
-                border-bottom: 1px dotted #aaa;
-            }
-        }
-
-        .date-box {
-
-            
-            margin: 0rem 0rem 1.5rem 0;
-
-            input {
-                
-                display: inline-block;
-                margin-bottom: 0.5rem;
-
-            }
-
-            span {
-                margin: 0 0.25rem;
-                color: #525252;
-            }
-
-            button {
-                margin-left: 0.5rem;
-            }
-
-            border-bottom: 1px solid white;
-
-           
-        }
-
-
-    }
-
-    .test-box {
-
-        position: relative;
-        margin: 0rem 0rem 0.5rem 0;
-        z-index: 1000;
-
-        input {
-            display: inline-block;
-            width: 34%;
-            margin-bottom: 0.5rem;
-            padding: 0.25rem;
-        }
-
-        span {
-            color: #525252;
-            margin: 0 0.25rem;
-        }
-
-        button {
-            margin-left: 0.5rem;
-        }
-
-
-            border-bottom: 1px solid white;
-
-            &:after {
-                position: absolute;
-                display: block;
-                content: "";
-                border-bottom: 1px solid #ABABAB;
-                height: 5px;
-                width: 100%;
-                box-sizing: border-box;
-                bottom: 0;
-                left: 0;
-            }
-    }
-
-    .filter-box {
-        position: relative;
-        margin-bottom: 0.5rem;
-
-        border-bottom: 1px solid white;
-
-            &:after {
-                position: absolute;
-                display: block;
-                content: "";
-                border-bottom: 1px solid #ABABAB;
-                height: 5px;
-                width: 100%;
-                box-sizing: border-box;
-                bottom: 0;
-                left: 0;
-            }
-
-        input[type="checkbox"] {
-            position: relative;
-            clip: none;
-            font-size: 2.5rem;
-            margin-bottom: 0;
-            margin-right: 0.5rem;
-
-        }
-
-        .filter {
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: black;
-            font-family: "Muli";
-            font-weight: 400;
-            border-radius: 2px;
-
-            span {
-                font-size: 0.875rem;
-            }
-
-            &.help {
-                border-left: 5px solid $task-help;
-                       background: repeating-linear-gradient(
-                            -45deg,
-                            #FFDFDE,
-                            #FFDFDE 2px,
-                            white 2px,
-                            white 3px
-
-                    );
-            }
-            &.needs-met {
-                    border-left: 5px solid $task;
-                    background: repeating-linear-gradient(
-                            -45deg,
-                            #DDDAF7,
-                            #DDDAF7 2px,
-                            white 2px,
-                            white 3px
-
-                    );
-            }
-            &.occasions {
-                border-left: 5px solid $occasion;
-                       background: repeating-linear-gradient(
-                            -45deg,
-                            #FFEFAC,
-                            #FFEFAC 2px,
-                            white 2px,
-                            white 3px
-
-                    );
-                margin-bottom: 1rem;
-            }
-        }
-    }
-
-    /* Task Card */
-
-    .task-card {
-        width: 100%;
-       
-        margin-bottom: 0.5rem;
-
-        .mdl-card__title {
-            background-image: url('../images/geo3.png');
-            min-height: 150px;
-
-
-            h2 {
-                color: white;
-            }
-        }
-
-        .mdl-card__supporting-text {
-            width: 100%;
-        }
-
-        ul {
-            list-style: none;
-            margin-left: 0;
-
-            li {
-                font-size: 0.875rem;
-                color: #7780BF;
-                font-family: "Muli";
-                font-weight: 400;
-                margin-bottom: 1rem;
-                line-height: 1;
-
-                span.time {
-                    display: inline-block;
-                    margin-right: 1rem;
-                    margin-top: -0.2rem;
-                    padding: 0.5rem 0.75rem;
-                    color: white;
-                    float: left;
-                }
-
-                &.occasion span.time{
-                    background-color: $occasion;
-                }
-
-                &.task span.time {
-                    background-color: $task;
-                }
-
-                &.task.true span.time {
-                    background-color: $task-help;
-                }
-            }
-        }
     }
 
     .year-view {

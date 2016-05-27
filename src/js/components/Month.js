@@ -1,9 +1,8 @@
 import React from 'react';
-var DaysOfMonth = require('./DaysOfMonth');
-var DisplayHeader = require('./DisplayHeader');
+import DaysOfMonth from './DaysOfMonth';
+import DisplayHeader from './DisplayHeader';
 
-var Month = ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
-	<div>
+export default  ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
 		<div className="month-view">
 			<DisplayHeader caption={displayed.month + ' ' + displayed.year} increment={incrementMonth} decrement={decrementMonth} />
 			<div className="days-header mdl-layout__header-row mdl-shadow--1dp">
@@ -19,7 +18,5 @@ var Month = ({displayed, today, days, selectedDay, incrementMonth, decrementMont
 			</div>
 			<DaysOfMonth today={today} displayed={displayed} days={days} selectedDay={selectedDay} selectDay={selectDay}/>
 		</div>
-	</div>
 );
 
-module.exports = Month;

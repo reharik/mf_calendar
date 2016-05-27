@@ -3,8 +3,7 @@ var calendarActions = require('../actions/calendarActions');
 var DisplayHeader = require('./DisplayHeader');
 var moment = require('moment');
 var Tasks = require('./Tasks');
-var Occasions = require('./Occasions');
-require('twix');
+// var Occasions = require('./Occasions');
 
 var Day = React.createClass({
 
@@ -119,7 +118,6 @@ var Day = React.createClass({
 						<li key={index}>
 							{holidays}
 							<div className="info">
-								<Occasions occasions={hour.tasks} filter={self.props.filter} />
 								<Tasks tasks={hour.tasks} filter={self.props.filter} />
 							</div>
 						</li>

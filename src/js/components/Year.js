@@ -4,7 +4,6 @@ var DisplayHeader = require('./DisplayHeader');
 var moment = require('moment');
 var Calendar = require('node-calendar');
 var Tasks = require('./Tasks');
-var Occasions = require('./Occasions');
 
 
 var Year = React.createClass({

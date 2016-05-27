@@ -3,8 +3,6 @@ var calendarActions = require('../actions/calendarActions');
 var DisplayHeader = require('./DisplayHeader');
 var moment = require('moment');
 var Tasks = require('./Tasks');
-var Occasions = require('./Occasions');
-require('twix');
 
 
 var Week = React.createClass({
@@ -157,7 +155,6 @@ var Week = React.createClass({
 						<li onClick={self.handleSelectDay.bind(null, day)} key={index}>
 							{holidays}
 							<div className="info">
-								<Occasions occasions={day.tasks} filter={self.props.filter} />
 								<Tasks tasks={day.tasks} filter={self.props.filter} />
 							</div>
 						</li>

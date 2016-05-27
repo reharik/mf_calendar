@@ -1,14 +1,15 @@
-var Tasks = require('./Tasks');
-var Holiday = require('./Holiday');
-var calendarActions = require('../actions/calendarActions');
+import React from 'react'
+import Tasks from'./Tasks';
+import Holiday from'./Holiday';
+import calendarActions from '../actions/calendarActions';
 
-var	buildClasses = function(days, today, selectedDay, displayed) {
+var	buildClasses = function(day, today, selectedDay, displayed, index) {
 	var classes = "day";
-	if (today.isSame(day, 'day')) {
+	if (today.date.isSame(day, 'day')) {
 		classes += ' today';
 	}
 
-	if (selectedDay.isSame(day, 'day')) {
+	if (selectedDay.date.isSame(day, 'day')) {
 		classes += ' selected';
 	}
 	if ((index + 1) % 7 == 0) {
@@ -30,15 +31,15 @@ var sortedTasks = function(tasks) {
 export default ({days, today, selectedDay, displayed, selectDay}) => {
 	
 	var renderDay = (day, index) => (
-		<div key={index} className={buildClasses(today, selectedDay, displayed, index)} onClick={() => selectDay(day)} >
+		<div key={index} className={buildClasses(day, today, selectedDay, displayed, index)} onClick={() => selectDay(day)} >
 			<span className="num">{day.dayIndex}</span>
 			<Holiday day={day} />
 			<Tasks sortedTasks={sortedTasks(day.tasks)} />
 		</div>
 	);
 
-	var renderWeek = (week) => (
-		<div className="week">
+	var renderWeek = (week, index) => (
+		<div className="week" key={index}>
 			{ week.map(renderDay) }
 		</div>
 	);

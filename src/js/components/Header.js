@@ -2,12 +2,14 @@
  * Created by rharik on 5/25/16.
  */
 
-export default ({buttonState, selectToday, viewChangedEvent}) => {
+import React from 'react'
+
+export default ({calendarButtonState, selectToday, viewChangedEvent}) => {
     var classes = ' mdl-button mdl-js-button lt-sub-btn-md mdl-js-ripple-effect';
-    var dayClasses = (buttonState.dayActive ? 'active' : '') + classes;
-    var weekClasses = (buttonState.weekActive ? 'active' : '') + classes;
-    var monthClasses = (buttonState.monthActive ? 'active' : '') + classes;
-    var yearClasses = (buttonState.yearActive ? 'active' : '') + classes;
+    var dayClasses = (calendarButtonState.dayActive ? 'active' : '') + classes;
+    var weekClasses = (calendarButtonState.weekActive ? 'active' : '') + classes;
+    var monthClasses = (calendarButtonState.monthActive ? 'active' : '') + classes;
+    var yearClasses = (calendarButtonState.yearActive ? 'active' : '') + classes;
 
     return (
         <header className="mdl-layout__header cal-top">

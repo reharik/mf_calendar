@@ -1,6 +1,6 @@
 import React from 'react';
 
-var DisplayHeader = ({caption, increment, decrement}) => ( 
+export default ({caption, increment, decrement}) => ( 
 		<div className="display-header mdl-layout__header-row mdl-shadow--1dp">
 			<div className="controls clearfix">
 				<button className="left mdl-button mdl-js-button mdl-button--icon" onClick={() => decrement()}>
@@ -14,4 +14,3 @@ var DisplayHeader = ({caption, increment, decrement}) => (
 		</div>
 	);
 
-module.exports = DisplayHeader;

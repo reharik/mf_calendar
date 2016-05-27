@@ -3,20 +3,21 @@
  */
 
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Month from './../components/Month'
-import calendar from 'node-calendar'
-import {dateToMoement} from './../utils/calendarUtils'
+import Calendar from 'node-calendar'
+import {dateToMoment} from './../utils/calendarUtils'
 import {incrementMonth, decrementMonth, selectDay} from './../actions/calendarActions';
 
 var matchedEvents = (events,date) => events.filter(e => e.moment.isSame(moment(date), 'day'));
 
 function mapStateToProps(state) {
+    var calendar = new Calendar.Calendar(Calendar.SUNDAY);
     var days = calendar.monthdatescalendar(state.displayed.year, state.displayed.monthIndex)
         .map(item => item.map(date => {
-            var day = dateToMoement(date);
+            var day = dateToMoment(date);
             day.tasks = matchedEvents(state.events, date); 
             return day}));
-
     return {
         today: state.today,
         displayed: state.displayed,
