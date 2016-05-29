@@ -9,7 +9,7 @@ import { selectToday, viewChangedEvent, incrementDate, decrementDate} from './..
 
 function mapStateToProps(state) {
     return {
-        calendarButtonState: state.calendarButtonState,
+        calendarView: state.calendarView,
         displayed: state.displayed
     }
 }

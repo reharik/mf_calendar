@@ -8,7 +8,7 @@ const config = {
     // Gives you sourcemaps without slowing down rebundling
     devtool  : 'cheap-module-eval-source-map',
     resolve: { alias: {} },
-    entry    : path.join(__dirname, 'src/index.js'),
+    entry    : path.join(__dirname, 'example/index.js'),
     output   : {
         path      : path.join(__dirname, '/dist/'),
         filename  : 'bundle.js',
@@ -31,7 +31,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + "/src/index.tmpl.html"
+            template: __dirname + "/example/index.tmpl.html"
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),

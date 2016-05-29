@@ -8,7 +8,7 @@ import {viewChanged, daySelected, recievedEvents, displayed} from './viewReducer
 
 const reducers = combineReducers({
     routing,
-    calendarButtonState: viewChanged,
+    calendarView: viewChanged,
     selectedDay: daySelected,
     events: recievedEvents,
     today: (state = {}) => state ,

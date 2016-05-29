@@ -1,10 +1,11 @@
 /**
  * Created by rharik on 5/24/16.
  */
-
 import {increment, decrement,formatDisplay} from './../utils/calendarUtils'
 
 import {VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_EVENTS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
+
+import {dateToMoment} from './../utils/calendarUtils'
 
 const updateEvents = data => data.events.map(item => {
     return {
@@ -17,14 +18,14 @@ const updateEvents = data => data.events.map(item => {
     }
 });
 
-const viewChanged = (state = {}, action = null) => {
+const viewChanged = (state = dateToMoment(), action = null) => {
     if (action.type === VIEW_CHANGED_EVENT) {
         return action.view;
     }
     return state;
 };
 
-const displayed = (state = {}, action = null) => {
+const displayed = (state = dateToMoment(), action = null) => {
     if (action.type === INCREMENT_DATE) {
         return increment(state, action.viewType);
     }else if(action.type === DECREMENT_DATE) {
@@ -35,7 +36,7 @@ const displayed = (state = {}, action = null) => {
     return state;
 };
 
-const daySelected = (state = {}, action = null) => {
+const daySelected = (state = dateToMoment(), action = null) => {
     if (action.type === SELECT_DAY) {
         return {...state, selectedDay: action.data};
     } 
@@ -45,16 +46,18 @@ const daySelected = (state = {}, action = null) => {
     return state;
 };
 
-const recievedEvents = (state = {}, action = null) => {
+const recievedEvents = (state = [], action = null) => {
     if (action.type === RECEIVE_EVENTS) {
         return {...state, events: updateEvents(action.data)};
     }
     return state;
 };
 
-export {
-    viewChanged,
-    daySelected,
-    recievedEvents,
-    displayed
+export default {
+    calendarView: viewChanged,
+    selectedDay: daySelected,
+    events: recievedEvents,
+    displayed,
+    today: (state = dateToMoment()) => state
+
 }
