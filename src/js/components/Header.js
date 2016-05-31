@@ -5,7 +5,7 @@
 import React from 'react'
 import DisplayHeader from './DisplayHeader';
 
-export default ({calendarView, selectToday, displayed, viewChangedEvent, incrementDate, decrementDate}) => {
+export default ({calendarView, selectToday, caption, viewChangedEvent, incrementDate, decrementDate}) => {
     var classes = ' mdl-button mdl-js-button lt-sub-btn-md mdl-js-ripple-effect';
     var dayClasses = (calendarView === 'day' ? 'active' : '') + classes;
     var weekClasses = (calendarView === 'week' ? 'active' : '') + classes;
@@ -20,7 +20,7 @@ export default ({calendarView, selectToday, displayed, viewChangedEvent, increme
                 <button onClick={() => viewChangedEvent("month")} className={monthClasses}>Month</button>
                 <button onClick={() => viewChangedEvent("year")} className={yearClasses}>Year</button>
                 <h6 onClick={() => selectToday()}>Today</h6>
-                <DisplayHeader caption={displayed.display} viewType={calendarView} increment={incrementDate} decrement={decrementDate} />
+                <DisplayHeader caption={caption} viewType={calendarView} increment={incrementDate} decrement={decrementDate} />
                 <div className="mdl-layout-spacer"></div>
             </div>
         </header>

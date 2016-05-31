@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './../containers/HeaderContainer'
 import Month from './../containers/MonthContainer';
 import Week from './../components/Week';
-import Day from './../components/Day';
+import Day from './../containers/DayContainer';
 import Year from './../components/Year';
 
-export default (calendarView = 'month') => {
+export default (calendarView = {view:'month'}) => {
 	var view = <Month />;
-	switch (calendarView) {
+	switch (calendarView.view) {
 		case 'week':
 			view = <Week />;
 			break;
@@ -18,7 +18,6 @@ export default (calendarView = 'month') => {
 			view = <Year />;
 			break;
 	}
-
 	return (<div className="app">
 			<div className="container">
 				<div className="mdl-grid">

@@ -24,7 +24,7 @@ var formatDisplay = function(mom, viewType){
     if(viewType == 'month'){
         return {...mom, display:mom.date.format('MMMM') + ' ' + mom.date.year()};
     }else if(viewType == 'day'){
-        return {...mom, display:mom.date.format('dddd')};
+        return {...mom, display:mom.date.format('MMMM') + " " + mom.dayIndex + ", " + mom.date.year()}
     }
     return {...mom, display:mom.date[viewType]()};
 };

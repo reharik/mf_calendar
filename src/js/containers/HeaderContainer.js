@@ -6,11 +6,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Header from './../components/Header'
 import { selectToday, viewChangedEvent, incrementDate, decrementDate} from './../actions/calendarActions';
-
+import { formatDisplay } from './../utils/calendarUtils'
 function mapStateToProps(state) {
+    console.log('==========formatDisplay(state.displayed, state.calendarView.view).display=========');
+    console.log(formatDisplay(state.displayed, state.calendarView.view).display);
+    console.log('==========ENDformatDisplay(state.displayed, state.calendarView.view).display=========');
     return {
-        calendarView: state.calendarView,
-        displayed: state.displayed
+        calendarView: state.calendarView.view,
+        caption: formatDisplay(state.displayed, state.calendarView.view).display
     }
 }
 

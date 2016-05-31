@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import Month from './../components/Month'
 import Calendar from 'node-calendar'
 import {dateToMoment} from './../utils/calendarUtils'
-import {incrementMonth, decrementMonth, selectDay} from './../actions/calendarActions';
+import {selectDay} from './../actions/calendarActions';
 
 var matchedEvents = (events,date) => events.filter(e => e.moment.isSame(moment(date), 'day'));
 
@@ -27,7 +27,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ incrementMonth, decrementMonth, selectDay }, dispatch)
+    return bindActionCreators({ selectDay }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Month);

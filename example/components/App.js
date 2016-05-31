@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from './../../src/js/components/Calendar'
+import Calendar from './../../src/js/containers/CalendarContainer'
 
 export default () => ( <Calendar /> );
 

@@ -18,9 +18,9 @@ const updateEvents = data => data.events.map(item => {
     }
 });
 
-const viewChanged = (state = dateToMoment(), action = null) => {
+const viewChanged = (state = {view:'month'}, action = null) => {
     if (action.type === VIEW_CHANGED_EVENT) {
-        return action.view;
+        return {view: action.view};
     }
     return state;
 };
