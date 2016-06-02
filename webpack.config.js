@@ -8,7 +8,9 @@ const config = {
     // Gives you sourcemaps without slowing down rebundling
     devtool  : 'cheap-module-eval-source-map',
     resolve: { alias: {} },
-    entry    : path.join(__dirname, 'example/index.js'),
+    entry    : [
+        'webpack-dev-server/client?http://0.0.0.0:8080',
+        './example/index.js'],
     output   : {
         path      : path.join(__dirname, '/dist/'),
         filename  : 'bundle.js',
@@ -17,7 +19,7 @@ const config = {
     module   : {
         noParse:[],
         loaders: [
-            { test   : /\.jsx?$/, exclude: /node_modules/, loader : 'babel-loader' },
+            { test   : /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']},
             { test: /\.css$/, loader: 'style-loader!css-loader?sourceMap' },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -46,6 +48,10 @@ const config = {
     },
     sassLoader: {
         includePaths: [path.resolve(__dirname, "./sass")]
+    },
+    // ignore packages that are not available in browser. e.g. fs
+    externals: {
+        cldr: "empty"
     }
 };
 

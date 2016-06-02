@@ -1,6 +1,5 @@
 import React from 'react'
 import Tasks from'./Tasks';
-import Holiday from'./Holiday';
 import calendarActions from '../actions/calendarActions';
 
 var	buildClasses = function(day, today, selectedDay, displayed, index) {
@@ -33,8 +32,7 @@ export default ({days, today, selectedDay, displayed, selectDay}) => {
 	var renderDay = (day, index) => (
 		<div key={index} className={buildClasses(day, today, selectedDay, displayed, index)} onClick={() => selectDay(day)} >
 			<span className="num">{day.dayIndex}</span>
-			<Holiday day={day} />
-			<Tasks sortedTasks={sortedTasks(day.tasks)} />
+			<Tasks tasks={day.tasks} />
 		</div>
 	);
 

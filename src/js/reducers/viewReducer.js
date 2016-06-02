@@ -3,11 +3,11 @@
  */
 import {increment, decrement,formatDisplay} from './../utils/calendarUtils'
 
-import {VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_EVENTS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
+import {CONFIGURE_CALENDAR, VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_TASKS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
 
 import {dateToMoment} from './../utils/calendarUtils'
 
-const updateEvents = data => data.events.map(item => {
+const updateTasks = data => data.tasks.map(item => {
     return {
         category: item.category,
         content: item.content,
@@ -46,9 +46,16 @@ const daySelected = (state = dateToMoment(), action = null) => {
     return state;
 };
 
-const recievedEvents = (state = [], action = null) => {
-    if (action.type === RECEIVE_EVENTS) {
-        return {...state, events: updateEvents(action.data)};
+const recievedTasks = (state = [], action = null) => {
+    if (action.type === RECEIVE_TASKS) {
+        return {...state, tasks: updateTasks(action.data)};
+    }
+    return state;
+};
+
+const calendarConfig = (state= {}, action = null) => {
+    if(action.type === CONFIGURE_CALENDAR){
+        return Object.assign({}, state, action.config || {});
     }
     return state;
 };
@@ -56,8 +63,8 @@ const recievedEvents = (state = [], action = null) => {
 export default {
     calendarView: viewChanged,
     selectedDay: daySelected,
-    events: recievedEvents,
+    tasks: recievedTasks,
     displayed,
-    today: (state = dateToMoment()) => state
-
+    today: (state = dateToMoment()) => state,
+    calendarConfig
 }

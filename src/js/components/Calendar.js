@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './../containers/HeaderContainer'
 import Month from './../containers/MonthContainer';
-import Week from './../components/Week';
+import Week from './../containers/WeekContainer';
 import Day from './../containers/DayContainer';
 import Year from './../components/Year';
 
-export default (calendarView = {view:'month'}) => {
+export default ({calendarView}) => {
 	var view = <Month />;
 	switch (calendarView.view) {
 		case 'week':

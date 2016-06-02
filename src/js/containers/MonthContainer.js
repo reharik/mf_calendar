@@ -8,15 +8,16 @@ import Month from './../components/Month'
 import Calendar from 'node-calendar'
 import {dateToMoment} from './../utils/calendarUtils'
 import {selectDay} from './../actions/calendarActions';
+import moment from 'moment'
 
-var matchedEvents = (events,date) => events.filter(e => e.moment.isSame(moment(date), 'day'));
+var matchedEvents = (tasks,date) => tasks.filter(e => e.moment.isSame(moment(date), 'day'));
 
 function mapStateToProps(state) {
     var calendar = new Calendar.Calendar(Calendar.SUNDAY);
     var days = calendar.monthdatescalendar(state.displayed.year, state.displayed.monthIndex)
-        .map(item => item.map(date => {
+        .map(week => week.map(date => {
             var day = dateToMoment(date);
-            day.tasks = matchedEvents(state.events, date); 
+            day.tasks = matchedEvents(state.tasks, date); 
             return day}));
     return {
         today: state.today,

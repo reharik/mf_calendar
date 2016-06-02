@@ -4,16 +4,16 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import {viewChanged, daySelected, recievedEvents, displayed} from './viewReducer'
+import {viewChanged, daySelected, recievedtasks, displayed, today, calendarConfig} from './viewReducer'
 
 const reducers = combineReducers({
     routing,
     calendarView: viewChanged,
     selectedDay: daySelected,
-    events: recievedEvents,
-    today: (state = {}) => state ,
-    displayed: displayed
-
+    tasks: recievedtasks,
+    today,
+    calendarConfig,
+    displayed
 });
 
 export default reducers;
