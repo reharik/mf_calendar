@@ -3,7 +3,6 @@ import Header from './../containers/HeaderContainer'
 import Month from './../containers/MonthContainer';
 import Week from './../containers/WeekContainer';
 import Day from './../containers/DayContainer';
-import Year from './../components/Year';
 
 export default ({calendarView}) => {
 	var view = <Month />;
@@ -13,9 +12,6 @@ export default ({calendarView}) => {
 			break;
 		case 'day':
 			view = <Day />;
-			break;
-		case 'year':
-			view = <Year />;
 			break;
 	}
 	return (<div className="app">

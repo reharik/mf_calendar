@@ -15,7 +15,27 @@ var init = {
 	tasks: [
 		{
 			content: "fuck you!",
-			startTime: moment().format("h:mm A"),
+			startTime: '8:00 AM',
+			moment: moment()
+		},
+		{
+			content: "fuck you!",
+			startTime: '8:00 AM',
+			moment: moment()
+		},
+		{
+			content: "fuck you!",
+			startTime: '8:00 AM',
+			moment: moment()
+		},
+		{
+			content: "fuck you!",
+			startTime: '8:00 AM',
+			moment: moment()
+		},
+		{
+			content: "fuck you!",
+			startTime: '8:00 AM',
 			moment: moment()
 		}
 	]

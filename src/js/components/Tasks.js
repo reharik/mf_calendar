@@ -7,8 +7,8 @@ var sortedTasks = function(tasks) {
 	});
 };
 
-export default ({tasks}) => (<div className="info">
-			{ sortedTasks(tasks).map((t, index)=> (<div key={index}><h3 className='task'> {t.content}</h3></div>))}
+export default ({tasks, actions, view}) => (<div className="info">
+			{ sortedTasks(tasks).map((t, index)=> (<div key={index} style={{height:'4.8rem'}} onClick={() => actions.selectTask(t, view)}><h3 className='task'> {t.content}</h3></div>))}
 		</div>);
 
 

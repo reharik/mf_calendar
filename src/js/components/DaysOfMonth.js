@@ -1,6 +1,5 @@
 import React from 'react'
 import Tasks from'./Tasks';
-import calendarActions from '../actions/calendarActions';
 
 var	buildClasses = function(day, today, selectedDay, displayed, index) {
 	var classes = "day";
@@ -21,18 +20,14 @@ var	buildClasses = function(day, today, selectedDay, displayed, index) {
 	return classes;
 };
 
-var sortedTasks = function(tasks) {
-	return tasks.sort(function (a, b) {
-		return (a.moment.isBefore(b.moment) ? -1 : 1)
-	});
-};
-
-export default ({days, today, selectedDay, displayed, selectDay}) => {
+export default ({days, today, selectedDay, displayed, actions}) => {
 	
 	var renderDay = (day, index) => (
-		<div key={index} className={buildClasses(day, today, selectedDay, displayed, index)} onClick={() => selectDay(day)} >
+		<div key={index}
+			 className={buildClasses(day, today, selectedDay, displayed, index)}
+			 onClick={(e) => e.target === e.currentTarget ? actions.selectSlot(day.date.format('M/D/YYYY')):''} >
 			<span className="num">{day.dayIndex}</span>
-			<Tasks tasks={day.tasks} />
+			<Tasks tasks={day.tasks} actions={actions} view="month" />
 		</div>
 	);
 

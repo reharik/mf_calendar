@@ -20,13 +20,6 @@ const selectToday = () => {
 	}
 };
 
-const selectDay = (date) => {
-	return {
-		type: SELECT_DAY,
-		date: date
-	}
-};
-
 const 	viewChangedEvent = (view) => {
 	return {
 		type: VIEW_CHANGED_EVENT,
@@ -37,7 +30,6 @@ const 	viewChangedEvent = (view) => {
 export  {
 	incrementDate,
 	decrementDate,
-	selectDay,
 	selectToday, 
 	viewChangedEvent
 }

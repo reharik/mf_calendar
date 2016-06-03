@@ -1,7 +1,7 @@
 import React from 'react';
 import DaysOfMonth from './DaysOfMonth';
 
-export default  ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, selectDay}) => (
+export default  ({displayed, today, days, selectedDay, incrementMonth, decrementMonth, actions}) => (
 		<div className="month-view">
 			<div className="days-header mdl-layout__header-row mdl-shadow--1dp">
 				<ul>
@@ -14,7 +14,7 @@ export default  ({displayed, today, days, selectedDay, incrementMonth, decrement
 					<li>Saturday</li>
 				</ul>
 			</div>
-			<DaysOfMonth today={today} displayed={displayed} days={days} selectedDay={selectedDay} selectDay={selectDay}/>
+			<DaysOfMonth today={today} displayed={displayed} days={days} selectedDay={selectedDay} actions={actions}/>
 		</div>
 );
 

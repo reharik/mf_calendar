@@ -3,9 +3,11 @@
  */
 
 import { connect } from 'react-redux'
-import {getWeek, dateToMoment,buildDayWithTasks} from './../utils/calendarUtils';
-//import { bindActionCreators } from 'redux'
+import {getWeek} from './../utils/calendarUtils';
+import { bindActionCreators } from 'redux'
 import Week from './../components/Week'
+import {selectSlot, selectTask} from './../actions/eventActions';
+
 
 function mapStateToProps(state) {
     return {
@@ -15,8 +17,8 @@ function mapStateToProps(state) {
     };
 }
 
-//function mapDispatchToProps(dispatch) {
-//    return bindActionCreators({ incrementMonth, decrementMonth, selectDay }, dispatch)
-//}
+function mapDispatchToProps(dispatch) {
+    return ({actions: bindActionCreators({selectSlot, selectTask}, dispatch)})
+}
 
-export default connect(mapStateToProps)(Week);
+export default connect(mapStateToProps, mapDispatchToProps)(Week);

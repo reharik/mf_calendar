@@ -1,19 +1,13 @@
 import React from 'react';
 import Tasks from'./Tasks';
-import calendarActions from '../actions/calendarActions';
 import {taskStartsInTimeSlot, getTimesForDay} from './../utils/timeUtils';
 
-export default ({week, tasks, config}) => {
-console.log('==========config=========');
-console.log(config);
-console.log('==========END config=========');
+export default ({week, tasks, actions, config}) => {
 	var timeStrings = getTimesForDay(config);
-	console.log('==========timeStrings=========');
-	console.log(timeStrings);
-	console.log('==========END timeStrings=========');
+
 	var dayByTimeElements = (week, time, index) => week.map((day, index) =>
-		(<li key={index}>
-			<Tasks tasks={ tasksPerTime(day, time) } />
+		(<li key={index} onClick={(e) => e.target === e.currentTarget ? actions.selectSlot(day.format('M/D/YYYY'), time):''}>
+			<Tasks tasks={ tasksPerTime(day, time) } actions={actions} view="week" />
 		</li>));
 
 	var tasksPerTime = (day, time) => tasks.filter(x=> x.moment.isSame(day, 'day') && taskStartsInTimeSlot(x, time, config.increment));
