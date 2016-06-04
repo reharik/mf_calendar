@@ -47,14 +47,14 @@ $task-scheduled: #70C3FC;
     .info {
             position: absolute;
             //top: 2.5rem;
-            width: 95%;
+            //width: 95%;
     }
 
     .info > div {
 
         overflow: hidden;
         text-overflow: ellipsis;
-
+      float: left;
         h3 {
             display: inline-block;
             width: 100%;
@@ -67,17 +67,17 @@ $task-scheduled: #70C3FC;
             font-family: "Muli";
             font-weight: 400;
 
-                &.occasion {
-                    border-left: 5px solid $occasion;
-                       background: repeating-linear-gradient(
-                            -45deg,
-                            #FFEFAC,
-                            #FFEFAC 2px,
-                            white 2px,
-                            white 3px
-
-                    );
-                }
+                //&.occasion {
+                //    border-left: 5px solid $occasion;
+                //       background: repeating-linear-gradient(
+                //            -45deg,
+                //            #FFEFAC,
+                //            #FFEFAC 2px,
+                //            white 2px,
+                //            white 3px
+                //
+                //    );
+                //}
 
                 &.task {
                     border-left: 5px solid $task;
@@ -91,44 +91,44 @@ $task-scheduled: #70C3FC;
                     );
                 }
 
-                &.task.help {
-                    border-left: 5px solid $task-help;
-                       background: repeating-linear-gradient(
-                            -45deg,
-                            #FFDFDE,
-                            #FFDFDE 2px,
-                            white 2px,
-                            white 3px
-
-                    );
-                }
+                //&.task.help {
+                //    border-left: 5px solid $task-help;
+                //       background: repeating-linear-gradient(
+                //            -45deg,
+                //            #FFDFDE,
+                //            #FFDFDE 2px,
+                //            white 2px,
+                //            white 3px
+                //
+                //    );
+                //}
         }
     }
 
-    .holidays {
-            position: absolute;
-            top: 1.0rem;
-            width: 95%;
-
-            h3 {
-                margin: 0 0 0.1rem 0;
-                text-align: left;
-                font-size: 0.6rem;
-                color: black;
-                font-family: "Muli";
-                font-weight: 400;
-                padding: 0.25rem 0 0.25rem 0.5rem;
-                border-left: 5px solid $mdl-teal;
-                background: repeating-linear-gradient(
-                    -45deg,
-                    #CCEDE5,
-                    #CCEDE5 2px,
-                    white 2px,
-                    white 3px
-
-                );
-            }
-    }
+    //.holidays {
+    //        position: absolute;
+    //        top: 1.0rem;
+    //        width: 95%;
+    //
+    //        h3 {
+    //            margin: 0 0 0.1rem 0;
+    //            text-align: left;
+    //            font-size: 0.6rem;
+    //            color: black;
+    //            font-family: "Muli";
+    //            font-weight: 400;
+    //            padding: 0.25rem 0 0.25rem 0.5rem;
+    //            border-left: 5px solid $mdl-teal;
+    //            background: repeating-linear-gradient(
+    //                -45deg,
+    //                #CCEDE5,
+    //                #CCEDE5 2px,
+    //                white 2px,
+    //                white 3px
+    //
+    //            );
+    //        }
+    //}
 
     h2 {
     	font-size: 1.2rem;
@@ -232,7 +232,7 @@ $task-scheduled: #70C3FC;
         }
     }
 
-     .days-header {
+    .days-header {
         background-color: #eee;
         border-top: 1px solid #c4c4c4;
         border-bottom: 1px solid #c4c4c4;
@@ -290,66 +290,55 @@ $task-scheduled: #70C3FC;
 
     }
 
-    .week-display, .day-display {
-
-        
-
+  .week-display, .day-display {
         .time-row {
             border-bottom: 1px dotted #ddd;
+            height: 1.2rem;
+            clear:left;
 
             &:last-child {
                 border-bottom: none;
             }
-        }
+            .time {
+              float:left;
+              height: 1.2rem;
+              width: 8%;
+              text-align: right;
+              vertical-align: top;
+              font-size: 0.75rem;
+              padding-right: 0.25rem;
+              background-color: #eee;
+              border-bottom: 1px dotted white;
+            }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            line-height: 1.2;
-            margin-bottom: -0.25rem;
+            .slot {
+              height: 1.2rem;
+              width: 90%;
+              padding: 0;
+              margin: 0;
+              line-height: 1.2rem;
+              margin-bottom: -0.25rem;
+              float: left;
+                //li {
+                //  position: relative;
+                //  display: inline-block;
+                //  height: 1.2rem;
+                //  box-sizing: border-box;
+                //  border-right: 1px dotted #ddd;
+                //  width: 13.14%;
+                //  overflow: hidden;
+                //  padding: 0.05rem 0;
 
-            li {
-                position: relative;
-                display: inline-block;
-                height: 1.2rem;
-                box-sizing: border-box;
-                border-right: 1px dotted #ddd;
-                width: 13.14%;
-                overflow: hidden;
-                padding: 0.05rem 0;
-
-                &:last-child {
-                    border-right: none;
-                }
-
-                &.time {
-                    width: 8%;
-                    text-align: right;
-                    vertical-align: top;
-                    font-size: 0.75rem;
-                    padding-right: 0.25rem;
-                    background-color: #eee;
-                    border-bottom: 1px dotted white;
-                }
+                  //&:last-child {
+                  //  border-right: none;
+                  //}
+              //}
             }
         }
+
     }
 
     .day-display {
-
-        ul {
-
-            li {
-
-                width: 92%;
-
-                &.time {
-
-                    width: 8%;
-                }
-            }
-        }
     }
 
     .task-list {

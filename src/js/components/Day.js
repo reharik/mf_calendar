@@ -11,14 +11,12 @@ export default ({formattedDay, actions}) => {
 			<div className="day-display">
 				{ formattedDay.map((hour, index) =>
 					<div key={index} className="time-row">
-						<ul>
-							<li className="time">{hour.time.indexOf('00') > 0 ? hour.time : ''}</li>
-							<li onClick={(e) =>  e.target === e.currentTarget ? actions.selectSlot(hour.moment.format('M/D/YYYY'), hour.time) : ''}>
+							<div className="time">{hour.time.indexOf('00') > 0 || hour.time.indexOf('30') > 0 ? hour.time : ''}</div>
+							<div className="slot" onClick={(e) =>  e.target === e.currentTarget ? actions.selectSlot(hour.moment.format('M/D/YYYY'), hour.time) : ''}>
 								{ hour.tasks.length > 0
 									?  <Tasks tasks={hour.tasks} actions={actions} view="day"  />
 									: null }
-							</li>
-						</ul>
+							</div>
 					</div>)}
 			</div>
 		</div>)

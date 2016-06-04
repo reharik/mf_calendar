@@ -24,11 +24,19 @@ var getTimesForDay = function(config){
     var time = momentFromTime(config.startDay);
     var end =  momentFromTime(config.endDay);
     while(time.isBefore(end,'minutes', '[)')){
-        result.push(time.format("h:mm A"));
+        result.push(time.format("h:mm A"))
         time.add(config.increment, 'minutes');
     }
     return result;
 };
+
+var getHalfHoursForDay = function(config) {
+    return getTimesForDay(config).map(t=>
+    (t.indexOf('00')>0 || t.indexOf('30') >0)
+        ? t
+        : ''
+    )
+}
 
 var taskStartsInTimeSlot = function(task, time, inc) {
     return timeIsBetweenStartInc(task.startTime, time, inc);
@@ -39,5 +47,6 @@ export {
     timeIsBetween,
     timeIsBetweenStartInc,
     getTimesForDay,
-    taskStartsInTimeSlot
+    taskStartsInTimeSlot,
+    getHalfHoursForDay
 }

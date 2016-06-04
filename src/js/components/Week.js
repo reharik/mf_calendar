@@ -1,14 +1,14 @@
 import React from 'react';
 import Tasks from'./Tasks';
-import {taskStartsInTimeSlot, getTimesForDay} from './../utils/timeUtils';
+import {taskStartsInTimeSlot, getHalfHoursForDay} from './../utils/timeUtils';
 
 export default ({week, tasks, actions, config}) => {
-	var timeStrings = getTimesForDay(config);
+	var timeStrings = getHalfHoursForDay(config);
 
 	var dayByTimeElements = (week, time, index) => week.map((day, index) =>
-		(<li key={index} onClick={(e) => e.target === e.currentTarget ? actions.selectSlot(day.format('M/D/YYYY'), time):''}>
+		(<div key={index} onClick={(e) => e.target === e.currentTarget ? actions.selectSlot(day.format('M/D/YYYY'), time):''}>
 			<Tasks tasks={ tasksPerTime(day, time) } actions={actions} view="week" />
-		</li>));
+		</div>));
 
 	var tasksPerTime = (day, time) => tasks.filter(x=> x.moment.isSame(day, 'day') && taskStartsInTimeSlot(x, time, config.increment));
 
@@ -16,10 +16,8 @@ export default ({week, tasks, actions, config}) => {
 		(<div className="week-display">
 			{timeStrings.map((time, index) =>
 				<div key={index} className="time-row">
-					<ul>
-						<li className="time">{time}</li>
+						<div className="time">{time}</div>
 						{ dayByTimeElements(week, time, index)}
-					</ul>
 				</div>)}
 		</div>);
 
