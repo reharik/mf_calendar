@@ -54,7 +54,8 @@ $task-scheduled: #70C3FC;
 
         overflow: hidden;
         text-overflow: ellipsis;
-      float: left;
+        float: left;
+
         h3 {
             display: inline-block;
             width: 100%;
@@ -233,50 +234,59 @@ $task-scheduled: #70C3FC;
     }
 
     .days-header {
-        background-color: #eee;
-        border-top: 1px solid #c4c4c4;
-        border-bottom: 1px solid #c4c4c4;
+      font-weight: bold;
+      border: 1px solid #aaaaaa;
+      background: #cccccc url(./../images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+      color: #222222;
         padding: 0;
-        max-height: 40px;
+        max-height: 1.58rem;
 
         &.week {
-            
-            ul {
 
-                li {
-                    width: 13.14%;
-                }
+            div {
+              width:100%;
+              border-right: 1px solid #aaaaaa;
 
-                li.time-zone {
-                    width: 8%;
-                }
-
-
-            }
-        }
-
-        ul {
-
-            padding: 0;
-            margin: 0 auto;
-            width: 100%;
-            display: block;
-
-            li {
-                padding: 0.5rem 0;
-                display: inline-block;
-                width: 14.28%;
-                height: auto;
+              div {
                 text-align: center;
-                box-sizing: border-box;
-                font-size: 14px;
-                color: #777;
+                font-size: 1.0rem;
+                font-weight: 400;
+                width: 13%;
+                  float: left;
+
+                &.time-zone {
+                  width: 8%;
+
+                  border-right: 1px solid #aaaaaa;
+                  border-left: 1px solid #aaaaaa;
+                  border-bottom: 1px solid #aaaaaa;
+                }
+              }
 
             }
 
-            li:last-child {
-                border-right: none;
-            }
+        //ul {
+        //
+        //    padding: 0;
+        //    margin: 0 auto;
+        //    width: 100%;
+        //    display: block;
+        //
+        //    li {
+        //        display: inline-block;
+        //        width: 14.28%;
+        //        height: auto;
+        //        text-align: center;
+        //        box-sizing: border-box;
+        //        color: #222222;
+        //        font-size: 1.0rem;
+        //        font-weight: 400;
+        //
+        //    }
+        //
+        //    li:last-child {
+        //        border-right: none;
+        //    }
 
         }
 
@@ -293,30 +303,38 @@ $task-scheduled: #70C3FC;
   .week-display, .day-display {
         .time-row {
             border-bottom: 1px dotted #ddd;
-            height: 1.2rem;
+            height: 1.8rem;
             clear:left;
 
-            &:last-child {
-                border-bottom: none;
-            }
+            //&:last-child {
+            //    border-bottom: none;
+            //}
             .time {
               float:left;
-              height: 1.2rem;
+              height: 1.8rem;
+              line-height: 1.8rem;
               width: 8%;
               text-align: right;
-              vertical-align: top;
-              font-size: 0.75rem;
-              padding-right: 0.25rem;
-              background-color: #eee;
-              border-bottom: 1px dotted white;
+              font-size: 1.0rem;
+              font-weight: 400;
+              border-right: 1px solid #aaaaaa;
+              border-left: 1px solid #aaaaaa;
+              border-bottom: 1px solid #aaaaaa;
+              background: #cccccc url(./../images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+              color: #222222;
+
+              span {
+                vertical-align: middle;
+                padding-right: .5rem
+              }
             }
 
             .slot {
-              height: 1.2rem;
+              height: 1.8rem;
               width: 90%;
               padding: 0;
               margin: 0;
-              line-height: 1.2rem;
+              line-height: 1.8rem;
               margin-bottom: -0.25rem;
               float: left;
                 //li {
@@ -324,7 +342,7 @@ $task-scheduled: #70C3FC;
                 //  display: inline-block;
                 //  height: 1.2rem;
                 //  box-sizing: border-box;
-                //  border-right: 1px dotted #ddd;
+                //  border-right: 1px dotted #
                 //  width: 13.14%;
                 //  overflow: hidden;
                 //  padding: 0.05rem 0;
@@ -333,6 +351,18 @@ $task-scheduled: #70C3FC;
                   //  border-right: none;
                   //}
               //}
+            }
+
+            .week-slot {
+              border-right: 1px dotted #ddd;
+              border-bottom: 1px dotted #ddd;
+              height: 1.8rem;
+              width:  13%;
+              padding: 0;
+              //margin: 0;
+              line-height: 1.8rem;
+              margin-bottom: -0.25rem;
+              float: left;
             }
         }
 
@@ -406,54 +436,6 @@ $task-scheduled: #70C3FC;
     	}
     }
 
-    .task-search {
-    	border: 1px solid black;
-    	width: 23%;
-    	float: left;
-    	text-align: center;
-
-    	.task-search-header {
-
-    		h2 {
-    			margin: 0 0 0.5rem 0;
-    			border-bottom: 1px solid white;
-    			background-color: #00B9FF;
-    			padding: 0.5rem;
-
-    		}
-
-    	}
-
-    	input {
-    		margin: 0.5rem;
-    		width: 80%;
-    		height: 2rem;
-    		border: 2px solid #E0DFE1;
-    		border-radius: 4px;
-    		padding-left: 0.25rem;
-    	}
-
-    	h2.results {
-    		margin: 0.5rem;
-    		background-color: #50D2C2;
-    	}
-
-    	ul {
-    		text-align: left;
-    		padding: 1rem 2rem;
-    		list-style: none;
-
-    		li {
-    			border-left: 8px solid #E0DFE1;
-    			padding-left: 0.5rem;
-    			color: #919092;
-    			font-size: 1rem;
-    			margin-bottom: 0.5rem;
-    		}
-    	}
-    }
-
-
     .week {
 
         border-bottom: 1px dotted #ddd;
@@ -523,46 +505,6 @@ $task-scheduled: #70C3FC;
 	    
 	    
 	}
-
-    .login-form-box {
-        width: 30%;
-        margin: 15% auto 0;
-        border: 2px solid #00B9FF;
-        border-radius: 4px;
-
-        h1 {
-            color: white;
-            background-color: #00B9FF;
-            font-family: Muli;
-            font-weight: 400;
-            text-align: center;
-            margin-top: 0;
-        }
-
-        input {
-            width: 50%;
-            display: block;
-            margin: 0 auto 1rem;
-        }
-
-        button {
-            background-color: white;
-            border: 2px solid #00B9FF;
-            border-radius: 4px;
-            color: #00B9FF;
-            font-family: Muli;
-            font-weight: 400;
-            display: block;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        p {
-            text-align: center;
-        }
-
-    }
 }
 
 
