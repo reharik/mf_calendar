@@ -4,7 +4,19 @@
 
 import Calendar from 'node-calendar'
 import moment from 'moment';
-import {taskStartsInTimeSlot, timeIsBetweenStartInc, getTimesForDay} from './../utils/timeUtils';
+import {taskStartsInTimeSlot, timeIsBetweenStartInc, getTimesForDay, momentFromTime} from './../utils/timeUtils';
+
+var amendTasks = function(tasks, inc) {
+    return tasks.map(t => {
+        return {
+            startTime: momentFromTime(t.startTime),
+            endTime: momentFromTime(t.endTime),
+            date: moment(t.date),
+            slots: (momentFromTime(t.endTime).diff(momentFromTime(t.startTime), 'minutes')/15),
+            display : t.display
+        }
+    })
+};
 
 var dateToMoment = function(date){
     var mom = moment.isMoment(date) ? date : date ? moment(date) : moment();
@@ -22,7 +34,7 @@ var dateToMoment = function(date){
     }
 };
 
-var formatDisplay = function(mom, viewType){
+var formatHeaderDisplay = function(mom, viewType){
     if(viewType == 'month'){
         return {...mom, display:mom.date.format('MMMM') + ' ' + mom.date.year()};
     }else if(viewType == 'day'){
@@ -36,16 +48,16 @@ var formatDisplay = function(mom, viewType){
 };
 
 var increment = function(mom, viewType){
-    return formatDisplay(dateToMoment(mom.date.add(1,viewType)),viewType);
+    return formatHeaderDisplay(dateToMoment(mom.date.add(1,viewType)),viewType);
 };
 
 var decrement = function(mom, viewType){
-    return formatDisplay(dateToMoment(mom.date.subtract(1, viewType)),viewType);
+    return formatHeaderDisplay(dateToMoment(mom.date.subtract(1, viewType)),viewType);
 };
 
-var buildDayWithTasks = function(_day, events, config) {
+var matchedEvents = (day, tasks) => tasks.filter(e => e.date.isSame(day.date, 'day'));
 
-    var matchedEvents = (day, events) => events.filter(e => e.moment.isSame(day.date, 'day'));
+var buildDayWithTasks = function(_day, events, config) {
 
     var day = {..._day, tasks: matchedEvents(_day, events)};
 
@@ -70,7 +82,9 @@ export {
     dateToMoment,
     increment,
     decrement,
-    formatDisplay,
+    formatHeaderDisplay,
     buildDayWithTasks,
-    getWeek
+    getWeek,
+    amendTasks,
+    matchedEvents
 }

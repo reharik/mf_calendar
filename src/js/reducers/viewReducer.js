@@ -1,7 +1,7 @@
 /**
  * Created by rharik on 5/24/16.
  */
-import {increment, decrement,formatDisplay} from './../utils/calendarUtils'
+import {increment, decrement,formatHeaderDisplay} from './../utils/calendarUtils'
 
 import {CONFIGURE_CALENDAR, VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_TASKS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
 
@@ -31,7 +31,7 @@ const displayed = (state = dateToMoment(), action = null) => {
     }else if(action.type === DECREMENT_DATE) {
         return decrement(state, action.viewType);
     }else if (action.type === VIEW_CHANGED_EVENT) {
-        return formatDisplay(state, action.view);
+        return formatHeaderDisplay(state, action.view);
     }
     return state;
 };

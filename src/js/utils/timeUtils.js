@@ -36,10 +36,17 @@ var getHalfHoursForDay = function(config) {
         ? t
         : ''
     )
-}
+};
 
 var taskStartsInTimeSlot = function(task, time, inc) {
     return timeIsBetweenStartInc(task.startTime, time, inc);
+};
+
+var taskTimeSlots = function(task, inc){
+    var startTime = momentFromTime(task.startTime);
+    var endTime = momentFromTime(task.endTime);
+    var diff = endTime.diff(startTime, 'minutes');
+    return diff/inc;
 };
 
 export {
@@ -48,5 +55,6 @@ export {
     timeIsBetweenStartInc,
     getTimesForDay,
     taskStartsInTimeSlot,
-    getHalfHoursForDay
+    getHalfHoursForDay,
+    taskTimeSlots
 }

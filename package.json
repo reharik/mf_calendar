@@ -5,7 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ",
-    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**"
+    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**",
+    "lint": "eslint .",
+    "validate": "npm ls"
   },
   "author": "",
   "license": "ISC",
@@ -51,6 +53,12 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.0.1"
-  }
+    "redux-thunk": "^2.0.1",
+    "twix": "^1.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

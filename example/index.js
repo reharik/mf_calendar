@@ -14,29 +14,34 @@ import './../src/sass/material.min.css'
 var init = {
 	tasks: [
 		{
-			content: "fuck you!",
+			display: "fuck you!",
 			startTime: '8:00 AM',
-			moment: moment()
+			endTime:	"9:00 AM",
+			date: new Date().toISOString()
 		},
 		{
-			content: "fuck you!",
-			startTime: '8:00 AM',
-			moment: moment()
+			display: "fuck you!",
+			startTime: '8:30 AM',
+			endTime:	"9:30 AM",
+			date: new Date().toISOString()
 		},
+		// {
+		// 	display: "fuck you!",
+		// 	startTime: '8:00 AM',
+		// 	endTime:	"9:00 AM",
+		// date: new Date()
+		// },
+		// {
+		// 	display: "fuck you!",
+		// 	startTime: '8:00 AM',
+		// 	endTime:	"9:00 AM",
+		// date: new Date()
+		// },
 		{
-			content: "fuck you!",
+			display: "fuck you!",
 			startTime: '8:00 AM',
-			moment: moment()
-		},
-		{
-			content: "fuck you!",
-			startTime: '8:00 AM',
-			moment: moment()
-		},
-		{
-			content: "fuck you!",
-			startTime: '8:00 AM',
-			moment: moment()
+			endTime:	"9:00 AM",
+			date: new Date().toISOString()
 		}
 	]
 };

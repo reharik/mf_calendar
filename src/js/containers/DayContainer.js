@@ -3,14 +3,15 @@
  */
 
 import { connect } from 'react-redux'
-import {buildDayWithTasks} from './../utils/calendarUtils';
+import {buildDayWithTasks, amendTasks} from './../utils/calendarUtils';
 import { bindActionCreators } from 'redux'
 import Day from './../components/Day'
 import {selectSlot, selectTask} from './../actions/eventActions';
 
+
 function mapStateToProps(state) {
     return {
-        formattedDay: buildDayWithTasks(state.selectedDay, state.tasks, state.calendarConfig)
+        formattedDay: buildDayWithTasks(state.selectedDay, amendTasks(state.tasks, state.calendarConfig.increment), state.calendarConfig)
     };
 }
 
