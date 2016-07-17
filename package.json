@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ",
-    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**",
+    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./tests/**",
     "lint": "eslint .",
     "validate": "npm ls"
   },

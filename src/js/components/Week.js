@@ -10,8 +10,7 @@ export default ({week, tasks, actions, config}) => {
 
 	var dayByTimeElements = (week, time, index) => week.map((day, index) => {
 		var clickEvent = (e) => e.target === e.currentTarget ? actions.selectSlot(day.format('M/D/YYYY'), time):'';
-		var currentTasks = determineWidthOfTask(tasks, day);
-		var slotTasks = tasksPerTime(day, time, currentTasks);
+		var slotTasks = tasksPerTime(day, time, tasks);
 
 		return (<div key={index} className="week-slot" onClick={clickEvent} >
 			<Tasks tasks={ slotTasks } actions={actions} view="week"/>

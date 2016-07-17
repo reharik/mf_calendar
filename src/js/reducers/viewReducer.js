@@ -1,6 +1,8 @@
 /**
  * Created by rharik on 5/24/16.
  */
+import uuid from 'uuid';
+
 import {increment, decrement,formatHeaderDisplay} from './../utils/calendarUtils'
 
 import {CONFIGURE_CALENDAR, VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_TASKS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
@@ -14,7 +16,9 @@ const updateTasks = data => data.tasks.map(item => {
         help: item.help,
         moment: moment(item.date),
         time: moment(item.date).format('h:mm a'),
-        hour: moment(item.date).format('h a')
+        hour: moment(item.date).format('h a'),
+        id: item.id || uuid.v4(),
+        color: item.color
     }
 });
 

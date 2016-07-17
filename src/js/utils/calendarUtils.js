@@ -12,8 +12,10 @@ var amendTasks = function(tasks, inc) {
             startTime: momentFromTime(t.startTime),
             endTime: momentFromTime(t.endTime),
             date: moment(t.date),
-            slots: (momentFromTime(t.endTime).diff(momentFromTime(t.startTime), 'minutes')/15),
-            display : t.display
+            slots: (momentFromTime(t.endTime).diff(momentFromTime(t.startTime), 'minutes')/inc),
+            display : t.display,
+            id: t.id,
+            color: t.color
         }
     })
 };
