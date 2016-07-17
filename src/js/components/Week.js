@@ -6,14 +6,19 @@ import {determineWidthOfTask} from './../utils/taskUtils';
 export default ({week, tasks, actions, config}) => {
 	var timeStrings = getHalfHoursForDay(config);
 
-	var tasksPerTime = (day, time, currentTasks) => currentTasks.filter(x=> taskStartsInTimeSlot(x, time, config.increment));
 
 	var dayByTimeElements = (week, time, index) => week.map((day, index) => {
 		var clickEvent = (e) => e.target === e.currentTarget ? actions.selectSlot(day.format('M/D/YYYY'), time):'';
-		var slotTasks = tasksPerTime(day, time, tasks);
-
+		var tasksForSlot = tasks.filter(task => task.date.isSame(day, 'day') && taskStartsInTimeSlot(task, time, config.increment));
+		if(tasksForSlot.length>0) {
+			console.log('==========slogTasks=========');
+			tasksForSlot.forEach(x=> {
+				console.log(JSON.stringify(x, null, 4));
+			})
+			console.log('==========END slogTasks=========');
+		}
 		return (<div key={index} className="week-slot" onClick={clickEvent} >
-			<Tasks tasks={ slotTasks } actions={actions} view="week"/>
+			<Tasks tasks={ tasksForSlot } actions={actions} view="week"/>
 		</div>);
 	});
 

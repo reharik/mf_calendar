@@ -12,9 +12,6 @@ import {selectSlot, selectTask} from './../actions/eventActions';
 
 function mapStateToProps(state) {
     var f = process(amendTasks(state.tasks, state.calendarConfig.increment));
-    console.log('==========f=========');
-    console.log(f);
-    console.log('==========END f=========');
     return {
         week: getWeek(state.selectedDay),
         tasks: f,

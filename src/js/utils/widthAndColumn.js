@@ -1,9 +1,6 @@
 import firstBy from 'thenby';
 
 const process = (apts) => {
-    console.log('==========apts=========');
-    console.log(apts);
-    console.log('==========END apts=========');
     var events = [];
     apts.forEach(x => {
         events.push({type: 'startTime', value: x.startTime.unix(), id: x.id});
@@ -31,14 +28,8 @@ const process = (apts) => {
     const cloneAndRemove = (apts, prev = [], e) => {
         var next = prev.slice(0);
         next.filter(x => x.id === e.id).forEach(x => {
-            console.log('==========x=========');
-            console.log(x);
-            console.log('==========END x=========');
             x.status = 'available';
             var target = apts.find(a => a.id === x.id);
-            console.log('==========target=========');
-            console.log(target);
-            console.log('==========END target=========');
             target.width = x.width;
             target.column = x.column;
         });
@@ -56,9 +47,6 @@ const process = (apts) => {
     };
 
     sortedEvents.forEach(e => handleEvent(e, apts, workingSet));
-    console.log('==========apts=========');
-    console.log(apts);
-    console.log('==========END apts=========');
     return apts;
 };
 
