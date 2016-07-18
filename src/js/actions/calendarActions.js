@@ -1,59 +1,36 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var appConstants = require('../constants/appConstants');
+import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, SELECT_DAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
 
-var calendarActions = {
-	changeFilter: function(filter) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.CHANGE_FILTER,
-			data: filter
-		});
-
-	},
-	changeSearch: function(search) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.CHANGE_SEARCH,
-			data: search
-		});
-	},
-	selectDay: function(day) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.SELECT_DAY,
-			data: day
-		});
-	},
-	login: function(credentials) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.LOGIN_REQUEST,
-			data: credentials
-		});
-		
-	},
-	receiveLogin: function(json, errors) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.LOGIN_RESPONSE,
-			json: json,
-			errors: errors
-		});
-	},
-	receiveEvents: function(json, errors) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.RECEIVE_EVENTS,
-			json: json,
-			errors: errors
-		})
-	},
-	changeDisplay: function(day) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.CHANGE_DISPLAY,
-			data: day
-		});
-	},
-	changeButton: function(selection) {
-		AppDispatcher.dispatch({
-			actionType: appConstants.ActionTypes.CHANGE_BUTTON,
-			data: selection
-		});
+const incrementDate = (viewType) => {
+	return {
+		type: INCREMENT_DATE,
+		viewType
 	}
 };
 
-module.exports = calendarActions;
+const decrementDate = (viewType) => {
+	return {
+		type: DECREMENT_DATE,
+		viewType
+	}
+};
+
+const selectToday = () => {
+	return {
+		type: SELECT_TODAY
+	}
+};
+
+const 	viewChangedEvent = (view) => {
+	return {
+		type: VIEW_CHANGED_EVENT,
+		view
+	}
+};
+
+export  {
+	incrementDate,
+	decrementDate,
+	selectToday, 
+	viewChangedEvent
+}
+

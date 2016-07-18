@@ -1,75 +1,46 @@
-var Occasions = require('./Occasions');
-var Tasks = require('./Tasks');
-var calendarActions = require('../actions/calendarActions');
+import React from 'react'
+import Tasks from'./Tasks';
 
-var DaysOfMonth = React.createClass({
-	handleSelectDay: function(day) {
-		calendarActions.selectDay(day);
-	},
-	render: function() {
-		var self = this;
-		var days = this.props.days.map(function(week) {
-
-			var newWeek = week.map(function(day, index) {
-
-				var classes="day";
-
-				if(self.props.today.year == day.year && self.props.today.month == day.month && self.props.today.dayIndex == day.dayIndex) {
-					classes += ' today';
-				}
-
-				if (self.props.selectedDay.year == day.year && self.props.selectedDay.month == day.month && self.props.selectedDay.dayIndex == day.dayIndex) {
-					classes += ' selected';
-				}
-				if ((index + 1) % 7 == 0) {
-					classes += ' last';
-				}
-
-				if(day.holiday) {
-					var holidays = (<div className="holidays">
-										<h3>{day.holiday}</h3>
-									</div>
-						)
-				}
-
-				if(day.month != self.props.displayed.month) {
-					classes += ' other-month';
-				}
-
-				var sortedTasks = day.tasks.sort(function(a, b) {
-					return (a.moment.isBefore(b.moment) ? -1 : 1)
-				});
-
-
-
-				return (<div key={index} className={classes} onClick={self.handleSelectDay.bind(null, day)}>
-							<span className="num">{day.dayIndex}</span>
-							{holidays}
-							<div className="info">
-								<Occasions occasions={sortedTasks} filter={self.props.filter}/>
-								<Tasks tasks={sortedTasks} filter={self.props.filter}/>
-							</div>
-						</div>
-					)
-
-
-
-			});
-
-			return (
-					<div className="week">
-						{newWeek}
-					</div>
-				)
-			
-		
-		});
-		return(
-			<div>
-				{days}
-			</div>
-		)
+var	buildClasses = function(day, today, selectedDay, displayed, index) {
+	var classes = "day";
+	if (today.date.isSame(day, 'day')) {
+		classes += ' today';
 	}
-});
 
-module.exports = DaysOfMonth;
+	if (selectedDay.date.isSame(day, 'day')) {
+		classes += ' selected';
+	}
+	if ((index + 1) % 7 == 0) {
+		classes += ' last';
+	}
+
+	if (day.month != displayed.month) {
+		classes += ' other-month';
+	}
+	return classes;
+};
+
+export default ({days, today, selectedDay, displayed, actions}) => {
+	
+	var renderDay = (day, index) => (
+		<div key={index}
+			 className={buildClasses(day, today, selectedDay, displayed, index)}
+			 onClick={(e) => e.target === e.currentTarget ? actions.selectSlot(day.date.format('M/D/YYYY')):''} >
+			<span className="num">{day.dayIndex}</span>
+			<Tasks tasks={day.tasks} actions={actions} view="month" />
+		</div>
+	);
+
+	var renderWeek = (week, index) => (
+		<div className="week" key={index}>
+			{ week.map(renderDay) }
+		</div>
+	);
+	
+	return (
+		<div>
+			{ days.map(renderWeek) }
+		</div>
+	);
+}
+

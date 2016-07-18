@@ -1,37 +1,14 @@
-var Tasks = React.createClass({
-	render: function() {
-		var self = this;
-		if (this.props.tasks.length > 0) {
-			var tasks = this.props.tasks.map(function(task) {
-				if(task.category == "task") {
 
-					if (task.help == true) {
-						return (
-						<h3 className={self.props.filter.helpShown ? 'task help' : 'task help hidden'}>{task.content}</h3>
-						)
-					}
-					else {
-						return (
-						<h3 className={self.props.filter.needsMetShown ? 'task' : 'task hidden'}>{task.content}</h3>
-						)
-					}
-				
+import React from 'react';
+import {taskTimeSlots} from './../utils/timeUtils'
 
-				}
-				
-			});
+export default ({tasks, actions, view}) => (<div className="info">
+			{ tasks.map((t, index)=> (<div key={index}
+					style={{width: t.width +'%',
+							marginLeft: tasks.length>1 ? '0' : t.column + '%',
+							backgroundColor:t.color}} onClick={() => actions.selectTask(t, view)}>
+				<h3 style={{height:1.8 * t.slots +'rem'}} className='task'> {t.display}</h3>
+			</div>))}
+		</div>);
 
-		}
-		else {
-			var tasks = [];
-		}
-	
-		return (
-			<div>
-				{tasks}
-			</div>
-		)
-	}
-})
 
-module.exports = Tasks;
