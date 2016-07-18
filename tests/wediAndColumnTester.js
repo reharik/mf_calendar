@@ -23,8 +23,8 @@ describe('WIDTH AND COLUMN TESTER', function() {
 
         it('should_return_apts_with_proper_width_and_column', () => {
             var result = mut.process(apts);
-            result[0].width.should.equal(1);
-            result[0].column.should.equal(1);
+            result[0].width.should.equal(99);
+            result[0].column.should.equal(0);
         })
     });
 
@@ -37,10 +37,10 @@ describe('WIDTH AND COLUMN TESTER', function() {
 
         it('should_return_apts_with_proper_width_and_column', () => {
             var result = mut.process(apts);
-            result[0].width.should.equal(1);
-            result[0].column.should.equal(1);
-            result[1].width.should.equal(2);
-            result[1].column.should.equal(2);
+            result[0].width.should.equal(49);
+            result[0].column.should.equal(0);
+            result[1].width.should.equal(49);
+            result[1].column.should.equal(49);
         })
     });
 
@@ -54,12 +54,31 @@ describe('WIDTH AND COLUMN TESTER', function() {
 
         it('should_return_apts_with_proper_width_and_column', () => {
             var result = mut.process(apts);
-            result[0].width.should.equal(1);
-            result[0].column.should.equal(1);
-            result[1].width.should.equal(2);
-            result[1].column.should.equal(2);
-            result[2].width.should.equal(3);
-            result[2].column.should.equal(1);
+            result[0].width.should.equal(49);
+            result[0].column.should.equal(0);
+            result[1].width.should.equal(49);
+            result[1].column.should.equal(49);
+            result[2].width.should.equal(49);
+            result[2].column.should.equal(0);
         })
-    })
+    });
+
+    describe('when calling with three overlapping', () => {
+        var apts = [];
+        beforeEach(() => {
+            apts.push({startTime: moment(), endTime: moment().add(1,'hour'), id:uuid.v4()});
+            apts.push({startTime: moment().add(30,'minutes'), endTime: moment().add(90,'minutes'), id:uuid.v4()});
+            apts.push({startTime: moment().add(30,'minutes'), endTime: moment().add(90,'minutes'), id:uuid.v4()});
+        });
+
+        it('should_return_apts_with_proper_width_and_column', () => {
+            var result = mut.process(apts);
+            result[0].width.should.equal(32);
+            result[0].column.should.equal(0);
+            result[1].width.should.equal(32);
+            result[1].column.should.equal(32);
+            result[2].width.should.equal(32);
+            result[2].column.should.equal(64);
+        })
+    });
 });
