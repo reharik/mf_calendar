@@ -1,9 +1,5 @@
-/**
- * Created by rharik on 5/25/16.
- */
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import Header from './../components/Header'
 import { selectToday, viewChangedEvent, incrementDate, decrementDate} from './../actions/calendarActions';
 import { formatHeaderDisplay } from './../utils/calendarUtils'
@@ -15,8 +11,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ selectToday, viewChangedEvent, incrementDate, decrementDate }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, { selectToday, viewChangedEvent, incrementDate, decrementDate })(Header);
