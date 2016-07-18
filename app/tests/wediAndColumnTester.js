@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var moment = require('moment');
 var uuid = require('uuid');
 
-var mut = require('../src/js/utils/widthAndColumn');
+var mut = require('./src/utils/widthAndColumn');
 
 describe('WIDTH AND COLUMN TESTER', function() {
     describe('when calling with empty set', () => {

@@ -4,7 +4,7 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import calendarReducers from './../../src/js/reducers/viewReducer'
+import calendarReducers from '../../app/src/reducers/viewReducer'
 
 // var calReducers = calendarReducers();
 console.log(calendarReducers);

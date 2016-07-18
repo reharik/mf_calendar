@@ -6,7 +6,7 @@ import React from 'react'
 import DisplayHeader from './DisplayHeader';
 
 export default ({calendarView, selectToday, caption, viewChangedEvent, incrementDate, decrementDate}) => {
-    var classes = ' mdl-button mdl-js-button lt-sub-btn-md mdl-js-ripple-effect';
+    var classes = ' mdl-button mdl-src-button lt-sub-btn-md mdl-src-ripple-effect';
     var dayClasses = (calendarView === 'day' ? 'active' : '') + classes;
     var weekClasses = (calendarView === 'week' ? 'active' : '') + classes;
     var monthClasses = (calendarView === 'month' ? 'active' : '') + classes;
