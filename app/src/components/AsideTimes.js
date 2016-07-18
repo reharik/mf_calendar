@@ -5,11 +5,11 @@ export default ({times}) => (
     <aside>
         <ol className="week__times__row">
             <li>
-                <div className="week__day__name__item"><span>{dayName}</span></div>
+                <div className="week__day__name__item"></div>
             </li>
             {times.map(time =>
-                <li>
-                    <div className="week_times_row_item"><span>{time}</span></div>
+                <li key={time}>
+                    <div className="week_times_row_item">{time}</div>
                 </li>
             )}
         </ol>

@@ -8,10 +8,10 @@ import App from './components/App';
 import moment from 'moment'
 import uuid from 'uuid';
 
-import '../app/sass/app.scss'
+// import '../app/sass/app.scss'
 // import './sass/app.css'
 // import './sass/external-app.css'
-import '../app/sass/material.min.css'
+// import '../app/sass/material.min.css'
 var init = {
 	tasks: [
 		{

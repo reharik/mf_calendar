@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { WeekDays } from './../components/WeekDays'
+import  WeekDays  from './../components/WeekDays'
 import Calendar from 'node-calendar'
 import moment from 'moment';
 

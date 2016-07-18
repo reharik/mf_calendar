@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './../containers/HeaderContainer'
 import Month from './../containers/MonthContainer';
-import Week from './../containers/WeekContainer';
+import Week from './../components/Week';
 import Day from './../containers/DayContainer';
 
 export default ({calendarView}) => {

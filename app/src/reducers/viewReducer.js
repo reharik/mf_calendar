@@ -5,7 +5,10 @@ import uuid from 'uuid';
 
 import {increment, decrement,formatHeaderDisplay} from './../utils/calendarUtils'
 
+import { momentFromTime } from './../utils/timeUtils';
 import {CONFIGURE_CALENDAR, VIEW_CHANGED_EVENT, SELECT_DAY, SELECT_TODAY, RECEIVE_TASKS, INCREMENT_DATE, DECREMENT_DATE } from './../constants/actionConstants'
+
+import moment from 'moment';
 
 import {dateToMoment} from './../utils/calendarUtils'
 
@@ -59,6 +62,13 @@ const recievedTasks = (state = [], action = null) => {
 
 const calendarConfig = (state= {}, action = null) => {
     if(action.type === CONFIGURE_CALENDAR){
+        if(action.config.startDay && !moment.isMoment(action.config.startDay)){
+            action.config.startDay = momentFromTime(action.config.startDay);
+        }
+        if(action.config.endDay && !moment.isMoment(action.config.endDay)){
+            action.config.endDay = momentFromTime(action.config.endDay)
+        }
+
         return Object.assign({}, state, action.config || {});
     }
     return state;

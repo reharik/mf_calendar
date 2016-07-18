@@ -2,7 +2,7 @@ import React from 'react'
 import AsideTimesContainer from './../containers/AsideTimesContainer';
 import WeekDaysContainer from './../containers/WeekDaysContainer';
 
-export default ({times, dayName}) => (
+export default () => (
     <div>
         <AsideTimesContainer />
         <WeekDaysContainer />

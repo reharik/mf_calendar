@@ -54,6 +54,7 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "thenby": "^1.2.1",
     "twix": "^1.0.0"
   },
   "pre-commit": [

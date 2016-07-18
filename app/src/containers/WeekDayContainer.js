@@ -1,18 +1,20 @@
 import { connect } from 'react-redux'
-import { WeekDay } from './../components/WeekDay'
+import  WeekDay  from './../components/WeekDay';
+import moment from 'moment';
 
 var getTimesForDay = function(config){
     var result = [];
-    while(config.startDay.isBefore(config.endDay,'minutes', '[)')){
-        result.push(config.startDay.format("h:mm A"))
-        config.startDay.add(config.increment, 'minutes');
+    var start = config.startDay.clone();
+    while(start.isBefore(config.endDay,'minutes', '[)')){
+        result.push(start.format("h:mm A"))
+        start.add(config.increment, 'minutes');
     }
     return result;
 };
 
 function mapStateToProps(state, ownProps) {
     return {
-        times: state.calendarConfig,
+        times: getTimesForDay(state.calendarConfig),
         dayName: ownProps.date.format('dddd')
     }
 }
