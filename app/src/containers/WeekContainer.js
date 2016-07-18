@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import {getWeek, amendTasks} from './../utils/calendarUtils';
 import {process} from './../utils/widthAndColumn';
 import { bindActionCreators } from 'redux'
-import Week from './../components/Week'
+import Week from '../components/Week2'
 import {selectSlot, selectTask} from './../actions/eventActions';
 
 
