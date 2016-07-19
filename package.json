@@ -55,7 +55,8 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
     "thenby": "^1.2.1",
-    "twix": "^1.0.0"
+    "twix": "^1.0.0",
+    "uuid": "^2.0.2"
   },
   "pre-commit": [
     "lint",

@@ -9,14 +9,13 @@ export default ({calendarView, selectToday, caption, viewChangedEvent, increment
     var monthClasses = (calendarView === 'month' ? 'active' : '') + classes;
 
     return (
-        <header className="mdl-layout__header cal-top">
-            <selection>
+        <header className="calendar__header">
+            <HeaderDateNav viewType={calendarView} increment={incrementDate} decrement={decrementDate} selectToday={selectToday} />
+            <h2>{caption}</h2>
+            <selection className="calendar__header__view__nav" >
                 <button onClick={() => viewChangedEvent("day")} className={dayClasses}>Day</button>
                 <button onClick={() => viewChangedEvent("week")} className={weekClasses}>Week</button>
                 <button onClick={() => viewChangedEvent("month")} className={monthClasses}>Month</button>
-                <h6 onClick={() => selectToday()}>Today</h6>
-                <HeaderDateNav caption={caption} viewType={calendarView} increment={incrementDate} decrement={decrementDate} />
-                <div></div>
             </selection>
         </header>
     );

@@ -1,4 +1,4 @@
-var path = require('path');
+var path = require('path')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -19,8 +19,8 @@ const config = {
     module   : {
         noParse:[],
         loaders: [
-            { test   : /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']}
-            // { test: /\.css$/, loader: 'style-loader!css-loader?sourceMap' },
+            { test   : /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']},
+            { test: /\.css$/, loader: 'style-loader!css-loader?sourceMap' },
             // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
             // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
