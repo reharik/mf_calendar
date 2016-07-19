@@ -9,9 +9,10 @@ import moment from 'moment'
 import uuid from 'uuid';
 
 // import '../app/sass/app.scss'
-// import './sass/app.css'
-// import './sass/external-app.css'
+// import './sass/structural.css'
+// import './sass/external-structural.css'
 // import '../app/sass/material.min.css'
+
 var init = {
 	tasks: [
 		{

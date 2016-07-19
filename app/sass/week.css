@@ -1,0 +1,17 @@
+
+.display__view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.week__times__row {
+}
+
+.week__days {
+    display: flex;
+    flex-flow: row nowrap;
+
+}

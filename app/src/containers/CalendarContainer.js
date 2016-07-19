@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 import Calendar from './../components/Calendar'
 import defaultConfigs from './../defaultConfigs';
 import {CONFIGURE_CALENDAR} from './../constants/actionConstants'
-import normalizer from './../../sass/normalize.css'
-import appCss from './../../sass/app.css'
+import './../../sass/index.css'
 
 function mapStateToProps(state, ownProps) {
     var calendarConfig = Object.assign({}, defaultConfigs, ownProps.config);
