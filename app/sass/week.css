@@ -1,17 +1,31 @@
 
 .display__view {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .week__times__row {
 }
 
 .week__days {
-    display: flex;
-    flex-flow: row nowrap;
+}
 
+.week_times_row_item {
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    background:#e6e6e6;
+    border-radius:3px;
+    border:1px solid #b1b0b1;
+    color: #555555;
+}
+
+.week__day__name__item {
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    background:#e6e6e6;
+    border-radius:3px;
+    border:1px solid #b1b0b1;
+    color: #555555;
+}
+
+.week__day__time__slot {
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    border:1px solid #b1b0b1;
+    color: #555555;
 }

@@ -28,3 +28,16 @@ ol {
 .header__date__nav {
     display: flex;
 }
+
+.display__view {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.week__days {
+    display: flex;
+    flex-flow: row nowrap;
+
+}
