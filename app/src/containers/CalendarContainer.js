@@ -7,9 +7,6 @@ import Calendar from './../components/Calendar'
 import defaultConfigs from './../defaultConfigs';
 import {CONFIGURE_CALENDAR} from './../constants/actionConstants'
 import './../../sass/index.css'
-import './../../sass/structural.css';
-import './../../sass/header.css';
-import './../../sass/week.css';
 
 function mapStateToProps(state, ownProps) {
     var calendarConfig = Object.assign({}, defaultConfigs, ownProps.config);

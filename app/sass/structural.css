@@ -34,10 +34,22 @@ ol {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    flex-grow:1;
 }
-
 .week__days {
     display: flex;
     flex-flow: row nowrap;
+}
 
+.week__day__items {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow:1;
+}
+
+.week__day__items__slot {
+    display: flex;
+    flex-flow: column nowrap;
 }

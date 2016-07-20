@@ -2,15 +2,13 @@
 import React from 'react'
 
 export default ({times}) => (
-    <aside>
-        <ol className="week__times__row">
-            <li>
-                <div className="week__day__name__item">&nbsp;</div>
+        <ol className="week__times__column">
+            <li className="week__times__column__item">
+                <div >&nbsp;</div>
             </li>
             {times.map(time =>
-                <li key={time}>
-                    <div className="week_times_row_item">{time}</div>
+                <li className="week__times__column__item" key={time}>
+                    <div >{time}</div>
                 </li>
             )}
-        </ol>
-    </aside>)
+        </ol>)
