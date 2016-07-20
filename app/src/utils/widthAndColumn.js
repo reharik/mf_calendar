@@ -1,6 +1,7 @@
 import firstBy from 'thenby';
+import moment from 'moment';
 
-const process = (apts) => {
+const process = (apts, date) => {
     var events = [];
     var workingSet = [];
     var widthOffset = 1;

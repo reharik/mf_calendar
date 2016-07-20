@@ -12,7 +12,6 @@ import uuid from 'uuid';
 // import './sass/structural.css'
 // import './sass/external-structural.css'
 // import '../app/sass/material.min.css'
-
 var init = {
 	tasks: [
 		{

@@ -2,13 +2,12 @@
 import React from 'react'
 
 export default ({times}) => (
-        <ol className="week__times__column">
-            <li className="week__times__column__item">
+        <ol className="times__column">
+            <li className="times__column__spacer__item">
                 <div >&nbsp;</div>
             </li>
-            {times.map(time =>
-                <li className="week__times__column__item" key={time}>
-                    <div >{time}</div>
-                </li>
+            {times.map(timeObj => (<li className={timeObj.classes} key={timeObj.time}>
+                        <div >{timeObj.display}</div>
+                    </li>)
             )}
         </ol>)

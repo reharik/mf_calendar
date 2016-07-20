@@ -8,7 +8,7 @@ export default ({viewType, increment, decrement, selectToday}) => (
 		<button className="header__date__nav__button" onClick={() => increment(viewType)}>
 			<i>{'>'}</i>
 		</button>
-		<div className="header__date__nav__today" onClick={() => selectToday()}>Today</div>
-	</div>				
+		<button className="header__date__nav__button" onClick={() => selectToday()}>Today</button>
+	</div>
 );
 

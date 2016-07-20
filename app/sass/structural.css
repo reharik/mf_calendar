@@ -11,14 +11,22 @@ html, body {
 
 ol {
     list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.app {
+    display: flex;
+    flex-flow: column nowrap;
+    width:100%;
 }
 
 .header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
+    width:100%;
 }
 
 .header__view__nav {
@@ -27,29 +35,50 @@ ol {
 
 .header__date__nav {
     display: flex;
+    justify-content: space-around;
+}
+
+.header__date__nav__today {
+    align-self: center;
 }
 
 .display__view {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    flex-grow:1;
+    width:100%;
+    margin-top:5px;
 }
+
+.week {
+    display: flex;
+    justify-content:center;
+    width:100%;
+}
+
+.times__column {
+    width:9%
+}
+
 .week__days {
     display: flex;
-    flex-flow: row nowrap;
-}
+    width:80%
 
-.week__day__items {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
+}
+.week__day {
     flex-grow:1;
 }
 
-.week__day__items__slot {
+.day__items {
     display: flex;
-    flex-flow: column nowrap;
+    width:80%
 }
+
+.day__items__slot {
+    flex-grow:1;
+}
+
+.day {
+    display: flex;
+    justify-content:center;
+    width:100%;
+}
+

@@ -1,24 +1,29 @@
 
 .header {
-    border-bottom: black solid 1px;
+    height:28px;
+    margin-top:20px
+}
+
+.header__date__nav {
+    width: 100px;
 }
 
 .header__date__nav__button {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-     background:#e6e6e6;
+    background:linear-gradient(to top, #cccccc 34%, #dddddd 100%);
     border-radius:3px;
-    border:1px solid #b1b0b1;
+    border:1px solid #dadada;
     cursor:pointer;
     color: #555555;
-    height: 30px;
+    height: 28px;
+    font-size:13px;
+    font-weight:bold;
 }
 .header__date__nav__button:hover {
-   background:#bababa;
-        border:1px solid #999999;
 }
 .header__date__nav__button:active {
-    background:#bababa;
-    border:1px solid #999999;
+    position:relative;
+    top:1px;
 }
 
 .header__date__nav__today {
@@ -29,19 +34,19 @@ color:blue;
 
 .header__view__nav_button {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-    background:#e6e6e6;
+    background:linear-gradient(to top, #cccccc 34%, #dddddd 100%);
     border-radius:3px;
-    border:1px solid #b1b0b1;
+    border:1px solid #b2b8ad;
     cursor:pointer;
     color: #555555;
-    height: 30px;
+    height: 28px;
+    font-size:13px;
+    font-weight:bold;
 }
 
 .header__view__nav_button:hover {
-    background: #bababa;
-    border: 1px solid #999999;
-}
+    }
 .header__view__nav_button .active {
-    background:#bababa;
-        border:1px solid #999999;
+    position:relative;
+    top:1px;
 }

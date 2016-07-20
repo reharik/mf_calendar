@@ -1,16 +1,24 @@
 import React from 'react'
 import  WeekDayName from './../components/WeekDayName';
-import  WeekDayTime from './../components/WeekDayTime';
+import  Tasks from './../components/Tasks';
+var moment = require('moment');
 
 
-export default ({times, dayName}) => (
-        <ol className="week__day__items">
-            <li className="week__day__items__name">
-                <WeekDayName name={dayName} />
+export default ({view, tasks, times, dayName, selectSlot, selectTask}) => {
+    var thisView = view === 'week' ? 'week__' : '';
+    var getTasksForTime = (tasks, time) => tasks.filter(x => x.startTime.format('H:mm A') === time);
+   console.log('==========thisView=========');
+   console.log(view);
+   console.log('==========END thisView=========');
+    return (
+        <ol className={thisView + "day__items"}>
+            <li className={thisView + "day__items__name"}>
+                <WeekDayName name={dayName} view={thisView} />
             </li>
-            {times.map(time =>
-                <li className="week__day__items__slot" key={time}>
-                    <WeekDayTime time={time} />
-                </li>
-            )}
-        </ol>)
+            {times.map(timeObj => (<li className={timeObj.classes} key={timeObj.time}>
+                <div onClick={selectSlot}>
+                    <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={selectTask} />
+                </div>
+            </li>))}
+        </ol>);
+}

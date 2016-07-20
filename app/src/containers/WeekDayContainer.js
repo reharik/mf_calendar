@@ -1,22 +1,34 @@
 import { connect } from 'react-redux'
 import  WeekDay  from './../components/WeekDay';
 import moment from 'moment';
+import {process} from './../utils/widthAndColumn';
+import {selectSlot, selectTask} from './../actions/eventActions';
+import {amendTasks} from './../utils/calendarUtils';
 
-var getTimesForDay = function(config){
+var getTimesForDay = function(config, view){
+    var thisView = view === 'week' ? 'week__' : '';
     var result = [];
     var start = config.startDay.clone();
+    var hourMoment = moment().startOf('hour');
     while(start.isBefore(config.endDay,'minutes', '[)')){
-        result.push(start.format("h:mm A"))
+        var isHour = start.format("mm") === hourMoment.format("mm");
+        var classes = thisView + 'day__items__slot ';
+        classes = isHour ? classes + thisView +'hour__breaks' : classes;
+        result.push({time:start.format("h:mm A"), isHour, classes});
         start.add(config.increment, 'minutes');
     }
     return result;
 };
 
 function mapStateToProps(state, ownProps) {
+    var day = ownProps.date || state.selectedDate || moment();
+    var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
     return {
-        times: getTimesForDay(state.calendarConfig),
-        dayName: ownProps.date.format('dddd')
+        view: state.calendarView.view,
+        tasks: process(amendTasks(state.tasks.filter(filterToday), state.calendarConfig.increment)),
+        times: getTimesForDay(state.calendarConfig, state.calendarView.view),
+        dayName: day.format('dddd')
     }
 }
 
-export default connect(mapStateToProps)(WeekDay);
+export default connect(mapStateToProps, { selectSlot, selectTask })(WeekDay);

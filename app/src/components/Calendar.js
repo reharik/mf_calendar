@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './../containers/HeaderContainer'
 import Month from './../containers/MonthContainer';
 import Week from './../components/Week';
-import Day from './../containers/DayContainer';
+import Day from './../components/Day';
 
 export default ({calendarView}) => {
 	var view = <Month />;
@@ -16,7 +16,9 @@ export default ({calendarView}) => {
 	}
 	return (<div className="app">
 		<Header />
-		<div>{ view }</div>
+		<div className="display__view">
+			{ view }
+		</div>
 	</div>);
 }
 

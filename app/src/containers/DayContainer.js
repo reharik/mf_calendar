@@ -5,7 +5,7 @@
 import { connect } from 'react-redux'
 import {buildDayWithTasks, amendTasks} from './../utils/calendarUtils';
 import { bindActionCreators } from 'redux'
-import Day from './../components/Day'
+import Day from '../components/Day2'
 import {selectSlot, selectTask} from './../actions/eventActions';
 
 

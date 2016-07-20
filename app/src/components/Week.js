@@ -3,7 +3,7 @@ import AsideTimesContainer from './../containers/AsideTimesContainer';
 import WeekDaysContainer from './../containers/WeekDaysContainer';
 
 export default () => (
-    <div className="display__view">
+    <div className="week">
         <AsideTimesContainer />
         <WeekDaysContainer />
     </div>
