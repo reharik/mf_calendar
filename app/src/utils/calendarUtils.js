@@ -9,9 +9,6 @@ import {taskStartsInTimeSlot, timeIsBetweenStartInc, getTimesForDay, momentFromT
 var amendTasks = function(tasks, inc) {
     return tasks.map(t => {
         return {
-            startTime: momentFromTime(t.startTime),
-            endTime: momentFromTime(t.endTime),
-            date: moment(t.date),
             slots: (momentFromTime(t.endTime).diff(momentFromTime(t.startTime), 'minutes')/inc),
             display : t.display,
             id: t.id,

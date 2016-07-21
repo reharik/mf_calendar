@@ -1,0 +1,14 @@
+
+.task__item {
+    border-radius: 3px;
+}
+
+.month__task__item {
+    border-radius: 3px;
+}
+
+.task__item__display {
+    font-size: 10px;
+    color: white;
+    padding:3px;
+}

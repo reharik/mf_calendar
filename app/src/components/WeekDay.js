@@ -4,14 +4,13 @@ import  Tasks from './../components/Tasks';
 var moment = require('moment');
 
 
-export default ({view, tasks, times, dayName, selectSlot, selectTask}) => {
+export default ({view, tasks, times, dayName, isToday, selectSlot, selectTask}) => {
     var thisView = view === 'week' ? 'week__' : '';
+    var olClass = thisView + "day__items";
+    olClass = isToday ? olClass + ' ' + thisView + 'day__isToday' : olClass;
     var getTasksForTime = (tasks, time) => tasks.filter(x => x.startTime.format('H:mm A') === time);
-   console.log('==========thisView=========');
-   console.log(view);
-   console.log('==========END thisView=========');
     return (
-        <ol className={thisView + "day__items"}>
+        <ol className={olClass}>
             <li className={thisView + "day__items__name"}>
                 <WeekDayName name={dayName} view={thisView} />
             </li>

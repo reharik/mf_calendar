@@ -14,9 +14,9 @@ export default ({calendarView}) => {
 			view = <Day />;
 			break;
 	}
-	return (<div className="app">
+	return (<div className="calendar">
 		<Header />
-		<div className="display__view">
+		<div className="calendar__display__view">
 			{ view }
 		</div>
 	</div>);

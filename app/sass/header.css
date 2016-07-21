@@ -4,6 +4,12 @@
     margin-top:20px
 }
 
+.header__display__date {
+    font-weight:bold;
+    font-size: 18px;
+    text-align: center;
+}
+
 .header__date__nav {
     width: 100px;
 }

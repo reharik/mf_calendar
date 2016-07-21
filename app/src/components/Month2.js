@@ -21,7 +21,7 @@ var	buildClasses = function(day, today, selectedDay, displayed, index) {
 };
 
 export default ({days, today, selectedDay, displayed, actions}) => {
-	
+
 	var renderDay = (day, index) => (
 		<div key={index}
 			 className={buildClasses(day, today, selectedDay, displayed, index)}
@@ -36,7 +36,7 @@ export default ({days, today, selectedDay, displayed, actions}) => {
 			{ week.map(renderDay) }
 		</div>
 	);
-	
+
 	return (
 		<div>
 			{ days.map(renderWeek) }

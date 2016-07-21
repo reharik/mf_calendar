@@ -11,7 +11,7 @@ export default ({calendarView, selectToday, caption, viewChangedEvent, increment
     return (
         <header className="header">
             <HeaderDateNav viewType={calendarView} increment={incrementDate} decrement={decrementDate} selectToday={selectToday} />
-            <h3>{caption}</h3>
+            <div className="header__display__date">{caption}</div>
             <selection className="header__view__nav" >
                 <button onClick={() => viewChangedEvent("day")} className={dayClasses}>Day</button>
                 <button onClick={() => viewChangedEvent("week")} className={weekClasses}>Week</button>

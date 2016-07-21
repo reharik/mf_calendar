@@ -1,8 +1,4 @@
 
-.display__view {
-}
-
-
 .week__day:last-child .week__day__items__name__value{
     border-top-right-radius:3px;
 }
@@ -68,3 +64,6 @@
     border-top:1px solid #b1b0b1;
 }
 
+.week__day__isToday {
+    background-color: #fcefa1;
+}

@@ -1,0 +1,45 @@
+.month__day {
+    font-size:12px;
+    border:1px solid #b1b0b1;
+}
+
+.month__day__number {
+    align-self:flex-end;
+    padding: 3px;
+}
+
+.month__day__otherMonth  .month__day__number {
+    color:#BDBDBD;
+}
+
+.month__task__item {
+
+}
+
+.month__day__header {
+    box-shadow: inset 0px 0px 14px -3px #f2fadc;
+    background: #e6e6e6;
+    border-top: 1px solid #b1b0b1;
+    border-left: 1px solid #b1b0b1;
+    border-right: 1px solid #b1b0b1;
+    border-bottom: 2px solid #b1b0b1;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    color: #555555;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.month__day__header_item {
+    border-right: 1px solid #b1b0b1;
+    width:100%;
+}
+
+.month__day__today {
+    background-color: #fcefa1;
+}
+
+.month__day__header_item:last-child {
+    border-right: none;
+}

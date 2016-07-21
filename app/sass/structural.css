@@ -3,7 +3,6 @@
 html, body {
     box-sizing: border-box;
     font-size: 16px;
-    width: 1000px;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -29,6 +28,10 @@ ol {
     width:100%;
 }
 
+.header__display__date {
+    width:200px;
+}
+
 .header__view__nav {
 
 }
@@ -42,11 +45,39 @@ ol {
     align-self: center;
 }
 
-.display__view {
+.calendar__display__view {
     display: flex;
     width:100%;
     margin-top:5px;
+    justify-content: space-around;
 }
+
+
+.month {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+    width:88%;
+}
+
+.month__day__header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.month__week {
+    display: flex;
+    justify-content: center;
+    width:100%;
+    min-height:100px;
+}
+
+.month__day {
+    display: flex;
+    flex-direction:column;
+    width:14.28%
+}
+
 
 .week {
     display: flex;
@@ -55,26 +86,23 @@ ol {
 }
 
 .times__column {
-    width:9%
+    width:8%
 }
 
 .week__days {
     display: flex;
-    width:80%
+    width:80%;
 
 }
 .week__day {
     flex-grow:1;
+    max-width:180px;
 }
 
 .day__items {
-    display: flex;
     width:80%
 }
 
-.day__items__slot {
-    flex-grow:1;
-}
 
 .day {
     display: flex;
@@ -82,3 +110,6 @@ ol {
     width:100%;
 }
 
+.task__item {
+    display: inline-flex;
+}

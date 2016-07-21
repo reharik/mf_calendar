@@ -1,9 +1,5 @@
 
-.week__day:last-child .week__day__items__name__value{
-    border-top-right-radius:3px;
-}
-
-.week__day:last-child  .week__day__items__slot:last-child {
+.day__items__slot:last-child {
     border-bottom-right-radius:3px;
 }
 
@@ -14,6 +10,7 @@
     border-left:1px solid #b1b0b1;
     border-right:1px solid #b1b0b1;
     border-bottom:2px solid #b1b0b1;
+    border-top-right-radius:3px;
     color: #555555;
     text-align: center;
     font-size: 14px;
@@ -32,3 +29,6 @@
     border-top:1px solid #b1b0b1;
 }
 
+.day__isToday {
+    background-color: #fcefa1;
+}

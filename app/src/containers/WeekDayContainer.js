@@ -5,7 +5,7 @@ import {process} from './../utils/widthAndColumn';
 import {selectSlot, selectTask} from './../actions/eventActions';
 import {amendTasks} from './../utils/calendarUtils';
 
-var getTimesForDay = function(config, view){
+var getTimesForDay = function(config, view, day){
     var thisView = view === 'week' ? 'week__' : '';
     var result = [];
     var start = config.startDay.clone();
@@ -25,9 +25,10 @@ function mapStateToProps(state, ownProps) {
     var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
     return {
         view: state.calendarView.view,
-        tasks: process(amendTasks(state.tasks.filter(filterToday), state.calendarConfig.increment)),
-        times: getTimesForDay(state.calendarConfig, state.calendarView.view),
-        dayName: day.format('dddd')
+        tasks: process(state.tasks.filter(filterToday)),
+        times: getTimesForDay(state.calendarConfig, state.calendarView.view, day),
+        dayName: day.format('dddd'),
+        isToday: day.isSame(moment(), 'day')
     }
 }
 

@@ -8,27 +8,78 @@ import App from './components/App';
 import moment from 'moment'
 import uuid from 'uuid';
 
-// import '../app/sass/app.scss'
-// import './sass/structural.css'
-// import './sass/external-structural.css'
-// import '../app/sass/material.min.css'
+
+// TODO these tasks are taylored a bit because they are not getting submitted
+// TODO via an action and processed by a reducer.
+
+var momentFromTime = function(time){
+	return moment.isMoment(time) ? time.clone() : moment(time, ["h:mm A"]);
+};
+
 var init = {
 	tasks: [
 		{
 			display: "fuck you!",
-			startTime: '8:00 AM',
-			endTime:	"9:00 AM",
-			date: new Date().toISOString(),
+			startTime: momentFromTime('8:00 AM'),
+			endTime:	momentFromTime("9:00 AM"),
+			date: moment(),
 			id: uuid.v4(),
-			color: 'red'
+			color: 'red',
+			slots: 4
 		},
 		{
 			display: "fuck you!",
-			startTime: '8:30 AM',
-			endTime:	"9:30 AM",
-			date: new Date().toISOString(),
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
 			id: uuid.v4(),
-			color: 'blue'
+			color: 'blue',
+			slots: 4
+		},
+		{
+			display: "fuck you!",
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
+			id: uuid.v4(),
+			color: 'blue',
+			slots: 4
+		},
+		{
+			display: "fuck you!",
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
+			id: uuid.v4(),
+			color: 'blue',
+			slots: 4
+		},
+		{
+			display: "fuck you!",
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
+			id: uuid.v4(),
+			color: 'blue',
+			slots: 4
+		},
+		{
+			display: "fuck you!",
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
+			id: uuid.v4(),
+			color: 'blue',
+			slots: 4
+		},
+		{
+			display: "fuck you!",
+			startTime: momentFromTime('8:30 AM'),
+			endTime:	momentFromTime("9:30 AM"),
+			date: moment(),
+			id: uuid.v4(),
+			color: 'blue',
+			slots: 4
 		},
 		// {
 		// 	display: "fuck you!",
@@ -44,11 +95,12 @@ var init = {
 		// },
 		{
 			display: "fuck you!",
-			startTime: '8:00 AM',
-			endTime:	"9:00 AM",
-			date: new Date().toISOString(),
+			startTime: momentFromTime('8:00 AM'),
+			endTime:	momentFromTime("9:00 AM"),
+			date: moment(),
 			id: uuid.v4(),
-			color: 'green'
+			color: 'green',
+			slots: 4
 		}
 	]
 };
