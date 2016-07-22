@@ -23,13 +23,15 @@ var getTimesForDay = function(config, view, day){
 function mapStateToProps(state, ownProps) {
     var day = ownProps.date || state.selectedDate || moment();
     var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
-    return {
+    var x ={
         view: state.calendarView.view,
         tasks: process(state.tasks.filter(filterToday)),
         times: getTimesForDay(state.calendarConfig, state.calendarView.view, day),
         dayName: day.format('dddd'),
-        isToday: day.isSame(moment(), 'day')
+        isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD')
     }
+    console.log(x);
+    return x;
 }
 
 export default connect(mapStateToProps, { selectSlot, selectTask })(WeekDay);
