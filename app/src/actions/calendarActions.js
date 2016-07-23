@@ -20,7 +20,7 @@ const selectToday = () => {
 	}
 };
 
-const 	viewChangedEvent = (view) => {
+const viewChangedEvent = (view) => {
 	return {
 		type: VIEW_CHANGED_EVENT,
 		view

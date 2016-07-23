@@ -35,7 +35,7 @@
 .header__date__nav__today {
     font-size: 13px;
     cursor:pointer;
-color:blue;
+    color:blue;
 }
 
 .header__view__nav_button {
@@ -51,7 +51,8 @@ color:blue;
 }
 
 .header__view__nav_button:hover {
-    }
+}
+
 .header__view__nav_button .active {
     position:relative;
     top:1px;
