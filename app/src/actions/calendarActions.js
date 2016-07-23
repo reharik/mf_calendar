@@ -1,4 +1,4 @@
-import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, SELECT_DAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
+import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
 
 const incrementDate = (viewType) => {
 	return {

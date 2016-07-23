@@ -4,86 +4,82 @@
 
 import Calendar from 'node-calendar'
 import moment from 'moment';
-import {taskStartsInTimeSlot, timeIsBetweenStartInc, getTimesForDay, momentFromTime} from './../utils/timeUtils';
+import invariant from 'invariant';
 
-var amendTasks = function(tasks, inc) {
+var normalizeTasks = function(tasks, config) {
     return tasks.map(t => {
+        validateTask(t);
+        var endTime = momentFromTime(t.endTime);
+        var startTime = momentFromTime(t.startTime);
+        var date = t.date ? moment(t.date) : moment(startTime);
+        var inc = config && config.increments ? config.increments : 15;
+        var slots = endTime.diff(startTime, 'minutes')/inc;
+        var display = config && config.display && typeof config.display  === 'function' ? config.display(t) : t.display;
+        var title = t.title|| t.title;
         return {
-            slots: (momentFromTime(t.endTime).diff(momentFromTime(t.startTime), 'minutes')/inc),
-            display : t.display,
+            date,
+            startTime,
+            endTime,
+            slots,
+            display,
+            title,
             id: t.id,
             color: t.color
         }
     })
 };
 
-var dateToMoment = function(date){
-    var mom = moment.isMoment(date) ? date : date ? moment(date) : moment();
-    return {
-        date: mom,
-        year: mom.year(),
-        month: mom.format('MMMM'),
-        // monthIndex is the month number obtained from moment, incremented by 1 to match node-calendar's format
-        monthIndex: mom.month() + 1,
-        weekIndex: mom.week(),
-        dayIndex: mom.date(),
-        // holiday: moment(date).holiday(),
-        time: mom.format('h:mm a'),
-        display: mom.format('MMMM') + ' ' + mom.year()
-    }
+var validateTask = (task) => {
+    invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
+    invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
 };
 
 var formatHeaderDisplay = function(mom, viewType){
-    if(viewType == 'month'){
-        return {...mom, display:mom.date.format('MMMM') + ' ' + mom.date.year()};
-    }else if(viewType == 'day'){
-        return {...mom, display:mom.date.format('MMMM') + " " + mom.dayIndex + ", " + mom.date.year()}
+    if(viewType == 'day'){
+        return mom.format('MMMM') + " " + mom.date() + ", " + mom.year()
     } else if(viewType == 'week'){
         var displayedWeek = getWeek(mom);
-        var caption = displayedWeek[0].format('MMMM Do') + " - " + displayedWeek[6].format('MMMM Do');
-        return {...mom, display:caption};
+        return displayedWeek[0].format('MMMM Do') + " - " + displayedWeek[6].format('MMMM Do');
     }
-    return {...mom, display:mom.date[viewType]()};
+    return mom.format('MMMM') + ' ' + mom.year()
 };
 
-var increment = function(mom, viewType){
-    return formatHeaderDisplay(dateToMoment(mom.date.add(1,viewType)),viewType);
+
+var momentFromTime = function(time){
+    return moment.isMoment(time) ? time.clone() : moment(time, ["h:mm A"]);
 };
 
-var decrement = function(mom, viewType){
-    return formatHeaderDisplay(dateToMoment(mom.date.subtract(1, viewType)),viewType);
+var getTimesForDay = function(config){
+    var result = [];
+    var time = config.startDay.clone();
+    var end =  config.endDay;
+    while(time.isBefore(end,'minutes', '[)')){
+        result.push(time.format("h:mm A"))
+        time.add(config.increment, 'minutes');
+    }
+    return result;
 };
 
-var matchedEvents = (day, tasks) => tasks.filter(e => e.date.isSame(day.date, 'day'));
-
-var buildDayWithTasks = function(_day, events, config) {
-
-    var day = {..._day, tasks: matchedEvents(_day, events)};
-
+var augmentTimes = (config, classes) => {
     return getTimesForDay(config).map(time => {
-        return {
-            time,
-            moment: day.date,
-            dayName: day.date.format('dddd'),
-            tasks: day.tasks.filter(task => taskStartsInTimeSlot(task, time, config.increment))
-        }
-    });
+        var isHour = time.indexOf(':00') > -1;
+        classes = isHour ? classes + 'hour__breaks' : classes;
+        return {time, isHour, classes, display: isHour ? time : ' '};
+    })
 };
+
 
 var getWeek = function(day) {
     var calendar = new Calendar.Calendar(Calendar.SUNDAY);
-    var week = calendar.monthdatescalendar(day.year, day.monthIndex)
-        .filter(week => week.some(date=> moment(date).isSame(day.date, 'day')));
-    return week ? week[0].map(x=>moment(x)) : [];
+    var week = calendar.monthdatescalendar(day.year(), day.month() + 1)
+        .filter(week => week.some(date => moment(date).isSame(day, 'day')));
+    return week.length > 0 ? week[0].map(x=>moment(x)) : [];
 };
 
 export {
-    dateToMoment,
-    increment,
-    decrement,
     formatHeaderDisplay,
-    buildDayWithTasks,
-    getWeek,
-    amendTasks,
-    matchedEvents
+    normalizeTasks,
+    momentFromTime,
+    augmentTimes,
+    getWeek
 }

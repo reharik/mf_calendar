@@ -1,22 +1,25 @@
-/**
- * Created by reharik on 5/30/16.
- */
-
 import { connect } from 'react-redux'
-import {buildDayWithTasks, amendTasks} from './../utils/calendarUtils';
-import { bindActionCreators } from 'redux'
-import Day from '../components/Day2'
+import  WeekDay  from './../components/WeekDay';
+import moment from 'moment';
+import {process} from './../utils/widthAndColumn';
 import {selectSlot, selectTask} from './../actions/eventActions';
+import {augmentTimes} from './../utils/calendarUtils';
 
 
-function mapStateToProps(state) {
+
+function mapStateToProps(state, ownProps) {
+    var day = ownProps.date || state.selectedDay || moment();
+    var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
+    var thisView = state.calendarView.view === 'week' ? 'week__' : '';
+    var classes = thisView + 'day__items__slot ';
+    
     return {
-        formattedDay: buildDayWithTasks(state.selectedDay, amendTasks(state.tasks, state.calendarConfig.increment), state.calendarConfig)
+        view: state.calendarView.view,
+        tasks: process(state.tasks.filter(filterToday)),
+        times: augmentTimes(state.calendarConfig, classes),
+        dayName: day.format('dddd'),
+        isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD')
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return ({actions: bindActionCreators({selectSlot, selectTask}, dispatch)})
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Day);
+export default connect(mapStateToProps, { selectSlot, selectTask })(WeekDay);

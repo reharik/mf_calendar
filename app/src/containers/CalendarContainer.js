@@ -1,7 +1,3 @@
-/**
- * Created by reharik on 5/30/16.
- */
-
 import { connect } from 'react-redux'
 import Calendar from './../components/Calendar'
 import defaultConfigs from './../defaultConfigs';
@@ -11,7 +7,7 @@ import './../../sass/index.css'
 function mapStateToProps(state, ownProps) {
     var calendarConfig = Object.assign({}, defaultConfigs, ownProps.config);
     return {
-        calendarView: state.calendarView || calendarConfig/defaultView,
+        calendarView: state.calendarView || calendarConfig.defaultView,
         calendarConfig
     }
 }

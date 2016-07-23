@@ -7,9 +7,6 @@ const process = (apts, date) => {
     var widthOffset = 1;
 
     apts.forEach(x => {
-        console.log('==========x=========');
-        console.log(x);
-        console.log('==========END x=========');
         events.push({type: 'startTime', value: x.startTime.unix(), id: x.id});
         events.push({type: 'endTime', value: x.endTime.unix(), id: x.id});
     });

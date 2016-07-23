@@ -17,95 +17,135 @@ var momentFromTime = function(time){
 };
 
 var init = {
-	tasks: [
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:00 AM'),
-			endTime:	momentFromTime("9:00 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'red',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:30 AM'),
-			endTime:	momentFromTime("9:30 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'blue',
-			slots: 4
-		},
-		// {
-		// 	display: "fuck you!",
-		// 	startTime: '8:00 AM',
-		// 	endTime:	"9:00 AM",
-		// date: new Date()
-		// },
-		// {
-		// 	display: "fuck you!",
-		// 	startTime: '8:00 AM',
-		// 	endTime:	"9:00 AM",
-		// date: new Date()
-		// },
-		{
-			display: "fuck you!",
-			startTime: momentFromTime('8:00 AM'),
-			endTime:	momentFromTime("9:00 AM"),
-			date: moment(),
-			id: uuid.v4(),
-			color: 'green',
-			slots: 4
-		}
-	]
+	// tasks: [
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:00 AM'),
+	// 		endTime:	momentFromTime("9:00 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'red',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:30 AM'),
+	// 		endTime:	momentFromTime("9:30 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'blue',
+	// 		slots: 4
+	// 	},
+	// 	// {
+	// 	// 	display: "fuck you!",
+	// 	// 	startTime: '8:00 AM',
+	// 	// 	endTime:	"9:00 AM",
+	// 	// date: new Date()
+	// 	// },
+	// 	// {
+	// 	// 	display: "fuck you!",
+	// 	// 	startTime: '8:00 AM',
+	// 	// 	endTime:	"9:00 AM",
+	// 	// date: new Date()
+	// 	// },
+	// 	{
+	// 		display: "fuck you!",
+	// 		startTime: momentFromTime('8:00 AM'),
+	// 		endTime:	momentFromTime("9:00 AM"),
+	// 		date: moment(),
+	// 		id: uuid.v4(),
+	// 		color: 'green',
+	// 		slots: 4
+	// 	}
+	// ]
 };
 
 const store = configureStore(init);
+store.dispatch({
+		type: 'RECEIVE_TASKS',
+		data: {
+			tasks:[
+			{
+				display: "fuck you!",
+				startTime: '8:00 AM',
+				endTime:	"9:00 AM",
+				date: new Date(),
+				id: uuid.v4(),
+				color: 'red'
+			},
+				{
+					display: "fuck you!",
+					startTime: '8:30 AM',
+					endTime:	"9:30 AM",
+					date: new Date(),
+					id: uuid.v4(),
+					color: 'red'
+				},
+				{
+					display: "fuck you!",
+					startTime: '8:30 AM',
+					endTime:	"9:00 AM",
+					date: new Date(),
+					id: uuid.v4(),
+					color: 'red'
+				},
+				{
+					display: "fuck you!",
+					startTime: '9:00 AM',
+					endTime:	"10:00 AM",
+					date: new Date(),
+					id: uuid.v4(),
+					color: 'red'
+				}
+			]
+		}
+		});
+
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

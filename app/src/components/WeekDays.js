@@ -1,12 +1,12 @@
 
 import React from 'react'
-import WeekDayContainer from './../containers/WeekDayContainer';
+import DayContainer from './../containers/DayContainer';
 
 export default ({week}) => (
         <ol className="week__days">
             {week.map(day =>
                 <li className="week__day" key={day}>
-                    <WeekDayContainer date={day} />
+                    <DayContainer date={day} />
                 </li>
             )}
         </ol>)

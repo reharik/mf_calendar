@@ -7,7 +7,7 @@ import { formatHeaderDisplay } from './../utils/calendarUtils'
 function mapStateToProps(state) {
     return {
         calendarView: state.calendarView.view,
-        caption: formatHeaderDisplay(state.displayed, state.calendarView.view).display
+        caption: formatHeaderDisplay(state.selectedDay, state.calendarView.view)
     }
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import AsideTimesContainer from './../containers/AsideTimesContainer';
-import WeekDayContainer from './../containers/WeekDayContainer';
+import DayContainer from './../containers/DayContainer';
 
 export default () => (
     <div className="day">
         <AsideTimesContainer />
-        <WeekDayContainer />
+        <DayContainer />
     </div>
 )

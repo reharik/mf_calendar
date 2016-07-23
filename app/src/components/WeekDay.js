@@ -3,7 +3,6 @@ import  WeekDayName from './../components/WeekDayName';
 import  Tasks from './../components/Tasks';
 var moment = require('moment');
 
-
 export default ({view, tasks, times, dayName, isToday, selectSlot, selectTask}) => {
     var thisView = view === 'week' ? 'week__' : '';
     var olClass = thisView + "day__items";
@@ -12,12 +11,15 @@ export default ({view, tasks, times, dayName, isToday, selectSlot, selectTask}) 
     return (
         <ol className={olClass}>
             <li className={thisView + "day__items__name"}>
-                <WeekDayName name={dayName} view={thisView} />
+                <WeekDayName name={dayName} view={thisView}/>
             </li>
-            {times.map(timeObj => (<li className={timeObj.classes} key={timeObj.time}>
-                <div onClick={selectSlot}>
-                    <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={selectTask} />
-                </div>
-            </li>))}
+            {times.map(timeObj => (
+                <li className={timeObj.classes}
+                    key={timeObj.time}
+                    onClick={(e) => !e.target.className.startsWith('task') ? selectSlot() : null }>
+                    <div>
+                        <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={selectTask}/>
+                    </div>
+                </li>))}
         </ol>);
 }
