@@ -116,7 +116,8 @@ store.dispatch({
 				endTime:	"9:00 AM",
 				date: new Date(),
 				id: uuid.v4(),
-				color: 'red'
+				color: 'pink',
+				titleColor: 'red'
 			},
 				{
 					display: "fuck you!",
@@ -124,24 +125,24 @@ store.dispatch({
 					endTime:	"9:30 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'red'
-				},
+					color: 'pink',
+					titleColor: 'red'				},
 				{
 					display: "fuck you!",
 					startTime: '8:30 AM',
 					endTime:	"9:00 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'red'
-				},
+					color: 'pink',
+					titleColor: 'red'				},
 				{
 					display: "fuck you!",
 					startTime: '9:00 AM',
 					endTime:	"10:00 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'red'
-				}
+					color: 'pink',
+					titleColor: 'red'				}
 			]
 		}
 		});

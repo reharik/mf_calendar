@@ -3,10 +3,13 @@ import React from 'react';
 
 export default ({tasks, selectTask}) => {
 	return (<div className="task">
-		{ tasks.map((t, index)=> (<div className="month__task__item" key={index}
-									   style={{backgroundColor:t.color}}
-									   onClick={() => selectTask(t, view)}>
-			<div className='task__item__display'> {t.startTime.format('H:mm A')}</div>
-		</div>))}
+		{ tasks.map((t, index)=> {
+			console.log(t);
+			return (<div className="month__task__item" key={index}
+				  style={{backgroundColor:t.color}}
+				  onClick={() => selectTask(t, view)}>
+				<div className='month__task__item__title' style={{ backgroundColor:t.titleColor}} >{t.title}</div>
+			</div>)
+		})}
 	</div>);
 }

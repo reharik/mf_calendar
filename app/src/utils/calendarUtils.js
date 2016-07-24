@@ -15,7 +15,7 @@ var normalizeTasks = function(tasks, config) {
         var inc = config && config.increments ? config.increments : 15;
         var slots = endTime.diff(startTime, 'minutes')/inc;
         var display = config && config.display && typeof config.display  === 'function' ? config.display(t) : t.display;
-        var title = t.title|| t.title;
+        var title = t.title || t.startTime;
         return {
             date,
             startTime,
@@ -24,7 +24,9 @@ var normalizeTasks = function(tasks, config) {
             display,
             title,
             id: t.id,
-            color: t.color
+            color: t.color, // || config.defaultColor,
+            titleColor: t.titleColor, // || config.defaultTitleColor,
+            orig:t
         }
     })
 };
@@ -43,7 +45,6 @@ var formatHeaderDisplay = function(mom, viewType){
     }
     return mom.format('MMMM') + ' ' + mom.year()
 };
-
 
 var momentFromTime = function(time){
     return moment.isMoment(time) ? time.clone() : moment(time, ["h:mm A"]);
@@ -67,7 +68,6 @@ var augmentTimes = (config, classes) => {
         return {time, isHour, classes, display: isHour ? time : ' '};
     })
 };
-
 
 var getWeek = function(day) {
     var calendar = new Calendar.Calendar(Calendar.SUNDAY);

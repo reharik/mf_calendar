@@ -112,4 +112,5 @@ ol {
 
 .task__item {
     display: inline-flex;
+    flex-flow: column nowrap;
 }
