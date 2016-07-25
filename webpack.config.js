@@ -53,10 +53,10 @@ const config = {
 
     postcss() {
         return [
+            precss,
             postcssImport({
                 addDependencyTo: webpack
             }),
-            precss,
             autoprefixer
         ];
     },

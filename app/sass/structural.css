@@ -21,9 +21,7 @@ ol {
 }
 
 .header {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
+    @mixin flex__row__space space-around;
     align-items: center;
     width:100%;
 }
@@ -37,8 +35,7 @@ ol {
 }
 
 .header__date__nav {
-    display: flex;
-    justify-content: space-around;
+    @mixin flex__row__space space-around;
 }
 
 .header__date__nav__today {
@@ -46,10 +43,9 @@ ol {
 }
 
 .calendar__display__view {
-    display: flex;
+    @mixin flex__row__space space-around;
     width:100%;
     margin-top:5px;
-    justify-content: space-around;
 }
 
 
@@ -61,13 +57,11 @@ ol {
 }
 
 .month__day__header {
-    display: flex;
-    justify-content: space-around;
+    @mixin flex__row__space space-around;
 }
 
 .month__week {
-    display: flex;
-    justify-content: center;
+    @mixin flex__row__space center;
     width:100%;
     min-height:100px;
 }
@@ -78,10 +72,13 @@ ol {
     width:14.28%
 }
 
+.month__day__number {
+    align-self:flex-end;
+    padding: 3px;
+}
 
 .week {
-    display: flex;
-    justify-content:center;
+    @mixin flex__row__space center;
     width:100%;
 }
 
@@ -105,8 +102,7 @@ ol {
 
 
 .day {
-    display: flex;
-    justify-content:center;
+    @mixin flex__row__space center;
     width:100%;
 }
 

@@ -1,0 +1,16 @@
+$borderColor: #b1b0b1;
+$border: 1px solid $borderColor;
+$border__thick: 2px solid $borderColor;
+
+@define-mixin border {
+    border-top:1px solid $borderColor;
+    border-left:1px solid $borderColor;
+    border-right:1px solid $borderColor;
+    border-bottom:2px solid $borderColor;
+}
+
+@define-mixin flex__row__space $space {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: $space;
+}
