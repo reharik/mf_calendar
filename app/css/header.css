@@ -1,7 +1,7 @@
 
 .header {
     height:28px;
-    margin-top:20px
+    margin-top:10px
 }
 
 .header__display__date {
@@ -16,7 +16,7 @@
 
 .header__date__nav__button {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-    background:linear-gradient(to top, #cccccc 34%, #dddddd 100%);
+    background: $gradient;
     border-radius:3px;
     border:1px solid #dadada;
     cursor:pointer;
@@ -26,10 +26,7 @@
     font-weight:bold;
 }
 .header__date__nav__button:hover {
-}
-.header__date__nav__button:active {
-    position:relative;
-    top:1px;
+    background: $gradient__darker;
 }
 
 .header__date__nav__today {
@@ -40,7 +37,7 @@
 
 .header__view__nav_button {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-    background:linear-gradient(to top, #cccccc 34%, #dddddd 100%);
+    background:$gradient;
     border-radius:3px;
     border:1px solid #b2b8ad;
     cursor:pointer;
@@ -51,9 +48,5 @@
 }
 
 .header__view__nav_button:hover {
-}
-
-.header__view__nav_button .active {
-    position:relative;
-    top:1px;
+    background: $gradient__darker;
 }

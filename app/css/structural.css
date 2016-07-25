@@ -21,7 +21,7 @@ ol {
 }
 
 .header {
-    @mixin flex__row__space space-around;
+    @mixin flex__row__space space-between;
     align-items: center;
     width:100%;
 }
@@ -53,7 +53,7 @@ ol {
     display: flex;
     flex-flow: column nowrap;
     justify-content:center;
-    width:88%;
+    width:100%;
 }
 
 .month__day__header {
@@ -83,21 +83,21 @@ ol {
 }
 
 .times__column {
-    width:8%
+    width:80px;
 }
 
 .week__days {
     display: flex;
-    width:80%;
+    width:95%;
 
 }
 .week__day {
     flex-grow:1;
-    max-width:180px;
+    max-width:14.28%;
 }
 
 .day__items {
-    width:80%
+    width:95%
 }
 
 

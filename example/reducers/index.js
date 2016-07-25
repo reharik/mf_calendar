@@ -3,11 +3,13 @@
  */
 
 import { combineReducers } from 'redux'
-import { routerReducer as routing } from 'react-router-redux'
-import calendarReducers from '../../app/src/reducers/index'
+import  {calendarReducers } from '../../app/src/index'
+
+console.log('==========calendarReducers=========');
+console.log(calendarReducers);
+console.log('==========END calendarReducers=========');
 
 const reducers = combineReducers({
-    routing,
     ...calendarReducers
 });
 export default reducers;

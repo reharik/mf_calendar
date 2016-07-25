@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ",
+    "build": "webpack",
     "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**",
     "lint": "eslint .",
     "validate": "npm ls"
@@ -27,6 +28,7 @@
     "enzyme": "^2.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
+    "glob": "^7.0.5",
     "html-webpack-plugin": "^2.9.0",
     "mocha": "^2.4.5",
     "nock": "^8.0.0",
@@ -51,6 +53,7 @@
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
+    "color": "^0.11.3",
     "invariant": "^2.2.1",
     "moment": "^2.13",
     "node-calendar": "^0.1.4",

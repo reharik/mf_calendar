@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router';
 import configureStore from './store/configureStore'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import App from './components/App';
 import moment from 'moment'
 import uuid from 'uuid';
+import './../app/css/index.css'
 
 
 // TODO these tasks are taylored a bit because they are not getting submitted
@@ -116,8 +116,7 @@ store.dispatch({
 				endTime:	"9:00 AM",
 				date: new Date(),
 				id: uuid.v4(),
-				color: 'pink',
-				titleColor: 'red'
+				color: 'red'
 			},
 				{
 					display: "fuck you!",
@@ -125,35 +124,28 @@ store.dispatch({
 					endTime:	"9:30 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'pink',
-					titleColor: 'red'				},
+					color: 'red'				},
 				{
 					display: "fuck you!",
 					startTime: '8:30 AM',
 					endTime:	"9:00 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'pink',
-					titleColor: 'red'				},
+					color: 'red'				},
 				{
 					display: "fuck you!",
 					startTime: '9:00 AM',
 					endTime:	"10:00 AM",
 					date: new Date(),
 					id: uuid.v4(),
-					color: 'pink',
-					titleColor: 'red'				}
+					color: 'red'			}
 			]
 		}
 		});
 
-const history = syncHistoryWithStore(browserHistory, store);
 
 render(
 	<Provider store={store}>
-		<Router history={history}>
-			<Route path="/" component={App}>
-			</Route>
-		</Router>
+		<App />
 	</Provider>, document.getElementById('app'));
 

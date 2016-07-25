@@ -13,7 +13,7 @@
 
 .month__day__header {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: #e6e6e6;
+    background: $gradient;
     @mixin border;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;

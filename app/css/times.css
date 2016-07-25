@@ -4,7 +4,7 @@
 
 .times__column__spacer__item {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-    background:#e6e6e6;
+    background:$gradient;
     border-top-left-radius:3px;
     border-top:$border;
     border-left:$border;
@@ -16,7 +16,7 @@
 }
 .times__column__item {
     box-shadow:inset 0px 0px 14px -3px #f2fadc;
-    background:#e6e6e6;
+    background:$gradient;
     border-left:$border;
     border-right:$border__thick;
     border-bottom:$border;

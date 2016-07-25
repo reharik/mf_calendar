@@ -4,7 +4,7 @@ import Month from './../containers/MonthContainer';
 import Week from './../components/Week';
 import Day from './../components/Day';
 
-export default ({calendarView}) => {
+export default ({calendarView, calendarConfig}) => {
 	var view = <Month />;
 	switch (calendarView.view) {
 		case 'week':
@@ -14,7 +14,7 @@ export default ({calendarView}) => {
 			view = <Day />;
 			break;
 	}
-	return (<div className="calendar">
+	return (<div className="calendar" style={{width:calendarConfig.width}}>
 		<Header />
 		<div className="calendar__display__view">
 			{ view }

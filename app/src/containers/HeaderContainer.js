@@ -7,8 +7,11 @@ import { formatHeaderDisplay } from './../utils/calendarUtils'
 function mapStateToProps(state) {
     return {
         calendarView: state.calendarView.view,
-        caption: formatHeaderDisplay(state.selectedDay, state.calendarView.view)
+        selectedDay:state.selectedDay,
+        caption: formatHeaderDisplay(state.selectedDay, state.calendarView.view),
+        config: state.calendarConfig,
+        selectToday, viewChangedEvent, incrementDate, decrementDate
     }
 }
 
-export default connect(mapStateToProps, { selectToday, viewChangedEvent, incrementDate, decrementDate })(Header);
+export default connect(mapStateToProps)(Header);

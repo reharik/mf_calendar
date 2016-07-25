@@ -4,14 +4,15 @@ import { RETRIEVE_DATA,
     RETRIEVE_DATA_REQUEST,
     RETRIEVE_DATA_FAILURE,
     RETRIEVE_DATA_SUCCESS
-} from './../../app/src/constants/actionConstants'
+} from './../../app/src/index'
 import { CALL_API } from 'redux-api-middleware';
 import moment from 'moment';
 
 const retrieveData = (params) => {
     return {
+        type:RETRIEVE_DATA,
         [CALL_API]: {
-            endpoint: url,
+            endpoint: 'url',
             method: 'GET',
             types: [
                 RETRIEVE_DATA_REQUEST,

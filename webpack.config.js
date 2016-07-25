@@ -13,12 +13,13 @@ const config = {
     // Gives you sourcemaps without slowing down rebundling
     devtool  : 'cheap-module-eval-source-map',
     resolve: { alias: {} },
-    entry    : [
-        'webpack-dev-server/client?http://0.0.0.0:8080',
-        './example/index.js'],
+    entry : {
+        app: './app/src/index.js'
+    },
     output   : {
         path      : path.join(__dirname, '/dist/'),
-        filename  : 'bundle.js',
+        sourceMapFilename: '[file].map',
+        filename  : 'mf_calendar.js',
         publicPath: '/'
     },
     module   : {
@@ -27,9 +28,9 @@ const config = {
             { test   : /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']},
             {
                 test: /\.css$/,
-                include: path.resolve(__dirname, 'app/sass'),
-                // loader: ExtractTextPlugin.extract(style-loader, css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader)
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader')
+                include: path.resolve(__dirname, 'app/css'),
+                // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader')
+                loader: 'style!css-loader?sourceMap=1&modules&importLoaders=1&localIdentName=[local]!postcss-loader'
             }
             // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -37,7 +38,7 @@ const config = {
             // { test: /\.png$/, loader: "url-loader", query: { mimetype: "image/png" } },
             // { test: /\.jpg$/, loader: "url-loader", query: { mimetype: "image/jpg" } },
             // { test: /\.gif$/, loader: "url-loader", query: { mimetype: "image/gif" } },
-            // { test: /\.scss$/, loaders: ["style", "css?sourceMap", "sass?sourceMap"] },
+            // { test: /\.scss$/, loaders: ["style", "css?sourceMap", "css?sourceMap"] },
             // { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['url-loader?limit=10000&mimetype=application/font-woff' ] }
         ]
     },
@@ -48,7 +49,7 @@ const config = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('bundle.css', { allChunks: true })
+        new ExtractTextPlugin('mf_calendar.css', { allChunks: true})
     ],
 
     postcss() {
@@ -65,10 +66,11 @@ const config = {
           colors            : true,
           historyApiFallback: true,
           inline            : true,
-          hot               : true
+          hot               : true,
+          stats :'errors-only'
     },
     // sassLoader: {
-    //     includePaths: [path.resolve(__dirname, "./sass")]
+    //     includePaths: [path.resolve(__dirname, "./css")]
     // },
     // ignore packages that are not available in browser. e.g. fs
     externals: {

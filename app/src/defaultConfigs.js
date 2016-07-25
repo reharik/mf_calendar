@@ -4,5 +4,6 @@ export default {
   endDay: "7:00 PM",
   increment: 30,
   color: 'blue',
-  titleColor: 'darkblue'
+  titleColor: 'darkblue',
+  width: '100%'
 };

@@ -4,7 +4,6 @@ import React from 'react';
 export default ({tasks, selectTask}) => {
 	return (<div className="task">
 		{ tasks.map((t, index)=> {
-			console.log(t);
 			return (<div className="month__task__item" key={index}
 				  style={{backgroundColor:t.color}}
 				  onClick={() => selectTask(t, view)}>
