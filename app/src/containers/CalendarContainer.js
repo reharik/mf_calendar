@@ -1,7 +1,8 @@
+import React from 'react';
 import { connect } from 'react-redux'
 import Calendar from './../components/Calendar'
 import defaultConfigs from './../defaultConfigs';
-import {CONFIGURE_CALENDAR} from './../constants/actionConstants'
+import { CONFIGURE_CALENDAR } from './../constants/actionConstants'
 import './../../sass/index.css'
 
 function mapStateToProps(state, ownProps) {
@@ -17,5 +18,14 @@ function mapDispatchToProps(dispatch, ownProps) {
     dispatch({type:CONFIGURE_CALENDAR, config: calendarConfig});
     return {};
 }
+
+//
+// Calendar.getChildContext = function() {
+//     return {color: "purple"};
+// };
+
+// Calendar.childContextTypes = {
+//     color: React.PropTypes.string
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

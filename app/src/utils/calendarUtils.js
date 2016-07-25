@@ -61,11 +61,11 @@ var getTimesForDay = function(config){
     return result;
 };
 
-var augmentTimes = (config, classes) => {
+var augmentTimes = (config, classes, day) => {
     return getTimesForDay(config).map(time => {
         var isHour = time.indexOf(':00') > -1;
         classes = isHour ? classes + 'hour__breaks' : classes;
-        return {time, isHour, classes, display: isHour ? time : ' '};
+        return {time, isHour, classes, display: isHour ? time : ' ', day};
     })
 };
 

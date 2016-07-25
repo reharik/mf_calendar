@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import  WeekDay  from './../components/WeekDay';
 import moment from 'moment';
 import {process} from './../utils/widthAndColumn';
-import {selectSlot, selectTask} from './../actions/eventActions';
 import {augmentTimes} from './../utils/calendarUtils';
 
 
@@ -16,10 +15,11 @@ function mapStateToProps(state, ownProps) {
     return {
         view: state.calendarView.view,
         tasks: process(state.tasks.filter(filterToday)),
-        times: augmentTimes(state.calendarConfig, classes),
+        times: augmentTimes(state.calendarConfig, classes, day),
         dayName: day.format('dddd'),
-        isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD')
+        isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD'),
+        config: state.calendarConfig
     };
 }
 
-export default connect(mapStateToProps, { selectSlot, selectTask })(WeekDay);
+export default connect(mapStateToProps)(WeekDay);

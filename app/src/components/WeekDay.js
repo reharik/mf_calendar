@@ -3,7 +3,19 @@ import  WeekDayName from './../components/WeekDayName';
 import  Tasks from './../components/Tasks';
 var moment = require('moment');
 
-export default ({view, tasks, times, dayName, isToday, selectSlot, selectTask}) => {
+export default ({view,
+    tasks,
+    times,
+    dayName,
+    isToday,
+    config, 
+    dispatch
+} ) => {
+
+    var selectSlotAction = (time) => {
+        config.openSpaceClickedAction
+            ? dispatch(config.openSpaceClickedAction(time.day, time.time)) : null;
+    };
     var thisView = view === 'week' ? 'week__' : '';
     var olClass = thisView + "day__items";
     olClass = isToday ? olClass + ' ' + thisView + 'day__isToday' : olClass;
@@ -16,9 +28,9 @@ export default ({view, tasks, times, dayName, isToday, selectSlot, selectTask}) 
             {times.map(timeObj => (
                 <li className={timeObj.classes}
                     key={timeObj.time}
-                    onClick={(e) => !e.target.className.startsWith('task') ? selectSlot() : null }>
+                    onClick={(e) => !e.target.className.startsWith('task') ? selectSlotAction(timeObj) : null }>
                     <div>
-                        <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={selectTask}/>
+                        <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={param => dispatch(config.taskClickedAction(param))}/>
                     </div>
                 </li>))}
         </ol>);
