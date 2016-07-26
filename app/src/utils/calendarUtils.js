@@ -31,7 +31,7 @@ var normalizeTasks = function(tasks, config) {
 
 var validateTask = (task) => {
     invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
-    invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
+    invariant(task.endTime, `Tasks must have a end time! endTime: ${task.endTime}`);
 };
 
 var formatHeaderDisplay = function(mom, viewType){

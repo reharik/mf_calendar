@@ -7,9 +7,10 @@ import { RETRIEVE_DATA,
 } from './../../app/src/index'
 import { CALL_API } from 'redux-api-middleware';
 
-const retrieveData = (params) => {
+const retrieveData = (startTime, endTime) => {
     return {
         type:RETRIEVE_DATA,
+        startTime, endTime,
         [CALL_API]: {
             endpoint: 'url',
             method: 'GET',

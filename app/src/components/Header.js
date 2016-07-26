@@ -15,7 +15,7 @@ export default ({calendarView,
     var viewChangedEventAction = (view) => {
         dispatch(viewChangedEvent(view));
         config.retrieveDataAction
-            ? dispatch(config.retrieveDataAction(view, selectedDay)) : null;
+            ? dispatch(config.retrieveDataAction(selectedDay.startOf(view).toString(), selectedDay.endOf(view).toString())) : null;
     };
     var classes = ' header__view__nav_button ';
     var dayClasses = (calendarView === 'day' ? 'active' : '') + classes;
