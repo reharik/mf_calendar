@@ -14,7 +14,8 @@ const config = {
     devtool  : 'cheap-module-eval-source-map',
     resolve: { alias: {} },
     entry : {
-        app: './app/src/index.js'
+        // app: './app/src/index.js'
+        app: './example/index.js'
     },
     output   : {
         path      : path.join(__dirname, '/dist/'),

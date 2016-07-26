@@ -1,7 +1,6 @@
 import React from 'react'
 import  WeekDayName from './../components/WeekDayName';
 import  Tasks from './../components/Tasks';
-var moment = require('moment');
 
 export default ({view,
     tasks,

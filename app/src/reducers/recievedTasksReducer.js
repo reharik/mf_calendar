@@ -1,8 +1,10 @@
 import { normalizeTasks } from './../utils/calendarUtils'
-import { RECEIVE_TASKS } from './../constants/actionConstants'
+import {   RETRIEVE_DATA_REQUEST,
+    RETRIEVE_DATA_FAILURE,
+    RETRIEVE_DATA_SUCCESS } from './../constants/actionConstants'
 
 export default (state = [], action = null) => {
-    if (action.type === RECEIVE_TASKS) {
+    if (action.type === RETRIEVE_DATA_SUCCESS) {
         var tasks;
         try {
             tasks = normalizeTasks(action.data.tasks, action.increment);
@@ -14,3 +16,4 @@ export default (state = [], action = null) => {
     }
     return state;
 };
+    

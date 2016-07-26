@@ -3,8 +3,7 @@ import  WeekDay  from './../components/WeekDay';
 import moment from 'moment';
 import {process} from './../utils/widthAndColumn';
 import {augmentTimes} from './../utils/calendarUtils';
-
-
+import { config } from './../utils/configValues';
 
 function mapStateToProps(state, ownProps) {
     var day = ownProps.date || state.selectedDay || moment();
@@ -15,10 +14,10 @@ function mapStateToProps(state, ownProps) {
     return {
         view: state.calendarView.view,
         tasks: process(state.tasks.filter(filterToday)),
-        times: augmentTimes(state.calendarConfig, classes, day),
+        times: augmentTimes(config, classes, day),
         dayName: day.format('dddd'),
         isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD'),
-        config: state.calendarConfig
+        config
     };
 }
 

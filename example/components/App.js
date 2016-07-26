@@ -1,8 +1,8 @@
 import React from 'react';
-import { Calendar } from '../../app/src/index'
+import { Calendar } from '../../app/src/index';
 import { retrieveData,
         taskClicked,
-        openSpaceCLicked } from './../actions/calendarActions'
+        openSpaceCLicked } from './../actions/calendarActions';
 
 export default () => ( <Calendar config={{
                                 increment: 15,

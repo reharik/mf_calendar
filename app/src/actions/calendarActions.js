@@ -1,9 +1,6 @@
 import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
 
 const incrementDate = (viewType) => {
-	console.log('==========viewType=========');
-	console.log(viewType);
-	console.log('==========END viewType=========');
 	return {
 		type: INCREMENT_DATE,
 		viewType

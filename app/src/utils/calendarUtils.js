@@ -1,12 +1,10 @@
-/**
- * Created by rharik on 5/25/16.
- */
 
 import Calendar from 'node-calendar'
 import moment from 'moment';
 import invariant from 'invariant';
 
 var normalizeTasks = function(tasks, config) {
+
     return tasks.map(t => {
         validateTask(t);
         var endTime = momentFromTime(t.endTime);

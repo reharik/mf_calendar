@@ -1,22 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
 import configureStore from './store/configureStore'
-import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import App from './components/App';
-import moment from 'moment'
 import uuid from 'uuid';
 import './../app/css/index.css'
 
 
-// TODO these tasks are taylored a bit because they are not getting submitted
-// TODO via an action and processed by a reducer.
-
-var momentFromTime = function(time){
-	return moment.isMoment(time) ? time.clone() : moment(time, ["h:mm A"]);
-};
-
-var init = {
+	// var init = {
 	// tasks: [
 	// 	{
 	// 		display: "fuck you!",
@@ -103,11 +94,11 @@ var init = {
 	// 		slots: 4
 	// 	}
 	// ]
-};
+	// };
 
-const store = configureStore(init);
+const store = configureStore();
 store.dispatch({
-		type: 'RECEIVE_TASKS',
+		type: 'RETRIEVE_DATA_SUCCESS',
 		data: {
 			tasks:[
 			{

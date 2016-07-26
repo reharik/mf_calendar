@@ -4,7 +4,6 @@ import MonthWeek from './../components/MonthWeek'
 import {selectSlot, selectTask} from './../actions/eventActions';
 import moment from 'moment';
 
-
 function mapStateToProps(state, ownProps) {
 
     var	buildClasses = function(day, today, selectedDay, displayed, index) {
