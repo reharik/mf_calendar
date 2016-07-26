@@ -1,8 +1,8 @@
 
 import { connect } from 'react-redux'
 import MonthWeek from './../components/MonthWeek'
-import {selectSlot, selectTask} from './../actions/eventActions';
 import moment from 'moment';
+import { config } from './../utils/configValues';
 
 function mapStateToProps(state, ownProps) {
 
@@ -32,8 +32,9 @@ function mapStateToProps(state, ownProps) {
             day.tasks = state.tasks.filter(e => e.date.isSame(day, 'day'));
             return day});
     return {
-        weekDays: weekDays(ownProps.week)
+        weekDays: weekDays(ownProps.week),
+        config
     };
 }
 
-export default connect(mapStateToProps, {selectSlot, selectTask})(MonthWeek);
+export default connect(mapStateToProps)(MonthWeek);

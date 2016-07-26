@@ -29,7 +29,7 @@ export default ({view,
                     key={timeObj.time}
                     onClick={(e) => !e.target.className.startsWith('task') ? selectSlotAction(timeObj) : null }>
                     <div>
-                        <Tasks tasks={getTasksForTime(tasks, timeObj.time)} selectTask={param => dispatch(config.taskClickedAction(param))}/>
+                        <Tasks tasks={getTasksForTime(tasks, timeObj.time)} config={config} dispatch={dispatch} />
                     </div>
                 </li>))}
         </ol>);

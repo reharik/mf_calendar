@@ -18,7 +18,11 @@ var config = {
     increment: 30,
     color: 'blue',
     titleColor: 'darkblue',
-    width: '100%'
+    width: '100%',
+    editable: true,
+    retrieveDataAction: null,
+    taskClickedAction: null,
+    openSpaceClickedAction: null
 };
 
 export { config };
