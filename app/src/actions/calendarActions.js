@@ -1,36 +1,36 @@
-import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants'
+import {INCREMENT_DATE, DECREMENT_DATE, SELECT_TODAY, VIEW_CHANGED_EVENT } from './../constants/actionConstants';
 
-const incrementDate = (viewType) => {
-	return {
-		type: INCREMENT_DATE,
-		viewType
-	}
+const incrementDate = viewType => {
+  return {
+    type: INCREMENT_DATE,
+    viewType
+  };
 };
 
-const decrementDate = (viewType) => {
-	return {
-		type: DECREMENT_DATE,
-		viewType
-	}
+const decrementDate = viewType => {
+  return {
+    type: DECREMENT_DATE,
+    viewType
+  };
 };
 
 const selectToday = () => {
-	return {
-		type: SELECT_TODAY
-	}
+  return {
+    type: SELECT_TODAY
+  };
 };
 
-const viewChangedEvent = (view) => {
-	return {
-		type: VIEW_CHANGED_EVENT,
-		view
-	}
+const viewChangedEvent = view => {
+  return {
+    type: VIEW_CHANGED_EVENT,
+    view
+  };
 };
 
-export  {
+export {
 	incrementDate,
 	decrementDate,
-	selectToday, 
+	selectToday,
 	viewChangedEvent
-}
+};
 

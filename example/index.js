@@ -1,10 +1,10 @@
-import React from 'react'
-import { render } from 'react-dom'
-import configureStore from './store/configureStore'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { render } from 'react-dom';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
 import App from './components/App';
 import uuid from 'uuid';
-import './../app/css/index.css'
+import './../app/css/index.css';
 
 
 	// var init = {
@@ -97,46 +97,9 @@ import './../app/css/index.css'
 	// };
 
 const store = configureStore();
-store.dispatch({
-		type: 'RETRIEVE_DATA_SUCCESS',
-		data: {
-			tasks:[
-			{
-				display: "fuck you!",
-				startTime: '8:00 AM',
-				endTime:	"9:00 AM",
-				date: new Date(),
-				id: uuid.v4(),
-				color: 'red'
-			},
-				{
-					display: "fuck you!",
-					startTime: '8:30 AM',
-					endTime:	"9:30 AM",
-					date: new Date(),
-					id: uuid.v4(),
-					color: 'red'				},
-				{
-					display: "fuck you!",
-					startTime: '8:30 AM',
-					endTime:	"9:00 AM",
-					date: new Date(),
-					id: uuid.v4(),
-					color: 'red'				},
-				{
-					display: "fuck you!",
-					startTime: '9:00 AM',
-					endTime:	"10:00 AM",
-					date: new Date(),
-					id: uuid.v4(),
-					color: 'red'			}
-			]
-		}
-		});
-
 
 render(
 	<Provider store={store}>
-		<App dispatch={store.dispatch}/>
+		<App dispatch={store.dispatch} />
 	</Provider>, document.getElementById('app'));
 

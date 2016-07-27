@@ -1,18 +1,22 @@
+import React, { PropTypes } from 'react';
 
-import React from 'react';
+const MonthTasks = ({tasks, config, dispatch}) => {
+  const selectTaskAction = task => config.taskClickedAction(task, dispatch);
 
-export default ({tasks, config, dispatch}) => {
-	var selectTaskAction = (task, view) => {
-		config.taskClickedAction
-			? dispatch(config.taskClickedAction(task, view)) : null;
-	};
-	return (<div className="task">
-		{ tasks.map((t, index)=> {
-			return (<div className="month__task__item" key={index}
-				  style={{backgroundColor:t.color}}
-				  onClick={() => selectTaskAction(t, 'month')}>
-				<div className='month__task__item__title' style={{ backgroundColor:t.titleColor}} >{t.title}</div>
-			</div>)
-		})}
-	</div>);
-}
+  return (<div className="task">
+      { tasks.map((t, index)=> { return (<div className="month__task__item" key={index}
+        style={{backgroundColor: t.color}}
+        onClick={() => selectTaskAction(t)}>
+        <div className="month__task__item__title" style={{ backgroundColor: t.titleColor}} >{t.title}</div>
+      </div>);
+      })}
+  </div>);
+};
+
+MonthTasks.propTypes = {
+  tasks: PropTypes.array.isRequired,
+  config: PropTypes.object.isRequired,
+  dispatch: PropTypes.func
+};
+
+export default MonthTasks;

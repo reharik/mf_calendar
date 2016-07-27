@@ -4,41 +4,42 @@ import { RETRIEVE_DATA,
     RETRIEVE_DATA_REQUEST,
     RETRIEVE_DATA_FAILURE,
     RETRIEVE_DATA_SUCCESS
-} from './../../app/src/index'
+} from './../../app/src/index';
 import { CALL_API } from 'redux-api-middleware';
 
 const retrieveData = (startTime, endTime) => {
-    return {
-        type:RETRIEVE_DATA,
-        startTime, endTime,
-        [CALL_API]: {
-            endpoint: 'url',
-            method: 'GET',
-            types: [
-                RETRIEVE_DATA_REQUEST,
-                RETRIEVE_DATA_FAILURE,
-                RETRIEVE_DATA_SUCCESS]
-        }
-    };
-};
-
-const taskClicked = (params) => {
-    return {
-        type: TASK_CLICKED,
-        params
+  return {
+    type: RETRIEVE_DATA,
+    startTime, endTime,
+    [CALL_API]: {
+      endpoint: 'url',
+      method: 'GET',
+      types: [
+        RETRIEVE_DATA_REQUEST,
+        RETRIEVE_DATA_FAILURE,
+        RETRIEVE_DATA_SUCCESS]
     }
+  };
 };
 
-const openSpaceCLicked = (params) => {
-    return {
-        type: OPEN_SPACE_CLICKED,
-        params
-    }
+const taskClicked = (params, dispatch) => {
+  dispatch({
+    type: TASK_CLICKED,
+    params
+  });
 };
 
-export  {
+const openSpaceCLicked = (date, time, dispatch) => {
+  dispatch({
+    type: OPEN_SPACE_CLICKED,
+    date,
+    time
+  });
+};
+
+export {
     retrieveData,
     taskClicked,
     openSpaceCLicked
-}
+};
 

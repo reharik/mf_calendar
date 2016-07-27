@@ -1,3 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-export default ({time}) => ( <div className="week__day__time__slot">&nbsp;</div> )
+const WeekDayTime = () => ( <div className="week__day__time__slot">&nbsp;</div> );
+
+export default WeekDayTime;

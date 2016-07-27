@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 import AsideTimesContainer from './../containers/AsideTimesContainer';
 import DayContainer from './../containers/DayContainer';
 
-export default () => (
-    <div className="day">
-        <AsideTimesContainer />
-        <DayContainer />
-    </div>
-)
+const Day = () => (
+  <div className="day">
+    <AsideTimesContainer />
+    <DayContainer />
+  </div>
+);
+
+export default Day;

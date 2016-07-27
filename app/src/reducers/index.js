@@ -1,9 +1,4 @@
-import  calendarView from './viewChangedReducer'
-import selectedDay from './daySelectedReducer'
-import tasks from './recievedTasksReducer'
+export { default as calendarView } from './viewChangedReducer';
+export { default as selectedDay } from './daySelectedReducer';
+export { default as tasks } from './recievedTasksReducer';
 
-export default {
-    calendarView,
-    selectedDay,
-    tasks
-};

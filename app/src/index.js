@@ -6,6 +6,7 @@ export { RETRIEVE_DATA,
     RETRIEVE_DATA_SUCCESS
 } from './constants/actionConstants';
 
-export calendarReducers from './reducers/index'
+import * as calendarReducers from './reducers/index';
+export { calendarReducers };
 
-export Calendar from './containers/CalendarContainer';
+export { default as Calendar } from './containers/CalendarContainer';

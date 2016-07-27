@@ -1,8 +1,7 @@
-import { combineReducers } from 'redux'
-import  {calendarReducers } from '../../app/src/index'
-
+import { combineReducers } from 'redux';
+import { calendarReducers } from '../../app/src/index';
 
 const reducers = combineReducers({
-    ...calendarReducers
+  ...calendarReducers
 });
 export default reducers;
