@@ -21,6 +21,7 @@ var normalizeTasks = function(tasks, config) {
             slots,
             display,
             title,
+            editable: t.editable || true,
             id: t.id,
             color: t.color, // || config.defaultColor,
             titleColor: t.titleColor, // || config.defaultTitleColor,
@@ -50,8 +51,8 @@ var momentFromTime = function(time){
 
 var getTimesForDay = function(config){
     var result = [];
-    var time = config.startDay.clone();
-    var end =  config.endDay;
+    var time = config.dayStartsAt.clone();
+    var end =  config.dayEndsAt;
     while(time.isBefore(end,'minutes', '[)')){
         result.push(time.format("h:mm A"))
         time.add(config.increment, 'minutes');

@@ -137,6 +137,6 @@ store.dispatch({
 
 render(
 	<Provider store={store}>
-		<App />
+		<App dispatch={store.dispatch}/>
 	</Provider>, document.getElementById('app'));
 

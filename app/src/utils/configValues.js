@@ -2,24 +2,23 @@ import { momentFromTime } from './../utils/calendarUtils';
 import moment from 'moment';
 
 export function updateConfigs (newConfig) {
-    if (newConfig.startDay && !moment.isMoment(newConfig.startDay)) {
-        newConfig.startDay = momentFromTime(newConfig.startDay);
+    if (newConfig.dayStartsAt && !moment.isMoment(newConfig.dayStartsAt)) {
+        newConfig.dayStartsAt = momentFromTime(newConfig.dayStartsAt);
     }
-    if (newConfig.endDay && !moment.isMoment(newConfig.endDay)) {
-        newConfig.endDay = momentFromTime(newConfig.endDay)
+    if (newConfig.dayEndsAt && !moment.isMoment(newConfig.dayEndsAt)) {
+        newConfig.dayEndsAt = momentFromTime(newConfig.dayEndsAt)
     }
     return Object.assign(config, newConfig);
 }
 
 var config = {
     defaultView: "month",
-    startDay : momentFromTime("7:00 AM"),
-    endDay: momentFromTime("7:00 PM"),
+    dayStartsAt : momentFromTime("7:00 AM"),
+    dayEndsAt: momentFromTime("7:00 PM"),
     increment: 30,
     color: 'blue',
     titleColor: 'darkblue',
     width: '100%',
-    editable: true,
     retrieveDataAction: null,
     taskClickedAction: null,
     openSpaceClickedAction: null
