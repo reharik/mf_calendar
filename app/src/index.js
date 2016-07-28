@@ -1,12 +1,23 @@
-export { RETRIEVE_DATA,
-    TASK_CLICKED,
-    OPEN_SPACE_CLICKED,
-    RETRIEVE_DATA_REQUEST,
-    RETRIEVE_DATA_FAILURE,
-    RETRIEVE_DATA_SUCCESS
-} from './constants/actionConstants';
+export {
+  RETRIEVE_TASKS_REQUEST,
+  RETRIEVE_TASKS_FAILURE,
+  RETRIEVE_TASKS_SUCCESS,
+  CREATE_TASK_REQUEST,
+  CREATE_TASK_FAILURE,
+  CREATE_TASK_SUCCESS,
+  REMOVE_TASK_REQUEST,
+  REMOVE_TASK_FAILURE,
+  REMOVE_TASK_SUCCESS,
+  UPDATE_TASK_REQUEST,
+  UPDATE_TASK_FAILURE,
+  UPDATE_TASK_SUCCESS
+} from './modules/tasks';
 
-import * as calendarReducers from './reducers/index';
-export { calendarReducers };
+export {
+  TASK_CLICKED,
+  OPEN_SPACE_CLICKED
+} from './constants/constants';
+
+export { default as calendarReducers } from './modules/index';
 
 export { default as Calendar } from './containers/CalendarContainer';

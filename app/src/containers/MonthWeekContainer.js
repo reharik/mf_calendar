@@ -6,7 +6,7 @@ import { config } from './../utils/configValues';
 
 function mapStateToProps(state, ownProps) {
 
-  var	buildClasses = function(day, today, selectedDay, displayed, index) {
+  var	buildClasses = function(day, today, selectedDay, index) {
 
     var classes = 'month__day';
     if (today.isSame(day, 'day')) {
@@ -28,8 +28,8 @@ function mapStateToProps(state, ownProps) {
 
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
-    day.classes = buildClasses(day, moment(), state.selectedDay, state.displayed, idx);
-    day.tasks = state.tasks.filter(e => e.date.isSame(day, 'day'));
+    day.classes = buildClasses(day, moment(), state.calendarDate, idx);
+    day.tasks = state.calendarTasks.filter(e => e.date.isSame(day, 'day'));
     return day;});
   return {
     weekDays: weekDays(ownProps.week),

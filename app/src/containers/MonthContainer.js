@@ -5,7 +5,7 @@ import Calendar from 'node-calendar';
 function mapStateToProps(state) {
   var weeks = new Calendar
         .Calendar(Calendar.SUNDAY)
-        .monthdatescalendar(state.selectedDay.year(), state.selectedDay.month() + 1);
+        .monthdatescalendar(state.calendarDate.year(), state.calendarDate.month() + 1);
   return {
     weeks
   };

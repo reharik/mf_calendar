@@ -6,7 +6,7 @@ import Day from './../components/Day';
 
 const Calendar = ({calendarView, calendarConfig}) => {
   let view = <Month />;
-  switch (calendarView.view) {
+  switch (calendarView) {
     case 'week':
       view = <Week />;
       break;
@@ -23,7 +23,7 @@ const Calendar = ({calendarView, calendarConfig}) => {
 };
 
 Calendar.propTypes = {
-  calendarView: PropTypes.object,
+  calendarView: PropTypes.string,
   calendarConfig: PropTypes.object.isRequired
 };
 

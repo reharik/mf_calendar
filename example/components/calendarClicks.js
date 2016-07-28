@@ -1,0 +1,2 @@
+export const OPEN_SPACE_CLICKED = 'OPEN_SPACE_CLICKED';
+export const TASK_CLICKED = 'TASK_CLICKED';

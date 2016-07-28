@@ -1,15 +1,16 @@
 
 import { connect } from 'react-redux';
 import Header from './../components/Header';
-import { selectToday, viewChangedEvent, incrementDate, decrementDate} from './../actions/calendarActions';
+import { selectToday, incrementDate, decrementDate} from './../modules/dates';
+import { viewChangedEvent } from './../modules/view';
 import { formatHeaderDisplay } from './../utils/calendarUtils';
 import { config } from './../utils/configValues';
 
 function mapStateToProps(state) {
   return {
-    calendarView: state.calendarView.view,
-    selectedDay: state.selectedDay,
-    caption: formatHeaderDisplay(state.selectedDay, state.calendarView.view),
+    calendarView: state.calendarView,
+    selectedDay: state.calendarDate,
+    caption: formatHeaderDisplay(state.calendarDate, state.calendarView),
     config,
     selectToday, viewChangedEvent, incrementDate, decrementDate
   };

@@ -1,6 +1,6 @@
 import { momentFromTime } from './../utils/calendarUtils';
 import moment from 'moment';
-import { NO_OP } from './../constants/actionConstants';
+import { NO_OP } from '../constants/constants';
 const config = {
   defaultView: 'month',
   dayStartsAt: momentFromTime('7:00 AM'),

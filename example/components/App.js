@@ -1,9 +1,11 @@
 import React from 'react';
 import { Calendar } from '../../app/src/index';
 import { taskClicked, openSpaceCLicked } from './../actions/calendarActions';
-import { RETRIEVE_DATA_REQUEST, RETRIEVE_DATA_SUCCESS } from './../../app/src/index';
+import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../app/src/index';
 import uuid from 'uuid';
 import moment from 'moment';
+import {reduxForm} from 'redux-form';
+import TaskForm from './TaskForm';
 
 export default () => {
 
@@ -53,23 +55,23 @@ export default () => {
       ]
     };
   };
-  
+
   const retrieveData = (startDate, endDate, dispatch) => {
     var data = getData(moment().format('mm-ss'));
     window.setTimeout(function() {
-      dispatch({type: RETRIEVE_DATA_SUCCESS, data});
+      dispatch({type: RETRIEVE_TASKS_SUCCESS, data});
     }, 100);
     dispatch({
-      type: RETRIEVE_DATA_REQUEST
+      type: RETRIEVE_TASKS_REQUEST
     });
   };
 
-  return ( <Calendar config={{
+  return (<div > <TaskForm />
+        <Calendar config={{
     increment: 15,
     width: '1200px',
     retrieveDataAction: retrieveData,
     taskClickedAction: taskClicked,
     openSpaceClickedAction: openSpaceCLicked
-  }} /> );
+  }} /> </div>);
 };
-

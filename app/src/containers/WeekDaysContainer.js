@@ -4,7 +4,7 @@ import { getWeek } from './../utils/calendarUtils';
 
 function mapStateToProps(state) {
   return {
-    week: getWeek(state.selectedDay)
+    week: getWeek(state.calendarDate)
   };
 }
 
