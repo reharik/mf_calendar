@@ -1,8 +1,8 @@
 import moment from 'moment';
 
-export const INCREMENT_DATE = 'INCREMENT_DATE';
-export const DECREMENT_DATE = 'DECREMENT_DATE';
-export const SELECT_TODAY = 'SELECT_TODAY';
+export const INCREMENT_DATE = 'calendar/dates/INCREMENT_DATE';
+export const DECREMENT_DATE = 'calendar/dates/DECREMENT_DATE';
+export const SELECT_TODAY = 'calendar/dates/SELECT_TODAY';
 
 export default (state = moment(), action = null) => {
   if (action.type === SELECT_TODAY) {

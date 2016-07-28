@@ -1,4 +1,4 @@
-export const VIEW_CHANGED_EVENT = 'VIEW_CHANGED_EVENT';
+export const VIEW_CHANGED_EVENT = 'calendar/view/VIEW_CHANGED_EVENT';
 
 export default (state = 'month', action = null) => {
   if (action.type === VIEW_CHANGED_EVENT) {

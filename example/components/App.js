@@ -5,7 +5,7 @@ import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../app/src/
 import uuid from 'uuid';
 import moment from 'moment';
 import {reduxForm} from 'redux-form';
-import TaskForm from './TaskForm';
+import TaskFormContainer from './TaskFormContainer';
 
 export default () => {
 
@@ -66,7 +66,7 @@ export default () => {
     });
   };
 
-  return (<div > <TaskForm />
+  return (<div > <TaskFormContainer />
         <Calendar config={{
     increment: 15,
     width: '1200px',

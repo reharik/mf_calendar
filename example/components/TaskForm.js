@@ -1,32 +1,7 @@
 import React from 'react';
-import {reduxForm} from 'redux-form';
-import { CREATE_TASK_REQUEST,
-  CREATE_TASK_SUCCESS,
-  REMOVE_TASK_REQUEST,
-  REMOVE_TASK_SUCCESS,
-  UPDATE_TASK_REQUEST,
-  UPDATE_TASK_SUCCESS
-} from './../../app/src/index';
-import uuid from 'uuid';
-import moment from 'moment';
 
-const submit = (values, dispatch,resetForm) => {
-  dispatch({type: CREATE_TASK_SUCCESS,
-    data: {
-      task: {
-        display: values.display,
-        startTime: values.startTime,
-        endTime: values.endTime,
-        date: moment(),
-        id: uuid.v4(),
-        color: values.color
-      }
-    }});
-    resetForm();
-};
-
-let TaskForm = ({fields: {startTime, endTime, display, color}, resetForm, handleSubmit, submitting}) => (
-    <form onSubmit={handleSubmit((x, y) => submit(x,y,resetForm))}>
+let TaskForm = ({fields: {id, startTime, endTime, display, color}, resetForm, handleSubmit, submitting}) => (
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Start Time</label>
         <input type="text" placeholder="Start Time" {...startTime}/>
@@ -43,14 +18,9 @@ let TaskForm = ({fields: {startTime, endTime, display, color}, resetForm, handle
         <label>Color</label>
         <input type="text" placeholder="Color" {...color}/>
       </div>
+      <input type="hidden" {...id} />
       <button type="submit" disabled={submitting} >Submit</button>
     </form>
    );
-
-
-TaskForm = reduxForm({
-  form: 'task',
-  fields: ['startTime', 'endTime', 'display', 'color']
-})(TaskForm);
 
 export default TaskForm
