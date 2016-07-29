@@ -23,7 +23,11 @@
 }
 
 .hour__breaks {
-    border-top:$border;
+  border-top:$border;
+}
+
+.halfhour__breaks {
+  border-top:$border;
 }
 
 .day__isToday {

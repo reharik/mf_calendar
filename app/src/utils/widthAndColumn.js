@@ -10,8 +10,8 @@ const process = _apts => {
     events.push({type: 'endTime', value: x.endTime.unix(), id: x.id});
   });
   const sortedEvents = events
-        .sort(firstBy('value').thenBy(x => {return x === 'endTime' ? 1 : -1;})
-        .thenBy('id'));
+    .sort(firstBy('value').thenBy(x => {return x === 'endTime' ? 1 : -1;})
+      .thenBy('id'));
 
     // posible alt
     // const updateWip = wip => wip.forEach(x => {

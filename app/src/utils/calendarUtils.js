@@ -70,9 +70,12 @@ const getTimesForDay = function() {
 
 const augmentTimes = (classes, day) => {
   return getTimesForDay(config).map(time => {
+    var myClasses = classes;
     const isHour = time.indexOf(':00') > -1;
-    classes = isHour ? classes + 'hour__breaks' : classes;
-    return {time, isHour, classes, display: isHour ? time : ' ', day};
+    myClasses = isHour ? myClasses + 'hour__breaks' : myClasses;
+    const isHalfHour = time.indexOf(':30') > -1;
+    myClasses = isHalfHour ? myClasses + 'halfhour__breaks' : myClasses;
+    return {time, isHour, isHalfHour, classes: myClasses, display: isHour ? time : ' ', day};
   });
 };
 

@@ -1,0 +1,31 @@
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "time"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "time"
+    },
+    "display": {
+      "type": "string"
+    },
+    "color": {
+      "description": "color to display tasks",
+      "type": "string"
+    }
+  },
+  "required": [
+    "startTime",
+    "endTime",
+    "display",
+    "color"
+  ]
+}

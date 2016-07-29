@@ -32,6 +32,10 @@ const config = {
         include: [ path.resolve(__dirname, 'app/css'), path.resolve(__dirname, 'example/css/app.css') ],
                 // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader')
         loader: 'style!css-loader?sourceMap=1&modules&importLoaders=1&localIdentName=[local]!postcss-loader'
+      },
+      {
+        "test": /\.json$/,
+        "loader": "json"
       }
             // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -50,7 +54,8 @@ const config = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('mf_calendar.css', { allChunks: true})
+    new ExtractTextPlugin('mf_calendar.css', { allChunks: true}),
+    new webpack.IgnorePlugin(/regenerator|nodent|js\-beautify/, /ajv/)
   ],
 
   postcss() {
