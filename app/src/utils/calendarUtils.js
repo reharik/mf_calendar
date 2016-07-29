@@ -1,6 +1,7 @@
 import Calendar from 'node-calendar';
 import moment from 'moment';
 import invariant from 'invariant';
+import { config } from './configValues';
 
 const validateTask = task => {
   invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
@@ -8,10 +9,10 @@ const validateTask = task => {
 };
 
 const momentFromTime = function(time) {
-  return moment.isMoment(time) ? time.clone() : moment(time, ['h:mm A']);
+  return moment.isMoment(time) ? time.clone() : moment(time, [config.displayTimeFormat]);
 };
 
-const normalizeTasks = function(tasks, config) {
+const normalizeTasks = function(tasks) {
 
   return tasks.map(t => {
     validateTask(t);
@@ -56,18 +57,18 @@ const formatHeaderDisplay = function(mom, viewType) {
   return mom.format('MMMM') + ' ' + mom.year();
 };
 
-const getTimesForDay = function(config) {
+const getTimesForDay = function() {
   let result = [];
   let time = config.dayStartsAt.clone();
   const end = config.dayEndsAt;
   while (time.isBefore(end, 'minutes', '[)')) {
-    result.push(time.format('h:mm A'));
+    result.push(time.format(config.displayTimeFormat));
     time.add(config.increment, 'minutes');
   }
   return result;
 };
 
-const augmentTimes = (config, classes, day) => {
+const augmentTimes = (classes, day) => {
   return getTimesForDay(config).map(time => {
     const isHour = time.indexOf(':00') > -1;
     classes = isHour ? classes + 'hour__breaks' : classes;

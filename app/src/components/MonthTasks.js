@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const MonthTasks = ({tasks, config, dispatch}) => {
-  const selectTaskAction = task => config.taskClickedAction(task, dispatch);
+  const selectTaskAction = task => config.taskClickedAction(task.id, task, dispatch);
 
   return (<div className="task">
       { tasks.map((t, index)=> { return (<div className="month__task__item" key={index}

@@ -4,7 +4,8 @@ import Month from './../containers/MonthContainer';
 import Week from './../components/Week';
 import Day from './../components/Day';
 
-const Calendar = ({calendarView, calendarConfig}) => {
+const Calendar = ({calendarView, calendarConfig, calendarDate, dispatch}) => {
+
   let view = <Month />;
   switch (calendarView) {
     case 'week':
@@ -14,6 +15,11 @@ const Calendar = ({calendarView, calendarConfig}) => {
       view = <Day />;
       break;
   }
+
+  calendarConfig.retrieveDataAction(calendarDate.startOf(view).toString(calendarConfig.fetchDateFormat),
+    calendarDate.endOf(view).toString(calendarConfig.fetchDateFormat),
+    dispatch);
+
   return (<div className="calendar" style={{width: calendarConfig.width}}>
     <Header />
     <div className="calendar__display__view">
@@ -23,8 +29,10 @@ const Calendar = ({calendarView, calendarConfig}) => {
 };
 
 Calendar.propTypes = {
+  calendarConfig: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
   calendarView: PropTypes.string,
-  calendarConfig: PropTypes.object.isRequired
+  calendarDate: PropTypes.object
 };
 
 export default Calendar;

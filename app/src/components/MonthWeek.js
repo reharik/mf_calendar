@@ -2,9 +2,11 @@ import React, { PropTypes } from 'react';
 import MonthTasks from './MonthTasks';
 
 const MonthWeek = ({weekDays, config, dispatch}) => {
+
   const selectSlotAction = time => {
-    config.openSpaceClickedAction(time.day, time.time, dispatch);
+    config.openSpaceClickedAction(time.format(config.fetchDateFormat), config.dayStartsAt, dispatch);
   };
+
   return (
     <ol className="month__week" >
       { weekDays.map((day, idx) =>

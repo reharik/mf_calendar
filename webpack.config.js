@@ -29,7 +29,7 @@ const config = {
             { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader']},
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, 'app/css'),
+        include: [ path.resolve(__dirname, 'app/css'), path.resolve(__dirname, 'example/css/app.css') ],
                 // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader')
         loader: 'style!css-loader?sourceMap=1&modules&importLoaders=1&localIdentName=[local]!postcss-loader'
       }

@@ -14,7 +14,7 @@ function mapStateToProps(state, ownProps) {
   return {
     view: state.calendarView,
     tasks,
-    times: augmentTimes(config, classes, day),
+    times: augmentTimes(classes, day),
     dayName: day.format('dddd'),
     isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD'),
     config

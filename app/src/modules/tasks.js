@@ -41,7 +41,8 @@ export default (state = [], action = null) => {
     return [...state];
   }
   else if (action.type === REMOVE_TASK_SUCCESS) {
-    return state.splice(state.findIndex(x => x.id === action.data.task.id), 1);
+    state.splice(state.findIndex(x => x.id === action.data.task.id), 1);
+    return [...state];
   }
 
   return state;

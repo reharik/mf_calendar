@@ -66,12 +66,14 @@ export default () => {
     });
   };
 
-  return (<div > <TaskFormContainer />
-        <Calendar config={{
-    increment: 15,
-    width: '1200px',
-    retrieveDataAction: retrieveData,
-    taskClickedAction: taskClicked,
-    openSpaceClickedAction: openSpaceCLicked
-  }} /> </div>);
+  return (<div className="app" >
+    <TaskFormContainer />
+    <Calendar config={{
+      increment: 15,
+      width: '1200px',
+      retrieveDataAction: retrieveData,
+      taskClickedAction: taskClicked,
+      openSpaceClickedAction: openSpaceCLicked
+    }} /> 
+  </div>);
 };

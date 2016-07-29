@@ -6,7 +6,8 @@ function mapStateToProps(state, ownProps) {
   const calendarConfig = updateConfigs(ownProps.config);
   return {
     calendarView: state.calendarView || calendarConfig.defaultView,
-    calendarConfig
+    calendarConfig,
+    calendarDate: state.calendarDate
   };
 }
 

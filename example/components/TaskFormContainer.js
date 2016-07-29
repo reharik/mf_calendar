@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm} from 'redux-form';
-import {createTaskSubmitHandler} from './../actions/calendarActions'
+import {createTaskSubmitHandler, removeTaskHandler} from './../actions/calendarActions'
 import TaskForm from './TaskForm';
 
 const mapStateToProps = state => {
@@ -17,7 +17,8 @@ const mapStateToProps = state => {
 const TaskFormContainer = reduxForm({
   form: 'task',
   fields: ['id', 'startTime', 'endTime', 'display', 'color'],
-  onSubmit: createTaskSubmitHandler
+  onSubmit: createTaskSubmitHandler,
+  onRemove: removeTaskHandler
 }, mapStateToProps)(TaskForm);
 
 export default TaskFormContainer
