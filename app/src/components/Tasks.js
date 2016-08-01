@@ -3,7 +3,6 @@ import Color from 'color';
 
 const Tasks = ({tasks, config, dispatch}) => {
   const selectTaskAction = task => config.taskClickedAction(task.id, task, dispatch);
-
   /* eslint-disable new-cap */
   return (<div className="task">
 		{ tasks.map((t, index)=> (<div className="task__item" key={index}

@@ -17,7 +17,7 @@ export default () => {
     return {
       tasks: [
         {
-          display: 'fuck you!',
+          display: 'fuck you!1',
           startTime: '8:00 AM',
           endTime: '9:00 AM',
           date: new Date(),
@@ -26,7 +26,7 @@ export default () => {
           x
         },
         {
-          display: 'fuck you!',
+          display: 'fuck you!2',
           startTime: '8:30 AM',
           endTime: '9:30 AM',
           date: new Date(),
@@ -35,7 +35,7 @@ export default () => {
           x
         },
         {
-          display: 'fuck you!',
+          display: 'fuck you!3',
           startTime: '8:30 AM',
           endTime: '9:00 AM',
           date: new Date(),
@@ -44,7 +44,7 @@ export default () => {
           x
         },
         {
-          display: 'fuck you!',
+          display: 'fuck you!4',
           startTime: '9:00 AM',
           endTime: '10:00 AM',
           date: new Date(),

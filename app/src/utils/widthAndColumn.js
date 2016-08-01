@@ -6,13 +6,6 @@ const process = _apts => {
   let workingSet = [];
   const widthOffset = 1;
 
-
-    // posible alt
-    // const updateWip = wip => wip.forEach(x => {
-    //     const sameStart = wip.filter(s => s.startTime.isSame(x.startTime));
-    //     x.width = sameStart > x.width || 1 ? sameStart : x.width
-    // });
-
   const updateWip = (wip, start) => {
     var sameSlot = wip.filter(x => x.value === start );
     var sameOrEarlierSlot = wip.filter(x => x.value <= start );
@@ -24,6 +17,7 @@ const process = _apts => {
   const updateItem = (item, e) => {
     item.status = 'used';
     item.id = e.id;
+    item.value = e.value;
   };
 
   const addToWip = (wip = [], e) => {
@@ -41,9 +35,11 @@ const process = _apts => {
   };
 
   const updateApt = (apts, item) => {// eslint-disable-line no-shadow
+
     let target = apts.find(a => a.id === item.id);
+
     target.width = Math.round((100 / item.width) - widthOffset);
-    target.margin = target.width * (item.column - 1);
+    target.margin = item.width > 1 ? target.width * (item.column - 1) : 0;
     target.column = item.column;
   };
 
@@ -67,10 +63,9 @@ const process = _apts => {
   };
 
   _apts.forEach(x => {
-    events.push({type: 'startTime', value: x.startTime.unix() + 1, id: x.id});
-    events.push({type: 'endTime', value: x.endTime.unix(), id: x.id});
+    events.push({type: 'startTime', value: x.startTime.unix() + 1, id: x.id, slots: x.slots});
+    events.push({type: 'endTime', value: x.endTime.unix(), id: x.id, slots: x.slots});
   });
-
   const sortedEvents = events
     .sort(firstBy('value').thenBy('slots', -1).thenBy(x => {return x === 'endTime' ? 1 : -1;})
       .thenBy('id'));
