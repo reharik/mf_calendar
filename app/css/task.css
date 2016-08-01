@@ -1,3 +1,6 @@
+.task {
+  display: flex;
+}
 
 .task__item {
     margin: 1px;

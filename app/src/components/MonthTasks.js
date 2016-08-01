@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const MonthTasks = ({tasks, config, dispatch}) => {
   const selectTaskAction = task => config.taskClickedAction(task.id, task, dispatch);
 
-  return (<div className="task">
+  return (<div className="month__task">
       { tasks.map((t, index)=> { return (<div className="month__task__item" key={index}
         style={{backgroundColor: t.color}}
         onClick={() => selectTaskAction(t)}>

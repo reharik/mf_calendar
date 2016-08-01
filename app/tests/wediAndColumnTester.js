@@ -24,7 +24,8 @@ describe('WIDTH AND COLUMN TESTER', function() {
     it('should_return_apts_with_proper_width_and_column', () => {
       var result = mut.process(apts);
       result[0].width.should.equal(99);
-      result[0].column.should.equal(0);
+      result[0].column.should.equal(1);
+      result[0].margin.should.equal(0);
     });
   });
 
@@ -37,10 +38,12 @@ describe('WIDTH AND COLUMN TESTER', function() {
 
     it('should_return_apts_with_proper_width_and_column', () => {
       var result = mut.process(apts);
-      result[0].width.should.equal(49);
-      result[0].column.should.equal(0);
+      result[0].width.should.equal(99);
+      result[0].column.should.equal(1);
+      result[0].margin.should.equal(0);
       result[1].width.should.equal(49);
-      result[1].column.should.equal(49);
+      result[1].column.should.equal(2);
+      result[1].margin.should.equal(49);
     });
   });
 
@@ -74,12 +77,16 @@ describe('WIDTH AND COLUMN TESTER', function() {
 
     it('should_return_apts_with_proper_width_and_column', () => {
       var result = mut.process(apts);
-      result[0].width.should.equal(32);
-      result[0].column.should.equal(0);
+      result[0].width.should.equal(99);
+      result[0].column.should.equal(1);
+      result[0].margin.should.equal(0);
       result[1].width.should.equal(32);
-      result[1].column.should.equal(32);
+      // result[1].column.should.equal(2);
+      result[1].margin.should.equal(32);
       result[2].width.should.equal(32);
-      result[2].column.should.equal(64);
+      result[2].column.should.equal(3);
+      result[2].margin.should.equal(64);
     });
   });
 });
+

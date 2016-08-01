@@ -8,7 +8,7 @@ const Tasks = ({tasks, config, dispatch}) => {
   return (<div className="task">
 		{ tasks.map((t, index)=> (<div className="task__item" key={index}
   style={{width: t.width + '%', height: 18 * t.slots + 'px',
-	marginLeft: index > 0 || t.column === 0 ? '0' : t.column + 1 + '%' }}
+	marginLeft: index > 0 || t.margin === 0 ? '0' : t.margin + 1 + '%', zIndex: t.column }}
   onClick={() => selectTaskAction(t)}>
   <div className="task__item__title" style={{ backgroundColor: Color(t.color).darken(0.2).hexString()}} >{t.title}</div>
   <div className="task__item__display" style={{ backgroundColor: t.color}}> {t.display}</div>
