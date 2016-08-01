@@ -81,7 +81,7 @@ describe('WIDTH AND COLUMN TESTER', function() {
       result[0].column.should.equal(1);
       result[0].margin.should.equal(0);
       result[1].width.should.equal(32);
-      // result[1].column.should.equal(2);
+      result[1].column.should.equal(2);
       result[1].margin.should.equal(32);
       result[2].width.should.equal(32);
       result[2].column.should.equal(3);
@@ -89,4 +89,3 @@ describe('WIDTH AND COLUMN TESTER', function() {
     });
   });
 });
-

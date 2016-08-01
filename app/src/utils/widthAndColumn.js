@@ -16,26 +16,17 @@ const process = _apts => {
   const updateWip = (wip, start) => {
     var sameSlot = wip.filter(x => x.value === start );
     var sameOrEarlierSlot = wip.filter(x => x.value <= start );
+    // console.log('==========sameOrEarlier=========');
+    // console.log(sameOrEarlierSlot);
+    // console.log('==========END sameOrEarlier=========');
     sameSlot.forEach(y => {
       y.width = (sameOrEarlierSlot.length > y.width || 1) ? sameOrEarlierSlot.length : y.width;
     });
   };
 
-  const updateItem = (item, e) => {
-    item.status = 'used';
-    item.id = e.id;
-  };
-
   const addToWip = (wip = [], e) => {
-    let item = wip.find(item => item.status === 'available'); // eslint-disable-line no-shadow
-
-    if (item) {
-      updateItem(item, e);
-      item.column = wip.filter(x => x.status === 'used').length;
-    } else {
-      item = {status: 'used', id: e.id, value: e.value, column: wip.length + 1};
-      wip.push(item);
-    }
+    var item = {id: e.id, value: e.value, column: wip.length + 1};
+    wip.push(item);
     updateWip(wip, e.value);
     return wip;
   };
@@ -48,14 +39,11 @@ const process = _apts => {
   };
 
   const removeFromWip = (apts, wip, e) => {// eslint-disable-line no-shadow
-    let item = wip.find(x => x.id === e.id);
-    if (!item) { return; }
-    item.status = 'available';
+    let idx = wip.findIndex(x => x.id === e.id);
+    if (idx === -1) { return; }
+    let item = wip[idx];
     updateApt(apts, item);
-    if (wip.indexOf(item) + 1 === wip.length) {
-      wip.pop();
-    }
-    wip = wip.every(x=>x.status === 'available') ? [] : wip;
+    wip.splice(idx, 1);
   };
 
   const handleEvent = (e, apts, ws) => {// eslint-disable-line no-shadow
