@@ -8,7 +8,7 @@ const process = _apts => {
 
   const updateWip = (wip, start) => {
     var sameSlot = wip.filter(x => x.value === start );
-    var sameOrEarlierSlot = wip.filter(x => x.value <= start );
+    var sameOrEarlierSlot = wip.filter(x => x.value <= start && x.status === 'used');
     sameSlot.forEach(y => {
       y.width = (sameOrEarlierSlot.length > y.width || 1) ? sameOrEarlierSlot.length : y.width;
     });
@@ -25,7 +25,7 @@ const process = _apts => {
 
     if (item) {
       updateItem(item, e);
-      item.column = wip.filter(x => x.status === 'used').length;
+      // item.column = wip.filter(x => x.status === 'used').length;
     } else {
       item = {status: 'used', id: e.id, value: e.value, column: wip.length + 1};
       wip.push(item);
