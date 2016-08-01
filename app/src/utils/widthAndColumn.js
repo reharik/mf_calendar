@@ -35,9 +35,7 @@ const process = _apts => {
   };
 
   const updateApt = (apts, item) => {// eslint-disable-line no-shadow
-
     let target = apts.find(a => a.id === item.id);
-
     target.width = Math.round((100 / item.width) - widthOffset);
     target.margin = item.width > 1 ? target.width * (item.column - 1) : 0;
     target.column = item.column;
@@ -63,8 +61,8 @@ const process = _apts => {
   };
 
   _apts.forEach(x => {
-    events.push({type: 'startTime', value: x.startTime.unix() + 1, id: x.id, slots: x.slots});
-    events.push({type: 'endTime', value: x.endTime.unix(), id: x.id, slots: x.slots});
+    events.push({type: 'startTime', value: x.startTime.unix() + 1, id: x.id, slots: x.slots, dipslay: x.display});
+    events.push({type: 'endTime', value: x.endTime.unix(), id: x.id, slots: x.slots, dipslay: x.display});
   });
   const sortedEvents = events
     .sort(firstBy('value').thenBy('slots', -1).thenBy(x => {return x === 'endTime' ? 1 : -1;})

@@ -13,7 +13,7 @@ export default () => {
   const b = uuid.v4();
   const c = uuid.v4();
   const d = uuid.v4();
-  const getData = function(x) {
+  const getData = function() {
     return {
       tasks: [
         {
@@ -22,8 +22,7 @@ export default () => {
           endTime: '9:00 AM',
           date: new Date(),
           id: a,
-          color: 'red',
-          x
+          color: 'red'
         },
         {
           display: 'fuck you!2',
@@ -31,8 +30,7 @@ export default () => {
           endTime: '9:30 AM',
           date: new Date(),
           id: b,
-          color: 'red',
-          x
+          color: 'red'
         },
         {
           display: 'fuck you!3',
@@ -40,8 +38,7 @@ export default () => {
           endTime: '9:00 AM',
           date: new Date(),
           id: c,
-          color: 'red',
-          x
+          color: 'red'
         },
         {
           display: 'fuck you!4',
@@ -49,15 +46,14 @@ export default () => {
           endTime: '10:00 AM',
           date: new Date(),
           id: d,
-          color: 'red',
-          x
+          color: 'red'
         }
       ]
     };
   };
 
   const retrieveData = (startDate, endDate, dispatch) => {
-    var data = getData(moment().format('mm-ss'));
+    var data = getData();
     window.setTimeout(function() {
       dispatch({type: RETRIEVE_TASKS_SUCCESS, data});
     }, 100);
@@ -74,6 +70,6 @@ export default () => {
       retrieveDataAction: retrieveData,
       taskClickedAction: taskClicked,
       openSpaceClickedAction: openSpaceCLicked
-    }} /> 
+    }} />
   </div>);
 };
