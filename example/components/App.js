@@ -54,9 +54,9 @@ export default () => {
 
   const retrieveData = (startDate, endDate, dispatch) => {
     var data = getData();
-    window.setTimeout(function() {
+    // window.setTimeout(function() {
       dispatch({type: RETRIEVE_TASKS_SUCCESS, data});
-    }, 100);
+    // }, 100);
     dispatch({
       type: RETRIEVE_TASKS_REQUEST
     });

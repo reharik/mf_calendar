@@ -17,6 +17,8 @@ export const RETRIEVE_TASKS_REQUEST = 'calendar/tasks/RETRIEVE_TASKS_REQUEST';
 export const RETRIEVE_TASKS_FAILURE = 'calendar/tasks/RETRIEVE_TASKS_FAILURE';
 export const RETRIEVE_TASKS_SUCCESS = 'calendar/tasks/RETRIEVE_TASKS_SUCCESS';
 
+export const TASK_DRAG_SOURCE = 'calendar/tasks/TASK_DRAG_SOURCE';
+
 export default (state = [], action = null) => {
   var task;
   if (action.type === RETRIEVE_TASKS_SUCCESS) {

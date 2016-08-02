@@ -3,6 +3,9 @@ import Header from './../containers/HeaderContainer';
 import Month from './../containers/MonthContainer';
 import Week from './../components/Week';
 import Day from './../components/Day';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 
 const Calendar = ({calendarView, calendarConfig}) => { //, calendarDate, dispatch}) => {
 
@@ -35,4 +38,4 @@ Calendar.propTypes = {
   calendarDate: PropTypes.object
 };
 
-export default Calendar;
+export default DragDropContext(HTML5Backend)(Calendar); // eslint-disable-line new-cap

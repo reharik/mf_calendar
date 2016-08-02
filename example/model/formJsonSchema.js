@@ -10,7 +10,7 @@ export default (schema) => {
 }
 
 function buildValidationFn(schema) {
-  var ajv = new Ajv({allErrors: true, verbose: true}); // options can be passed, e.g. {allErrors: true}
+  var ajv = new Ajv({allErrors: true}); // options can be passed, e.g. {allErrors: true}
   var validate = ajv.compile(schema);
   var errors = {};
   return (formValues) => {
@@ -19,6 +19,7 @@ function buildValidationFn(schema) {
     if (valid) {
       return errors;
     }
+
     var errs = validate.errors;
     Object.keys(errs).forEach(k => {
       errors[[errs[k].params.missingProperty]] = errs[k].message;

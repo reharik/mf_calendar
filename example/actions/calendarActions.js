@@ -55,7 +55,8 @@ const createTaskSubmitHandler = (values, dispatch) => {
           startTime: values.startTime,
           endTime: values.endTime,
           color: values.color,
-          id: values.id
+          id: values.id,
+          date: values.date
         }
       }
     });
