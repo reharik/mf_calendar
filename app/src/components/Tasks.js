@@ -17,6 +17,7 @@ const Tasks = ({tasks, config, dispatch,
   return connectDropTarget(<div className="tasks" style={{ ...style, backgroundColor }} >
 		{tasks.sort((a, b) => a.margin > b.margin).map((t, index)=> (
   <Task
+    key={index}
     task={t}
     index={index}
     config={config}

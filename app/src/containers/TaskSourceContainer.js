@@ -1,7 +1,8 @@
 import Task from './../components/Task';
 import { DragSource } from 'react-dnd';
-import { TASK_DRAG_SOURCE, UPDATE_TASK_SUCCESS } from './../modules/tasks';
+import { TASK_DRAG_SOURCE } from './../modules/tasks';
 import { momentFromTime } from './../utils/calendarUtils';
+import { config } from './../utils/configValues';
 
 const taskSource = {
   beginDrag(props) {
@@ -14,15 +15,12 @@ const taskSource = {
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
-      props.dispatch({
-        type: UPDATE_TASK_SUCCESS,
-        data: {
-          task: {...item.task,
-            startTime: dropResult.time,
-            endTime: momentFromTime(dropResult.time).add(1, 'hour').format('h:mm A'),
-            date: dropResult.day}
-        }
-      });
+      const task = { ...item.task,
+        startTime: dropResult.time,
+        endTime: momentFromTime(dropResult.time).add(item.task.slots * config.increment, 'minutes').format('h:mm A'),
+        date: dropResult.day };
+
+      config.updateTaskViaDND(task, props.dispatch);
     }
   }
 };

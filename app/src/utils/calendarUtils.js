@@ -13,7 +13,9 @@ const momentFromTime = function(time) {
 };
 
 const normalizeTasks = function(tasks) {
-
+  if (!Array.isArray(tasks)) {
+    tasks = [tasks];
+  }
   return tasks.map(t => {
     validateTask(t);
     const endTime = momentFromTime(t.endTime);

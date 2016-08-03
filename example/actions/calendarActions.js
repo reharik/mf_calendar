@@ -6,7 +6,8 @@ import { RETRIEVE_DATA,
     RETRIEVE_TASKS_SUCCESS,
 CREATE_TASK_SUCCESS,
   UPDATE_TASK_SUCCESS,
-  REMOVE_TASK_SUCCESS
+  REMOVE_TASK_SUCCESS,
+  UPDATE_TASK_VIA_DND_SUCCESS
 } from './../../app/src/index';
 import { CALL_API } from 'redux-api-middleware';
 import uuid from 'uuid';
@@ -44,6 +45,14 @@ const openSpaceCLicked = (date, time, dispatch) => {
   });
 };
 
+const updateTaskViaDND = (task, dispatch) => {
+  dispatch({
+    type: UPDATE_TASK_VIA_DND_SUCCESS,
+    data: {
+      task
+    }
+  });
+};
 
 const createTaskSubmitHandler = (values, dispatch) => {
   if (values.id) {
@@ -85,13 +94,14 @@ const removeTaskHandler = (id, dispatch) => {
       task: {id}
     }
   })
-}
+};
 
 export {
     retrieveData,
     taskClicked,
     openSpaceCLicked,
   createTaskSubmitHandler,
-  removeTaskHandler
+  removeTaskHandler,
+  updateTaskViaDND
 };
 

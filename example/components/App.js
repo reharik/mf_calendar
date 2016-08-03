@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar } from '../../app/src/index';
-import { taskClicked, openSpaceCLicked } from './../actions/calendarActions';
+import { taskClicked, openSpaceCLicked, updateTaskViaDND } from './../actions/calendarActions';
 import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../app/src/index';
 import uuid from 'uuid';
 import moment from 'moment';
@@ -69,7 +69,8 @@ export default () => {
       width: '1200px',
       retrieveDataAction: retrieveData,
       taskClickedAction: taskClicked,
-      openSpaceClickedAction: openSpaceCLicked
+      openSpaceClickedAction: openSpaceCLicked,
+      updateTaskViaDND: updateTaskViaDND
     }} />
   </div>);
 };
