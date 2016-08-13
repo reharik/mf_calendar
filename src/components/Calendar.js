@@ -20,7 +20,7 @@ const Calendar = ({calendarView, calendarConfig}) => { //, calendarDate, dispatc
   //   calendarDate.endOf(view).toString(calendarConfig.fetchDateFormat),
   //   dispatch);
 
-  const style = calendarConfig.width ?{width: calendarConfig.width} : '';
+  const style = calendarConfig.width ?{width: calendarConfig.width} : {};
   return (<div className="redux__task__calendar__calendar" style={style}>
     <Header />
     <div className="redux__task__calendar__calendar__display__view">
