@@ -35,7 +35,6 @@ export function updateConfigs(newConfig) {
     newConfig.dayEndsAt = moment(newConfig.dayEndsAt, newConfig.displayTimeFormat || config.displayTimeFormat);
   }
   merge(config, newConfig);
-
   return config;
 }
 
