@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { NO_OP } from '../constants/constants';
+import {merge} from 'lodash';
 
 const config = {
   defaultView: 'month',
@@ -8,7 +9,7 @@ const config = {
   increment: 30,
   color: 'blue',
   titleColor: 'darkblue',
-  width: '100%',
+  width: '',
   editable: true,
   fetchDateFormat: 'YYYYMMDD',
   displayTimeFormat: 'h:mm A',
@@ -33,7 +34,9 @@ export function updateConfigs(newConfig) {
   if (newConfig.dayEndsAt && !moment.isMoment(newConfig.dayEndsAt)) {
     newConfig.dayEndsAt = moment(newConfig.dayEndsAt, newConfig.displayTimeFormat || config.displayTimeFormat);
   }
-  return Object.assign(config, newConfig);
+  merge(config, newConfig);
+
+  return config;
 }
 
 export { config };
