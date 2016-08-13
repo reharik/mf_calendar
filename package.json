@@ -1,8 +1,8 @@
 {
-  "name": "invision-cal",
+  "name": "redux-task-calendar",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "lib/redux-task-calendar.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ",
     "build": "webpack --config ./webpack.build.config.js --progress",
