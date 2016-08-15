@@ -8,7 +8,7 @@ CREATE_TASK_SUCCESS,
   UPDATE_TASK_SUCCESS,
   REMOVE_TASK_SUCCESS,
   UPDATE_TASK_VIA_DND_SUCCESS
-} from './../../app/src/index';
+} from './../../src/index';
 import { CALL_API } from 'redux-api-middleware';
 import uuid from 'uuid';
 import moment from 'moment';

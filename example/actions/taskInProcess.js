@@ -1,5 +1,5 @@
-import { TASK_CLICKED, OPEN_SPACE_CLICKED } from './../../app/src/index'
-import { momentFromTime } from './../../app/src/utils/calendarUtils';
+import { TASK_CLICKED, OPEN_SPACE_CLICKED } from '../../src/index'
+import { momentFromTime } from '../../src/utils/calendarUtils';
 
 export default (state = {}, action = null) => {
   if (action.type === TASK_CLICKED) {

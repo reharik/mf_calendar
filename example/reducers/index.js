@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { calendarReducers } from '../../app/src/index';
+import { calendarReducers } from '../../src/index';
 import {reducer as formReducer} from 'redux-form';
 import taskInProcess from './../actions/taskInProcess'
 
