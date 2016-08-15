@@ -659,10 +659,16 @@ ol {
 .redux__task__calendar__day__isToday {
     background-color: #fcefa1
 }
-.redux__task__calendar__task {
+.redux__task__calendar__tasks {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex
+}
+.redux__task__calendar__task {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
 }
 .redux__task__calendar__task__item {
     margin: 1px;
