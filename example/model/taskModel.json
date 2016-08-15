@@ -8,11 +8,13 @@
     },
     "startTime": {
       "type": "string",
-      "format": "time"
+      "format": "date-time",
+      "invalidMessage": "Start Time must be a valid time"
     },
     "endTime": {
       "type": "string",
-      "format": "time"
+      "format": "date-time",
+      "requiredMessage"      :"this shit is srequired"
     },
     "display": {
       "type": "string"

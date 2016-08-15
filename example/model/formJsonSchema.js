@@ -1,4 +1,4 @@
-import Ajv from 'ajv'
+var jsen = require('jsen');
 
 export default (schema) => {
   const fields = Object.keys(schema.properties);
@@ -10,10 +10,16 @@ export default (schema) => {
 }
 
 function buildValidationFn(schema) {
-  var ajv = new Ajv({allErrors: true}); // options can be passed, e.g. {allErrors: true}
-  var validate = ajv.compile(schema);
-  var errors = {};
-  return (formValues) => {
+  var validate = jsen(schema,{greedy:true});
+  return (_formValues) => {
+    let formValues = _formValues;
+    var errors = {};
+    //required says that the property is there not that the value length > 0
+    Object.keys(formValues).forEach(k => {
+       if(!formValues[k]){
+         formValues[k] = undefined;
+       }
+     });
 
     var valid = validate(formValues);
     if (valid) {
@@ -21,9 +27,7 @@ function buildValidationFn(schema) {
     }
 
     var errs = validate.errors;
-    Object.keys(errs).forEach(k => {
-      errors[[errs[k].params.missingProperty]] = errs[k].message;
-    });
+    errs.forEach(x=> errors[x.path] = x.message || x.keyword);
     return errors;
   }
 }

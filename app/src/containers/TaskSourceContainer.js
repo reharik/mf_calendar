@@ -22,6 +22,9 @@ const taskSource = {
 
       config.updateTaskViaDND(task, props.dispatch);
     }
+  },
+  canDrag(props) {
+    return props.task.editable;
   }
 };
 
