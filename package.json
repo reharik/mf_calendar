@@ -23,7 +23,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
-    "eslint": "^3.2.2",
+    "eslint": "^3.3.0",
     "eslint-plugin-react": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
@@ -60,10 +60,5 @@
     "redux-thunk": "^2.0.1",
     "thenby": "^1.2.1",
     "uuid": "^2.0.2"
-  },
-  "pre-commit": [
-    "lint",
-    "validate",
-    "testOnce"
-  ]
+  }
 }

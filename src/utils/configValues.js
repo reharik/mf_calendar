@@ -24,6 +24,10 @@ const config = {
   openSpaceClickedAction: () => {
     return {type: NO_OP};
         /*no-op*/
+  },
+  updateTaskViaDND: () => {
+    return {type: NO_OP};
+    /*no-op*/
   }
 };
 

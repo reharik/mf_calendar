@@ -1,4 +1,8 @@
 import React, { PropTypes } from 'react';
+
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 import Header from '../containers/HeaderContainer';
 import Month from '../containers/MonthContainer';
 import Week from './Week';
@@ -36,4 +40,4 @@ Calendar.propTypes = {
   calendarDate: PropTypes.object
 };
 
-export default Calendar;
+export default DragDropContext(HTML5Backend)(Calendar); // eslint-disable-line new-cap

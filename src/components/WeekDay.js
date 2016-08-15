@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import WeekDayName from './WeekDayName';
-import Tasks from './Tasks';
+import Tasks from './../containers/TaskTargetContainer';
 
 const WeekDay = ({view,
     tasks,
@@ -27,9 +27,11 @@ const WeekDay = ({view,
         <li className={timeObj.classes}
           key={timeObj.time}
           onClick={ e => !e.target.className.startsWith('task') ? selectSlotAction(timeObj) : null }>
-          <div>
-            <Tasks tasks={getTasksForTime(tasks, timeObj.time)} config={config} dispatch={dispatch} />
-          </div>
+          <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
+            time={timeObj.time}
+            day={timeObj.day}
+            config={config}
+            dispatch={dispatch} />
         </li>))}
     </ol>);
 };

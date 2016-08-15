@@ -1,5 +1,10 @@
+.tasks {
+  display: flex;
+}
+
 .task {
   display: flex;
+  width:100%
 }
 
 .task__item {

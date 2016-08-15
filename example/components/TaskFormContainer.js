@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 const TaskFormContainer = reduxForm({
   form: 'task',
   fields: fjs.fields,
-  // validate: fjs.validate,
+  validate: fjs.validate,
   onSubmit: createTaskSubmitHandler,
   onRemove: removeTaskHandler
 }, mapStateToProps)(TaskForm);

@@ -13,7 +13,9 @@ const momentFromTime = function(time) {
 };
 
 const normalizeTasks = function(tasks) {
-
+  if (!Array.isArray(tasks)) {
+    tasks = [tasks];
+  }
   return tasks.map(t => {
     validateTask(t);
     const endTime = momentFromTime(t.endTime);
@@ -32,10 +34,9 @@ const normalizeTasks = function(tasks) {
       title,
       editable: t.editable || true,
       id: t.id,
-      color: t.color, // || config.defaultColor,
-      titleColor: t.titleColor, // || config.defaultTitleColor,
-      orig: t,
-      x: t.x
+      color: t.color || config.defaultColor,
+      titleColor: t.titleColor || config.defaultTitleColor,
+      orig: t.orig || t
     };
   });
 };

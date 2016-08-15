@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar } from '../../src/index';
-import { taskClicked, openSpaceCLicked } from './../actions/calendarActions';
-import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from '../../src/index';
+import { taskClicked, openSpaceCLicked, updateTaskViaDND } from './../actions/calendarActions';
+import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../src/index';
 import uuid from 'uuid';
 import moment from 'moment';
 import {reduxForm} from 'redux-form';
@@ -54,9 +54,9 @@ export default () => {
 
   const retrieveData = (startDate, endDate, dispatch) => {
     var data = getData();
-    window.setTimeout(function() {
+    // window.setTimeout(function() {
       dispatch({type: RETRIEVE_TASKS_SUCCESS, data});
-    }, 100);
+    // }, 100);
     dispatch({
       type: RETRIEVE_TASKS_REQUEST
     });
@@ -69,7 +69,8 @@ export default () => {
       width: '1200px',
       retrieveDataAction: retrieveData,
       taskClickedAction: taskClicked,
-      openSpaceClickedAction: openSpaceCLicked
+      openSpaceClickedAction: openSpaceCLicked,
+      updateTaskViaDND: updateTaskViaDND
     }} />
   </div>);
 };

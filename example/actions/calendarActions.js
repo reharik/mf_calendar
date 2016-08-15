@@ -4,10 +4,11 @@ import { RETRIEVE_DATA,
     RETRIEVE_TASKS_REQUEST,
     RETRIEVE_TASKS_FAILURE,
     RETRIEVE_TASKS_SUCCESS,
-  CREATE_TASK_SUCCESS,
+CREATE_TASK_SUCCESS,
   UPDATE_TASK_SUCCESS,
-  REMOVE_TASK_SUCCESS
-} from '../../src/index';
+  REMOVE_TASK_SUCCESS,
+  UPDATE_TASK_VIA_DND_SUCCESS
+} from './../../src/index';
 import { CALL_API } from 'redux-api-middleware';
 import uuid from 'uuid';
 import moment from 'moment';
@@ -44,6 +45,14 @@ const openSpaceCLicked = (date, time, dispatch) => {
   });
 };
 
+const updateTaskViaDND = (task, dispatch) => {
+  dispatch({
+    type: UPDATE_TASK_VIA_DND_SUCCESS,
+    data: {
+      task
+    }
+  });
+};
 
 const createTaskSubmitHandler = (values, dispatch) => {
   if (values.id) {
@@ -55,7 +64,8 @@ const createTaskSubmitHandler = (values, dispatch) => {
           startTime: values.startTime,
           endTime: values.endTime,
           color: values.color,
-          id: values.id
+          id: values.id,
+          date: values.date
         }
       }
     });
@@ -84,13 +94,14 @@ const removeTaskHandler = (id, dispatch) => {
       task: {id}
     }
   })
-}
+};
 
 export {
     retrieveData,
     taskClicked,
     openSpaceCLicked,
   createTaskSubmitHandler,
-  removeTaskHandler
+  removeTaskHandler,
+  updateTaskViaDND
 };
 
