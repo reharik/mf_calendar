@@ -326,8 +326,7 @@ textarea {
     /* 2 */
 }
 html, body {
-    box-sizing: border-box;
-    font-size: 16px
+    box-sizing: border-box
 }
 *, *:before, *:after {
     box-sizing: inherit
