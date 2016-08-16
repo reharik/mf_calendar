@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import '../../example/css/normalize.css';
 @import 'variables.css';
 @import 'structural.css';
 @import 'calendar.css';
