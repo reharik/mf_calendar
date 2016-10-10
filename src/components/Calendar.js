@@ -35,9 +35,7 @@ const Calendar = ({calendarView, calendarConfig}) => { //, calendarDate, dispatc
 
 Calendar.propTypes = {
   calendarConfig: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
   calendarView: PropTypes.string,
-  calendarDate: PropTypes.object
 };
 
 export default DragDropContext(HTML5Backend)(Calendar); // eslint-disable-line new-cap

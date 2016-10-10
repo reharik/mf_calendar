@@ -373,6 +373,7 @@ ol {
 }
 .redux__task__calendar__header__date__nav__today {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center
 }
 .redux__task__calendar__calendar__display__view {
