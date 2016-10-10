@@ -32,11 +32,13 @@ const webpackConfig = {
     "react-redux": "react-redux",
     "redux": "redux",
     "redux-logger": "redux-logger",
-    "redux-thunk": "redux-thunk",
-    "fs": "empty"
+    "redux-thunk": "redux-thunk"
+  },
+  node: {
+    cldr: "empty",
+    fs: "empty"
 
   },
-
   module: {
     loaders: [
       { test: /\.jsx?$/, include: [ path.resolve(__dirname, 'src')], loader: 'babel'},
