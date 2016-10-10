@@ -22,7 +22,7 @@ const webpackConfig = {
     publicPath: '/',
     filename: 'redux-task-calendar.js',
     library: 'calendar',
-    libraryTarget: 'amd'
+    libraryTarget: 'umd'
   },
 
   externals: {
@@ -33,7 +33,7 @@ const webpackConfig = {
     "redux": "redux",
     "redux-logger": "redux-logger",
     "redux-thunk": "redux-thunk",
-    "cldr": {}
+    "fs": "empty"
 
   },
 
