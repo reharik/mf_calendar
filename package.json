@@ -44,6 +44,7 @@
     "webpack-validator": "^2.2.7"
   },
   "dependencies": {
+    "cldr": "^3.5.2",
     "color": "^0.11.3",
     "invariant": "^2.2.1",
     "lodash": "^4.15.0",
