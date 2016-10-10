@@ -33,7 +33,7 @@ const webpackConfig = {
     "redux": "redux",
     "redux-logger": "redux-logger",
     "redux-thunk": "redux-thunk",
-    "cldr": "empty"
+    "cldr": {}
 
   },
 
