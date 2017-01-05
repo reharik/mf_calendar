@@ -4,19 +4,19 @@ import HeaderDateNav from './HeaderDateNav';
 const Header = ({calendarView,
     selectedDay,
     caption,
-    config,
     selectToday,
     viewChangedEvent,
     incrementDate,
     decrementDate,
-    dispatch}) => {
+    actions,
+    calendarConfig}) => {
 
   const viewChangedEventAction = view => {
-    dispatch(viewChangedEvent(view));
-    config.retrieveDataAction(selectedDay.startOf(view).toString(config.fetchDateFormat),
-      selectedDay.endOf(view).toString(config.fetchDateFormat),
-      dispatch);
+    viewChangedEvent(view);
+    actions.retrieveDataAction(selectedDay.startOf(view).toString(calendarConfig.fetchDateFormat),
+      selectedDay.endOf(view).toString(calendarConfig.fetchDateFormat));
   };
+
   let classes = ' redux__task__calendar__header__view__nav_button ';
   const dayClasses = (calendarView === 'day' ? 'active' : '') + classes;
   const weekClasses = (calendarView === 'week' ? 'active' : '') + classes;
@@ -27,9 +27,9 @@ const Header = ({calendarView,
         increment={incrementDate}
         decrement={decrementDate}
         selectToday={selectToday}
-        dispatch={dispatch}
         selectedDay={selectedDay}
-        config={config} />
+                     calendarConfig={calendarConfig}
+                     actions={actions} />
       <div className="redux__task__calendar__header__display__date">{caption}</div>
       <selection className="redux__task__calendar__header__view__nav" >
         <button onClick={() => viewChangedEventAction('day')} className={dayClasses}>Day</button>
@@ -43,12 +43,10 @@ Header.propTypes = {
   calendarView: PropTypes.string.isRequired,
   selectedDay: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  config: PropTypes.object.isRequired,
   selectToday: PropTypes.func,
   viewChangedEvent: PropTypes.func,
   incrementDate: PropTypes.func,
-  decrementDate: PropTypes.func,
-  dispatch: PropTypes.func
+  decrementDate: PropTypes.func
 };
 
 export default Header;

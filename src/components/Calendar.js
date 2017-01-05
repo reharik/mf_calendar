@@ -8,9 +8,9 @@ import Month from '../containers/MonthContainer';
 import Week from './Week';
 import Day from './Day';
 
-const Calendar = ({calendarView, calendarConfig}) => { //, calendarDate, dispatch}) => {
+const Calendar = ({calendarView, calendarConfig, actions}) => {
 
-  let view = <Month />;
+  let view = (<Month />);
   switch (calendarView) {
     case 'week':
       view = <Week />;
@@ -24,9 +24,9 @@ const Calendar = ({calendarView, calendarConfig}) => { //, calendarDate, dispatc
   //   calendarDate.endOf(view).toString(calendarConfig.fetchDateFormat),
   //   dispatch);
 
-  const style = calendarConfig.width ?{width: calendarConfig.width} : {};
+  const style = calendarConfig.width ? {calendarConfig.width} : {};
   return (<div className="redux__task__calendar__calendar" style={style}>
-    <Header />
+    <Header action={actions} calendarConif={calendarConif} />
     <div className="redux__task__calendar__calendar__display__view">
       { view }
     </div>
