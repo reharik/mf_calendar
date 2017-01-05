@@ -29,7 +29,7 @@ export default (state = [], action = null) => {
     case RETRIEVE_TASKS_SUCCESS: {
       let tasks;
       try {
-        tasks = normalizeTasks(action.data.tasks, action.increment);
+        tasks = normalizeTasks(action.data.tasks, action.config);
       } catch (ex) {
         // for now till I figure out how to dispatch from reducer
         throw ex;
@@ -38,17 +38,17 @@ export default (state = [], action = null) => {
       return unionWith(eqBy(prop('id')), tasks, state);
     }
     case UPDATE_TASK_VIA_DND_SUCCESS: {
-      task = normalizeTasks(action.data.task)[0];
+      task = normalizeTasks(action.data.task, action.config)[0];
       state.splice(state.findIndex(x => x.id === task.id), 1, task);
       return [...state];
     }
     case UPDATE_TASK_SUCCESS: {
-      task = normalizeTasks(action.data.task)[0];
+      task = normalizeTasks(action.data.task, action.config)[0];
       state.splice(state.findIndex(x => x.id === task.id), 1, task);
       return [...state];
     }
     case CREATE_TASK_SUCCESS: {
-      task = normalizeTasks(action.data.task)[0];
+      task = normalizeTasks(action.data.task, action.config)[0];
       state.push(task);
       return [...state];
     }

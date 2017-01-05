@@ -5,7 +5,7 @@ import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../src/inde
 import uuid from 'uuid';
 import moment from 'moment';
 import {reduxForm} from 'redux-form';
-import TaskFormContainer from './TaskFormContainer';
+// import TaskFormContainer from './TaskFormContainer';
 
 export default () => {
 
@@ -13,7 +13,7 @@ export default () => {
   const b = uuid.v4();
   const c = uuid.v4();
   const d = uuid.v4();
-  const getData = function() {
+  const getData = function () {
     return {
       tasks: [
         {
@@ -52,25 +52,21 @@ export default () => {
     };
   };
 
-  const retrieveData = (startDate, endDate, dispatch) => {
+  const retrieveData = (startDate, endDate) => {
     var data = getData();
-    // window.setTimeout(function() {
-      dispatch({type: RETRIEVE_TASKS_SUCCESS, data});
-    // }, 100);
-    dispatch({
-      type: RETRIEVE_TASKS_REQUEST
-    });
+    return {type: RETRIEVE_TASKS_SUCCESS, data};
   };
 
-  return (<div className="app" >
-    <TaskFormContainer />
+  return (<div className="app">
+    {/*<TaskFormContainer />*/}
     <Calendar config={{
       increment: 15,
-      width: '1200px',
-      retrieveDataAction: retrieveData,
-      taskClickedAction: taskClicked,
-      openSpaceClickedAction: openSpaceCLicked,
-      updateTaskViaDND: updateTaskViaDND
-    }} />
+      width: '1200px'}}
+      actions={{
+        retrieveDataAction: retrieveData,
+        taskClickedAction: taskClicked,
+        openSpaceClickedAction: openSpaceCLicked,
+        updateTaskViaDND: updateTaskViaDND
+    }}/>
   </div>);
 };

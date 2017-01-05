@@ -1,25 +1,24 @@
 import Calendar from 'node-calendar';
 import moment from 'moment';
 import invariant from 'invariant';
-import { config } from './configValues';
 
-const validateTask = task => {
+const validateTask = (task) => {
   invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
   invariant(task.endTime, `Tasks must have a end time! endTime: ${task.endTime}`);
 };
 
-const momentFromTime = function(time) {
+const momentFromTime = function(time, config) {
   return moment.isMoment(time) ? time.clone() : moment(time, [config.displayTimeFormat]);
 };
 
-const normalizeTasks = function(tasks) {
+const normalizeTasks = function(tasks, config) {
   if (!Array.isArray(tasks)) {
     tasks = [tasks];
   }
   return tasks.map(t => {
     validateTask(t);
-    const endTime = momentFromTime(t.endTime);
-    const startTime = momentFromTime(t.startTime);
+    const endTime = momentFromTime(t.endTime ,config);
+    const startTime = momentFromTime(t.startTime ,config);
     const date = t.date ? moment(t.date) : moment(startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
@@ -58,7 +57,7 @@ const formatHeaderDisplay = function(mom, viewType) {
   return mom.format('MMMM') + ' ' + mom.year();
 };
 
-const getTimesForDay = function() {
+const getTimesForDay = function(config) {
   let result = [];
   let time = config.dayStartsAt.clone();
   const end = config.dayEndsAt;
@@ -69,7 +68,7 @@ const getTimesForDay = function() {
   return result;
 };
 
-const augmentTimes = (classes, day) => {
+const augmentTimes = (classes, day, config) => {
   return getTimesForDay(config).map(time => {
     var myClasses = classes;
     const isHour = time.indexOf(':00') > -1;

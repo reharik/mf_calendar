@@ -13,9 +13,8 @@ const styleTaskItemTitle = t =>
   ({ backgroundColor: Color(t.color).darken(0.2).hexString() }); //eslint-disable-line new-cap
 
 
-const Task = ({task, index, config, dispatch, isDragging, connectDragSource }) => {
-
-  const selectTaskAction = t => config.taskClickedAction(t.id, t, dispatch);
+const Task = ({task, index, actions, isDragging, connectDragSource }) => {
+  const selectTaskAction = t => actions.taskClickedAction(t.id, t);
   const opacity = isDragging ? 0.4 : 1;
 
   return (connectDragSource(<div className="redux__task__calendar__task__item"
@@ -29,8 +28,6 @@ const Task = ({task, index, config, dispatch, isDragging, connectDragSource }) =
 Task.propTypes = {
   task: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  config: PropTypes.object.isRequired,
-  dispatch: PropTypes.func,
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired
 };

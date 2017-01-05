@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import MonthTasks from './MonthTasks';
 
-const MonthWeek = ({weekDays, config, dispatch}) => {
+const MonthWeek = ({weekDays, calendarConfig, actions}) => {
 
   const selectSlotAction = time => {
-    config.openSpaceClickedAction(time.format(config.fetchDateFormat), config.dayStartsAt, dispatch);
+    actions.openSpaceClickedAction(time.format(calendarConfig.fetchDateFormat), calendarConfig.dayStartsAt);
   };
 
   return (
@@ -14,7 +14,7 @@ const MonthWeek = ({weekDays, config, dispatch}) => {
           className={day.classes}
           onClick={e => e.target === e.currentTarget ? selectSlotAction(day) : ''}>
           <div className="redux__task__calendar__month__day__number">{day.date()}</div>
-          <MonthTasks tasks={day.tasks} config={config} dispatch={dispatch} />
+          <MonthTasks tasks={day.tasks} actions={actions} />
         </li>)
       }
     </ol>
@@ -23,8 +23,8 @@ const MonthWeek = ({weekDays, config, dispatch}) => {
 
 MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
-  config: PropTypes.object.isRequired,
-  dispatch: PropTypes.func
+  actions: PropTypes.object.isRequired,
+  calendarConfig: PropTypes.object.isRequired
 };
 
 export default MonthWeek;

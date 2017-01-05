@@ -1,10 +1,16 @@
 import React, { PropTypes } from 'react';
 
-const HeaderDateNav = ({viewType, selectedDay, fetchDateFormat, retrieveDataAction, increment, decrement, selectToday}) => {
+const HeaderDateNav = ({viewType,
+                        increment,
+                        decrement,
+                        selectToday,
+                        retrieveDataArguments,
+                        actions,
+                      }) => {
   const viewChangedEventAction = (func, view) => {
     func(view);
-    retrieveDataAction(selectedDay.startOf(view).toString(fetchDateFormat),
-    selectedDay.endOf(view).toString(fetchDateFormat));
+    const _args = retrieveDataArguments(view);
+    actions.retrieveDataAction(..._args)
   };
 
   return (
@@ -25,12 +31,11 @@ const HeaderDateNav = ({viewType, selectedDay, fetchDateFormat, retrieveDataActi
 
 HeaderDateNav.propTypes = {
   viewType: PropTypes.string.isRequired,
-  selectedDay: PropTypes.object.isRequired,
   increment: PropTypes.func,
   decrement: PropTypes.func,
   selectToday: PropTypes.func,
-  fetchDateFormat: PropTypes.func,
-  retrieveDataAction: PropTypes.func
+  retrieveDataArgument: PropTypes.func,
+  actions: PropTypes.object
 };
 
 export default HeaderDateNav;

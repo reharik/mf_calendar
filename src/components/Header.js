@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import HeaderDateNav from './HeaderDateNav';
+import classNames from 'classnames'
 
 const Header = ({calendarView,
     selectedDay,
@@ -8,19 +9,19 @@ const Header = ({calendarView,
     viewChangedEvent,
     incrementDate,
     decrementDate,
+    retrieveDataArguments,
     actions,
     calendarConfig}) => {
 
   const viewChangedEventAction = view => {
     viewChangedEvent(view);
-    actions.retrieveDataAction(selectedDay.startOf(view).toString(calendarConfig.fetchDateFormat),
-      selectedDay.endOf(view).toString(calendarConfig.fetchDateFormat));
+    const _args = retrieveDataArguments(view);
+    actions.retrieveDataAction(..._args)
   };
 
-  let classes = ' redux__task__calendar__header__view__nav_button ';
-  const dayClasses = (calendarView === 'day' ? 'active' : '') + classes;
-  const weekClasses = (calendarView === 'week' ? 'active' : '') + classes;
-  const monthClasses = (calendarView === 'month' ? 'active' : '') + classes;
+  let classes = (view) => classNames('redux__task__calendar__header__view__nav_button',
+    {'active': calendarView === view});
+  
   return (
     <header className="redux__task__calendar__header">
       <HeaderDateNav viewType={calendarView}
@@ -29,12 +30,13 @@ const Header = ({calendarView,
         selectToday={selectToday}
         selectedDay={selectedDay}
                      calendarConfig={calendarConfig}
+                     retrieveDataArguments={retrieveDataArguments}
                      actions={actions} />
       <div className="redux__task__calendar__header__display__date">{caption}</div>
       <selection className="redux__task__calendar__header__view__nav" >
-        <button onClick={() => viewChangedEventAction('day')} className={dayClasses}>Day</button>
-        <button onClick={() => viewChangedEventAction('week')} className={weekClasses}>Week</button>
-        <button onClick={() => viewChangedEventAction('month')} className={monthClasses}>Month</button>
+        <button onClick={() => viewChangedEventAction('day')} className={classes('day')}>Day</button>
+        <button onClick={() => viewChangedEventAction('week')} className={classes('week')}>Week</button>
+        <button onClick={() => viewChangedEventAction('month')} className={classes('month')}>Month</button>
       </selection>
     </header>);
 };
@@ -46,7 +48,9 @@ Header.propTypes = {
   selectToday: PropTypes.func,
   viewChangedEvent: PropTypes.func,
   incrementDate: PropTypes.func,
-  decrementDate: PropTypes.func
+  decrementDate: PropTypes.func,
+  actions: PropTypes.object,
+  calendarConfig: PropTypes.object
 };
 
 export default Header;

@@ -33,7 +33,8 @@ function mapStateToProps(state, ownProps) {
     return day;});
   return {
     weekDays: weekDays(ownProps.week),
-    config
+    calendarConfig: ownProps.calendarConfig,
+    actions: ownProps.actions
   };
 }
 

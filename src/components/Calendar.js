@@ -3,30 +3,26 @@ import React, { PropTypes } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import Header from '../containers/HeaderContainer';
-import Month from '../containers/MonthContainer';
-import Week from './Week';
-import Day from './Day';
+import HeaderContainer from '../containers/HeaderContainer';
+import MonthViewContainer from '../containers/MonthViewContainer';
+import WeekViewContainer from '../containers/WeekViewContainer'
+import DayViewContainer from '../containers/DayViewContainer'
 
 const Calendar = ({calendarView, calendarConfig, actions}) => {
 
-  let view = (<Month />);
+  let view = (<MonthViewContainer calendarConfig={calendarConfig} actions={actions} />);
   switch (calendarView) {
     case 'week':
-      view = <Week />;
+      view = <WeekViewContainer calendarConfig={calendarConfig} actions={actions}/>;
       break;
     case 'day':
-      view = <Day />;
+      view = <DayViewContainer calendarConfig={calendarConfig} actions={actions}/>;
       break;
   }
 
-  // calendarConfig.retrieveDataAction(calendarDate.startOf(view).toString(calendarConfig.fetchDateFormat),
-  //   calendarDate.endOf(view).toString(calendarConfig.fetchDateFormat),
-  //   dispatch);
-
-  const style = calendarConfig.width ? {calendarConfig.width} : {};
+  const style = calendarConfig.width ? {width:calendarConfig.width} : {};
   return (<div className="redux__task__calendar__calendar" style={style}>
-    <Header action={actions} calendarConif={calendarConif} />
+    <HeaderContainer actions={actions} calendarConfig={calendarConfig} />
     <div className="redux__task__calendar__calendar__display__view">
       { view }
     </div>
@@ -36,6 +32,7 @@ const Calendar = ({calendarView, calendarConfig, actions}) => {
 Calendar.propTypes = {
   calendarConfig: PropTypes.object.isRequired,
   calendarView: PropTypes.string,
+  actions: PropTypes.object
 };
 
 export default DragDropContext(HTML5Backend)(Calendar); // eslint-disable-line new-cap

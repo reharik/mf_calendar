@@ -29,34 +29,34 @@ const retrieveData = (startTime, endTime) => {
   };
 };
 
-const taskClicked = (id, task, dispatch) => {
-  dispatch({
+const taskClicked = (id, task) => {
+  return {
     type: TASK_CLICKED,
     id,
     task
-  });
+  };
 };
 
-const openSpaceCLicked = (date, time, dispatch) => {
-  dispatch({
+const openSpaceCLicked = (date, time) => {
+  return {
     type: OPEN_SPACE_CLICKED,
     date,
     time
-  });
+  };
 };
 
-const updateTaskViaDND = (task, dispatch) => {
-  dispatch({
+const updateTaskViaDND = (task) => {
+  return {
     type: UPDATE_TASK_VIA_DND_SUCCESS,
     data: {
       task
     }
-  });
+  };
 };
 
-const createTaskSubmitHandler = (values, dispatch) => {
+const createTaskSubmitHandler = (values) => {
   if (values.id) {
-    dispatch({
+    return {
       type: UPDATE_TASK_SUCCESS,
       data: {
         task: {
@@ -68,9 +68,9 @@ const createTaskSubmitHandler = (values, dispatch) => {
           date: values.date
         }
       }
-    });
+    };
   } else {
-    dispatch({
+    return {
       type: CREATE_TASK_SUCCESS,
       data: {
         task: {
@@ -82,18 +82,17 @@ const createTaskSubmitHandler = (values, dispatch) => {
           color: values.color
         }
       }
-    });
+    };
   }
-  dispatch(reset('task'));
 };
 
-const removeTaskHandler = (id, dispatch) => {
-  dispatch({
+const removeTaskHandler = (id) => {
+  return {
     type: REMOVE_TASK_SUCCESS,
     data: {
       task: {id}
     }
-  })
+  }
 };
 
 export {

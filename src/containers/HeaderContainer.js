@@ -4,14 +4,20 @@ import { selectToday, incrementDate, decrementDate} from '../modules/dates';
 import { viewChangedEvent } from '../modules/view';
 import { formatHeaderDisplay } from '../utils/calendarUtils';
 import { config } from '../utils/configValues';
-import { bindActionCreators } from 'redux'
 
 function mapStateToProps(state, ownProps) {
+  const retrieveDataArguments = (view) => ({
+    start: state.calendarDate.startOf(view).toString(ownProps.calendarConfig.fetchDateFormat),
+    end: state.calendarDate.endOf(view).toString(ownProps.calendarConfig.fetchDateFormat)
+  });
+
   return {
     calendarView: state.calendarView,
     selectedDay: state.calendarDate,
     caption: formatHeaderDisplay(state.calendarDate, state.calendarView),
-    calendarConfig: ownProps.calendarConfig
+    retrieveDataArguments,
+    calendarConfig: ownProps.calendarConfig,
+    actions: ownProps.actions
   };
 }
 
