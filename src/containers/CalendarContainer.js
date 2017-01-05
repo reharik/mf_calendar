@@ -41,10 +41,10 @@ function mapDispatchToProps(dispatch, ownProps) {
   };
   return {
     actions: bindActionCreators({
-      retrieveDataAction: wrapWithConfig(ownProps.actions.retrieveDataAction) || noopFunc,
-      taskClickedAction: wrapWithConfig(ownProps.actions.taskClickedAction) || noopFunc,
-      openSpaceClickedAction: wrapWithConfig(ownProps.actions.openSpaceClickedAction) || noopFunc,
-      updateTaskViaDND: wrapWithConfig(ownProps.actions.updateTaskViaDND) || noopFunc
+      retrieveDataAction: wrapWithConfig(ownProps.actions.retrieveDataAction || noopFunc),
+      taskClickedAction: wrapWithConfig(ownProps.actions.taskClickedAction || noopFunc),
+      openSpaceClickedAction: wrapWithConfig(ownProps.actions.openSpaceClickedAction || noopFunc),
+      updateTaskViaDND: wrapWithConfig(ownProps.actions.updateTaskViaDND || noopFunc)
     }, dispatch)
   };
 }
