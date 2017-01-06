@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Day from '../components/Day';
 import moment from 'moment';
 import {process} from '../utils/widthAndColumn';
-import {augmentTimes} from '../utils/calendarUtils';
+import {augmentTimes, normalizeTasks} from '../utils/calendarUtils';
 import {openSpaceClickedAction, taskClickedAction} from './../modules/calendarModule'
 
 function mapStateToProps(state, ownProps) {
@@ -11,14 +11,15 @@ function mapStateToProps(state, ownProps) {
   var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
   var thisView = calState.view === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
   var classes = thisView + 'day__items__slot ';
-  var tasks = process(state.reduxTaskCalendar[calState.config.dataSource].filter(filterToday));
-
+  var tasks = process(normalizeTasks(state[calState.config.dataSource].filter(filterToday), calState.config));
   return {
     view: calState.view,
     tasks,
     times: augmentTimes(classes, day, calState.config),
     dayName: day.format('dddd'),
     isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD'),
+    displayTimeFormat: calState.config.displayTimeFormat,
+    increment: calState.config.increment,
     calendarName: ownProps.calendarName,
     updateTaskViaDND: calState.config.updateTaskViaDND
   };

@@ -14,17 +14,21 @@ export default (state = {}, action = null) => {
   const calState = state[action.calendarName];
   switch (action.type) {
     case SELECT_TODAY: {
-      return {...calState, date: moment()};
+      return {...state,
+        [action.calendarName]: {...calState, date: moment()}};
     }
     case INCREMENT_DATE: {
       //moment in moment returns a clone
-      return {...calState, date: moment(calState.date.add(1, action.viewType))};
+      return {...state,
+        [action.calendarName]: {...state[action.calendarName], date: moment(calState.date.add(1, action.viewType))}};
     }
     case DECREMENT_DATE: {
-      return {...calState, date: moment(calState.subtract(1, action.viewType))};
+      return {...state,
+        [action.calendarName]: {...state[action.calendarName], date: moment(calState.date.subtract(1, action.viewType))}};
     }
     case VIEW_CHANGED_EVENT: {
-      return {...calState, view:action.view};
+      return {...state,
+        [action.calendarName]: {...state[action.calendarName], view:action.view}};
     }
     case SET_CONFIG: {
       return {...state, [action.config.calendarName]: {

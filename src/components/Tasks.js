@@ -6,9 +6,11 @@ const Tasks = ({tasks,
   connectDropTarget,
   isOver,
   canDrop,
+  increment,
+  displayTimeFormat,
   taskClickedAction,
   updateTaskViaDND}) => {
-
+ 
   const isActive = canDrop && isOver;
   let style = {height: '100%', width: '100%'};
   let backgroundColor = 'transparent';
@@ -25,6 +27,8 @@ const Tasks = ({tasks,
         index={index}
         taskClickedAction={taskClickedAction}
         calendarName={calendarName}
+        increment={increment}
+        displayTimeFormat={displayTimeFormat}
         updateTaskViaDND={updateTaskViaDND}/>
     ))}
   </div>);

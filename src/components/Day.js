@@ -8,11 +8,12 @@ const Day = ({view,
             dayName,
             isToday,
             calendarName,
+            increment,          
+            displayTimeFormat,
             taskClickedAction,
             openSpaceClickedAction,
             updateTaskViaDND
 } ) => {
-
   const selectSlotAction = time => {
     openSpaceClickedAction(time.day, time.time, calendarName);
   };
@@ -55,6 +56,8 @@ const Day = ({view,
           <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
+                 increment={increment}
+                 displayTimeFormat={displayTimeFormat}
                  taskClickedAction={taskClickedAction}
                  updateTaskViaDND={updateTaskViaDND}
                  calendarName={calendarName}/>
@@ -66,7 +69,7 @@ Day.propTypes = {
   view: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
   times: PropTypes.array.isRequired,
-  calendarName: PropTypes.object.isRequired,
+  calendarName: PropTypes.string.isRequired,
   dayName: PropTypes.string.isRequired,
   isToday: PropTypes.bool.isRequired,
   taskClickedAction: PropTypes.func.isRequired,

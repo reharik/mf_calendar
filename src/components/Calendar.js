@@ -9,9 +9,6 @@ import WeekViewContainer from '../containers/WeekViewContainer'
 import DayViewContainer from '../containers/DayViewContainer'
 
 const Calendar = ({calendarView, calendarName, width}) => {
-console.log('==========calendarName=========');
-console.log(calendarName);
-console.log('==========END calendarName=========');
   let view = (<MonthViewContainer calendarName={calendarName} />);
   switch (calendarView) {
     case 'week':

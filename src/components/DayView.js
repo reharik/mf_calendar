@@ -11,7 +11,7 @@ const DayView = ({times, calendarName})=> (
 
 DayView.propTypes = {
   times: PropTypes.array.isRequired,
-  calendarName: PropTypes.object.isRequired
+  calendarName: PropTypes.string.isRequired
 };
 
 export default DayView;

@@ -59,7 +59,6 @@ const process = _apts => {
       removeFromWip(apts, ws, e);
     }
   };
-
   _apts.forEach(x => {
     events.push({type: 'startTime', value: x.startTime.unix() + 1, id: x.id, slots: x.slots, dipslay: x.display});
     events.push({type: 'endTime', value: x.endTime.unix(), id: x.id, slots: x.slots, dipslay: x.display});

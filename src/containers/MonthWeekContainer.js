@@ -1,5 +1,5 @@
-
 import { connect } from 'react-redux';
+import {normalizeTasks} from '../utils/calendarUtils';
 import MonthWeek from '../components/MonthWeek';
 import moment from 'moment';
 import { config } from '../utils/configValues';
@@ -28,11 +28,12 @@ function mapStateToProps(state, ownProps) {
   };
 
   const calState = state.reduxTaskCalendar[ownProps.calendarName];
-
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
     day.classes = buildClasses(day, moment(), calState.date, idx);
-    day.tasks = state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day'));
+    day.tasks = normalizeTasks(
+      state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day')),
+      calState.config);
     return day;});
   return {
     weekDays: weekDays(ownProps.week),

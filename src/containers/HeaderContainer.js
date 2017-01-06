@@ -6,12 +6,12 @@ import {selectToday, viewChangedEvent, incrementDate, decrementDate} from '../mo
 
 function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar[ownProps.calendarName];
-  const retrieveDataAction = (view) => 
+
+  const retrieveDataAction = (view) =>
     calState.config.retrieveDataAction(
       calState.date.startOf(view).toString(calState.config.fetchDateFormat),
-      calState.date.endOf(view).toString(calState.c.fetchDateFormat)
+      calState.date.endOf(view).toString(calState.config.fetchDateFormat)
     );
-
   return {
     calendarName: ownProps.calendarName,
     calendarView: calState.view,

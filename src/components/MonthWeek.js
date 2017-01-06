@@ -7,7 +7,6 @@ const MonthWeek = ({weekDays,
                     dayStartsAt,
                     openSpaceClickedAction,
                     taskClickedAction}) => {
-
   const selectSlotAction = time => {
     openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt, calendarName);
   };
@@ -30,7 +29,7 @@ MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
   calendarName: PropTypes.string.isRequired,
   fetchDateFormat: PropTypes.string.isRequired,
-  dayStartsAt: PropTypes.string.isRequired,
+  dayStartsAt: PropTypes.object.isRequired,
   openSpaceClickedAction: PropTypes.func.isRequired,
   taskClickedAction: PropTypes.func.isRequired
 };

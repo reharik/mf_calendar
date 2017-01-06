@@ -3,9 +3,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 
 import calendarReducers from './../reducers';
-console.log('==========calendarReducers=========');
-console.log(calendarReducers);
-console.log('==========END calendarReducers=========');
 import DevTools from '../components/DevTools';
 import {reducer as formReducer} from 'redux-form';
 
