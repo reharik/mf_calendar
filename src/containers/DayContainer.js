@@ -5,14 +5,15 @@ import {process} from '../utils/widthAndColumn';
 import {augmentTimes} from '../utils/calendarUtils';
 
 function mapStateToProps(state, ownProps) {
-  var day = ownProps.date || state.calendarDate || moment();
+  const thisState = state[ownProps.calendarConfig.calendarName];
+  var day = ownProps.date || thisState.date || moment();
   var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
-  var thisView = state.calendarView === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
+  var thisView = thisState.view === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
   var classes = thisView + 'day__items__slot ';
-  var tasks = process(state.calendarTasks.filter(filterToday));
+  var tasks = process(state[ownProps.calendarConfig.dataSource].filter(filterToday));
 
   return {
-    view: state.calendarView,
+    view: thisState.view,
     tasks,
     times: augmentTimes(classes, day, ownProps.calendarConfig),
     dayName: day.format('dddd'),

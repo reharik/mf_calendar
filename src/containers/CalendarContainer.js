@@ -20,9 +20,9 @@ function mapStateToProps(state, ownProps) {
   const calendarConfig = {...defaultValues, ...ownProps.config};
 
   return {
-    calendarView: state.calendarView || calendarConfig.defaultView,
+    calendarView: state[calendarConfig.calendarName].View || calendarConfig.defaultView,
     calendarConfig,
-    calendarDate: state.calendarDate
+    calendarDate: state[calendarConfig.calendarName].Date
   };
 }
 

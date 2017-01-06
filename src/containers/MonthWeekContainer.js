@@ -28,8 +28,8 @@ function mapStateToProps(state, ownProps) {
 
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
-    day.classes = buildClasses(day, moment(), state.calendarDate, idx);
-    day.tasks = state.calendarTasks.filter(e => e.date.isSame(day, 'day'));
+    day.classes = buildClasses(day, moment(), state[ownProps.calendarConfig.calendarName].date, idx);
+    day.tasks = state[ownProps.calendarConfig.dataSource].filter(e => e.date.isSame(day, 'day'));
     return day;});
   return {
     weekDays: weekDays(ownProps.week),

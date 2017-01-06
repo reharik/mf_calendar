@@ -6,15 +6,16 @@ import { formatHeaderDisplay } from '../utils/calendarUtils';
 import { config } from '../utils/configValues';
 
 function mapStateToProps(state, ownProps) {
+  const thisState = state[ownProps.calendarConfig.calendarName];
   const retrieveDataArguments = (view) => ({
-    start: state.calendarDate.startOf(view).toString(ownProps.calendarConfig.fetchDateFormat),
-    end: state.calendarDate.endOf(view).toString(ownProps.calendarConfig.fetchDateFormat)
+    start: thisState.date.startOf(view).toString(ownProps.calendarConfig.fetchDateFormat),
+    end: thisState.date.endOf(view).toString(ownProps.calendarConfig.fetchDateFormat)
   });
 
   return {
-    calendarView: state.calendarView,
-    selectedDay: state.calendarDate,
-    caption: formatHeaderDisplay(state.calendarDate, state.calendarView),
+    calendarView: thisState.view,
+    selectedDay: thisState.date,
+    caption: formatHeaderDisplay(thisState.date, thisState.view),
     retrieveDataArguments,
     calendarConfig: ownProps.calendarConfig,
     actions: ownProps.actions
