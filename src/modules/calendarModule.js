@@ -27,7 +27,11 @@ export default (state = {}, action = null) => {
       return {...calState, view:action.view};
     }
     case SET_CONFIG: {
-      return {...state, [action.config.calendarName]: {config: action.config}}
+      return {...state, [action.config.calendarName]: {
+        config: action.config,
+        date: moment(),
+        view:'month'
+      }}
     }
   }
   return state;

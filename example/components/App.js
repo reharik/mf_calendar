@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar } from '../../src/index';
 import { updateTaskViaDND } from './../actions/calendarActions';
-import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../src/index';
+import { RETRIEVE_TASKS_SUCCESS } from './../reducers/taskReducer';
 import uuid from 'uuid';
 // import TaskFormContainer from './TaskFormContainer';
 
@@ -61,8 +61,9 @@ export default () => {
       calendarName: 'testCalendar',
       increment: 15,
       width: '1200px',
-        retrieveDataAction: retrieveData,
-        updateTaskViaDND: updateTaskViaDND
+      dataSource: 'tasks',
+      retrieveDataAction: retrieveData,
+      updateTaskViaDND: updateTaskViaDND
     }}/>
   </div>);
 };

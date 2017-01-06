@@ -7,18 +7,23 @@ import { setConfig, NO_OP } from './../modules/calendarModule';
 
 class CalendarContainer extends Component {
   componentWillMount() {
-    const config = {...this.props.config,
+    const config = {
+      ...this.props.config,
       retrieveDataAction: this.props.retrieveDataAction,
       updateTaskViaDND: this.props.updateTaskViaDND
-      };
+    };
+    this.props.retrieveDataAction();
     this.props.setConfig(config);
-    }
+  }
 
   render() {
-    if(!this.props.calendarView) { return null; }
+    if (!this.props.calendarView) {
+      return null;
+    }
     return (<Calendar {...this.props} />);
   }
 }
+
 function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar && state.reduxTaskCalendar[ownProps.config.calendarName];
   if(!calState) { return {}; }

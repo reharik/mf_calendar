@@ -27,11 +27,12 @@ function mapStateToProps(state, ownProps) {
     return classes;
   };
 
+  const calState = state.reduxTaskCalendar[ownProps.calendarName];
+
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
-    const calState = state.reduxTaskCalendar[ownProps.calendarName];
     day.classes = buildClasses(day, moment(), calState.date, idx);
-    day.tasks = state[calState.config.dataSource].filter(e => e.date.isSame(day, 'day'));
+    day.tasks = state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day'));
     return day;});
   return {
     weekDays: weekDays(ownProps.week),
