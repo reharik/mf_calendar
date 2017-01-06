@@ -13,14 +13,11 @@ export {
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_VIA_DND_REQUEST,
   UPDATE_TASK_VIA_DND_FAILURE,
-  UPDATE_TASK_VIA_DND_SUCCESS
-} from './modules/tasks';
-
-export {
+  UPDATE_TASK_VIA_DND_SUCCESS,
   TASK_CLICKED,
   OPEN_SPACE_CLICKED
-} from './constants/constants';
+} from './modules/calendarModule';
 
-export { default as calendarReducers } from './modules/index';
+export { default as reduxTaskCalendar } from './modules/calendarModule';
 
 export { default as Calendar } from './containers/CalendarContainer';

@@ -1,10 +1,15 @@
 import React, { PropTypes } from 'react';
 import MonthTasks from './MonthTasks';
 
-const MonthWeek = ({weekDays, calendarConfig, actions}) => {
+const MonthWeek = ({weekDays,
+                    calendarName,
+                    fetchDateFormat,
+                    dayStartsAt,
+                    openSpaceClickedAction,
+                    taskClickedAction}) => {
 
   const selectSlotAction = time => {
-    actions.openSpaceClickedAction(time.format(calendarConfig.fetchDateFormat), calendarConfig.dayStartsAt);
+    openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt, calendarName);
   };
 
   return (
@@ -14,7 +19,7 @@ const MonthWeek = ({weekDays, calendarConfig, actions}) => {
           className={day.classes}
           onClick={e => e.target === e.currentTarget ? selectSlotAction(day) : ''}>
           <div className="redux__task__calendar__month__day__number">{day.date()}</div>
-          <MonthTasks tasks={day.tasks} actions={actions} />
+          <MonthTasks tasks={day.tasks} taskClickedAction={taskClickedAction} calendarName={calendarName} />
         </li>)
       }
     </ol>
@@ -23,8 +28,11 @@ const MonthWeek = ({weekDays, calendarConfig, actions}) => {
 
 MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-  calendarConfig: PropTypes.object.isRequired
+  calendarName: PropTypes.string.isRequired,
+  fetchDateFormat: PropTypes.string.isRequired,
+  dayStartsAt: PropTypes.string.isRequired,
+  openSpaceClickedAction: PropTypes.func.isRequired,
+  taskClickedAction: PropTypes.func.isRequired
 };
 
 export default MonthWeek;

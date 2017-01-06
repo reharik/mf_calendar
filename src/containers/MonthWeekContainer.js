@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MonthWeek from '../components/MonthWeek';
 import moment from 'moment';
 import { config } from '../utils/configValues';
+import {openSpaceClickedAction, taskClickedAction} from './../modules/calendarModule'
 
 function mapStateToProps(state, ownProps) {
 
@@ -28,14 +29,16 @@ function mapStateToProps(state, ownProps) {
 
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
-    day.classes = buildClasses(day, moment(), state[ownProps.calendarConfig.calendarName].date, idx);
-    day.tasks = state[ownProps.calendarConfig.dataSource].filter(e => e.date.isSame(day, 'day'));
+    const calState = state.reduxTaskCalendar[ownProps.calendarName];
+    day.classes = buildClasses(day, moment(), calState.date, idx);
+    day.tasks = state[calState.config.dataSource].filter(e => e.date.isSame(day, 'day'));
     return day;});
   return {
     weekDays: weekDays(ownProps.week),
-    calendarConfig: ownProps.calendarConfig,
-    actions: ownProps.actions
+    calendarName: ownProps.calendarName,
+    fetchDateFormat: calState.config.fetchDateFormat,
+    dayStartsAt: calState.config.dayStartsAt
   };
 }
 
-export default connect(mapStateToProps)(MonthWeek);
+export default connect(mapStateToProps, {openSpaceClickedAction, taskClickedAction})(MonthWeek);

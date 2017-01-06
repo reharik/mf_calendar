@@ -1,6 +1,6 @@
 import Task from '../components/Task';
 import { DragSource } from 'react-dnd';
-import { TASK_DRAG_SOURCE } from './../modules/tasks';
+import { TASK_DRAG_SOURCE } from './../modules/calendarModule';
 import { momentFromTime } from './../utils/calendarUtils';
 
 const taskSource = {
@@ -18,7 +18,7 @@ const taskSource = {
         endTime: momentFromTime(dropResult.time, props.calendarConfig).add(item.task.slots * props.calendarConfig.increment, 'minutes').format('h:mm A'),
         date: dropResult.day };
 
-      props.actions.updateTaskViaDND(task);
+      props.updateTaskViaDND(task);
     }
   },
   canDrag(props) {

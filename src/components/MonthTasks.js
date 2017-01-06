@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const MonthTasks = ({tasks, actions}) => {
-  const selectTaskAction = task => actions.taskClickedAction(task.id, task);
+const MonthTasks = ({tasks, calendarName, taskClickedAction}) => {
+  const selectTaskAction = task => taskClickedAction(task.id, task, calendarName);
 
   return (<div className="redux__task__calendar__month__task">
       { tasks.map((t, index)=> { return (<div className="redux__task__calendar__month__task__item" key={index}
@@ -15,7 +15,8 @@ const MonthTasks = ({tasks, actions}) => {
 
 MonthTasks.propTypes = {
   tasks: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  calendarName: PropTypes.string.isRequired,
+  taskClickedAction: PropTypes.func.isRequired
 };
 
 export default MonthTasks;

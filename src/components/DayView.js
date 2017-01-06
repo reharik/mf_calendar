@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import AsideTimes from './AsideTimes';
 import DayContainer from '../containers/DayContainer';
 
-const Day =  ({times, calendarConfig, actions})=> (
+const DayView = ({times, calendarName})=> (
   <div className="redux__task__calendar__day">
     <AsideTimes times={times} />
-    <DayContainer calendarConfig={calendarConfig} actions={actions}/>
+    <DayContainer calendarName={calendarName} />
   </div>
 );
 
-export default Day;
+DayView.propTypes = {
+  times: PropTypes.array.isRequired,
+  calendarName: PropTypes.object.isRequired
+};
+
+export default DayView;

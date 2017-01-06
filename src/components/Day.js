@@ -3,16 +3,18 @@ import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 
 const Day = ({view,
-    tasks,
-    times,
-    dayName,
-    isToday, 
-  actions,
-  calendarConfig
+            tasks,
+            times,
+            dayName,
+            isToday,
+            calendarName,
+            taskClickedAction,
+            openSpaceClickedAction,
+            updateTaskViaDND
 } ) => {
 
   const selectSlotAction = time => {
-    actions.openSpaceClickedAction(time.day, time.time);
+    openSpaceClickedAction(time.day, time.time, calendarName);
   };
   
   let dayNameClasses = classNames(
@@ -53,19 +55,23 @@ const Day = ({view,
           <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
-            actions={actions} 
-            calendarConfig={calendarConfig}/>
+                 taskClickedAction={taskClickedAction}
+                 updateTaskViaDND={updateTaskViaDND}
+                 calendarName={calendarName}/>
         </li>))}
     </ol>);
 };
 
 Day.propTypes = {
-  view: PropTypes.string, 
+  view: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
-  calendarConfig: PropTypes.object.isRequired,
+  times: PropTypes.array.isRequired,
+  calendarName: PropTypes.object.isRequired,
   dayName: PropTypes.string.isRequired,
-  isToday: PropTypes.bool,
-  actions: PropTypes.object
+  isToday: PropTypes.bool.isRequired,
+  taskClickedAction: PropTypes.func.isRequired,
+  openSpaceClickedAction: PropTypes.func.isRequired,
+  updateTaskViaDND: PropTypes.func.isRequired
 };
 
 export default Day;

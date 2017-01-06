@@ -9,14 +9,13 @@ const Header = ({calendarView,
     viewChangedEvent,
     incrementDate,
     decrementDate,
-    retrieveDataArguments,
-    actions,
-    calendarConfig}) => {
+    calendarName,
+    retrieveDataAction
+    }) => {
 
   const viewChangedEventAction = view => {
-    viewChangedEvent(view);
-    const _args = retrieveDataArguments(view);
-    actions.retrieveDataAction(..._args)
+    viewChangedEvent(view, calendarName);
+    retrieveDataAction(view)
   };
 
   let classes = (view) => classNames('redux__task__calendar__header__view__nav_button',
@@ -29,9 +28,8 @@ const Header = ({calendarView,
         decrement={decrementDate}
         selectToday={selectToday}
         selectedDay={selectedDay}
-                     calendarConfig={calendarConfig}
-                     retrieveDataArguments={retrieveDataArguments}
-                     actions={actions} />
+                     calendarName={calendarName}
+                     retrieveDataAction={retrieveDataAction} />
       <div className="redux__task__calendar__header__display__date">{caption}</div>
       <selection className="redux__task__calendar__header__view__nav" >
         <button onClick={() => viewChangedEventAction('day')} className={classes('day')}>Day</button>
@@ -45,12 +43,12 @@ Header.propTypes = {
   calendarView: PropTypes.string.isRequired,
   selectedDay: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  selectToday: PropTypes.func,
-  viewChangedEvent: PropTypes.func,
-  incrementDate: PropTypes.func,
-  decrementDate: PropTypes.func,
-  actions: PropTypes.object,
-  calendarConfig: PropTypes.object
+  selectToday: PropTypes.func.isRequired,
+  viewChangedEvent: PropTypes.func.isRequired,
+  incrementDate: PropTypes.func.isRequired,
+  decrementDate: PropTypes.func.isRequired,
+  calendarName: PropTypes.string.isRequired,
+  retrieveDataAction: PropTypes.func.isRequired
 };
 
 export default Header;
