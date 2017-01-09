@@ -1,6 +1,6 @@
 import Tasks from './../components/Tasks';
 import { DropTarget } from 'react-dnd';
-import { TASK_DRAG_SOURCE } from './../modules/tasks';
+import { TASK_DRAG_SOURCE } from './../modules/calendarModule';
 
 const taskTarget = {
   drop({time, day}) {

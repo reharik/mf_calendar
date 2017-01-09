@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { selectToday, incrementDate, decrementDate} from '../modules/dates';
-import { viewChangedEvent } from '../modules/view';
 import { formatHeaderDisplay } from '../utils/calendarUtils';
-import { config } from '../utils/configValues';
+import {selectToday, viewChangedEvent, incrementDate, decrementDate} from '../modules/calendarModule';
+
 
 function mapStateToProps(state, ownProps) {
-  const retrieveDataArguments = (view) => ({
-    start: state.calendarDate.startOf(view).toString(ownProps.calendarConfig.fetchDateFormat),
-    end: state.calendarDate.endOf(view).toString(ownProps.calendarConfig.fetchDateFormat)
-  });
+  const calState = state.reduxTaskCalendar[ownProps.calendarName];
 
+  const retrieveDataAction = (view) =>
+    calState.config.retrieveDataAction(
+      calState.date.startOf(view).toString(calState.config.fetchDateFormat),
+      calState.date.endOf(view).toString(calState.config.fetchDateFormat)
+    );
   return {
-    calendarView: state.calendarView,
-    selectedDay: state.calendarDate,
-    caption: formatHeaderDisplay(state.calendarDate, state.calendarView),
-    retrieveDataArguments,
-    calendarConfig: ownProps.calendarConfig,
-    actions: ownProps.actions
-  };
+    calendarName: ownProps.calendarName,
+    calendarView: calState.view,
+    selectedDay: calState.date,
+    caption: formatHeaderDisplay(calState.date, calState.view),
+    retrieveDataAction};
 }
 
 export default connect(mapStateToProps, {selectToday, viewChangedEvent, incrementDate, decrementDate})(Header);

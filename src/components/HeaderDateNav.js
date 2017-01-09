@@ -4,13 +4,12 @@ const HeaderDateNav = ({viewType,
                         increment,
                         decrement,
                         selectToday,
-                        retrieveDataArguments,
-                        actions,
+                        retrieveDataAction,
+                        calendarName
                       }) => {
   const viewChangedEventAction = (func, view) => {
-    func(view);
-    const _args = retrieveDataArguments(view);
-    actions.retrieveDataAction(..._args)
+    func(view, calendarName);
+    retrieveDataAction(view)
   };
 
   return (
@@ -31,11 +30,11 @@ const HeaderDateNav = ({viewType,
 
 HeaderDateNav.propTypes = {
   viewType: PropTypes.string.isRequired,
-  increment: PropTypes.func,
-  decrement: PropTypes.func,
-  selectToday: PropTypes.func,
-  retrieveDataArgument: PropTypes.func,
-  actions: PropTypes.object
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  selectToday: PropTypes.func.isRequired,
+  retrieveDataAction: PropTypes.func.isRequired,
+  calendarName: PropTypes.string.isRequired
 };
 
 export default HeaderDateNav;

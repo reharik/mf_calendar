@@ -3,26 +3,38 @@ import { connect } from 'react-redux';
 import Calendar from '../components/Calendar';
 import defaultValues from '../utils/configValues';
 import { bindActionCreators } from 'redux'
-import { NO_OP } from '../constants/constants';
+import { setConfig, NO_OP } from './../modules/calendarModule';
 
 class CalendarContainer extends Component {
-  componentWillMount() { this.loadData(); }
-
-  loadData() {
-    this.props.actions.retrieveDataAction()
+  componentWillMount() {
+    const config = {
+      ...defaultValues,
+      ...this.props.config,
+      retrieveDataAction: this.props.retrieveDataAction,
+      updateTaskViaDND: this.props.updateTaskViaDND
+    };
+    
+    this.props.retrieveDataAction();
+    this.props.setConfig(config);
   }
 
   render() {
+    if (!this.props.calendarView) {
+      return null;
+    }
     return (<Calendar {...this.props} />);
   }
 }
+
 function mapStateToProps(state, ownProps) {
-  const calendarConfig = {...defaultValues, ...ownProps.config};
+  const calState = state.reduxTaskCalendar && state.reduxTaskCalendar[ownProps.config.calendarName];
+  if(!calState) { return {}; }
 
   return {
-    calendarView: state.calendarView || calendarConfig.defaultView,
-    calendarConfig,
-    calendarDate: state.calendarDate
+    calendarView: calState.view || calState.config.defaultView,
+    width: calState.config.width,
+    calendarDate: calState.date,
+    calendarName: calState.config.calendarName
   };
 }
 
@@ -35,18 +47,16 @@ function mapDispatchToProps(dispatch, ownProps) {
   const wrapWithConfig = (action) => {
     return function () {
       let wrappedAction = action.apply(undefined, arguments);
-      wrappedAction.config = calendarConfig;
+      wrappedAction.calendarName = calendarConfig.calendarName;
       return wrappedAction;
     }
   };
-  return {
-    actions: bindActionCreators({
-      retrieveDataAction: wrapWithConfig(ownProps.actions.retrieveDataAction || noopFunc),
-      taskClickedAction: wrapWithConfig(ownProps.actions.taskClickedAction || noopFunc),
-      openSpaceClickedAction: wrapWithConfig(ownProps.actions.openSpaceClickedAction || noopFunc),
-      updateTaskViaDND: wrapWithConfig(ownProps.actions.updateTaskViaDND || noopFunc)
-    }, dispatch)
-  };
+
+  return bindActionCreators({
+    setConfig,
+    updateTaskViaDND: wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc),
+    retrieveDataAction: wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc)
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer);

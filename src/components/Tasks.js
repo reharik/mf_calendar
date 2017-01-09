@@ -2,12 +2,15 @@ import React, { PropTypes } from 'react';
 import Task from './../containers/TaskSourceContainer';
 
 const Tasks = ({tasks,
-  actions,
-  calendarConfig,
+  calendarName,
   connectDropTarget,
   isOver,
-  canDrop}) => {
-
+  canDrop,
+  increment,
+  displayTimeFormat,
+  taskClickedAction,
+  updateTaskViaDND}) => {
+ 
   const isActive = canDrop && isOver;
   let style = {height: '100%', width: '100%'};
   let backgroundColor = 'transparent';
@@ -22,18 +25,23 @@ const Tasks = ({tasks,
         key={index}
         task={t}
         index={index}
-        actions={actions}
-        calendarConfig={calendarConfig} />
+        taskClickedAction={taskClickedAction}
+        calendarName={calendarName}
+        increment={increment}
+        displayTimeFormat={displayTimeFormat}
+        updateTaskViaDND={updateTaskViaDND}/>
     ))}
   </div>);
 };
 
 Tasks.propTypes = {
   tasks: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
   isOver: PropTypes.bool.isRequired,
-  canDrop: PropTypes.bool.isRequired
+  canDrop: PropTypes.bool.isRequired,
+  calendarName: PropTypes.string.isRequired,
+  taskClickedAction: PropTypes.func.isRequired,
+  updateTaskViaDND: PropTypes.func.isRequired
 };
 
 export default Tasks;

@@ -8,21 +8,21 @@ import MonthViewContainer from '../containers/MonthViewContainer';
 import WeekViewContainer from '../containers/WeekViewContainer'
 import DayViewContainer from '../containers/DayViewContainer'
 
-const Calendar = ({calendarView, calendarConfig, actions}) => {
-
-  let view = (<MonthViewContainer calendarConfig={calendarConfig} actions={actions} />);
+const Calendar = ({calendarView, calendarName, width}) => {
+  let view = (<MonthViewContainer calendarName={calendarName} />);
   switch (calendarView) {
     case 'week':
-      view = <WeekViewContainer calendarConfig={calendarConfig} actions={actions}/>;
+      view = <WeekViewContainer calendarName={calendarName} />;
       break;
     case 'day':
-      view = <DayViewContainer calendarConfig={calendarConfig} actions={actions}/>;
+      view = <DayViewContainer calendarName={calendarName} />;
       break;
   }
 
-  const style = calendarConfig.width ? {width:calendarConfig.width} : {};
+  const style = width ? {width} : {};
+  
   return (<div className="redux__task__calendar__calendar" style={style}>
-    <HeaderContainer actions={actions} calendarConfig={calendarConfig} />
+    <HeaderContainer calendarName={calendarName} />
     <div className="redux__task__calendar__calendar__display__view">
       { view }
     </div>
@@ -30,9 +30,9 @@ const Calendar = ({calendarView, calendarConfig, actions}) => {
 };
 
 Calendar.propTypes = {
-  calendarConfig: PropTypes.object.isRequired,
-  calendarView: PropTypes.string,
-  actions: PropTypes.object
+  calendarName: PropTypes.string.isRequired,
+  calendarView: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired
 };
 
 export default DragDropContext(HTML5Backend)(Calendar); // eslint-disable-line new-cap

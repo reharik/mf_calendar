@@ -1,10 +1,8 @@
 import React from 'react';
 import { Calendar } from '../../src/index';
-import { taskClicked, openSpaceCLicked, updateTaskViaDND } from './../actions/calendarActions';
-import { RETRIEVE_TASKS_REQUEST, RETRIEVE_TASKS_SUCCESS } from './../../src/index';
+import { updateTaskViaDND } from './../actions/calendarActions';
+import { RETRIEVE_TASKS_SUCCESS } from './../reducers/taskReducer';
 import uuid from 'uuid';
-import moment from 'moment';
-import {reduxForm} from 'redux-form';
 // import TaskFormContainer from './TaskFormContainer';
 
 export default () => {
@@ -60,13 +58,12 @@ export default () => {
   return (<div className="app">
     {/*<TaskFormContainer />*/}
     <Calendar config={{
+      calendarName: 'testCalendar',
       increment: 15,
-      width: '1200px'}}
-      actions={{
-        retrieveDataAction: retrieveData,
-        taskClickedAction: taskClicked,
-        openSpaceClickedAction: openSpaceCLicked,
-        updateTaskViaDND: updateTaskViaDND
+      width: '1200px',
+      dataSource: 'tasks',
+      retrieveDataAction: retrieveData,
+      updateTaskViaDND: updateTaskViaDND
     }}/>
   </div>);
 };

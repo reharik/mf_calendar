@@ -1,33 +1,24 @@
-import { RETRIEVE_DATA,
-    TASK_CLICKED,
-    OPEN_SPACE_CLICKED,
-    RETRIEVE_TASKS_REQUEST,
-    RETRIEVE_TASKS_FAILURE,
-    RETRIEVE_TASKS_SUCCESS,
-CREATE_TASK_SUCCESS,
-  UPDATE_TASK_SUCCESS,
-  REMOVE_TASK_SUCCESS,
-  UPDATE_TASK_VIA_DND_SUCCESS
-} from './../../src/index';
+import { TASK_CLICKED, OPEN_SPACE_CLICKED, } from './../../src/index';
 import { CALL_API } from 'redux-api-middleware';
 import uuid from 'uuid';
 import moment from 'moment';
 import {reset } from 'redux-form';
+const UPDATE_TASK_VIA_DND_SUCCESS = 'calendar/tasks/UPDATE_TASK_VIA_DND_SUCCESS';
 
-const retrieveData = (startTime, endTime) => {
-  return {
-    type: RETRIEVE_DATA,
-    startTime, endTime,
-    [CALL_API]: {
-      endpoint: 'url',
-      method: 'GET',
-      types: [
-        RETRIEVE_TASKS_REQUEST,
-        RETRIEVE_TASKS_FAILURE,
-        RETRIEVE_TASKS_SUCCESS]
-    }
-  };
-};
+// const retrieveData = (startTime, endTime) => {
+//   return {
+//     type: RETRIEVE_DATA,
+//     startTime, endTime,
+//     [CALL_API]: {
+//       endpoint: 'url',
+//       method: 'GET',
+//       types: [
+//         RETRIEVE_TASKS_REQUEST,
+//         RETRIEVE_TASKS_FAILURE,
+//         RETRIEVE_TASKS_SUCCESS]
+//     }
+//   };
+// };
 
 const taskClicked = (id, task) => {
   return {
@@ -96,7 +87,7 @@ const removeTaskHandler = (id) => {
 };
 
 export {
-    retrieveData,
+    // retrieveData,
     taskClicked,
     openSpaceCLicked,
   createTaskSubmitHandler,

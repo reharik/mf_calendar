@@ -3,16 +3,23 @@ import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 
 const Day = ({view,
-    tasks,
-    times,
-    dayName,
-    isToday, 
-  actions,
-  calendarConfig
+            tasks,
+            times,
+            dayName,
+            isToday,
+            calendarName,
+            increment,          
+            displayTimeFormat,
+            taskClickedAction,
+            openSpaceClickedAction,
+            updateTaskViaDND
 } ) => {
+  const selectSlotAction = (e,time) => {
+    if(e.target.className.includes('task__item')) {
+      return;
+    }
 
-  const selectSlotAction = time => {
-    actions.openSpaceClickedAction(time.day, time.time);
+    openSpaceClickedAction(time.day, time.time, calendarName);
   };
   
   let dayNameClasses = classNames(
@@ -49,23 +56,29 @@ const Day = ({view,
       {times.map(timeObj => (
         <li className={timeObj.classes}
           key={timeObj.time}
-          onClick={ e => !e.target.className.startsWith('task') ? selectSlotAction(timeObj) : null }>
+          onClick={ e => selectSlotAction(e,timeObj)}>
           <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
-            actions={actions} 
-            calendarConfig={calendarConfig}/>
+                 increment={increment}
+                 displayTimeFormat={displayTimeFormat}
+                 taskClickedAction={taskClickedAction}
+                 updateTaskViaDND={updateTaskViaDND}
+                 calendarName={calendarName}/>
         </li>))}
     </ol>);
 };
 
 Day.propTypes = {
-  view: PropTypes.string, 
+  view: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
-  calendarConfig: PropTypes.object.isRequired,
+  times: PropTypes.array.isRequired,
+  calendarName: PropTypes.string.isRequired,
   dayName: PropTypes.string.isRequired,
-  isToday: PropTypes.bool,
-  actions: PropTypes.object
+  isToday: PropTypes.bool.isRequired,
+  taskClickedAction: PropTypes.func.isRequired,
+  openSpaceClickedAction: PropTypes.func.isRequired,
+  updateTaskViaDND: PropTypes.func.isRequired
 };
 
 export default Day;

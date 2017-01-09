@@ -7,8 +7,8 @@ const validateTask = (task) => {
   invariant(task.endTime, `Tasks must have a end time! endTime: ${task.endTime}`);
 };
 
-const momentFromTime = function(time, config) {
-  return moment.isMoment(time) ? time.clone() : moment(time, [config.displayTimeFormat]);
+const momentFromTime = function(time, displayTimeFormat) {
+  return moment.isMoment(time) ? time.clone() : moment(time, displayTimeFormat);
 };
 
 const normalizeTasks = function(tasks, config) {
@@ -17,8 +17,8 @@ const normalizeTasks = function(tasks, config) {
   }
   return tasks.map(t => {
     validateTask(t);
-    const endTime = momentFromTime(t.endTime ,config);
-    const startTime = momentFromTime(t.startTime ,config);
+    const endTime = momentFromTime(t.endTime ,config.displayTimeFormat);
+    const startTime = momentFromTime(t.startTime ,config.displayTimeFormat);
     const date = t.date ? moment(t.date) : moment(startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
