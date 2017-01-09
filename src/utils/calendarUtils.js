@@ -8,7 +8,7 @@ const validateTask = (task) => {
 };
 
 const momentFromTime = function(time, displayTimeFormat) {
-  return moment.isMoment(time) ? time.clone() : moment(time, [displayTimeFormat]);
+  return moment.isMoment(time) ? time.clone() : moment(time, displayTimeFormat);
 };
 
 const normalizeTasks = function(tasks, config) {

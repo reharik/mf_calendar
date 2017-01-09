@@ -14,7 +14,11 @@ const Day = ({view,
             openSpaceClickedAction,
             updateTaskViaDND
 } ) => {
-  const selectSlotAction = time => {
+  const selectSlotAction = (e,time) => {
+    if(e.target.className.includes('task__item')) {
+      return;
+    }
+
     openSpaceClickedAction(time.day, time.time, calendarName);
   };
   
@@ -52,7 +56,7 @@ const Day = ({view,
       {times.map(timeObj => (
         <li className={timeObj.classes}
           key={timeObj.time}
-          onClick={ e => !e.target.className.startsWith('task') ? selectSlotAction(timeObj) : null }>
+          onClick={ e => selectSlotAction(e,timeObj)}>
           <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
