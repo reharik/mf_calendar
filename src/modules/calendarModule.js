@@ -20,15 +20,15 @@ export default (state = {}, action = null) => {
     case INCREMENT_DATE: {
       //moment in moment returns a clone
       return {...state,
-        [action.calendarName]: {...state[action.calendarName], date: moment(calState.date.add(1, action.viewType))}};
+        [action.calendarName]: {...calState, date: moment(calState.date.add(1, action.viewType))}};
     }
     case DECREMENT_DATE: {
       return {...state,
-        [action.calendarName]: {...state[action.calendarName], date: moment(calState.date.subtract(1, action.viewType))}};
+        [action.calendarName]: {...calState, date: moment(calState.date.subtract(1, action.viewType))}};
     }
     case VIEW_CHANGED_EVENT: {
       return {...state,
-        [action.calendarName]: {...state[action.calendarName], view:action.view}};
+        [action.calendarName]: {...calState, view:action.view}};
     }
     case SET_CONFIG: {
       return {...state, [action.config.calendarName]: {
@@ -57,7 +57,7 @@ export function decrementDate(viewType, calendarName) {
   };
 }
 
-export function selectToday(calendarName) {
+export function selectToday(view, calendarName) {
   return {
     type: SELECT_TODAY,
     calendarName

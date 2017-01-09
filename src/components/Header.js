@@ -12,7 +12,6 @@ const Header = ({calendarView,
     calendarName,
     retrieveDataAction
     }) => {
-
   const viewChangedEventAction = view => {
     viewChangedEvent(view, calendarName);
     retrieveDataAction(view)
