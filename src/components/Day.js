@@ -13,15 +13,15 @@ const Day = ({view,
             taskClickedAction,
             openSpaceClickedAction,
             updateTaskViaDND,
-            openSpaceEvent,
+            openSpaceClickedEvent,
             taskClickedEvent
 } ) => {
   const selectSlotAction = (e,time) => {
     if(e.target.className.includes('task__item')) {
       return;
     }
-    if(openSpaceEvent) {
-      openSpaceEvent(time.day, time.time, calendarName);
+    if(openSpaceClickedEvent) {
+      openSpaceClickedEvent(time.day, time.time, calendarName);
     } else {
       openSpaceClickedAction(time.day, time.time, calendarName);
     }

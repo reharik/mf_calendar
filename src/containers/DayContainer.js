@@ -22,7 +22,7 @@ function mapStateToProps(state, ownProps) {
     increment: calState.config.increment,
     calendarName: ownProps.calendarName,
     updateTaskViaDND: calState.config.updateTaskViaDND,
-    openSpaceEvent: calState.openSpaceEvent,
+    openSpaceClickedEvent: calState.openSpaceClickedEvent,
     taskClickedEvent: calState.taskClickedEvent
   };
 }
