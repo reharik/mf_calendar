@@ -3,12 +3,12 @@ import moment from 'moment';
 export const INCREMENT_DATE = 'calendar/dates/INCREMENT_DATE';
 export const DECREMENT_DATE = 'calendar/dates/DECREMENT_DATE';
 export const SELECT_TODAY = 'calendar/dates/SELECT_TODAY';
-export const SET_CONFIG = 'calendar/tasks/SET_CONFIG';
+export const SET_CONFIG = 'calendar/config/SET_CONFIG';
 export const VIEW_CHANGED_EVENT = 'calendar/view/VIEW_CHANGED_EVENT';
-export const TASK_CLICKED = 'calendar/tips/TASK_CLICKED';
-export const OPEN_SPACE_CLICKED = 'calendar/clicks/OPEN_SPACE_CLICKED';
+export const TASK_CLICKED = 'calendar/task/TASK_CLICKED';
+export const OPEN_SPACE_CLICKED = 'calendar/task/OPEN_SPACE_CLICKED';
 export const NO_OP = 'NO_OP';
-export const TASK_DRAG_SOURCE = 'calendar/tasks/TASK_DRAG_SOURCE';
+export const TASK_DRAG_SOURCE = 'calendar/task/TASK_DRAG_SOURCE';
 
 export default (state = {}, action = null) => {
   const calState = state[action.calendarName];

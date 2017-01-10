@@ -9,8 +9,9 @@ const Tasks = ({tasks,
   increment,
   displayTimeFormat,
   taskClickedAction,
+  taskClickedEvent,
   updateTaskViaDND}) => {
- 
+
   const isActive = canDrop && isOver;
   let style = {height: '100%', width: '100%'};
   let backgroundColor = 'transparent';
@@ -26,6 +27,7 @@ const Tasks = ({tasks,
         task={t}
         index={index}
         taskClickedAction={taskClickedAction}
+        taskClickedEvent={taskClickedEvent}
         calendarName={calendarName}
         increment={increment}
         displayTimeFormat={displayTimeFormat}

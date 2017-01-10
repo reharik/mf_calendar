@@ -1,7 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const MonthTasks = ({tasks, calendarName, taskClickedAction}) => {
-  const selectTaskAction = task => taskClickedAction(task.id, task, calendarName);
+const MonthTasks = ({tasks, calendarName, taskClickedAction, taskClickedEvent}) => {
+  const selectTaskAction = task => {
+    if(taskClickedEvent){
+      taskClickedEvent(task.id, task, calendarName);
+    } else {
+      taskClickedAction(task.id, task, calendarName);
+    }
+  };
 
   return (<div className="redux__task__calendar__month__task">
       { tasks.map((t, index)=> { return (<div className="redux__task__calendar__month__task__item" key={index}

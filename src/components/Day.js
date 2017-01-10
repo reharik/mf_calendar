@@ -12,14 +12,19 @@ const Day = ({view,
             displayTimeFormat,
             taskClickedAction,
             openSpaceClickedAction,
-            updateTaskViaDND
+            updateTaskViaDND,
+            openSpaceEvent,
+            taskClickedEvent
 } ) => {
   const selectSlotAction = (e,time) => {
     if(e.target.className.includes('task__item')) {
       return;
     }
-
-    openSpaceClickedAction(time.day, time.time, calendarName);
+    if(openSpaceEvent) {
+      openSpaceEvent(time.day, time.time, calendarName);
+    } else {
+      openSpaceClickedAction(time.day, time.time, calendarName);
+    }
   };
   
   let dayNameClasses = classNames(
@@ -63,6 +68,7 @@ const Day = ({view,
                  increment={increment}
                  displayTimeFormat={displayTimeFormat}
                  taskClickedAction={taskClickedAction}
+                 taskClickedEvent={taskClickedEvent}
                  updateTaskViaDND={updateTaskViaDND}
                  calendarName={calendarName}/>
         </li>))}

@@ -2,7 +2,14 @@ import React, { PropTypes } from 'react';
 import Color from 'color';
 
 
-const Task = ({task, index, calendarName, isDragging, connectDragSource, taskClickedAction}) => {
+const Task = ({task,
+              index, 
+              calendarName, 
+              isDragging, 
+              connectDragSource, 
+              taskClickedAction,
+              taskClickedEvent}) => {
+  
   const styleTaskItem = (t, index, opacity) => ({
     width: t.width + '%',
     height: 18 * t.slots + 'px',
@@ -15,7 +22,14 @@ const Task = ({task, index, calendarName, isDragging, connectDragSource, taskCli
   const styleTaskItemTitle = t =>
     ({backgroundColor: Color(t.color).darken(0.2).hexString()}); //eslint-disable-line new-cap
 
-  const selectTaskAction = t => taskClickedAction(t.id, t, calendarName);
+  const selectTaskAction = t => {
+    if(taskClickedEvent){
+      taskClickedEvent(t.id, t, calendarName)
+    } else {
+      taskClickedAction(t.id, t, calendarName);
+    }
+  };
+  
   const opacity = isDragging ? 0.4 : 1;
 
   return (connectDragSource(<div className="redux__task__calendar__task__item"

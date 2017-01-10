@@ -6,9 +6,15 @@ const MonthWeek = ({weekDays,
                     fetchDateFormat,
                     dayStartsAt,
                     openSpaceClickedAction,
-                    taskClickedAction}) => {
+                    taskClickedAction,
+                    openSpaceClickedEvent,
+                    taskClickedEvent}) => {
   const selectSlotAction = time => {
-    openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt, calendarName);
+    if(openSpaceClickedEvent){
+      openSpaceClickedEvent(time.format(fetchDateFormat), dayStartsAt, calendarName);
+    } else {
+      openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt, calendarName);
+    }
   };
 
   return (
@@ -18,7 +24,10 @@ const MonthWeek = ({weekDays,
           className={day.classes}
           onClick={e => e.target === e.currentTarget ? selectSlotAction(day) : ''}>
           <div className="redux__task__calendar__month__day__number">{day.date()}</div>
-          <MonthTasks tasks={day.tasks} taskClickedAction={taskClickedAction} calendarName={calendarName} />
+          <MonthTasks tasks={day.tasks}
+                      taskClickedAction={taskClickedAction}
+                      taskClickedEvent={taskClickedEvent}
+                      calendarName={calendarName} />
         </li>)
       }
     </ol>
