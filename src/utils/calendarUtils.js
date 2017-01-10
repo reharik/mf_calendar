@@ -12,6 +12,9 @@ const momentFromTime = function(time, displayTimeFormat) {
 };
 
 const normalizeTasks = function(tasks, config) {
+  if(!tasks) {
+    return [];
+  }
   if (!Array.isArray(tasks)) {
     tasks = [tasks];
   }

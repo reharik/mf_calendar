@@ -33,7 +33,7 @@ function mapStateToProps(state, ownProps) {
   return {
     calendarView: calState.view || calState.config.defaultView,
     width: calState.config.width,
-    calendarDate: calState.date,
+    calendarDate: calState.Date,
     calendarName: calState.config.calendarName
   };
 }

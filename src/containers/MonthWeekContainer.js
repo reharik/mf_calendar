@@ -32,7 +32,7 @@ function mapStateToProps(state, ownProps) {
     var day = moment(date);
     day.classes = buildClasses(day, moment(), calState.date, idx);
     day.tasks = normalizeTasks(
-      state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day')),
+      state[calState.config.dataSource] && state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day')),
       calState.config);
     return day;});
   return {
