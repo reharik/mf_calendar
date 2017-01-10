@@ -40,8 +40,8 @@ function mapStateToProps(state, ownProps) {
     calendarName: ownProps.calendarName,
     fetchDateFormat: calState.config.fetchDateFormat,
     dayStartsAt: calState.config.dayStartsAt,
-    openSpaceClickedEvent: calState.openSpaceClickedEvent,
-    taskClickedEvent: calState.taskClickedEvent
+    openSpaceClickedEvent: calState.config.openSpaceClickedEvent,
+    taskClickedEvent: calState.config.taskClickedEvent
   };
 }
 

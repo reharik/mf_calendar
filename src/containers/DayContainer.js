@@ -22,8 +22,8 @@ function mapStateToProps(state, ownProps) {
     increment: calState.config.increment,
     calendarName: ownProps.calendarName,
     updateTaskViaDND: calState.config.updateTaskViaDND,
-    openSpaceClickedEvent: calState.openSpaceClickedEvent,
-    taskClickedEvent: calState.taskClickedEvent
+    openSpaceClickedEvent: calState.config.openSpaceClickedEvent,
+    taskClickedEvent: calState.config.taskClickedEvent
   };
 }
 
