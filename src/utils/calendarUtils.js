@@ -36,8 +36,8 @@ const normalizeTasks = function(tasks, config) {
       title,
       editable: t.editable || true,
       id: t.id,
-      color: t.color || config.defaultColor,
-      titleColor: t.titleColor || config.defaultTitleColor,
+      color: t.color || config.Color,
+      titleColor: t.titleColor || config.titleColor,
       orig: t.orig || t
     };
   });
