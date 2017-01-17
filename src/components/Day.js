@@ -21,9 +21,9 @@ const Day = ({view,
       return;
     }
     if(openSpaceClickedEvent) {
-      openSpaceClickedEvent(time.day, time.time, calendarName);
+      openSpaceClickedEvent(time.day, time.time.format(displayTimeFormat), calendarName);
     } else {
-      openSpaceClickedAction(time.day, time.time, calendarName);
+      openSpaceClickedAction(time.day, time.time.format(displayTimeFormat), calendarName);
     }
   };
   
