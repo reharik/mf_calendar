@@ -8,12 +8,13 @@ const MonthWeek = ({weekDays,
                     openSpaceClickedAction,
                     taskClickedAction,
                     openSpaceClickedEvent,
-                    taskClickedEvent}) => {
+                    taskClickedEvent,
+                    displayTimeFormat}) => {
   const selectSlotAction = time => {
     if(openSpaceClickedEvent){
-      openSpaceClickedEvent(time.format(fetchDateFormat), dayStartsAt, calendarName);
+      openSpaceClickedEvent(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
     } else {
-      openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt, calendarName);
+      openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
     }
   };
 
