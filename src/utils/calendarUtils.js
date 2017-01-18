@@ -26,7 +26,7 @@ const normalizeTasks = function(tasks, config) {
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
     const display = config && config.display && typeof config.display === 'function' ? config.display(t) : t.display;
-    const title = t.title || t.startTime;
+    const title = t.title || t.startTime.format('MMM Do h:mm A');
     return {
       date,
       startTime,
