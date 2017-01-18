@@ -20,8 +20,8 @@ const normalizeTasks = function(tasks, config) {
   }
   return tasks.map(t => {
     validateTask(t);
-    const endTime = momentFromTime(t.endTime ,config.displayTimeFormat);
-    const startTime = momentFromTime(t.startTime ,config.displayTimeFormat);
+    const endTime = moment(t.endTime);
+    const startTime = moment(t.startTime);
     const date = t.date ? moment(t.date) : moment(startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
@@ -36,7 +36,7 @@ const normalizeTasks = function(tasks, config) {
       title,
       editable: t.editable || true,
       id: t.id,
-      color: t.color || config.Color,
+      color: t.color || config.color,
       titleColor: t.titleColor || config.titleColor,
       orig: t.orig || t
     };
