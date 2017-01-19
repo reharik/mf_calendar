@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
+import moment from 'moment';
 
 const Day = ({view,
             tasks,
@@ -21,9 +22,9 @@ const Day = ({view,
       return;
     }
     if(openSpaceClickedEvent) {
-      openSpaceClickedEvent(time.day, time.time.format(displayTimeFormat), calendarName);
+      openSpaceClickedEvent(time.day, moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
     } else {
-      openSpaceClickedAction(time.day, time.time.format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(time.day, moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
     }
   };
   
