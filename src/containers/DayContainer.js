@@ -19,7 +19,7 @@ function mapStateToProps(state, ownProps) {
     dayName: day.format('dddd'),
     isToday: day.format('YYYYMMDD') === moment().format('YYYYMMDD'),
     displayTimeFormat: calState.config.displayTimeFormat,
-    fetchDateFormat: calState.constructor.fetchDateFormat,
+    fetchDateFormat: calState.config.fetchDateFormat,
     increment: calState.config.increment,
     calendarName: ownProps.calendarName,
     updateTaskViaDND: calState.config.updateTaskViaDND,
