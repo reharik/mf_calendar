@@ -22,9 +22,9 @@ const Day = ({view,
       return;
     }
     if(openSpaceClickedEvent) {
-      openSpaceClickedEvent(time.day, moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedEvent(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
     } else {
-      openSpaceClickedAction(time.day, moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
     }
   };
   
