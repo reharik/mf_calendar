@@ -51,7 +51,9 @@ const Day = ({view,
     [isTodayOLClasses]: isToday
   });
 
-  const getTasksForTime = (_tasks, time) => _tasks.filter(x => x.startTime.format('H:mm A') === time);
+  const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
+  return x.startTime.format('h:mm A') === time
+  });
   
   return (
     <ol className={olClasses}>
