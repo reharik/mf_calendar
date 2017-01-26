@@ -26,37 +26,54 @@ class CalendarContainer extends Component {
   }
 }
 
+const wrapWithConfig = (action, ownProps) => {
+  const calendarConfig = {...defaultValues, ...ownProps.config};
+  return function () {
+    let wrappedAction = action.apply(undefined, arguments);
+    wrappedAction.calendarName = calendarConfig.calendarName;
+    return wrappedAction;
+  }
+};
+
 function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar && state.reduxTaskCalendar[ownProps.config.calendarName];
   if(!calState) { return {}; }
 
-  return {
+
+  const props =  {
     calendarView: calState.view || calState.config.defaultView,
     width: calState.config.width,
     calendarDate: calState.date,
     calendarName: calState.config.calendarName
   };
+
+  if(ownProps.config.retrieveDataAction.toString.includes('dispatch(')){
+    props.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
+  }
+
+  if(ownProps.config.updateTaskViaDND.toString.includes('dispatch(')){
+    actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
+  }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-  const calendarConfig = {...defaultValues, ...ownProps.config};
   const noopFunc = () => {
     return {type: NO_OP};
   };
 
-  const wrapWithConfig = (action) => {
-    return function () {
-      let wrappedAction = action.apply(undefined, arguments);
-      wrappedAction.calendarName = calendarConfig.calendarName;
-      return wrappedAction;
-    }
+  var actions = {
+    setConfig
   };
 
-  return bindActionCreators({
-    setConfig,
-    updateTaskViaDND: wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc),
-    retrieveDataAction: wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc)
-  }, dispatch);
+  if(!ownProps.config.retrieveDataAction.toString.includes('dispatch(')){
+    actions.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
+  }
+
+  if(!ownProps.config.updateTaskViaDND.toString.includes('dispatch(')){
+    actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
+  }
+
+  return bindActionCreators(actions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer);
