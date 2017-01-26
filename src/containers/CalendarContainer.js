@@ -54,8 +54,10 @@ function mapStateToProps(state, ownProps) {
 
   if(ownProps.config.updateTaskViaDND
     && ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
-    actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
+    props.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
   }
+  
+  return props;
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
