@@ -47,11 +47,13 @@ function mapStateToProps(state, ownProps) {
     calendarName: calState.config.calendarName
   };
 
-  if(ownProps.config.retrieveDataAction.toString.includes('dispatch(')){
+  if(ownProps.config.retrieveDataAction
+    && ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
     props.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
   }
 
-  if(ownProps.config.updateTaskViaDND.toString.includes('dispatch(')){
+  if(ownProps.config.updateTaskViaDND
+    && ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
     actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
   }
 }
@@ -65,11 +67,13 @@ function mapDispatchToProps(dispatch, ownProps) {
     setConfig
   };
 
-  if(!ownProps.config.retrieveDataAction.toString.includes('dispatch(')){
+  if(ownProps.config.retrieveDataAction
+    && !ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
     actions.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
   }
 
-  if(!ownProps.config.updateTaskViaDND.toString.includes('dispatch(')){
+  if(ownProps.config.updateTaskViaDND
+    && !ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
     actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
   }
 
