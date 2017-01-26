@@ -39,12 +39,17 @@ function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar && state.reduxTaskCalendar[ownProps.config.calendarName];
   if(!calState) { return {}; }
 
-
+  const noopFunc = () => {
+    return {type: NO_OP};
+  };
+  
   const props =  {
     calendarView: calState.view || calState.config.defaultView,
     width: calState.config.width,
     calendarDate: calState.date,
-    calendarName: calState.config.calendarName
+    calendarName: calState.config.calendarName,
+    retrieveDataAction: noopFunc,
+    updateTaskViaDND: noopFunc
   };
 
   if(ownProps.config.retrieveDataAction
@@ -56,7 +61,7 @@ function mapStateToProps(state, ownProps) {
     && ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
     props.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
   }
-  
+
   return props;
 }
 
