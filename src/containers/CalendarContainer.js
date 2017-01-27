@@ -41,7 +41,11 @@ function mapStateToProps(state, ownProps) {
     return {type: NO_OP};
   };
 
-  let props = {};
+  let props = {
+    retrieveDataAction:noopFunc,
+    updateTaskViaDND:noopFunc
+  };
+  
   if(ownProps.config.retrieveDataAction
     && ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
     props.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
