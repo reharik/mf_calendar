@@ -2,6 +2,7 @@ import Task from '../components/Task';
 import { DragSource } from 'react-dnd';
 import { TASK_DRAG_SOURCE } from './../modules/calendarModule';
 import { momentFromTime } from './../utils/calendarUtils';
+import moment from 'moment';
 
 const taskSource = {
   beginDrag(props) {
