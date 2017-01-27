@@ -71,6 +71,7 @@ const Day = ({view,
             day={timeObj.day}
                  increment={increment}
                  displayTimeFormat={displayTimeFormat}
+                 fetchDateFormat={fetchDateFormat}
                  taskClickedAction={taskClickedAction}
                  taskClickedEvent={taskClickedEvent}
                  updateTaskViaDND={updateTaskViaDND}
