@@ -34,8 +34,8 @@ function mapStateToProps(state, ownProps) {
     var unprocessedTasks = state[calState.config.dataSource]
       && state[calState.config.dataSource]
         .filter(e =>moment(e.date).isSame(day, 'day'))
-        .filter(calState.config.taskFilter)
-        .map(calState.config.taskMap);
+        .filter(a => calState.config.taskFilter(a, state))
+        .map(a => calState.config.taskMap(a, state));
       day.tasks = normalizeTasks(unprocessedTasks, calState.config);
     return day;});
   return {
