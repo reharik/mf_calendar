@@ -13,8 +13,8 @@ function mapStateToProps(state, ownProps) {
   var classes = thisView + 'day__items__slot ';
   var unprocessedTasks = state[calState.config.dataSource]
     .filter(filterToday)
-    .filter(calState.taskFilter)
-    .map(calState.taskMap);
+    .filter(calState.config.taskFilter)
+    .map(calState.config.taskMap);
   var tasks = process(normalizeTasks(unprocessedTasks, calState.config));
   return {
     view: calState.view,
