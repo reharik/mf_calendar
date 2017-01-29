@@ -9,6 +9,7 @@ const HeaderDateNav = ({viewType,
                       }) => {
   const viewChangedEventAction = (func, view) => {
     func(view, calendarName);
+    //TODO this doesn't seem like it would work
     retrieveDataAction(view)
   };
 

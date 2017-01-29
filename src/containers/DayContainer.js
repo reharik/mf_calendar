@@ -11,7 +11,11 @@ function mapStateToProps(state, ownProps) {
   var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
   var thisView = calState.view === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
   var classes = thisView + 'day__items__slot ';
-  var tasks = process(normalizeTasks(state[calState.config.dataSource].filter(filterToday), calState.config));
+  var unprocessedTasks = state[calState.config.dataSource]
+    .filter(filterToday)
+    .filter(calState.taskFilter)
+    .map(calState.taskMap);
+  var tasks = process(normalizeTasks(unprocessedTasks, calState.config));
   return {
     view: calState.view,
     tasks,

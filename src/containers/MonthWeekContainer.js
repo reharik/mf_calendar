@@ -31,9 +31,12 @@ function mapStateToProps(state, ownProps) {
   var weekDays = week => week.map((date, idx) => {
     var day = moment(date);
     day.classes = buildClasses(day, moment(), calState.date, idx);
-    day.tasks = normalizeTasks(
-      state[calState.config.dataSource] && state[calState.config.dataSource].filter(e =>moment(e.date).isSame(day, 'day')),
-      calState.config);
+    var unprocessedTasks = state[calState.config.dataSource]
+      && state[calState.config.dataSource]
+        .filter(e =>moment(e.date).isSame(day, 'day'))
+        .filter(calState.taskFilter)
+        .map(calState.taskMap);
+      day.tasks = normalizeTasks(unprocessedTasks, calState.config);
     return day;});
   return {
     weekDays: weekDays(ownProps.week),
