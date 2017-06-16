@@ -9,7 +9,7 @@ const Day = ({view,
             dayName,
             isToday,
             calendarName,
-            increment,          
+            increment,
             displayTimeFormat,
             fetchDateFormat,
             taskClickedAction,
@@ -28,12 +28,12 @@ const Day = ({view,
       openSpaceClickedAction(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
     }
   };
-  
+
   let dayNameClasses = classNames(
     {'redux__task__calendar__week__day__items__name__value' : view === 'week'},
     {'redux__task__calendar__day__items__name__value' : view !== 'week' }
   );
-  
+
   let liClasses = classNames(
     {'redux__task__calendar__week__day__items__name' : view === 'week'},
     {'redux__task__calendar__day__items__name' : view !== 'week' }
@@ -43,7 +43,7 @@ const Day = ({view,
     {'redux__task__calendar__week__day__items' : view === 'week'},
     {'redux__task__calendar__day__items' : view !== 'week' },
   );
-  
+
   let isTodayOLClasses = classNames(
     {'redux__task__calendar__week__day__isToday' : view === 'week'},
     {'redux__task__calendar__day__isToday' : view !== 'week' },
@@ -56,7 +56,7 @@ const Day = ({view,
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
   return x.startTime.format('h:mm A') === time
   });
-  
+
   return (
     <ol className={olClasses}>
       <li className={liClasses}>

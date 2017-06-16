@@ -4,7 +4,7 @@ const process = _apts => {
 
   let events = [];
   let workingSet = [];
-  const widthOffset = 1;
+  const widthOffset = 5;
 
   const updateWip = (wip, start) => {
     var sameSlot = wip.filter(x => x.value === start );
@@ -64,7 +64,7 @@ const process = _apts => {
     events.push({type: 'endTime', value: x.endTime.unix(), id: x.id, slots: x.slots, dipslay: x.display});
   });
   const sortedEvents = events
-    .sort(firstBy('value').thenBy('slots', -1).thenBy(x => {return x === 'endTime' ? 1 : -1;})
+    .sort(firstBy('value').thenBy('slots', -1).thenBy(x => x.type === 'endTime' ? 1 : -1)
       .thenBy('id'));
   sortedEvents.forEach(e => handleEvent(e, _apts, workingSet));
   return _apts.sort(firstBy('startTime').thenBy('slots', -1));

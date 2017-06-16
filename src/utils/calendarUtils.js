@@ -20,13 +20,14 @@ const normalizeTasks = function(tasks, config) {
   }
   return tasks.map(t => {
     validateTask(t);
-    const endTime = moment(t.endTime);
-    const startTime = moment(t.startTime);
+    const endTime = moment(t.endTime, 'h:mm A');
+    const startTime = moment(t.startTime, 'h:mm A');
     const date = t.date ? moment(t.date) : moment(startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
     const display = config && config.display && typeof config.display === 'function' ? config.display(t) : t.display;
-    const title = t.title || startTime.format('MMM Do h:mm A');
+    const title = t.title || `${startTime.format('h:mm')} - ${endTime.format('h:mm')}`;
+
     return {
       date,
       startTime,

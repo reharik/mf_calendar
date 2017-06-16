@@ -3,19 +3,19 @@ import Color from 'color';
 
 
 const Task = ({task,
-              index, 
-              calendarName, 
-              isDragging, 
-              connectDragSource, 
+              index,
+              calendarName,
+              isDragging,
+              connectDragSource,
               taskClickedAction,
               taskClickedEvent}) => {
-  
+
   const styleTaskItem = (t, index, opacity) => ({
     width: t.width + '%',
     height: 18 * t.slots + 'px',
     marginLeft: index > 0 || t.margin === 0 ? '0' : t.margin + 1 + '%',
     zIndex: t.column,
-    border: '2px solid ' + Color(t.color).darken(0.3).hexString(), //eslint-disable-line new-cap
+    // border: '2px solid ' + Color(t.color).darken(0.3).hexString(), //eslint-disable-line new-cap
     opacity
   });
 
@@ -29,7 +29,7 @@ const Task = ({task,
       taskClickedAction(t.id, t, calendarName);
     }
   };
-  
+
   const opacity = isDragging ? 0.4 : 1;
 
   return (connectDragSource(<div className="redux__task__calendar__task__item"
