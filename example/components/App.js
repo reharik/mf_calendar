@@ -62,6 +62,7 @@ export default () => {
       increment: 15,
       width: '1200px',
       dataSource: 'tasks',
+      defaultView: 'week',
       retrieveDataAction: retrieveData,
       updateTaskViaDND: updateTaskViaDND
     }}/>
