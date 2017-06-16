@@ -13,41 +13,9 @@ export default () => {
   const d = uuid.v4();
   const getData = function () {
     return {
-      tasks: [
-        {
-          display: 'hi mom!1',
-          startTime: '8:00 AM',
-          endTime: '9:00 AM',
-          date: new Date(),
-          id: a,
-          color: 'red'
-        },
-        {
-          display: 'hi mom!2',
-          startTime: '8:30 AM',
-          endTime: '9:30 AM',
-          date: new Date(),
-          id: b,
-          color: 'red'
-        },
-        {
-          display: 'hi mom!3',
-          startTime: '8:30 AM',
-          endTime: '9:00 AM',
-          date: new Date(),
-          id: c,
-          color: 'red'
-        },
-        {
-          display: 'hi mom!4',
-          startTime: '9:00 AM',
-          endTime: '10:00 AM',
-          date: new Date(),
-          id: d,
-          color: 'red'
-        }
-      ]
-    };
+
+    "tasks":[{"id":"f9a6dedb-e4ca-4489-91ee-61dbf3f6a792","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["5adee657-28b7-42ba-bff1-ada46362023d"],"endTime":"2017-06-16T11:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T11:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"},{"id":"42d24b4a-5c67-44f5-bd00-08823283df0a","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["bc15ad2a-c95f-459f-8788-ad0754277eb7"],"endTime":"2017-06-16T12:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T12:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"},{"id":"b6b54dd8-4a16-4bc7-8d53-d1399af63e94","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["b7937174-ac1b-4c7b-9698-f88b77fbec43"],"endTime":"2017-06-16T13:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T13:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"}]}
+    ;
   };
 
   const retrieveData = (startDate, endDate) => {

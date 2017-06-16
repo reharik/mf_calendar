@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AsideTimes = ({times}) => (
   <ol className="redux__task__calendar__times__column">

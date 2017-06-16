@@ -10,7 +10,7 @@ const defaultValues = {
   width: '',
   editable: true,
   fetchDateFormat: 'YYYYMMDD',
-  displayTimeFormat: 'h:mm A',
+  displayTimeFormat: 'LT',
   taskFilter: (x) => (true),
   taskMap: (x) => (x)
 };

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 import moment from 'moment';
@@ -54,7 +55,7 @@ const Day = ({view,
   });
 
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
-  return x.startTime.format('h:mm A') === time
+    return x.startTime.format('LT') === time
   });
 
   return (
