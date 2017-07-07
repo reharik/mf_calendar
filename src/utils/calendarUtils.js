@@ -27,6 +27,11 @@ const convertLocalTimeToUtc = (time) => {
   return `${hour}:${min} ${A}`;
 };
 
+const attemptToFixInvalidTimes = (task) => {
+  task.startTime = addTimeToMoment(task.startTime, moment(task.date));
+  task.endTime = addTimeToMoment(task.endTime, moment(task.date));
+};
+
 const normalizeTasks = function(tasks, config, long) {
   if(!tasks) {
     return [];
@@ -36,6 +41,9 @@ const normalizeTasks = function(tasks, config, long) {
   }
   return tasks.map(t => {
     validateTask(t);
+    if (!moment(t.endTime).isValid()) {
+      attemptToFixInvalidTimes(t);
+    }
     const endTime = config.utcTime ? moment(t.endTime).utc() : moment(t.endTime).utc(t.endTime);
     const startTime = config.utcTime ? moment(t.startTime).utc() : moment(t.startTime).utc(t.startTime);
 

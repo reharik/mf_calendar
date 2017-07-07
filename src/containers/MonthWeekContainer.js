@@ -41,11 +41,9 @@ function mapStateToProps(state, ownProps) {
   return {
     weekDays: weekDays(ownProps.week),
     calendarName: ownProps.calendarName,
-    fetchDateFormat: calState.config.fetchDateFormat,
     dayStartsAt: calState.config.dayStartsAt,
     openSpaceClickedEvent: calState.config.openSpaceClickedEvent,
-    taskClickedEvent: calState.config.taskClickedEvent,
-    displayTimeFormat: calState.config.displayTimeFormat
+    taskClickedEvent: calState.config.taskClickedEvent
   };
 }
 

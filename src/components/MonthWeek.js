@@ -6,22 +6,12 @@ import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils
 
 const MonthWeek = ({weekDays,
                     calendarName,
-                    fetchDateFormat,
                     dayStartsAt,
                     openSpaceClickedAction,
                     taskClickedAction,
                     openSpaceClickedEvent,
-                    taskClickedEvent,
-                    displayTimeFormat}) => {
+                    taskClickedEvent}) => {
   const selectSlotAction = time => {
-    
-    // console.log(`==========time=========`);
-    // console.log(dayStartsAt);
-    // console.log(`==========END time=========`);
-    //
-    // console.log(`==========weekDays[0]=========`);
-    // console.log(weekDays[0]);
-    // console.log(`==========END weekDays[0]=========`);
     let openSpaceTask = {
       day: moment(time).utc(),
       startTime: addTimeToMoment(convertLocalTimeToUtc(dayStartsAt), moment(time).utc()).toISOString()
@@ -54,7 +44,6 @@ const MonthWeek = ({weekDays,
 MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
   calendarName: PropTypes.string.isRequired,
-  fetchDateFormat: PropTypes.string.isRequired,
   dayStartsAt: PropTypes.string.isRequired,
   openSpaceClickedAction: PropTypes.func.isRequired,
   taskClickedAction: PropTypes.func.isRequired

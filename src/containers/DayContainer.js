@@ -16,13 +16,7 @@ function mapStateToProps(state, ownProps) {
     .filter(filterToday)
     .filter(a => calState.config.taskFilter(a, state))
     .map(a => calState.config.taskMap(a, state));
-  // console.log(`==========unprocessedTasks=========`);
-  // console.log(unprocessedTasks);
-  // console.log(`==========END unprocessedTasks=========`);
   let tasks = process(normalizeTasks(unprocessedTasks, calState.config));
-  // console.log(`==========tasks=========`);
-  // console.log(tasks);
-  // console.log(`==========END tasks=========`);
   return {
     view: calState.view,
     tasks,

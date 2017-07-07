@@ -10,10 +10,6 @@ const Task = ({task,
               connectDragSource,
               taskClickedAction,
               taskClickedEvent}) => {
-  // console.log(`==========task=========`);
-  // console.log(task);
-  // console.log(index);
-  // console.log(`==========END task=========`);
   const styleTaskItem = (t, index, opacity) => ({
     width: t.width + '%',
     height: 18 * t.slots + 'px',
