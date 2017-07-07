@@ -11,10 +11,23 @@ const MonthWeek = ({weekDays,
                     taskClickedEvent,
                     displayTimeFormat}) => {
   const selectSlotAction = time => {
-    if(openSpaceClickedEvent){
-      openSpaceClickedEvent(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
+    
+    console.log(`==========time=========`);
+    console.log(dayStartsAt);
+    console.log(`==========END time=========`);
+
+    console.log(`==========weekDays[0]=========`);
+    console.log(weekDays[0]);
+    console.log(`==========END weekDays[0]=========`);
+    let openSpaceTask = {
+      day: moment(time).utc(),
+      startTime: addTimeToMoment(convertLocalTimeToUtc(dayStartsAt), moment(time).utc()).toISOString()
+    };
+
+    if(openSpaceClickedEvent) {
+      openSpaceClickedEvent(openSpaceTask, calendarName);
     } else {
-      openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(openSpaceTask, calendarName);
     }
   };
 
@@ -39,7 +52,7 @@ MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
   calendarName: PropTypes.string.isRequired,
   fetchDateFormat: PropTypes.string.isRequired,
-  dayStartsAt: PropTypes.object.isRequired,
+  dayStartsAt: PropTypes.string.isRequired,
   openSpaceClickedAction: PropTypes.func.isRequired,
   taskClickedAction: PropTypes.func.isRequired
 };

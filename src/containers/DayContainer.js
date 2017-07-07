@@ -7,11 +7,12 @@ import {openSpaceClickedAction, taskClickedAction} from './../modules/calendarMo
 
 function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar[ownProps.calendarName];
-  var day = ownProps.date || calState.date || moment();
-  var filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
-  var thisView = calState.view === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
-  var classes = thisView + 'day__items__slot ';
-  var tasks = process(normalizeTasks(state[calState.config.dataSource].filter(filterToday), calState.config));
+  let day = ownProps.date || calState.date || moment();
+  day.utc();
+  let filterToday = x => moment(x.date).format('YYYYMMDD') === day.format('YYYYMMDD');
+  let thisView = calState.view === 'week' ? 'redux__task__calendar__week__' : 'redux__task__calendar__';
+  let classes = thisView + 'day__items__slot ';
+  let tasks = process(normalizeTasks(state[calState.config.dataSource].filter(filterToday), calState.config));
   return {
     view: calState.view,
     tasks,

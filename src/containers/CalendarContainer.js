@@ -62,7 +62,6 @@ function mapStateToProps(state, ownProps) {
   props =  {...props,
     calendarView: calState.view || calState.config.defaultView,
     width: calState.config.width,
-    calendarDate: calState.date,
     calendarName: calState.config.calendarName,
   };
 

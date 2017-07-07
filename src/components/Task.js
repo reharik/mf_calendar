@@ -9,7 +9,6 @@ const Task = ({task,
               connectDragSource, 
               taskClickedAction,
               taskClickedEvent}) => {
-  
   const styleTaskItem = (t, index, opacity) => ({
     width: t.width + '%',
     height: 18 * t.slots + 'px',

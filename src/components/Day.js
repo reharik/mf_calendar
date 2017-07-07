@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 import moment from 'moment';
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils'
 
 const Day = ({view,
             tasks,
@@ -22,10 +23,16 @@ const Day = ({view,
     if(e.target.className.includes('task__item')) {
       return;
     }
+
+    let openSpaceTask = {
+      day: moment(time.day).hour(0).minute(0).toISOString(),
+      startTime: addTimeToMoment(convertLocalTimeToUtc(time.time), time.day).toISOString()
+    };
+
     if(openSpaceClickedEvent) {
-      openSpaceClickedEvent(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedEvent(openSpaceTask, calendarName);
     } else {
-      openSpaceClickedAction(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(openSpaceTask, calendarName);
     }
   };
   
@@ -54,7 +61,7 @@ const Day = ({view,
   });
 
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
-  return x.startTime.format('h:mm A') === time
+    return moment(x.startTime).local().format('h:mm A') === time
   });
   
   return (

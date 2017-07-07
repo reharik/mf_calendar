@@ -79,11 +79,10 @@ export function viewChangedEvent(view, calendarName) {
   };
 }
 
-export function openSpaceClickedAction(day, time, calendarName) {
+export function openSpaceClickedAction(task, calendarName) {
   return {
     type: OPEN_SPACE_CLICKED,
-    day,
-    time,
+    task,
     calendarName
   };
 }
