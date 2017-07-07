@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Task from './../containers/TaskSourceContainer';
 
 const Tasks = ({tasks,
@@ -21,7 +22,7 @@ const Tasks = ({tasks,
     backgroundColor = 'darkkhaki';
   }
   return connectDropTarget(<div className="redux__task__calendar__tasks" style={{ ...style, backgroundColor }}>
-    {tasks.sort((a, b) => a.margin > b.margin).map((t, index)=> (
+    {tasks.sort((a, b) => a.margin > b.margin).map((t, index) => (
       <Task
         key={index}
         task={t}

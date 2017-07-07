@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const HeaderDateNav = ({viewType,
                         increment,
@@ -9,6 +10,7 @@ const HeaderDateNav = ({viewType,
                       }) => {
   const viewChangedEventAction = (func, view) => {
     func(view, calendarName);
+    //TODO this doesn't seem like it would work
     retrieveDataAction(view)
   };
 

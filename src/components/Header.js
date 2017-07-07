@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import HeaderDateNav from './HeaderDateNav';
 import classNames from 'classnames'
 
@@ -14,12 +15,13 @@ const Header = ({calendarView,
     }) => {
   const viewChangedEventAction = view => {
     viewChangedEvent(view, calendarName);
-    retrieveDataAction(view)
+    //TODO this doesn't seem like it would work
+    retrieveDataAction(view);
   };
 
   let classes = (view) => classNames('redux__task__calendar__header__view__nav_button',
     {'active': calendarView === view});
-  
+
   return (
     <header className="redux__task__calendar__header">
       <HeaderDateNav viewType={calendarView}

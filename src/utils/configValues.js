@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const defaultValues = {
   defaultView: 'month',
   dayStartsAt: '7:00 AM',
@@ -11,7 +9,9 @@ const defaultValues = {
   editable: true,
   fetchDateFormat: 'YYYYMMDD',
   displayTimeFormat: 'LT',
-  utcTime: true
+  utcTime: true,
+  taskFilter: (x) => (true),
+  taskMap: (x) => (x)
 };
 
 export default defaultValues

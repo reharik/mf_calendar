@@ -1,5 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MonthTasks from './MonthTasks';
+import moment from 'moment';
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils'
 
 const MonthWeek = ({weekDays,
                     calendarName,
@@ -12,13 +15,13 @@ const MonthWeek = ({weekDays,
                     displayTimeFormat}) => {
   const selectSlotAction = time => {
     
-    console.log(`==========time=========`);
-    console.log(dayStartsAt);
-    console.log(`==========END time=========`);
-
-    console.log(`==========weekDays[0]=========`);
-    console.log(weekDays[0]);
-    console.log(`==========END weekDays[0]=========`);
+    // console.log(`==========time=========`);
+    // console.log(dayStartsAt);
+    // console.log(`==========END time=========`);
+    //
+    // console.log(`==========weekDays[0]=========`);
+    // console.log(weekDays[0]);
+    // console.log(`==========END weekDays[0]=========`);
     let openSpaceTask = {
       day: moment(time).utc(),
       startTime: addTimeToMoment(convertLocalTimeToUtc(dayStartsAt), moment(time).utc()).toISOString()

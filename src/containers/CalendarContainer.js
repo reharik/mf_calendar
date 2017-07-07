@@ -13,7 +13,6 @@ class CalendarContainer extends Component {
       retrieveDataAction: this.props.retrieveDataAction,
       updateTaskViaDND: this.props.updateTaskViaDND
     };
-    
     this.props.retrieveDataAction();
     this.props.setConfig(config);
   }

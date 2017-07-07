@@ -19,7 +19,7 @@ export default () => {
     return result.toISOString();
   };
 
-  const a = uuid.v4();
+const a = uuid.v4();
   const b = uuid.v4();
   const c = uuid.v4();
   const d = uuid.v4();
@@ -27,39 +27,35 @@ export default () => {
     return {
       tasks: [
         {
+          id:a,
           display: 'hi mom!1',
           startTime: getISODateTime(seed, '8:00 AM'),
           endTime: getISODateTime(seed, '9:00 AM'),
           date: getISODateTime(seed),
-          id: a,
-          color: 'red'
         },
         {
+          id:b,
           display: 'hi mom!2',
           startTime: getISODateTime(seed, '8:30 AM'),
           endTime: getISODateTime(seed, '9:30 AM'),
           date: getISODateTime(seed),
-          id: b,
-          color: 'red'
         },
         {
+          id:c,
           display: 'hi mom!3',
           startTime: getISODateTime(seed, '8:30 AM'),
           endTime: getISODateTime(seed, '9:00 AM'),
           date: getISODateTime(seed),
-          id: c,
-          color: 'red'
         },
         {
+          id:d,
           display: 'hi mom!4',
           startTime: getISODateTime(seed, '9:00 AM'),
           endTime: getISODateTime(seed, '10:00 AM'),
-          date: getISODateTime(seed),
-          id: d,
-          color: 'red'
+          date: getISODateTime(seed)
         }
       ]
-    };
+    }
 
     // return {
     //   tasks: [
@@ -101,6 +97,9 @@ export default () => {
 
   const retrieveData = (startDate, endDate) => {
     var data = getData();
+    console.log(`==========data=========`);
+    console.log(data);
+    console.log(`==========END data=========`);
     return {type: RETRIEVE_TASKS_SUCCESS, data};
   };
 
@@ -112,6 +111,7 @@ export default () => {
       increment: 15,
       width: '1200px',
       dataSource: 'tasks',
+      defaultView: 'week',
       retrieveDataAction: retrieveData,
       updateTaskViaDND: updateTaskViaDND
     }}/>

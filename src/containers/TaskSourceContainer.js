@@ -17,7 +17,7 @@ const taskSource = {
       const task = { ...item.task,
         startTime: dropResult.time,
         endTime: momentFromTime(dropResult.time, props.displayTimeFormat)
-          .add(item.task.slots * props.increment, 'minutes').format('h:mm A'),
+          .add(item.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
         date: moment(dropResult.day).format(props.fetchDateFormat) };
       props.updateTaskViaDND(task);
     }

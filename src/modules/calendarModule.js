@@ -34,7 +34,7 @@ export default (state = {}, action = null) => {
       return {...state, [action.config.calendarName]: {
         config: action.config,
         date: moment(),
-        view:'month'
+        view:action.config.defaultView
       }}
     }
   }

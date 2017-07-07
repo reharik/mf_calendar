@@ -45,6 +45,7 @@ const normalizeTasks = function(tasks, config, long) {
     const slots = endTime.diff(startTime, 'minutes') / inc;
     const display = config && config.display && typeof config.display === 'function' ? config.display(t) : t.display;
     const title = t.title || moment(startTime).local().format( long ? 'lll' : 'LT' );
+// `${startTime.format('h:mm')} - ${endTime.format('h:mm')}`;
     // const title = t.title || startTime.format('MMM Do h:mm A');
     return {
       date,
@@ -82,8 +83,8 @@ const formatHeaderDisplay = function(mom, viewType) {
 
 const getTimesForDay = function(config) {
   let result = [];
-  let time = moment(config.dayStartsAt);
-  const end = moment(config.dayEndsAt);
+  let time = moment(config.dayStartsAt, ['h:mm A']);
+  const end = moment(config.dayEndsAt, ['h:mm A']);
   while (time.isBefore(end, 'minutes', '[)')) {
     result.push(time.format(config.displayTimeFormat));
     time.add(config.increment, 'minutes');
