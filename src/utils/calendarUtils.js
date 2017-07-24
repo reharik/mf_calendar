@@ -43,8 +43,8 @@ const normalizeTasks = function(tasks, config) {
   });
 };
 
-const getWeek = function(day) {
-  const calendar = new Calendar.Calendar(Calendar.SUNDAY);
+const getWeek = function(day, config) {
+  const calendar = new Calendar.Calendar(config.firstDayOfWeek);
   const week = calendar.monthdatescalendar(day.year(), day.month() + 1)
     .filter(_week => _week.some(date => moment(date).isSame(day, 'day')));
   return week.length > 0 ? week[0].map(x=>moment(x)) : [];

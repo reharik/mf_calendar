@@ -1,7 +1,9 @@
 import moment from 'moment';
+import Calendar from 'node-calendar';
 
 const defaultValues = {
   defaultView: 'month',
+  firstDayOfWeek: Calendar.SUNDAY,
   dayStartsAt: moment('7:00 AM', ['h:mm A']),
   dayEndsAt: moment('7:00 PM', ['h:mm A']),
   increment: 30,
