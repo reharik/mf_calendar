@@ -1,20 +1,26 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MonthTasks from './MonthTasks';
+import moment from 'moment';
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils'
 
 const MonthWeek = ({weekDays,
                     calendarName,
-                    fetchDateFormat,
                     dayStartsAt,
                     openSpaceClickedAction,
                     taskClickedAction,
                     openSpaceClickedEvent,
-                    taskClickedEvent,
-                    displayTimeFormat}) => {
+                    taskClickedEvent}) => {
   const selectSlotAction = time => {
-    if(openSpaceClickedEvent){
-      openSpaceClickedEvent(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
+    let openSpaceTask = {
+      day: moment(time).utc(),
+      startTime: addTimeToMoment(convertLocalTimeToUtc(dayStartsAt), moment(time).utc()).toISOString()
+    };
+
+    if(openSpaceClickedEvent) {
+      openSpaceClickedEvent(openSpaceTask, calendarName);
     } else {
-      openSpaceClickedAction(time.format(fetchDateFormat), dayStartsAt.format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(openSpaceTask, calendarName);
     }
   };
 
@@ -38,8 +44,7 @@ const MonthWeek = ({weekDays,
 MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
   calendarName: PropTypes.string.isRequired,
-  fetchDateFormat: PropTypes.string.isRequired,
-  dayStartsAt: PropTypes.object.isRequired,
+  dayStartsAt: PropTypes.string.isRequired,
   openSpaceClickedAction: PropTypes.func.isRequired,
   taskClickedAction: PropTypes.func.isRequired
 };

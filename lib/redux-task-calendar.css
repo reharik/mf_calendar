@@ -340,16 +340,20 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
     width: 100%
 }
 .redux__task__calendar__header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
@@ -366,8 +370,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -ms-flex-pack: distribute;
         justify-content: space-around
 }
@@ -380,8 +386,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     width: 100%;
@@ -391,8 +399,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -402,8 +412,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -ms-flex-pack: distribute;
         justify-content: space-around
 }
@@ -411,8 +423,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -438,8 +452,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -467,8 +483,10 @@ ol {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -478,8 +496,10 @@ ol {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap
 }
 .redux__task__calendar__calendar {}
 .redux__task__calendar__header {
@@ -496,7 +516,6 @@ ol {
 }
 .redux__task__calendar__header__date__nav__button {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-radius: 3px;
     border: 1px solid #dadada;
@@ -507,7 +526,6 @@ ol {
     font-weight: bold
 }
 .redux__task__calendar__header__date__nav__button:hover {
-    background: -webkit-linear-gradient(bottom, #c2c2c2 0%, #bababa 0%, #c3c3c3 30%, #d9d9d9 100%);
     background: linear-gradient(to top, #c2c2c2 0%, #bababa 0%, #c3c3c3 30%, #d9d9d9 100%)
 }
 .redux__task__calendar__header__date__nav__today {
@@ -517,7 +535,6 @@ ol {
 }
 .redux__task__calendar__header__view__nav_button {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-radius: 3px;
     border: 1px solid #b2b8ad;
@@ -528,13 +545,11 @@ ol {
     font-weight: bold
 }
 .redux__task__calendar__header__view__nav_button:hover {
-    background: -webkit-linear-gradient(bottom, #c2c2c2 0%, #bababa 0%, #c3c3c3 30%, #d9d9d9 100%);
     background: linear-gradient(to top, #c2c2c2 0%, #bababa 0%, #c3c3c3 30%, #d9d9d9 100%)
 }
 .redux__task__calendar__times__column {}
 .redux__task__calendar__times__column__spacer__item {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-top-left-radius: 3px;
     border-top: 1px solid #d1d1d1;
@@ -547,7 +562,6 @@ ol {
 }
 .redux__task__calendar__times__column__item {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-left: 1px solid #d1d1d1;
     border-right: 2px solid #d1d1d1;
@@ -571,7 +585,6 @@ ol {
 .redux__task__calendar__month__task__item {}
 .redux__task__calendar__month__day__header {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-top: 1px solid #d1d1d1;
     border-left: 1px solid #d1d1d1;
@@ -602,7 +615,6 @@ ol {
 }
 .redux__task__calendar__week__day__items__name__value {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-top: 1px solid #d1d1d1;
     border-left: 1px solid #d1d1d1;
@@ -631,7 +643,6 @@ ol {
 }
 .redux__task__calendar__day__items__name__value {
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
-    background: -webkit-linear-gradient(bottom, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     background: linear-gradient(to top, #d6d6d6 0%, #cfcfcf 0%, #d9d9d9 30%, #f0f0f0 100%);
     border-top: 1px solid #d1d1d1;
     border-left: 1px solid #d1d1d1;

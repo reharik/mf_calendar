@@ -6,7 +6,7 @@ function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar[ownProps.calendarName];
   const times = augmentTimes('redux__task__calendar__times__column__item ', undefined, calState.config);
 
-  const week = getWeek(calState.date);
+  const week = getWeek(calState.date, calState.config);
   return {
     times,
     week,

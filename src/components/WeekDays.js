@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import DayContainer from '../containers/DayContainer';
 
-const WeedkDays = ({week, calendarName}) => {
+const WeekDays = ({week, calendarName}) => {
   return (
     <ol className="redux__task__calendar__week__days">
       {week.map(day =>
@@ -12,9 +13,9 @@ const WeedkDays = ({week, calendarName}) => {
     </ol>);
 };
 
-WeedkDays.propTypes = {
+WeekDays.propTypes = {
   calendarName: PropTypes.string.isRequired,
   week: PropTypes.array.isRequired
 };
 
-export default WeedkDays;
+export default WeekDays;

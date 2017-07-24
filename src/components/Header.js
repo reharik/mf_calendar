@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import HeaderDateNav from './HeaderDateNav';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 const Header = ({calendarView,
     selectedDay,
