@@ -110,6 +110,8 @@ const a = uuid.v4();
       dataSource: 'tasks',
       defaultView: 'week',
       firstDayOfWeek: 0,
+      hideViewMenu: true,
+      hideDateNav: true,
       retrieveDataAction: retrieveData,
       updateTaskViaDND: updateTaskViaDND
     }}/>

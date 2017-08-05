@@ -18,6 +18,8 @@ const defaultValues = {
   fetchDateFormat: 'YYYYMMDD',
   displayTimeFormat: 'LT',
   utcTime: true,
+  hideViewMenu: false,
+  hideDateNav: false,
   taskFilter: (x) => (true),
   taskMap: (x) => (x)
 };

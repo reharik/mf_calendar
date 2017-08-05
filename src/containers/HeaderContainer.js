@@ -16,6 +16,8 @@ function mapStateToProps(state, ownProps) {
     calendarName: ownProps.calendarName,
     calendarView: calState.view,
     selectedDay: calState.date,
+    hideViewMenu: calState.config.hideViewMenu,
+    hideDateNav: calState.config.hideDateNav,
     caption: formatHeaderDisplay(calState.date, calState.view, calState.config),
     retrieveDataAction};
 }
