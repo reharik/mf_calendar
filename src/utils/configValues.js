@@ -20,6 +20,7 @@ const defaultValues = {
   utcTime: true,
   hideViewMenu: false,
   hideDateNav: false,
+  taskId: 'id',
   taskFilter: (x) => (true),
   taskMap: (x) => (x)
 };

@@ -63,7 +63,7 @@ const normalizeTasks = function(tasks, config, long) {
       display,
       title,
       editable: t.editable || true,
-      id: t.id,
+      id: t[config.taskId],
       color: t.color || config.color,
       titleColor: t.titleColor || config.titleColor,
       orig: t.orig || t
