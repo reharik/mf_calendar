@@ -17,7 +17,6 @@ const defaultValues = {
   editable: true,
   fetchDateFormat: 'YYYYMMDD',
   displayTimeFormat: 'LT',
-  utcTime: true,
   hideViewMenu: false,
   hideDateNav: false,
   taskId: 'id',

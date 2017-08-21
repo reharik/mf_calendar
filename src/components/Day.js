@@ -27,7 +27,7 @@ const Day = ({view,
 
     let openSpaceTask = {
       day: moment(time.day).hour(0).minute(0).toISOString(),
-      startTime: addTimeToMoment(convertLocalTimeToUtc(time.time), time.day).toISOString()
+      startTime: addTimeToMoment(time.time, time.day).toISOString()
     };
 
     if(openSpaceClickedEvent) {

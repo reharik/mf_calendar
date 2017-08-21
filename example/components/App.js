@@ -14,7 +14,7 @@ export default () => {
     let min =  parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(' ')));
     let A = time.substring(time.indexOf(' ') + 1);
     hour = A === 'AM' ? hour : hour + 12;
-    let result = moment(date).hour(hour).minute(min).utc();
+    let result = moment(date).hour(hour).minute(min);
 
     return result.toISOString();
   };
@@ -142,15 +142,14 @@ const a = uuid.v4();
   return (<div className="app">
     {/*<TaskFormContainer />*/}
     <Calendar config={{
-      utcTime: true,
       calendarName: 'testCalendar',
       increment: 15,
       width: '1200px',
       dataSource: 'tasks',
       defaultView: 'week',
       firstDayOfWeek: 0,
-      hideViewMenu: true,
-      hideDateNav: true,
+      // hideViewMenu: true,
+      // hideDateNav: true,
       retrieveDataAction: retrieveData,
       updateTaskViaDND: updateTaskViaDND,
       taskId: 'appointmentId'

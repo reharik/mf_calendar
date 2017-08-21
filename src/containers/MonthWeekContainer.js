@@ -29,8 +29,8 @@ function mapStateToProps(state, ownProps) {
 
   const calState = state.reduxTaskCalendar[ownProps.calendarName];
   let weekDays = week => week.map((date, idx) => {
-    let day = moment(date).utc();
-    day.classes = buildClasses(day, moment().utc(), calState.date, idx);
+    let day = moment(date);
+    day.classes = buildClasses(day, moment(), calState.date, idx);
     let unprocessedTasks = state[calState.config.dataSource]
       && state[calState.config.dataSource]
         .filter(e =>moment(e.date).isSame(day, 'day'))

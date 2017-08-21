@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MonthTasks from './MonthTasks';
 import moment from 'moment';
-import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils'
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils';
 
 const MonthWeek = ({weekDays,
                     calendarName,
@@ -13,8 +13,8 @@ const MonthWeek = ({weekDays,
                     taskClickedEvent}) => {
   const selectSlotAction = time => {
     let openSpaceTask = {
-      day: moment(time).utc(),
-      startTime: addTimeToMoment(convertLocalTimeToUtc(dayStartsAt), moment(time).utc()).toISOString()
+      day: moment(time),
+      startTime: addTimeToMoment(dayStartsAt, moment(time).toISOString())
     };
 
     if(openSpaceClickedEvent) {
