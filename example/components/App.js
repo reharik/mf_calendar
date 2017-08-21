@@ -56,43 +56,82 @@ const a = uuid.v4();
     //     }
     //   ]
     // }
-
     return {
       tasks: [
         {
-          display: 'hi mom!1',
-          startTime: '8:00 AM',
-          endTime: '9:00 AM',
-          date: new Date(),
-          id: a,
-          color: 'red'
+          "date": "2017-08-20T00:00:00.000Z",
+          "notes": "hi mom",
+          "clients": ["432e7f8b-3c3a-461f-91ea-902de85e2882"],
+          "endTime": "2017-08-20T14:30:00.000Z",
+          "eventName": "appointmentScheduled",
+          "startTime": "2017-08-20T14:00:00.000Z",
+          "trainerId": "ce0cafe7-8698-4144-925d-b97d759096d7",
+          "entityName": "20170820",
+          "appointmentId": "dd3a39be-f2c2-4464-8b91-8f4af8ce76fa",
+          "appointmentType": "halfHour"
         },
         {
-          display: 'hi mom!2',
-          startTime: '8:30 AM',
-          endTime: '9:30 AM',
-          date: new Date(),
-          id: b,
-          color: 'red'
+          "date": "2017-08-20T00:00:00.000Z",
+          "notes": "hi mom",
+          "clients": ["5e726ca5-b1c7-4121-8e4f-440c344b47b9"],
+          "endTime": "2017-08-20T12:30:00.000Z",
+          "eventName": "appointmentScheduled",
+          "startTime": "2017-08-20T12:00:00.000Z",
+          "trainerId": "ce0cafe7-8698-4144-925d-b97d759096d7",
+          "entityName": "20170820",
+          "appointmentId": "67b2ecd9-13e7-4839-91f1-1bbd4feb6895",
+          "appointmentType": "halfHour"
         },
         {
-          display: 'hi mom!3',
-          startTime: '8:30 AM',
-          endTime: '9:00 AM',
-          date: new Date(),
-          id: c,
-          color: 'red'
-        },
-        {
-          display: 'hi mom!4',
-          startTime: '9:00 AM',
-          endTime: '10:00 AM',
-          date: new Date(),
-          id: d,
-          color: 'red'
+          "date": "2017-08-20T00:00:00.000Z",
+          "notes": "hi mom",
+          "clients": ["700a2b4d-65e5-4fed-9906-8cf1a6c60039"],
+          "endTime": "2017-08-20T13:30:00.000Z",
+          "eventName": "appointmentScheduled",
+          "startTime": "2017-08-20T13:00:00.000Z",
+          "trainerId": "ce0cafe7-8698-4144-925d-b97d759096d7",
+          "entityName": "20170820",
+          "appointmentId": "78cec260-8179-4c0d-90cf-daf8865524a2",
+          "appointmentType": "halfHour"
         }
       ]
     };
+    // return {
+    //   tasks: [
+    //     {
+    //       display: 'hi mom!1',
+    //       startTime: '8:00 AM',
+    //       endTime: '9:00 AM',
+    //       date: new Date(),
+    //       id: a,
+    //       color: 'red'
+    //     },
+    //     {
+    //       display: 'hi mom!2',
+    //       startTime: '8:30 AM',
+    //       endTime: '9:30 AM',
+    //       date: new Date(),
+    //       id: b,
+    //       color: 'red'
+    //     },
+    //     {
+    //       display: 'hi mom!3',
+    //       startTime: '8:30 AM',
+    //       endTime: '9:00 AM',
+    //       date: new Date(),
+    //       id: c,
+    //       color: 'red'
+    //     },
+    //     {
+    //       display: 'hi mom!4',
+    //       startTime: '9:00 AM',
+    //       endTime: '10:00 AM',
+    //       date: new Date(),
+    //       id: d,
+    //       color: 'red'
+    //     }
+    //   ]
+    // };
   };
 
   const retrieveData = (startDate, endDate) => {
@@ -113,7 +152,8 @@ const a = uuid.v4();
       hideViewMenu: true,
       hideDateNav: true,
       retrieveDataAction: retrieveData,
-      updateTaskViaDND: updateTaskViaDND
+      updateTaskViaDND: updateTaskViaDND,
+      taskId: 'appointmentId'
     }}/>
   </div>);
 };
