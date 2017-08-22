@@ -13,8 +13,8 @@ const MonthWeek = ({weekDays,
                     taskClickedEvent}) => {
   const selectSlotAction = time => {
     let openSpaceTask = {
-      day: moment(time),
-      startTime: addTimeToMoment(dayStartsAt, moment(time).toISOString())
+      day: moment(time).format(),
+      startTime: addTimeToMoment(dayStartsAt, moment(time).format())
     };
 
     if(openSpaceClickedEvent) {

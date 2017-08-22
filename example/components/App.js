@@ -8,18 +8,8 @@ import uuid from 'uuid';
 
 export default () => {
   const seed = moment();
-  const getISODateTime = (date, time = '12:01 AM') => {
-    moment.locale('en');
-    let hour = parseInt(time.substring(0, time.indexOf(':')));
-    let min =  parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(' ')));
-    let A = time.substring(time.indexOf(' ') + 1);
-    hour = A === 'AM' ? hour : hour + 12;
-    let result = moment(date).hour(hour).minute(min);
 
-    return result.toISOString();
-  };
-
-const a = uuid.v4();
+  const a = uuid.v4();
   const b = uuid.v4();
   const c = uuid.v4();
   const d = uuid.v4();
