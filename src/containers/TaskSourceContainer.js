@@ -11,15 +11,15 @@ const taskSource = {
     };
   },
   endDrag(props, monitor) {
-    const item = monitor.getItem();
+    const originalTask = monitor.getItem();
     const dropResult = monitor.getDropResult();
     if (dropResult) {
-      const task = { ...item.task,
+      const task = { ...originalTask.task,
         startTime: dropResult.time,
         endTime: momentFromTime(dropResult.time, props.displayTimeFormat)
-          .add(item.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
+          .add(originalTask.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
         date: moment(dropResult.day).format(props.fetchDateFormat) };
-      props.updateTaskViaDND(task);
+      props.updateTaskViaDND(originalTask, task);
     }
   },
   canDrag(props) {
