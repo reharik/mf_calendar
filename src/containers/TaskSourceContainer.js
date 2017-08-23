@@ -19,7 +19,7 @@ const taskSource = {
         endTime: momentFromTime(dropResult.time, props.displayTimeFormat)
           .add(originalTask.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
         date: moment(dropResult.day).format(props.fetchDateFormat) };
-      props.updateTaskViaDND(originalTask, task);
+      props.updateTaskViaDND(task);
     }
   },
   canDrag(props) {
