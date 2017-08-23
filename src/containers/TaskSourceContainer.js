@@ -23,7 +23,7 @@ const taskSource = {
     }
   },
   canDrag(props) {
-    return props.task.editable;
+    return  !props.canUpdate || props.canUpdate(props.task);
   }
 };
 

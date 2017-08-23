@@ -164,9 +164,6 @@ export default () => {
   };
 
   const retrieveData = (startDate, endDate) => {
-    console.log(`=========="here"=========`);
-    console.log("here");
-    console.log(`==========END "here"=========`);
     const data = getData();
     return {type: RETRIEVE_TASKS_SUCCESS, data};
   };

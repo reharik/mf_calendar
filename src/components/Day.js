@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 import moment from 'moment';
-import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils'
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils';
 
 const Day = ({view,
             tasks,
@@ -18,7 +18,8 @@ const Day = ({view,
             openSpaceClickedAction,
             updateTaskViaDND,
             openSpaceClickedEvent,
-            taskClickedEvent
+            taskClickedEvent,
+            canUpdate
 } ) => {
   const selectSlotAction = (e,time) => {
     if(e.target.className.includes('task__item')) {
@@ -62,7 +63,7 @@ const Day = ({view,
   });
 
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
-    return moment(x.startTime).local().format('h:mm A') === time
+    return moment(x.startTime).local().format('h:mm A') === time;
   });
 
   return (
@@ -83,7 +84,8 @@ const Day = ({view,
                  taskClickedAction={taskClickedAction}
                  taskClickedEvent={taskClickedEvent}
                  updateTaskViaDND={updateTaskViaDND}
-                 calendarName={calendarName}/>
+                 calendarName={calendarName}
+                 canUpdate={canUpdate} />
         </li>))}
     </ol>);
 };

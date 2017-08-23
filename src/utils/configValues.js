@@ -21,7 +21,8 @@ const defaultValues = {
   hideDateNav: false,
   taskId: 'id',
   taskFilter: (x) => (true),
-  taskMap: (x) => (x)
+  taskMap: (x) => (x),
+  canUpdate: (x) => (true)
 };
 
 export default defaultValues;
