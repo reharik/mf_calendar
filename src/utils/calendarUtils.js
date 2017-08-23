@@ -39,7 +39,7 @@ const normalizeTasks = function(tasks, config, long) {
     const endTime = moment(t.endTime);
     const startTime = moment(t.startTime);
 
-    let date = t.date ? moment(t.date) : moment(startTime);
+    let date = moment(t.date || t.startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
     const display = config && config.display && typeof config.display === 'function' ? config.display(t) : t.display;

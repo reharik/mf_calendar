@@ -12,10 +12,11 @@ export const TASK_DRAG_SOURCE = 'calendar/task/TASK_DRAG_SOURCE';
 
 export default (state = {}, action = null) => {
   const calState = state[action.calendarName];
+  let dateNow = moment().format('YYYYMMDD');
   switch (action.type) {
     case SELECT_TODAY: {
       return {...state,
-        [action.calendarName]: {...calState, date: moment()}};
+        [action.calendarName]: {...calState, date: moment(dateNow)}};
     }
     case INCREMENT_DATE: {
       //moment in moment returns a clone
@@ -33,7 +34,7 @@ export default (state = {}, action = null) => {
     case SET_CONFIG: {
       return {...state, [action.config.calendarName]: {
         config: action.config,
-        date: moment(),
+        date: moment(dateNow),
         view:action.config.defaultView
       }}
     }

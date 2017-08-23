@@ -27,7 +27,7 @@ class CalendarContainer extends Component {
 
 const wrapWithConfig = (action, ownProps) => {
   const calendarConfig = {...defaultValues, ...ownProps.config};
-  return function () {
+  return () => {
     let wrappedAction = action.apply(undefined, arguments);
     wrappedAction.calendarName = calendarConfig.calendarName;
     return wrappedAction;
@@ -44,7 +44,7 @@ function mapStateToProps(state, ownProps) {
     retrieveDataAction:noopFunc,
     updateTaskViaDND:noopFunc
   };
-  
+
   if(ownProps.config.retrieveDataAction
     && ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
     props.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
@@ -57,14 +57,11 @@ function mapStateToProps(state, ownProps) {
 
   if(!calState) { return props; }
 
-
   props =  {...props,
     calendarView: calState.view || calState.config.defaultView,
     width: calState.config.width,
     calendarName: calState.config.calendarName,
   };
-
-
 
   return props;
 }
