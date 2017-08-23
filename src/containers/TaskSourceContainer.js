@@ -15,10 +15,10 @@ const taskSource = {
     const dropResult = monitor.getDropResult();
     if (dropResult) {
       const task = { ...originalTask.task,
-        startTime: dropResult.time,
-        endTime: momentFromTime(dropResult.time, props.displayTimeFormat)
+        startTime: dropResult.startTime,
+        endTime: momentFromTime(dropResult.startTime, props.displayTimeFormat)
           .add(originalTask.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
-        date: moment(dropResult.day).format(props.fetchDateFormat) };
+        date: moment(dropResult.date).format(props.fetchDateFormat) };
       props.updateTaskViaDND(task);
     }
   },
