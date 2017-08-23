@@ -25,15 +25,6 @@ class CalendarContainer extends Component {
   }
 }
 
-const wrapWithConfig = (action, ownProps) => {
-  const calendarConfig = {...defaultValues, ...ownProps.config};
-  return () => {
-    let wrappedAction = action.apply(undefined, arguments);
-    wrappedAction.calendarName = calendarConfig.calendarName;
-    return wrappedAction;
-  }
-};
-
 function mapStateToProps(state, ownProps) {
   const calState = state.reduxTaskCalendar && state.reduxTaskCalendar[ownProps.config.calendarName];
   const noopFunc = () => {
@@ -41,19 +32,9 @@ function mapStateToProps(state, ownProps) {
   };
 
   let props = {
-    retrieveDataAction:noopFunc,
-    updateTaskViaDND:noopFunc
+    retrieveDataAction:ownProps.config.retrieveDataAction || noopFunc,
+    updateTaskViaDND:ownProps.config.updateTaskViaDND || noopFunc
   };
-
-  if(ownProps.config.retrieveDataAction
-    && ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
-    props.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
-  }
-
-  if(ownProps.config.updateTaskViaDND
-    && ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
-    props.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
-  }
 
   if(!calState) { return props; }
 
@@ -77,12 +58,12 @@ function mapDispatchToProps(dispatch, ownProps) {
 
   if(ownProps.config.retrieveDataAction
     && !ownProps.config.retrieveDataAction.toString().includes('dispatch(')){
-    actions.retrieveDataAction = wrapWithConfig(ownProps.config.retrieveDataAction || noopFunc, ownProps);
+    actions.retrieveDataAction = ownProps.config.retrieveDataAction || noopFunc;
   }
 
   if(ownProps.config.updateTaskViaDND
     && !ownProps.config.updateTaskViaDND.toString().includes('dispatch(')){
-    actions.updateTaskViaDND = wrapWithConfig(ownProps.config.updateTaskViaDND || noopFunc, ownProps);
+    actions.updateTaskViaDND = ownProps.config.updateTaskViaDND || noopFunc;
   }
 
   return bindActionCreators(actions, dispatch);
