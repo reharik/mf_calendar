@@ -7,7 +7,7 @@ import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils
 
 const Day = ({view,
             tasks,
-            times,
+             times,
             dayName,
             isToday,
             calendarName,

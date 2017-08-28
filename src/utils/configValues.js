@@ -20,6 +20,7 @@ const defaultValues = {
   hideViewMenu: false,
   hideDateNav: false,
   taskId: 'id',
+  dayDisplayFormat: 'dddd',
   taskFilter: (x) => (true),
   taskMap: (x) => (x),
   canUpdate: (x) => (true)

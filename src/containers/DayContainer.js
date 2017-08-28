@@ -21,7 +21,7 @@ function mapStateToProps(state, ownProps) {
     view: calState.view,
     tasks,
     times: augmentTimes(classes, day, calState.config),
-    dayName: day.format('dddd'),
+    dayName: day.format(calState.config.dayDisplayFormat),
     isToday: day.isSame(moment(), 'day'),
     displayTimeFormat: calState.config.displayTimeFormat,
     fetchDateFormat: calState.config.fetchDateFormat,
