@@ -15,7 +15,7 @@ const addTimeToMoment = (time, target) => {
   let hour = parseInt(time.substring(0, time.indexOf(':')));
   let min =  parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(' ')));
   let A = time.substring(time.indexOf(' ') + 1);
-  hour = A === 'AM' ? hour : hour + 12;
+  hour = A === 'AM' || hour !== 12 ? hour : hour + 12;
   return moment(target).hour(hour).minute(min);
 };
 
