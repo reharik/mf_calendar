@@ -7,7 +7,7 @@ const taskTarget = {
     return {startTime: time, date: day};
   },
   canDrop(props, monitor) {
-    return !props.canUpdate || props.canUpdate({startTime: props.time, date: props.day}, props, monitor);
+    return !props.canUpdate || props.canUpdate({startTime: props.time, date: props.day}, monitor.getItem());
   }
 };
 
