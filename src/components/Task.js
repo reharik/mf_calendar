@@ -32,13 +32,16 @@ const Task = ({task,
 
   const opacity = isDragging ? 0.4 : 1;
 
-  return (connectDragSource(<div className="redux__task__calendar__task__item"
-                                 style={styleTaskItem(task, index, opacity)}
-                                 onClick={selectTaskAction}>
-    <div className="redux__task__calendar__task__item__title" style={styleTaskItemTitle(task)}>{task.title}</div>
-    <div className="redux__task__calendar__task__item__display"
-         style={{ backgroundColor: task.color}}> {task.display}</div>
-  </div>));
+  return (connectDragSource(
+    <div className="redux__task__calendar__task__item"
+      style={styleTaskItem(task, index, opacity)}
+      onClick={selectTaskAction}
+      data-id={task.id} >
+      <div className="redux__task__calendar__task__item__title" style={styleTaskItemTitle(task)}>{task.title}</div>
+      <div className="redux__task__calendar__task__item__display"
+        style={{ backgroundColor: task.color}}> {task.display}</div>
+    </div>
+  ));
 };
 
 Task.propTypes = {

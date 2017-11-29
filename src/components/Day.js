@@ -67,25 +67,27 @@ const Day = ({view,
   });
 
   return (
-    <ol className={olClasses}>
+    <ol className={olClasses} data-id={dayName} >
       <li className={liClasses}>
         <div className={dayNameClasses}>{dayName}</div>
       </li>
       {times.map(timeObj => (
         <li className={timeObj.classes}
           key={timeObj.time}
+          data-id={timeObj.time}
           onClick={ e => selectSlotAction(e,timeObj)}>
-          <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
+          <Tasks
+            tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
-                 increment={increment}
-                 displayTimeFormat={displayTimeFormat}
-                 fetchDateFormat={fetchDateFormat}
-                 taskClickedAction={taskClickedAction}
-                 taskClickedEvent={taskClickedEvent}
-                 updateTaskViaDND={updateTaskViaDND}
-                 calendarName={calendarName}
-                 canUpdate={canUpdate} />
+            increment={increment}
+            displayTimeFormat={displayTimeFormat}
+            fetchDateFormat={fetchDateFormat}
+            taskClickedAction={taskClickedAction}
+            taskClickedEvent={taskClickedEvent}
+            updateTaskViaDND={updateTaskViaDND}
+            calendarName={calendarName}
+            canUpdate={canUpdate} />
         </li>))}
     </ol>);
 };
