@@ -22,12 +22,13 @@ const Calendar = ({calendarView, calendarName, width}) => {
 
   const style = width ? {width} : {};
 
-  return (<div className="redux__task__calendar__calendar" style={style}>
-    <HeaderContainer calendarName={calendarName} />
-    <div className="redux__task__calendar__calendar__display__view">
-      { view }
-    </div>
-  </div>);
+  return (
+    <div className="redux__task__calendar__calendar" style={style}>
+      <HeaderContainer calendarName={calendarName} />
+      <div className="redux__task__calendar__calendar__display__view">
+        { view }
+      </div>
+    </div>);
 };
 
 Calendar.propTypes = {
