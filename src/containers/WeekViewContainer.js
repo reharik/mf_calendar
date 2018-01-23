@@ -11,8 +11,8 @@ function mapStateToProps(state, ownProps) {
     times,
     week,
     calendarName: ownProps.calendarName,
-    startOfWeek: calState.date.startOf('week').toISOString(),
-    endOfWeek: calState.date.endOf('week').toISOString()
+    startOfWeek: calState.date.startOf('week').startOf('day').toISOString(),
+    endOfWeek: calState.date.endOf('week').endOf('day').toISOString()
   };
 }
 
