@@ -64,10 +64,19 @@ const normalizeTasks = function(tasks, config, long) {
 
 // day is local moment
 const getWeek = function(day, config) {
-   const calendar = new Calendar.Calendar(config.firstDayOfWeek);
-   const week = calendar.monthdatescalendar(day.year(), day.month() + 1)
-    .filter(_week => _week.some(date => moment(date).isSame(day, 'day')));
-  return week.length > 0 ? week[0].map(x=>moment(x)) : [];
+  let first = moment(day).startOf('week');
+  if (config.firstDayOfWeek === 1) {
+    first.add(1, 'day');
+  }
+
+  let week = [first];
+  let i = 1;
+  while (i < 7) {
+    week.push(moment(first).add(i, 'day'));
+    i++;
+  }
+
+  return week;
 };
 
 const formatHeaderDisplay = function(mom, viewType, config) {
