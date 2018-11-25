@@ -1,5 +1,7 @@
 node_modules
-app/tests
+tests
 webpack.config.js
+webpack.build.config.js
 webpack.config-testing.js
 example
+lib

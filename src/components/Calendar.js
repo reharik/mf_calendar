@@ -1,33 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
 
-import HeaderContainer from '../containers/HeaderContainer';
-import MonthViewContainer from '../containers/MonthViewContainer';
-import WeekViewContainer from '../containers/WeekViewContainer'
-import DayViewContainer from '../containers/DayViewContainer'
+import HeaderContainer from "../containers/HeaderContainer";
+import MonthViewContainer from "../containers/MonthViewContainer";
+import WeekViewContainer from "../containers/WeekViewContainer";
+import DayViewContainer from "../containers/DayViewContainer";
 
-const Calendar = ({calendarView, calendarName, width}) => {
-  let view = (<MonthViewContainer calendarName={calendarName} />);
+const Calendar = ({ calendarView, calendarName, width }) => {
+  let view = <MonthViewContainer calendarName={calendarName} />;
   switch (calendarView) {
-    case 'week':
+    case "week":
       view = <WeekViewContainer calendarName={calendarName} />;
       break;
-    case 'day':
+    case "day":
       view = <DayViewContainer calendarName={calendarName} />;
       break;
   }
 
-  const style = width ? {width} : {};
+  const style = width ? { width } : {};
 
-  return (<div className="redux__task__calendar__calendar" style={style}>
-    <HeaderContainer calendarName={calendarName} />
-    <div className="redux__task__calendar__calendar__display__view">
-      { view }
+  return (
+    <div className="redux__task__calendar__calendar" style={style}>
+      <HeaderContainer calendarName={calendarName} />
+      <div className="redux__task__calendar__calendar__display__view">{view}</div>
     </div>
-  </div>);
+  );
 };
 
 Calendar.propTypes = {

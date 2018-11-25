@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
 import moment from 'moment';
+import { addTimeToMoment, convertLocalTimeToUtc } from './../utils/calendarUtils';
 
 const Day = ({view,
             tasks,
-            times,
+             times,
             dayName,
             isToday,
             calendarName,
@@ -17,16 +18,23 @@ const Day = ({view,
             openSpaceClickedAction,
             updateTaskViaDND,
             openSpaceClickedEvent,
-            taskClickedEvent
+            taskClickedEvent,
+            canUpdate
 } ) => {
   const selectSlotAction = (e,time) => {
     if(e.target.className.includes('task__item')) {
       return;
     }
+
+    let openSpaceTask = {
+      day: moment(time.day).hour(0).minute(0).format(),
+      startTime: addTimeToMoment(time.time, time.day).format()
+    };
+
     if(openSpaceClickedEvent) {
-      openSpaceClickedEvent(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedEvent(openSpaceTask, calendarName);
     } else {
-      openSpaceClickedAction(time.day.format(fetchDateFormat), moment(time.time,displayTimeFormat).format(displayTimeFormat), calendarName);
+      openSpaceClickedAction(openSpaceTask, calendarName);
     }
   };
 
@@ -55,28 +63,31 @@ const Day = ({view,
   });
 
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
-    return x.startTime.format('LT') === time
+    return moment(x.startTime).local().format('h:mm A') === time;
   });
 
   return (
-    <ol className={olClasses}>
+    <ol className={olClasses} data-id={dayName} >
       <li className={liClasses}>
         <div className={dayNameClasses}>{dayName}</div>
       </li>
       {times.map(timeObj => (
         <li className={timeObj.classes}
           key={timeObj.time}
+          data-id={timeObj.time}
           onClick={ e => selectSlotAction(e,timeObj)}>
-          <Tasks tasks={getTasksForTime(tasks, timeObj.time)}
+          <Tasks
+            tasks={getTasksForTime(tasks, timeObj.time)}
             time={timeObj.time}
             day={timeObj.day}
-                 increment={increment}
-                 displayTimeFormat={displayTimeFormat}
-                 fetchDateFormat={fetchDateFormat}
-                 taskClickedAction={taskClickedAction}
-                 taskClickedEvent={taskClickedEvent}
-                 updateTaskViaDND={updateTaskViaDND}
-                 calendarName={calendarName}/>
+            increment={increment}
+            displayTimeFormat={displayTimeFormat}
+            fetchDateFormat={fetchDateFormat}
+            taskClickedAction={taskClickedAction}
+            taskClickedEvent={taskClickedEvent}
+            updateTaskViaDND={updateTaskViaDND}
+            calendarName={calendarName}
+            canUpdate={canUpdate} />
         </li>))}
     </ol>);
 };

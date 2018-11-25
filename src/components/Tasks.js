@@ -11,7 +11,8 @@ const Tasks = ({tasks,
   displayTimeFormat,
   taskClickedAction,
   taskClickedEvent,
-  updateTaskViaDND}) => {
+  updateTaskViaDND,
+  canUpdate}) => {
 
   const isActive = canDrop && isOver;
   let style = {height: '100%', width: '100%'};
@@ -22,7 +23,7 @@ const Tasks = ({tasks,
     backgroundColor = 'darkkhaki';
   }
   return connectDropTarget(<div className="redux__task__calendar__tasks" style={{ ...style, backgroundColor }}>
-    {tasks.sort((a, b) => a.margin > b.margin).map((t, index)=> (
+    {tasks.sort((a, b) => a.margin > b.margin).map((t, index) => (
       <Task
         key={index}
         task={t}
@@ -32,7 +33,8 @@ const Tasks = ({tasks,
         calendarName={calendarName}
         increment={increment}
         displayTimeFormat={displayTimeFormat}
-        updateTaskViaDND={updateTaskViaDND}/>
+        updateTaskViaDND={updateTaskViaDND}
+        canUpdate={canUpdate} />
     ))}
   </div>);
 };
@@ -40,8 +42,8 @@ const Tasks = ({tasks,
 Tasks.propTypes = {
   tasks: PropTypes.array.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
-  isOver: PropTypes.bool.isRequired,
-  canDrop: PropTypes.bool.isRequired,
+  isOver: PropTypes.bool,
+  canDrop: PropTypes.bool,
   calendarName: PropTypes.string.isRequired,
   taskClickedAction: PropTypes.func.isRequired,
   updateTaskViaDND: PropTypes.func.isRequired

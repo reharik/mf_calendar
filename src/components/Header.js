@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderDateNav from './HeaderDateNav';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 const Header = ({calendarView,
     selectedDay,
@@ -11,7 +11,9 @@ const Header = ({calendarView,
     incrementDate,
     decrementDate,
     calendarName,
-    retrieveDataAction
+    retrieveDataAction,
+    hideViewMenu,
+    hideDateNav
     }) => {
   const viewChangedEventAction = view => {
     viewChangedEvent(view, calendarName);
@@ -24,19 +26,23 @@ const Header = ({calendarView,
 
   return (
     <header className="redux__task__calendar__header">
-      <HeaderDateNav viewType={calendarView}
+      {!hideDateNav
+      ? <HeaderDateNav viewType={calendarView}
         increment={incrementDate}
         decrement={decrementDate}
         selectToday={selectToday}
         selectedDay={selectedDay}
                      calendarName={calendarName}
                      retrieveDataAction={retrieveDataAction} />
+          : null }
       <div className="redux__task__calendar__header__display__date">{caption}</div>
-      <selection className="redux__task__calendar__header__view__nav" >
+      {!hideViewMenu
+        ? <selection className="redux__task__calendar__header__view__nav" >
         <button onClick={() => viewChangedEventAction('day')} className={classes('day')}>Day</button>
         <button onClick={() => viewChangedEventAction('week')} className={classes('week')}>Week</button>
         <button onClick={() => viewChangedEventAction('month')} className={classes('month')}>Month</button>
       </selection>
+          : null}
     </header>);
 };
 

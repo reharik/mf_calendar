@@ -1,9 +1,9 @@
-import { TASK_CLICKED, OPEN_SPACE_CLICKED, } from './../../src/index';
-import { CALL_API } from 'redux-api-middleware';
-import uuid from 'uuid';
-import moment from 'moment';
-import {reset } from 'redux-form';
-const UPDATE_TASK_VIA_DND_SUCCESS = 'calendar/tasks/UPDATE_TASK_VIA_DND_SUCCESS';
+import { TASK_CLICKED, OPEN_SPACE_CLICKED } from "./../../src/index";
+import { CALL_API } from "redux-api-middleware";
+import uuid from "uuid";
+import moment from "moment";
+import { reset } from "redux-form";
+const UPDATE_TASK_VIA_DND_SUCCESS = "calendar/tasks/UPDATE_TASK_VIA_DND_SUCCESS";
 
 // const retrieveData = (startTime, endTime) => {
 //   return {
@@ -36,7 +36,7 @@ const openSpaceCLicked = (date, time) => {
   };
 };
 
-const updateTaskViaDND = (task) => {
+const updateTaskViaDND = task => {
   return {
     type: UPDATE_TASK_VIA_DND_SUCCESS,
     data: {
@@ -45,7 +45,7 @@ const updateTaskViaDND = (task) => {
   };
 };
 
-const createTaskSubmitHandler = (values) => {
+const createTaskSubmitHandler = values => {
   if (values.id) {
     return {
       type: UPDATE_TASK_SUCCESS,
@@ -77,21 +77,20 @@ const createTaskSubmitHandler = (values) => {
   }
 };
 
-const removeTaskHandler = (id) => {
+const removeTaskHandler = id => {
   return {
     type: REMOVE_TASK_SUCCESS,
     data: {
-      task: {id}
+      task: { id }
     }
-  }
+  };
 };
 
 export {
-    // retrieveData,
-    taskClicked,
-    openSpaceCLicked,
+  // retrieveData,
+  taskClicked,
+  openSpaceCLicked,
   createTaskSubmitHandler,
   removeTaskHandler,
   updateTaskViaDND
 };
-

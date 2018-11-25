@@ -10,7 +10,6 @@ const Task = ({task,
               connectDragSource,
               taskClickedAction,
               taskClickedEvent}) => {
-
   const styleTaskItem = (t, index, opacity) => ({
     width: t.width + '%',
     height: 18 * t.slots + 'px',
@@ -23,23 +22,26 @@ const Task = ({task,
   const styleTaskItemTitle = t =>
     ({backgroundColor: Color(t.color).darken(0.2).hexString()}); //eslint-disable-line new-cap
 
-  const selectTaskAction = t => {
+  const selectTaskAction = () => {
     if(taskClickedEvent){
-      taskClickedEvent(t.id, t, calendarName)
+      taskClickedEvent(task.id, task, calendarName);
     } else {
-      taskClickedAction(t.id, t, calendarName);
+      taskClickedAction(task.id, task, calendarName);
     }
   };
 
   const opacity = isDragging ? 0.4 : 1;
 
-  return (connectDragSource(<div className="redux__task__calendar__task__item"
-                                 style={styleTaskItem(task, index, opacity)}
-                                 onClick={() => selectTaskAction(task)}>
-    <div className="redux__task__calendar__task__item__title" style={styleTaskItemTitle(task)}>{task.title}</div>
-    <div className="redux__task__calendar__task__item__display"
-         style={{ backgroundColor: task.color}}> {task.display}</div>
-  </div>));
+  return (connectDragSource(
+    <div className="redux__task__calendar__task__item"
+      style={styleTaskItem(task, index, opacity)}
+      onClick={selectTaskAction}
+      data-id={task.id} >
+      <div className="redux__task__calendar__task__item__title" style={styleTaskItemTitle(task)}>{task.title}</div>
+      <div className="redux__task__calendar__task__item__display"
+        style={{ backgroundColor: task.color}}> {task.display}</div>
+    </div>
+  ));
 };
 
 Task.propTypes = {

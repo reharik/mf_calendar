@@ -4,7 +4,10 @@ import { TASK_DRAG_SOURCE } from './../modules/calendarModule';
 
 const taskTarget = {
   drop({time, day}) {
-    return {time, day};
+    return {startTime: time, date: day};
+  },
+  canDrop(props, monitor) {
+    return !props.canUpdate || props.canUpdate({startTime: props.time, date: props.day}, monitor.getItem());
   }
 };
 
