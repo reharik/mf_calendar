@@ -9,4 +9,3 @@ export default (state = [], action = null) => {
   }
   return state;
 }
-      

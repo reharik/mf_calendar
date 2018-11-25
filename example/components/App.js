@@ -13,9 +13,44 @@ export default () => {
   const d = uuid.v4();
   const getData = function () {
     return {
-
-    "tasks":[{"id":"f9a6dedb-e4ca-4489-91ee-61dbf3f6a792","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["5adee657-28b7-42ba-bff1-ada46362023d"],"endTime":"2017-06-16T11:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T11:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"},{"id":"42d24b4a-5c67-44f5-bd00-08823283df0a","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["bc15ad2a-c95f-459f-8788-ad0754277eb7"],"endTime":"2017-06-16T12:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T12:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"},{"id":"b6b54dd8-4a16-4bc7-8d53-d1399af63e94","date":"2017-06-16T19:14:07.666Z","notes":"hi mom","clients":["b7937174-ac1b-4c7b-9698-f88b77fbec43"],"endTime":"2017-06-16T13:30:00.000Z","eventName":"appointmentScheduled","startTime":"2017-06-16T13:00:00.000Z","trainerId":"3aa0ffcf-07b8-44c7-bc90-8d3ed39f8605","entityName":"20170616","appointmentType":"halfHour"}]}
-    ;
+      tasks: [
+        {
+          appointmentType: "halfHour",
+          clients: Array[1],
+          date: "2017-06-17T13:06:28.688Z",
+          endTime: "2017-06-17T12:30:00.000Z",
+          entityName: "20170617",
+          eventName: "appointmentScheduled",
+          id: "4d36c026-8255-4076-b94f-a0ccd3a1fa08",
+          notes: "hi mom",
+          startTime: "2017-06-17T12:00:00.000Z",
+          trainerId: "378ba3b2-5653-4b85-a1f2-c4fe3c986a30"
+        },
+        {
+          appointmentType: "halfHour",
+          clients: Array[1],
+          date: "2017-06-17T13:06:28.688Z",
+          endTime: "2017-06-17T13:30:00.000Z",
+          entityName: "20170617",
+          eventName: "appointmentScheduled",
+          id: "5f8d92d1-55d9-4998-9650-bee7d8b3b267",
+          notes: "hi mom",
+          startTime: "2017-06-17T13:00:00.000Z",
+          trainerId: "378ba3b2-5653-4b85-a1f2-c4fe3c986a30"
+        },
+        {
+          appointmentType: "halfHour",
+          clients: Array[1],
+          date: "2017-06-17T14:00:00.000Z",
+          endTime: "2017-06-17T14:30:00.000Z",
+          entityName: "20170617",
+          id: "1b83fd95-e448-47ef-b0b9-aad4cb24942b",
+          notes: "hi mom",
+          startTime: "2017-06-17T14:00:00.000Z",
+          trainer: "378ba3b2-5653-4b85-a1f2-c4fe3c986a30"
+        }
+      ]
+    }
   };
 
   const retrieveData = (startDate, endDate) => {
