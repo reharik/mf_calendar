@@ -1,5 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
 
 const getStyleLoaders = (cssOptions) => {
   const loaders = [
@@ -60,7 +62,9 @@ module.exports = () => (
     plugins: [
       new MiniCssExtractPlugin({
         filename: "[name].css",
-      })
+      }),
+      new BundleAnalyzerPlugin(),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     module: {
       rules: [
