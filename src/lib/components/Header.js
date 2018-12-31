@@ -26,11 +26,11 @@ const Header = ({
           : null }
       <div className="redux__task__calendar__header__display__date">{caption}</div>
       {!config.hideViewMenu
-        ? <selection className="redux__task__calendar__header__view__nav" >
+        ? <div className="redux__task__calendar__header__view__nav" >
         <button onClick={() => viewChanged('day')} className={classes('day')}>Day</button>
         <button onClick={() => viewChanged('week')} className={classes('week')}>Week</button>
         <button onClick={() => viewChanged('month')} className={classes('month')}>Month</button>
-      </selection>
+      </div>
           : null}
     </header>);
 };
