@@ -6,4 +6,4 @@ webpack.config-testing.js
 example
 config
 scripts
-build
+dist

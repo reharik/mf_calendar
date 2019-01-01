@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 import PropTypes from "prop-types";
 
 import { DragDropContext } from "react-dnd";
@@ -8,13 +8,30 @@ import Header from "../components/Header";
 import MonthView from "../components/MonthView";
 import WeekView from "../components/WeekView";
 import DayView from "../components/DayView";
-import {Moment} from "moment";
+import moment from 'moment';
+
 import CalendarContext from "../utils/calendarContext";
 
 const Calendar = ({width, tasks}) => {
   const config = useContext(CalendarContext);
-  const [selectedDay, setSelectedDay] = useState(new Moment());
+  const [selectedDay, setSelectedDay] = useState(moment());
   const [calendarView, setCalendarView] = useState(config.defaultView);
+
+  useEffect(()=> fetchData(),{});
+
+  const fetchData = () => {
+    config.retrieveData(moment(selectedDay).startOf(calendarView), moment(selectedDay).endOf(calendarView));
+  };
+
+  const onSelectedDayChanged= (day) => {
+    setSelectedDay(day);
+    fetchData();
+  };
+
+  const onCalendarViewChanged=(view)=> {
+    setCalendarView(view);
+    fetchData();
+  };
 
   let view;
   switch (calendarView) {
@@ -36,8 +53,8 @@ const Calendar = ({width, tasks}) => {
         config={config}
         view={calendarView}
         selectedDay={selectedDay}
-        viewChanged={setCalendarView}
-        dayChanged={setSelectedDay} />
+        viewChanged={onCalendarViewChanged}
+        dayChanged={onSelectedDayChanged} />
       <div className="redux__task__calendar__calendar__display__view">{view}</div>
     </div>
   );

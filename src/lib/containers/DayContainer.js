@@ -3,7 +3,7 @@ import moment from "moment";
 import { process } from "../utils/widthAndColumn";
 import { augmentTimes, normalizeTasks } from "../utils/calendarUtils";
 import CalendarContext from "../utils/calendarContext";
-import React from "react";
+import React, {useContext} from "react";
 
 const DayContainer = (tasks, date, view) => {
   const config = useContext(CalendarContext);

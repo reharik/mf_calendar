@@ -2,7 +2,7 @@ import {normalizeTasks} from '../utils/calendarUtils';
 import MonthWeek from '../components/MonthWeek';
 import moment from 'moment';
 import CalendarContext from "../utils/calendarContext";
-import React from 'react';
+import React, {useContext} from "react";
 
 const monthWeekContainer = (week, tasks, selectedDay) => {
   const config = useContext(CalendarContext);
