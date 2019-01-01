@@ -43,6 +43,7 @@ module.exports = () => (
   {
     mode: 'production',
     entry: './src/lib/index.js',
+    devtool:'eval-source-map',
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'redux-task-calendar.js',
@@ -64,7 +65,6 @@ module.exports = () => (
         filename: "[name].css",
       }),
       new BundleAnalyzerPlugin(),
-      new webpack.SourceMapDevToolPlugin({}),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     module: {
