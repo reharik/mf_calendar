@@ -2,7 +2,7 @@
   "name": "redux-task-calendar",
   "version": "2.0.0",
   "description": "",
-  "main": "build/redux-task-calendar.js",
+  "main": "dist/redux-task-calendar.js",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "NODE_ENV=production webpack",
