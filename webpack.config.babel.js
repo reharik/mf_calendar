@@ -64,6 +64,7 @@ module.exports = () => (
         filename: "[name].css",
       }),
       new BundleAnalyzerPlugin(),
+      new webpack.SourceMapDevToolPlugin({}),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     module: {
