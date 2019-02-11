@@ -64,7 +64,7 @@ module.exports = () => (
       new MiniCssExtractPlugin({
         filename: "[name].css",
       }),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     module: {
