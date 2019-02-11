@@ -22,8 +22,8 @@ const DayView = ({tasks, selectedDay}) => {
 };
 
 DayView.propTypes = {
-  times: PropTypes.array.isRequired,
-  calendarName: PropTypes.string.isRequired
+  tasks: PropTypes.array.isRequired,
+  selectedDay: PropTypes.object.isRequired
 };
 
 export default DayView;

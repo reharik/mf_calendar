@@ -20,8 +20,6 @@ const MonthTasks = ({tasks}) => {
 
 MonthTasks.propTypes = {
   tasks: PropTypes.array.isRequired,
-  calendarName: PropTypes.string.isRequired,
-  taskClickedAction: PropTypes.func.isRequired
 };
 
 export default MonthTasks;

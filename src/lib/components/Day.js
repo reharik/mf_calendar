@@ -75,12 +75,8 @@ Day.propTypes = {
   view: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
   times: PropTypes.array.isRequired,
-  calendarName: PropTypes.string.isRequired,
   dayName: PropTypes.string.isRequired,
   isToday: PropTypes.bool.isRequired,
-  taskClickedAction: PropTypes.func.isRequired,
-  openSpaceClickedAction: PropTypes.func.isRequired,
-  updateTaskViaDND: PropTypes.func.isRequired
 };
 
 export default Day;

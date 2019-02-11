@@ -45,8 +45,6 @@ Task.propTypes = {
   index: PropTypes.number.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  calendarName: PropTypes.string.isRequired,
-  taskClickedAction: PropTypes.func.isRequired
 };
 
 export default Task;

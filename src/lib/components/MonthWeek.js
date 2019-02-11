@@ -31,10 +31,6 @@ const MonthWeek = ({weekDays}) => {
 
 MonthWeek.propTypes = {
   weekDays: PropTypes.array.isRequired,
-  calendarName: PropTypes.string.isRequired,
-  dayStartsAt: PropTypes.string.isRequired,
-  openSpaceClickedAction: PropTypes.func.isRequired,
-  taskClickedAction: PropTypes.func.isRequired
 };
 
 export default MonthWeek;

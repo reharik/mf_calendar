@@ -33,9 +33,8 @@ const WeekView = ({ tasks, selectedDay}) => {
 };
 
 WeekView.propTypes = {
-  calendarName: PropTypes.string.isRequired,
-  week: PropTypes.array.isRequired,
-  times: PropTypes.array.isRequired
+  tasks: PropTypes.array.isRequired,
+  selectedDay: PropTypes.object.isRequired
 };
 
 export default WeekView;

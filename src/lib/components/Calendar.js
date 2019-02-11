@@ -61,8 +61,7 @@ const Calendar = ({width, tasks}) => {
 };
 
 Calendar.propTypes = {
-  calendarName: PropTypes.string.isRequired,
-  calendarView: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
   width: PropTypes.string.isRequired
 };
 

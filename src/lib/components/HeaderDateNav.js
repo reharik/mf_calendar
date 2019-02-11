@@ -41,11 +41,8 @@ const HeaderDateNav = ({viewType,
 
 HeaderDateNav.propTypes = {
   viewType: PropTypes.string.isRequired,
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
   selectToday: PropTypes.func.isRequired,
-  retrieveDataAction: PropTypes.func.isRequired,
-  calendarName: PropTypes.string.isRequired
+  dayChanged: PropTypes.func.isRequired,
 };
 
 export default HeaderDateNav;

@@ -21,8 +21,8 @@ const MonthWeeks = ({selectedDay, tasks}) =>{
 }
 
 MonthWeeks.propTypes = {
-  weeks: PropTypes.array.isRequired,
-  calendarName: PropTypes.string.isRequired
+  tasks: PropTypes.array.isRequired,
+  selectedDay: PropTypes.object.isRequired
 };
 
 export default MonthWeeks;

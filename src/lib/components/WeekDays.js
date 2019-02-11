@@ -15,7 +15,7 @@ const WeekDays = ({ week, tasks }) => {
 };
 
 WeekDays.propTypes = {
-  calendarName: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
   week: PropTypes.array.isRequired
 };
 

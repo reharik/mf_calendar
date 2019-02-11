@@ -36,15 +36,11 @@ const Header = ({
 };
 
 Header.propTypes = {
-  calendarView: PropTypes.string.isRequired,
+  config: PropTypes.object.isRequired,
+  view: PropTypes.string.isRequired,
   selectedDay: PropTypes.object.isRequired,
-  caption: PropTypes.string.isRequired,
-  selectToday: PropTypes.func.isRequired,
-  viewChangedEvent: PropTypes.func.isRequired,
-  incrementDate: PropTypes.func.isRequired,
-  decrementDate: PropTypes.func.isRequired,
-  calendarName: PropTypes.string.isRequired,
-  retrieveDataAction: PropTypes.func.isRequired
+  viewChanged: PropTypes.func.isRequired,
+  dayChanged: PropTypes.func.isRequired,
 };
 
 export default Header;

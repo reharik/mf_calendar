@@ -36,9 +36,6 @@ Tasks.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   isOver: PropTypes.bool,
   canDrop: PropTypes.bool,
-  calendarName: PropTypes.string.isRequired,
-  taskClickedAction: PropTypes.func.isRequired,
-  updateTaskViaDND: PropTypes.func.isRequired
 };
 
 export default Tasks;
