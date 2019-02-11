@@ -14,7 +14,7 @@ const MonthView = (tasks, selectedDay) => {
 
 MonthView.propTypes = {
   tasks: PropTypes.array.isRequired,
-  selectedDay: PropTypes.object.isRequired
+  selectedDay: PropTypes.string.isRequired
 };
 
 export default MonthView;

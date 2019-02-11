@@ -22,7 +22,7 @@ const MonthWeeks = ({selectedDay, tasks}) =>{
 
 MonthWeeks.propTypes = {
   tasks: PropTypes.array.isRequired,
-  selectedDay: PropTypes.object.isRequired
+  selectedDay: PropTypes.string.isRequired
 };
 
 export default MonthWeeks;

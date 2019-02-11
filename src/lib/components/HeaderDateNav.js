@@ -41,7 +41,7 @@ const HeaderDateNav = ({viewType,
 
 HeaderDateNav.propTypes = {
   viewType: PropTypes.string.isRequired,
-  selectToday: PropTypes.func.isRequired,
+  selectedDay: PropTypes.string.isRequired,
   dayChanged: PropTypes.func.isRequired,
 };
 

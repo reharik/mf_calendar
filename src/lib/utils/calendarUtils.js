@@ -78,7 +78,8 @@ const getWeek = function(day, config) {
   return week;
 };
 
-const formatHeaderDisplay = function(mom, viewType, config) {
+const formatHeaderDisplay = function(dt, viewType, config) {
+  const mom = moment(dt);
   if (viewType === 'day') {
     return mom.format('MMMM') + ' ' + mom.date() + ', ' + mom.year();
   } else if (viewType === 'week') {

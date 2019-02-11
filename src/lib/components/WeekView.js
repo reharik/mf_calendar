@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import AsideTimes from "./AsideTimes";
 import WeekDays from "./WeekDays";
+import moment from 'moment';
 import {augmentTimes, getWeek} from "../utils/calendarUtils";
 import CalendarContext from "../utils/calendarContext";
 
@@ -13,11 +14,11 @@ const WeekView = ({ tasks, selectedDay}) => {
     undefined,
     config
   );
-  const startOfWeek = selectedDay
+  const startOfWeek = moment(selectedDay)
     .startOf("week")
     .startOf("day")
     .toISOString();
-  const endOfWeek = selectedDay
+  const endOfWeek = moment(selectedDay)
     .endOf("week")
     .endOf("day")
     .toISOString();
@@ -34,7 +35,7 @@ const WeekView = ({ tasks, selectedDay}) => {
 
 WeekView.propTypes = {
   tasks: PropTypes.array.isRequired,
-  selectedDay: PropTypes.object.isRequired
+  selectedDay: PropTypes.string.isRequired
 };
 
 export default WeekView;

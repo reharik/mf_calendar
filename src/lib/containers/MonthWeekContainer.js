@@ -29,7 +29,7 @@ const monthWeekContainer = (week, tasks, selectedDay) => {
 
   let weekDays = week.map((date, idx) => {
     let day = moment(date);
-    day.classes = buildClasses(day, moment(), selectedDay, idx);
+    day.classes = buildClasses(day, moment(), moment(selectedDay), idx);
     let unprocessedTasks = (tasks || [])
       .filter(e => moment(e.date || e.startTime).isSame(day, 'day'))
       .filter(a => config.taskFilter(a))

@@ -23,7 +23,7 @@ const DayView = ({tasks, selectedDay}) => {
 
 DayView.propTypes = {
   tasks: PropTypes.array.isRequired,
-  selectedDay: PropTypes.object.isRequired
+  selectedDay: PropTypes.string.isRequired
 };
 
 export default DayView;

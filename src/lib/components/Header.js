@@ -38,7 +38,7 @@ const Header = ({
 Header.propTypes = {
   config: PropTypes.object.isRequired,
   view: PropTypes.string.isRequired,
-  selectedDay: PropTypes.object.isRequired,
+  selectedDay: PropTypes.string.isRequired,
   viewChanged: PropTypes.func.isRequired,
   dayChanged: PropTypes.func.isRequired,
 };

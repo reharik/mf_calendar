@@ -14,7 +14,7 @@ import CalendarContext from "../utils/calendarContext";
 
 const Calendar = ({width, tasks}) => {
   const config = useContext(CalendarContext);
-  const [selectedDay, setSelectedDay] = useState(moment());
+  const [selectedDay, setSelectedDay] = useState(moment().toISOString());
   const [calendarView, setCalendarView] = useState(config.defaultView);
 
   useEffect(()=> fetchData(),{});
