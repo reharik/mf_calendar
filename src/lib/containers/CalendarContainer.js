@@ -4,7 +4,7 @@ import defaultValues from "../utils/configValues";
 import CalendarContext from "../utils/calendarContext";
 import "../css/index.css";
 
-const CalendarContainer = (config, tasks) => {
+const CalendarContainer = ({config, tasks}) => {
     const _config = {
       ...defaultValues,
       ...config,

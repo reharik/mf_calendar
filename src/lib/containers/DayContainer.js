@@ -5,7 +5,7 @@ import { augmentTimes, normalizeTasks } from "../utils/calendarUtils";
 import CalendarContext from "../utils/calendarContext";
 import React, {useContext} from "react";
 
-const DayContainer = (tasks, date, view) => {
+const DayContainer = ({tasks, date, view}) => {
   const config = useContext(CalendarContext);
 
   let day = date || moment();
