@@ -4,7 +4,7 @@ import moment from 'moment';
 import CalendarContext from "../utils/calendarContext";
 import React, {useContext} from "react";
 
-const monthWeekContainer = (week, tasks, selectedDay) => {
+const monthWeekContainer = ({week, tasks, selectedDay}) => {
   const config = useContext(CalendarContext);
 
   const buildClasses = (day, today, selectedDay, index) => {
