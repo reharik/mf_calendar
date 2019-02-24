@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Moment} from "moment";
+import moment from "moment";
 
 const HeaderDateNav = ({viewType,
                         dayChanged,
@@ -10,15 +10,15 @@ const HeaderDateNav = ({viewType,
   const nav = (navType) => {
     switch (navType) {
       case 'increment': {
-        dayChanged(Moment(selectedDay).add(1, viewType));
+        dayChanged(moment(selectedDay).add(1, viewType));
         break;
       }
       case 'decrement': {
-        dayChanged(Moment(selectedDay).subtract(1, viewType));
+        dayChanged(moment(selectedDay).subtract(1, viewType));
         break;
       }
       default: {
-        dayChanged(Moment());
+        dayChanged(moment());
       }
     }
   };
