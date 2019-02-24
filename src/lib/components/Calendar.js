@@ -17,8 +17,6 @@ const Calendar = ({width, tasks}) => {
   const [selectedDay, setSelectedDay] = useState(moment().toISOString());
   const [calendarView, setCalendarView] = useState(config.defaultView);
 
-  useEffect(()=> fetchData(),{});
-
   const fetchData = () => {
     config.retrieveData(moment(selectedDay).startOf(calendarView), moment(selectedDay).endOf(calendarView));
   };
