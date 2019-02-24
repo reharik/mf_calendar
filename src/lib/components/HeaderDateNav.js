@@ -10,15 +10,15 @@ const HeaderDateNav = ({viewType,
   const nav = (navType) => {
     switch (navType) {
       case 'increment': {
-        dayChanged(new Moment(selectedDay).add(1, viewType));
+        dayChanged(Moment(selectedDay).add(1, viewType));
         break;
       }
       case 'decrement': {
-        dayChanged(new Moment(selectedDay).subtract(1, viewType));
+        dayChanged(Moment(selectedDay).subtract(1, viewType));
         break;
       }
       default: {
-        dayChanged(new Moment());
+        dayChanged(Moment());
       }
     }
   };
