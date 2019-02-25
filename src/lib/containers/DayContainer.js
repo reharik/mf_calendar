@@ -8,7 +8,7 @@ import React, {useContext} from "react";
 const DayContainer = ({tasks, date, view}) => {
   const config = useContext(CalendarContext);
 
-  let day = date || moment();
+  let day = date != null ? moment(date) : moment();
   let filterToday = x => moment(x.date || x.startTime).isSame(day, "day");
   let thisView =
     view === "week" ? "redux__task__calendar__week__" : "redux__task__calendar__";
