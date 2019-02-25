@@ -20,7 +20,7 @@ const Task = ({task,
   });
 
   const styleTaskItemTitle = t =>
-    ({backgroundColor: Color(t.color).darken(0.2).hexString()}); //eslint-disable-line new-cap
+    ({backgroundColor: Color(t.color).darken(0.2).hex()}); //eslint-disable-line new-cap
 
   const selectTaskAction = () => {
       config.taskClickedEvent(task.id, task);
