@@ -18,7 +18,13 @@ const Calendar = ({width, tasks}) => {
   const [calendarView, setCalendarView] = useState(config.defaultView);
 
   const fetchData = (day) => {
-    config.retrieveData(moment(day || selectedDay).startOf(calendarView), moment(day || selectedDay).endOf(calendarView));
+    let calView = calendarView;
+    if(calView === 'week' && config.firstDayOfWeek === 1) {
+      calView = 'isoweek';
+    }
+    config.retrieveData(moment(day || selectedDay)
+      .startOf(calView), moment(day || selectedDay)
+      .endOf(calView));
   };
 
   const onSelectedDayChanged= (day) => {
@@ -28,7 +34,7 @@ const Calendar = ({width, tasks}) => {
 
   const onCalendarViewChanged=(view)=> {
     setCalendarView(view);
-    fetchData(day);
+    fetchData();
   };
 
   let view;

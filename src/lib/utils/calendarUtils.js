@@ -63,11 +63,7 @@ const normalizeTasks = function(tasks, config, long) {
 
 // day is local moment
 const getWeek = function(day, config) {
-  let first = moment(day).startOf('week');
-  if (config.firstDayOfWeek === 1) {
-    first.add(1, 'day');
-  }
-
+  let first = moment(day).startOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week');
   let week = [first];
   let i = 1;
   while (i < 7) {
