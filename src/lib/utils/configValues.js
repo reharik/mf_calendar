@@ -1,10 +1,10 @@
-// calendar.MONDAY     = 0
-// calendar.TUESDAY    = 1
-// calendar.WEDNESDAY  = 2
-// calendar.THURSDAY   = 3
-// calendar.FRIDAY     = 4
-// calendar.SATURDAY   = 5
-// calendar.SUNDAY     = 6
+// calendar.SUNDAY     = 0
+// calendar.MONDAY     = 1
+// calendar.TUESDAY    = 2
+// calendar.WEDNESDAY  = 3
+// calendar.THURSDAY   = 4
+// calendar.FRIDAY     = 5
+// calendar.SATURDAY   = 6
 const defaultValues = {
   defaultView: 'month',
   firstDayOfWeek: 0,
