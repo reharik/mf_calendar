@@ -17,18 +17,18 @@ const Calendar = ({width, tasks}) => {
   const [selectedDay, setSelectedDay] = useState(moment().toISOString());
   const [calendarView, setCalendarView] = useState(config.defaultView);
 
-  const fetchData = () => {
-    config.retrieveData(moment(selectedDay).startOf(calendarView), moment(selectedDay).endOf(calendarView));
+  const fetchData = (day) => {
+    config.retrieveData(moment(day || selectedDay).startOf(calendarView), moment(day || selectedDay).endOf(calendarView));
   };
 
   const onSelectedDayChanged= (day) => {
     setSelectedDay(day);
-    fetchData();
+    fetchData(day);
   };
 
   const onCalendarViewChanged=(view)=> {
     setCalendarView(view);
-    fetchData();
+    fetchData(day);
   };
 
   let view;
