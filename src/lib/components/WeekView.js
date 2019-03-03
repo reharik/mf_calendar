@@ -15,11 +15,11 @@ const WeekView = ({ tasks, selectedDay}) => {
     config
   );
   const startOfWeek = moment(selectedDay)
-    .startOf("week")
+    .startOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week')
     .startOf("day")
     .toISOString();
   const endOfWeek = moment(selectedDay)
-    .endOf("week")
+    .endOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week')
     .endOf("day")
     .toISOString();
 
@@ -28,7 +28,7 @@ const WeekView = ({ tasks, selectedDay}) => {
       <input data-id="startOfWeek" type="hidden" value={startOfWeek}/>
       <input data-id="endOfWeek" type="hidden" value={endOfWeek}/>
       <AsideTimes times={times}/>
-      <WeekDays week={week} tasks={tasks} />
+      <WeekDays week={week} tasks={tasks}/>
     </div>
   );
 };
