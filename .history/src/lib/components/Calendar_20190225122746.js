@@ -8,13 +8,13 @@ import Header from "../components/Header";
 import MonthView from "../components/MonthView";
 import WeekView from "../components/WeekView";
 import DayView from "../components/DayView";
-import {rMoment} from './../utils/rMoment';
+import moment from 'moment';
 
 import CalendarContext from "../utils/calendarContext";
 
 const Calendar = ({width, tasks}) => {
   const config = useContext(CalendarContext);
-  const [selectedDay, setSelectedDay] = useState(rMoment().format());
+  const [selectedDay, setSelectedDay] = useState(moment().toISOString());
   const [calendarView, setCalendarView] = useState(config.defaultView);
 
   const fetchData = (day) => {
@@ -22,8 +22,8 @@ const Calendar = ({width, tasks}) => {
     if(calView === 'week' && config.firstDayOfWeek === 1) {
       calView = 'isoweek';
     }
-    config.retrieveData(rMoment(day || selectedDay)
-      .startOf(calView), rMoment(day || selectedDay)
+    config.retrieveData(moment(day || selectedDay)
+      .startOf(calView), moment(day || selectedDay)
       .endOf(calView));
   };
 

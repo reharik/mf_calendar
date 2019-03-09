@@ -24,7 +24,6 @@ const defaultValues = {
   taskFilter: (x) => (true),
   taskMap: (x) => (x),
   canUpdate: (x) => (true)
-  specificTZ: undefined
 };
 
 export default defaultValues;

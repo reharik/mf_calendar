@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import PropTypes from 'prop-types';
 import Tasks from './../containers/TaskTargetContainer';
 import classNames from 'classnames';
-import {rMoment} from './../utils/rMoment';
+import moment from 'moment';
 import { addTimeToMoment } from './../utils/calendarUtils';
 import CalendarContext from "../utils/calendarContext";
 
@@ -19,8 +19,8 @@ const Day = ({view,
     }
 
     config.openSpaceClickedEvent({
-      day: rMoment(time.day).hour(0).minute(0).format(),
-      startTime: addTimeToMoment(time.time, time.day)
+      day: moment(time.day).hour(0).minute(0).format(),
+      startTime: addTimeToMoment(time.time, time.day).format()
     });
   };
 

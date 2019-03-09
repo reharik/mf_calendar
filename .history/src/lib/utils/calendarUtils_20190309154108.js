@@ -1,4 +1,4 @@
-import {rMoment, isMoment} from './rMoment';
+import moment from 'moment';
 import invariant from 'invariant';
 
 const validateTask = (task) => {
@@ -7,7 +7,7 @@ const validateTask = (task) => {
 };
 
 const momentFromTime = function(time, displayTimeFormat) {
-  return isMoment(time) ? time.clone() : rMoment(time, displayTimeFormat);
+  return moment.isMoment(time) ? time.clone() : moment(time, displayTimeFormat);
 };
 
 const addTimeToMoment = (time, target) => {
@@ -15,12 +15,12 @@ const addTimeToMoment = (time, target) => {
   let min =  parseInt(time.substring(time.indexOf(':') + 1, time.indexOf(' ')));
   let A = time.substring(time.indexOf(' ') + 1);
   hour = A === 'AM' || hour === 12 ? hour : hour + 12;
-  return rMoment(target).hour(hour).minute(min);
+  return moment(target).hour(hour).minute(min);
 };
 
 const attemptToFixInvalidTimes = (task) => {
-  task.startTime = addTimeToMoment(task.startTime, rMoment(task.date));
-  task.endTime = addTimeToMoment(task.endTime, rMoment(task.date));
+  task.startTime = addTimeToMoment(task.startTime, moment(task.date));
+  task.endTime = addTimeToMoment(task.endTime, moment(task.date));
 };
 
 const normalizeTasks = function(tasks, config, long) {
@@ -32,17 +32,17 @@ const normalizeTasks = function(tasks, config, long) {
   }
   return tasks.map(t => {
     validateTask(t);
-    if (!rMoment(t.endTime).isValid()) {
+    if (!moment(t.endTime).isValid()) {
       attemptToFixInvalidTimes(t);
     }
-    const endTime = rMoment(t.endTime);
-    const startTime = rMoment(t.startTime);
+    const endTime = moment(t.endTime);
+    const startTime = moment(t.startTime);
 
-    let date = rMoment(t.date || t.startTime);
+    let date = moment(t.date || t.startTime);
     const inc = config && config.increments ? config.increments : 15;
     const slots = endTime.diff(startTime, 'minutes') / inc;
     const display = config && config.display && typeof config.display === 'function' ? config.display(t) : t.display;
-    const title = t.title || rMoment(startTime).format( long ? 'lll' : 'LT' );
+    const title = t.title || moment(startTime).local().format( long ? 'lll' : 'LT' );
 // `${startTime.format('h:mm')} - ${endTime.format('h:mm')}`;
     // const title = t.title || startTime.format('MMM Do h:mm A');
     return {
@@ -63,11 +63,11 @@ const normalizeTasks = function(tasks, config, long) {
 
 // day is local moment
 const getWeek = function(day, config) {
-  let first = rMoment(day).startOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week');
+  let first = moment(day).startOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week');
   let week = [first];
   let i = 1;
   while (i < 7) {
-    week.push(rMoment(first).add(i, 'day'));
+    week.push(moment(first).add(i, 'day'));
     i++;
   }
 
@@ -75,7 +75,7 @@ const getWeek = function(day, config) {
 };
 
 const formatHeaderDisplay = function(dt, viewType, config) {
-  const mom = rMoment(dt);
+  const mom = moment(dt);
   if (viewType === 'day') {
     return mom.format('MMMM') + ' ' + mom.date() + ', ' + mom.year();
   } else if (viewType === 'week') {
@@ -87,8 +87,8 @@ const formatHeaderDisplay = function(dt, viewType, config) {
 
 const getTimesForDay = function(config) {
   let result = [];
-  let time = rMoment(config.dayStartsAt, ['h:mm A']);
-  const end = rMoment(config.dayEndsAt, ['h:mm A']);
+  let time = moment(config.dayStartsAt, ['h:mm A']).utcOffset(-5);
+  const end = moment(config.dayEndsAt, ['h:mm A']).utcOffset(-5);
   while (time.isBefore(end, 'minutes', '[)')) {
     result.push(time.format(config.displayTimeFormat));
     time.add(config.increment, 'minutes');

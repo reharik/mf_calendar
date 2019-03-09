@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import PropTypes from 'prop-types';
 import MonthTasks from './MonthTasks';
-import {rMoment} from './../utils/rMoment';
+import moment from 'moment';
 import { addTimeToMoment } from './../utils/calendarUtils';
 import CalendarContext from "../utils/calendarContext";
 
@@ -10,8 +10,8 @@ const MonthWeek = ({weekDays}) => {
 
   const onSelectSlot = date => {
       config.openSpaceClickedEvent({
-        day: rMoment(date).format(),
-        startTime: addTimeToMoment(config.dayStartsAt, rMoment(date).format())
+        day: moment(date).format(),
+        startTime: addTimeToMoment(config.dayStartsAt, moment(date).format())
       });
   };
 

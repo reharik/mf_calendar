@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import AsideTimes from "./AsideTimes";
 import WeekDays from "./WeekDays";
-import {rMoment} from './../utils/rMoment';
+import moment from 'moment';
 import {augmentTimes, getWeek} from "../utils/calendarUtils";
 import CalendarContext from "../utils/calendarContext";
 
@@ -14,14 +14,14 @@ const WeekView = ({ tasks, selectedDay}) => {
     undefined,
     config
   );
-  const startOfWeek = rMoment(selectedDay)
+  const startOfWeek = moment(selectedDay)
     .startOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week')
     .startOf("day")
-    .format();
-  const endOfWeek = rMoment(selectedDay)
+    .toISOString();
+  const endOfWeek = moment(selectedDay)
     .endOf(config.firstDayOfWeek === 1 ? 'isoweek' : 'week')
     .endOf("day")
-    .format();
+    .toISOString();
 
   return (
     <div className="redux__task__calendar__week">

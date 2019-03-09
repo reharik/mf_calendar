@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MonthWeekContainer from '../containers/MonthWeekContainer';
-import {rMoment} from './../utils/rMoment';
+import moment from 'moment';
 import Calendar from "node-calendar";
 
 const MonthWeeks = ({selectedDay, tasks}) =>{
-  const selectedMom = rMoment(selectedDay);
+  const selectedMom = moment(selectedDay);
   var weeks = new Calendar
     .Calendar(Calendar.SUNDAY)
     .monthdatescalendar(selectedMom.year(),
