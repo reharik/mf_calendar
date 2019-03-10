@@ -25,7 +25,14 @@ const baseConfig = {
     libraryTarget: 'umd',
     globalObject: "this"
   },
-
+  externals: {
+    react: "react",
+    "react-dom": "react-dom",
+  },
+  node: {
+    cldr: "empty",
+    fs: 'empty',
+  },
   module: {
     rules: [
       // First, run the linter.
@@ -51,8 +58,18 @@ const baseConfig = {
         oneOf: [
           {
             test: /\.js$/,
-            exclude: /(node_modules)/,
-            use: 'babel-loader'
+            include: contextPath,
+            use: [
+              {
+                loader: "babel-loader",
+                options: {
+                  // This is a feature of `babel-loader` for Webpack (not Babel itself).
+                  // It enables caching results in ./node_modules/.cache/babel-loader/
+                  // directory for faster rebuilds.
+                  cacheDirectory: true
+                }
+              }
+            ]
           },
           {
             test: /\.js$/,
@@ -127,13 +144,12 @@ const baseConfig = {
     namedChunks: true
   },
 
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    },
-    extensions: [".js"],
-    enforceExtension: false,
-  }
+  // resolve: {
+  //   alias: resolveAliasPaths,
+  //   extensions: [".js"],
+  //   enforceExtension: false,
+  //   modules: resolveAliasModules
+  // }
 };
 
 module.exports = baseConfig;

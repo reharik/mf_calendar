@@ -2,9 +2,9 @@ import React from "react";
 import { Calendar } from "./../../build/redux-task-calendar";
 import moment from "moment";
 import uuid from "uuid";
-import { hot } from 'react-hot-loader/root'
+
 // import TaskFormContainer from './TaskFormContainer';
-export default hot(() => {
+export default () => {
   // const [tasks, setTasks] = useState([]);
   const seed = moment();
 
@@ -104,4 +104,4 @@ export default hot(() => {
       />
     </div>
   );
-});
+};

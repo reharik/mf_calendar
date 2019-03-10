@@ -1,6 +1,4 @@
 const webpack = require("webpack");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const path = require("path");
 
 const {
   contentBasePath,
@@ -88,11 +86,7 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin({
     //   multiStep: false
     // }),
-    new CleanWebpackPlugin({
-      root: path.resolve(__dirname, ".."),
-      verbose: true,
-      dry: false
-    }),
+
     new ExtractCssChunks({
       filename: "[name].css",
       chunkFilename: "[name].[contenthash:4].[id].css",

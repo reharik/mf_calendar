@@ -73,14 +73,6 @@ const baseConfig = {
     namedModules: true,
     namedChunks: true
   },
-
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    },
-    extensions: ['.js'],
-    enforceExtension: false,
-  }
 };
 
 
