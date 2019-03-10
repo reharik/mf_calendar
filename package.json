@@ -2,10 +2,12 @@
   "name": "redux-task-calendar",
   "version": "2.0.1",
   "description": "",
-  "main": "dist/redux-task-calendar.js",
+  "main": "build/redux-task-calendar.js",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "NODE_ENV=production webpack",
+    "build": "npm run clean && webpack --config ./webpack_build/index.js --env production",
+    "build:dev": "npm run clean && webpack --config ./webpack_build/index.js --env development",
+    "start": "npm run build:dev && webpack --config ./webpack/index.js --env development && python -m SimpleHTTPServer 8080",
+    "clean": "rimraf recordsPath.json ./build",
     "test": "NODE_ENV=test mocha -w --recursive --compilers js:@babel/register ./app/tests/**",
     "testOnce": "NODE_ENV=test mocha --recursive --compilers js:@babel/register ./app/tests/**",
     "lint": "eslint .",
@@ -21,12 +23,15 @@
     "babel-eslint": "9",
     "babel-loader": "^8.0.0-beta.6",
     "bfj": "6.1.1",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "chai": "^3.5.0",
     "chalk": "2.4.1",
+    "clean-webpack-plugin": "^2.0.0",
     "css-loader": "2.1.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "enzyme": "^2.3.0",
+    "error-overlay-webpack-plugin": "^0.1.6",
     "eslint": "5.6.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-react-app": "^3.0.6",
@@ -35,6 +40,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.0",
+    "extract-css-chunks-webpack-plugin": "^4.0.0",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
@@ -42,6 +48,8 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^2.4.5",
     "nock": "^8.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "pnp-webpack-plugin": "^1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.3.1",
@@ -50,24 +58,27 @@
     "react-dev-utils": "^7.0.0",
     "resolve": "1.8.1",
     "style-loader": "0.23.0",
+    "terser-webpack-plugin": "^1.2.3",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.9"
+    "webpack-dev-server": "3.1.9",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.2.0",
-    "classnames": "^2.2.5",
+    "@hot-loader/react-dom": "16.8.1",
+     "classnames": "^2.2.5",
     "color": "^3.1.0",
     "invariant": "^2.2.1",
     "moment": "^2.18",
     "node-calendar": "^0.1.4",
-    "pnp-webpack-plugin": "^1.2.1",
-    "react": "^16.7.0-alpha.2",
+    "postcss-import": "^12.0.1",
+    "react": "16.8.1",
     "react-dnd": "7.0.2",
     "react-dnd-html5-backend": "7.0.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "react-hot-loader": "^4.8.0",
+    "rimraf": "^2.6.3",
     "thenby": "^1.2.1",
     "uuid": "^2.0.2"
   },
@@ -84,6 +95,8 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],"plugins": [
+      "react-hot-loader/babel"
     ]
   }
 }
