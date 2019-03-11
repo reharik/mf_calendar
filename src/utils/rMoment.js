@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 let tzOffset;
 const setup = (_tzOffset) => {
@@ -8,7 +8,7 @@ const setup = (_tzOffset) => {
 const rMoment = (mom) => {
 	const newMom = moment(mom);
 	if(tzOffset) {
-		newMom.utcOffset(tzOffset);
+		newMom.tz(tzOffset);
 	}
 	return newMom;
 }

@@ -4,7 +4,8 @@ const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
 const {
   appEntry,
   contextPath,
@@ -30,6 +31,7 @@ const baseConfig = {
     "react-dom": "react-dom",
   },
   node: {
+    cldr: 'empty',
     fs: 'empty',
   },
   module: {
@@ -129,7 +131,10 @@ const baseConfig = {
       new MiniCssExtractPlugin({
         filename: "[name].css",
       }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new MomentLocalesPlugin(),
+      new MomentTimezoneDataPlugin({
+        matchZones: ['America/New_York']
+      }),
   ],
 
   node: {

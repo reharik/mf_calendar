@@ -5,6 +5,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const postcssPresetEnv = require("postcss-preset-env");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   recordsPath: path.resolve(__dirname, "..", "./records.json"),
@@ -65,6 +66,7 @@ module.exports = {
       verbose: true,
       dry: false
     }),
+    new BundleAnalyzerPlugin()
   ],
 
   optimization: {

@@ -1,6 +1,5 @@
 import {rMoment, isMoment} from './rMoment';
 import invariant from 'invariant';
-import moment from 'moment';
 
 const validateTask = (task) => {
   invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
