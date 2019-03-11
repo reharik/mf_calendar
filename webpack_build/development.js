@@ -24,11 +24,6 @@ module.exports = {
         oneOf: [
           {
             test: /\.css$/,
-            include: /node_modules/,
-            loaders: ["style-loader", "css-loader"]
-          },
-          {
-            test: /\.css$/,
             include: cssPaths,
             use: [
               {
@@ -42,11 +37,11 @@ module.exports = {
               {
                 loader: "css-loader",
                 options: {
-                  import: false,
+                  import: true,
                   url: true,
                   modules: true,
                   // localIdentName: '[folder]__[local]--[hash:base64:4]',
-                  localIdentName: "[folder]__[local]",
+                  localIdentName: 'redux__task__calendar__[local]',
                   sourceMap: true,
                   camelCase: false,
                   importLoaders: 1
@@ -59,15 +54,17 @@ module.exports = {
                   ident: "postcss",
                   plugins: loader => [
                     cssImport({
-                      root: postcssPaths,
                       skipDuplicates: true
                     }),
+                    require('postcss-flexbugs-fixes'),
+                    require('postcss-mixins'),
                     postcssPresetEnv({
                       stage: 2,
                       features: {
                         "nesting-rules": true
                       }
                     }),
+                    require('precss') // SASS-like markup,
                   ]
                 }
               }

@@ -79,32 +79,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        include: /node_modules/,
-        loaders: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.css$/,
         use: [
           {
-            loader: ExtractCssChunks.loader,
-            options: {
-              hot: true, // if you want HMR - we try to automatically inject hot reloading but if it's not working, add it to the config
-              modules: true, // if you use cssModules, this can help.
-              reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
-
-            }
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
             options: {
-              import: false,
-              url: true,
-              modules: true,
-              // localIdentName: '[folder]__[local]--[hash:base64:4]',
-              localIdentName: '[folder]__[local]',
               sourceMap: true,
-              camelCase: false,
-              importLoaders: 1
+              importLoaders: 1,
             }
           },
           {
@@ -126,7 +109,8 @@ module.exports = {
               ]
             }
           }
-        ]
+        ],
+        sideEffects: true,
       }
     ]
   },
@@ -149,12 +133,6 @@ module.exports = {
     // in larger projects. Good default.
     new webpack.HotModuleReplacementPlugin({
       multiStep: false
-    }),
-
-    new ExtractCssChunks({
-      filename: '[name].[contenthash:4].css',
-      chunkFilename: '[name].[contenthash:4].[id].css',
-      orderWarning: true
     }),
 
     new webpack.optimize.LimitChunkCountPlugin({

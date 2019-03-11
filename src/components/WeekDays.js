@@ -7,7 +7,7 @@ const WeekDays = ({ week, tasks }) => {
     <ol className="redux__task__calendar__week__days">
       {week.map(day => (
         <li className="redux__task__calendar__week__day" key={day}>
-          <DayContainer date={day} tasks={tasks} />
+          <DayContainer date={day} tasks={tasks} view="week"/>
         </li>
       ))}
     </ol>

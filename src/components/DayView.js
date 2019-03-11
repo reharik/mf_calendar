@@ -15,7 +15,7 @@ const DayView = ({tasks, selectedDay}) => {
   );
   return (<div className="redux__task__calendar__day">
       <AsideTimes times={times}/>
-      <DayContainer tasks={tasks} date={selectedDay} />
+      <DayContainer tasks={tasks} date={selectedDay} view="day" />
     </div>
   );
 

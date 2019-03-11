@@ -30,7 +30,6 @@ const baseConfig = {
     "react-dom": "react-dom",
   },
   node: {
-    cldr: "empty",
     fs: 'empty',
   },
   module: {

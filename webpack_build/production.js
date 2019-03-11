@@ -26,7 +26,15 @@ module.exports = {
                 loader: MiniCssExtractPlugin.loader,
               },
               {
-                loader: require.resolve('css-loader'),
+                loader: "css-loader",
+                options: {
+                  import: true,
+                  url: true,
+                  localIdentName: 'redux__task__calendar__[local]',
+                  sourceMap: false,
+                  camelCase: false,
+                  importLoaders: 1
+                }
               },
               {
                 loader: require.resolve('postcss-loader'),
