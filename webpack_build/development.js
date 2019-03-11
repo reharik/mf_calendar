@@ -4,7 +4,7 @@ const {
   contentBasePath,
   cssPaths,
   host,
-  port,
+  port,outputPath,
   postcssPaths
 } = require("./base-params");
 
@@ -14,7 +14,9 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 
 module.exports = {
   devtool: "eval-source-map",
-
+  output: {
+    path: outputPath+'_dev',
+  },
   module: {
     rules: [
       {

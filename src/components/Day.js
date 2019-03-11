@@ -20,7 +20,7 @@ const Day = ({view,
 
     config.openSpaceClickedEvent({
       day: rMoment(time.day).hour(0).minute(0).format(),
-      startTime: addTimeToMoment(time.time, time.day)
+      startTime: addTimeToMoment(time.time, time.day).format()
     });
   };
 
@@ -51,7 +51,6 @@ const Day = ({view,
   const getTasksForTime = (_tasks, time) => _tasks.filter(x => {
     return rMoment(x.startTime).format('h:mm A') === time;
   });
-
   return (
     <ol className={olClasses} data-id={dayName} >
       <li className={liClasses}>

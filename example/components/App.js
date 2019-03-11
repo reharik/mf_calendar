@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar } from "./../../build/redux-task-calendar";
+import { Calendar } from "./../../build_dev/redux-task-calendar";
 import moment from "moment";
 import uuid from "uuid";
 

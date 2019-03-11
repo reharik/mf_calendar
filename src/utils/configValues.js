@@ -24,7 +24,11 @@ const defaultValues = {
   taskFilter: (x) => (true),
   taskMap: (x) => (x),
   canUpdate: (x) => (true),
-  specificTZ: undefined
+  specificTZ: undefined,
+  openSpaceClickedEvent: (x) => {console.log(x)},
+  taskClickedEvent: (x) => {console.log(x)},
+  retrieveData: (x) => {console.log(x)},
+  updateTaskViaDND: (x) => {console.log(x)},
 };
 
 export default defaultValues;

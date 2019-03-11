@@ -24,5 +24,18 @@
     "byName": {},
     "bySource": {},
     "usedIds": []
-  }
+  },
+  "mini-css-extract-plugin ../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-4-1!../node_modules/postcss-loader/src/index.js??postcss!css/index.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": []
+      }
+    }
+  ]
 }

@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const path = require("path");
 
 const {
-  contentBasePath,  host, port
+  outputPath,  host, port
 } = require('./base-params');
 
 const cssImport = require('postcss-import');
@@ -13,7 +13,9 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
-
+  output: {
+    path: outputPath+'_dev',
+  },
   devServer: {
     https: false,
     host,

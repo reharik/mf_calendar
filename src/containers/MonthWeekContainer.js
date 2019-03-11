@@ -1,6 +1,6 @@
 import {normalizeTasks} from '../utils/calendarUtils';
 import MonthWeek from '../components/MonthWeek';
-import moment from 'moment';
+import {rMoment} from './../utils/rMoment';
 import CalendarContext from "../utils/calendarContext";
 import React, {useContext} from "react";
 
@@ -28,10 +28,10 @@ const monthWeekContainer = ({week, tasks, selectedDay}) => {
   };
 
   let weekDays = week.map((date, idx) => {
-    let day = moment(date);
-    day.classes = buildClasses(day, moment(), moment(selectedDay), idx);
+    let day = rMoment(date);
+    day.classes = buildClasses(day, rMoment(), rMoment(selectedDay), idx);
     let unprocessedTasks = (tasks || [])
-      .filter(e => moment(e.date || e.startTime).isSame(day, 'day'))
+      .filter(e => rMoment(e.date || e.startTime).isSame(day, 'day'))
       .filter(a => config.taskFilter(a))
       .map(a => config.taskMap(a));
     day.tasks = normalizeTasks(unprocessedTasks, config);

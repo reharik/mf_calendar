@@ -1,5 +1,6 @@
 import {rMoment, isMoment} from './rMoment';
 import invariant from 'invariant';
+import moment from 'moment';
 
 const validateTask = (task) => {
   invariant(task.startTime, `Tasks must have a start time! startTime: ${task.startTime}`);
@@ -85,10 +86,21 @@ const formatHeaderDisplay = function(dt, viewType, config) {
   return mom.format('MMMM') + ' ' + mom.year();
 };
 
+const parseHour = (time) => {
+  let hour = parseInt(time.substring(0, time.indexOf(':')));
+  let A = time.substring(time.indexOf(' ') + 1);
+  hour = A === 'AM' || hour === 12 ? hour : hour + 12;
+ return hour;
+}
+
 const getTimesForDay = function(config) {
   let result = [];
-  let time = rMoment(config.dayStartsAt, ['h:mm A']);
-  const end = rMoment(config.dayEndsAt, ['h:mm A']);
+  const startHour = parseHour(config.dayStartsAt)
+  let startMinute =  parseInt(config.dayStartsAt.substring(config.dayStartsAt.indexOf(':') + 1, config.dayStartsAt.indexOf(' ')));
+  const endHour = parseHour(config.dayEndsAt)
+  let endMinute =  parseInt(config.dayEndsAt.substring(config.dayEndsAt.indexOf(':') + 1, config.dayEndsAt.indexOf(' ')));
+  let time = rMoment().startOf('day').add(startHour, 'hour').add(startMinute, 'minute');
+  let end = rMoment().startOf('day').add(endHour, 'hour').add(endMinute, 'minute');
   while (time.isBefore(end, 'minutes', '[)')) {
     result.push(time.format(config.displayTimeFormat));
     time.add(config.increment, 'minutes');

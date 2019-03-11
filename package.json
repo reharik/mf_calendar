@@ -5,9 +5,10 @@
   "main": "build/redux-task-calendar.js",
   "scripts": {
     "build": "npm run clean && webpack --config ./webpack_build/index.js --env production",
-    "build:dev": "npm run clean && webpack --config ./webpack_build/index.js --env development",
+    "build:dev": "npm run clean:dev && webpack --config ./webpack_build/index.js --env development",
     "start": "npm run build:dev && webpack --config ./webpack/index.js --env development && python -m SimpleHTTPServer 8080",
     "clean": "rimraf recordsPath.json ./build",
+    "clean:dev": "rimraf recordsPath.json ./build_dev ./public_dev",
     "test": "NODE_ENV=test mocha -w --recursive --compilers js:@babel/register ./app/tests/**",
     "testOnce": "NODE_ENV=test mocha --recursive --compilers js:@babel/register ./app/tests/**",
     "lint": "eslint ./src",

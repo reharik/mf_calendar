@@ -1,7 +1,7 @@
 import Task from '../components/Task';
 import { DragSource } from 'react-dnd';
 import { momentFromTime } from './../utils/calendarUtils';
-import moment from 'moment';
+import {rMoment} from './../utils/rMoment';
 
 const taskSource = {
   beginDrag(props) {
@@ -17,7 +17,7 @@ const taskSource = {
         startTime: dropResult.startTime,
         endTime: momentFromTime(dropResult.startTime, props.displayTimeFormat)
           .add(originalTask.task.slots * props.increment, 'minutes').format(props.displayTimeFormat),
-        date: moment(dropResult.date).format(props.fetchDateFormat) };
+        date: rMoment(dropResult.date).format(props.fetchDateFormat) };
       props.updateTaskViaDND(task);
     }
   },
